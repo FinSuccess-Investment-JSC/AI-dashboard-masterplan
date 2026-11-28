@@ -173,3 +173,5 @@
 .rf-xlink small{display:block;font:600 11px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.05em}
 .rf-xlink b{display:block;font-size:14px;margin:3px 0;color:#2938A8}.rf-xlink span{font-size:12.5px;color:var(--ink2,#3b4256)}
 :root[data-theme=dark] .rf-xlink b{color:#9AA8F0}
+/* Đầu sub-tab: "Dữ liệu mới nhất" cạnh nút Link mục (28/11/2026, khung chuẩn Điện) */
+.rf-hside{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}

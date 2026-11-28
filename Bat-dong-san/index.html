@@ -26,7 +26,7 @@
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=ea2d589497cb" defer></script>
 <script src="../data/valuation-history.js?v=54a0d6e8e4b2" defer></script>
-<script src="../data/company-valuation.js?v=a38a9fa54044" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
 <script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
 <script src="app/ticker-scope.js?v=6668f0e2c31a" defer></script>
@@ -34,7 +34,7 @@
 <script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
 <script src="app/research-layout.js?v=9e4f1a521717" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/research-editorial.js?v=97450dc19c58" defer></script>
 <script src="app/pane-subtabs.js?v=252d143e2329" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
@@ -51,10 +51,12 @@
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
 <script src="app/re-finance.js?v=8c3e291eb9fa" defer></script>
-<script src="app/re-frame.js?v=7ac8416ded98" defer></script>
+<script src="app/re-frame.js?v=c4b73e12f8b9" defer></script>
 <script src="app/re-policy.js?v=770460b9291f" defer></script>
-<script src="app/re-legal.js?v=bf925f70780b" defer></script>
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/re-legal.js?v=5393bf589908" defer></script>
+<script src="../data/realestate-news.js?v=37495f729893" defer></script>
+<script src="app/re-news.js?v=45b6e140a97c" defer></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
@@ -63,6 +65,8 @@
 <link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
+<link rel="stylesheet" href="app/re-news.css?v=27443caf8f7d">
 </head>
 <body data-sector="realestate">
 <nav data-site-navigation="realestate"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="./" aria-current="page">Bất động sản</a><a data-site-route="industrial" href="../Bat-dong-san-KCN/">BĐS KCN</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
@@ -460,7 +464,9 @@
   </div>
 
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Năm câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <section class="section" data-sector-news><div id="re-news" aria-label="Tin ngành BĐS dân cư"><p role="status">Đang tải tin ngành BĐS dân cư…</p></div></section>
+    <!-- 28/11/2026: 5 thẻ chủ đề cũ (bds-22…bds-27) đã chuyển thành "Chủ đề đang theo dõi" trong data/realestate/news.json; thẻ gốc giữ ẩn. -->
+    <details class="research-fold of-rest" hidden id="re-news-legacy"><summary>Thẻ chủ đề cũ</summary>
     <div data-topic-key="phap-ly" data-topic-segment="Chung" data-topic-title="Tháo gỡ dự án tồn đọng · Hệ thống 751 &amp; NQ 254">
       <div class="card" data-block-id="bds-22" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="tablewrap"><table>
@@ -523,6 +529,7 @@
         <div class="source-note">Nguồn: <a href="https://doanhnhan.baophapluat.vn/dhdcd-novaland-nvl-2026-tan-chu-tich-bui-cao-nhat-quan-nham-chuc-chot-ban-800-trieu-co-phieu-va-don-luc-ban-giao-2-600-can-nha.html" target="_blank" rel="noopener">ĐHĐCĐ Novaland 23/04/2026</a> · <a href="https://doanhnhan.baophapluat.vn/novaland-nvl-xin-mien-tru-vi-pham-lo-trai-phieu-335-trieu-usd-88100.html" target="_blank" rel="noopener">trái phiếu 335 triệu USD</a> · <a href="https://baodauthau.vn/dau-gia-hang-loat-tai-san-tu-dai-an-van-thinh-phat-post202779.html" target="_blank" rel="noopener">Báo Đấu thầu · Vạn Thịnh Phát</a>.</div>
       </div>
     </div>
+    </details>
   </div>
 
   <div class="majorpane" data-tab="mt10" id="pane-mt10">

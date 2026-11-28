@@ -1,0 +1,64 @@
+/* Khung chuẩn Điện cho mọi dashboard ngành (DASHBOARD_WORKFLOW.md §42, người dùng chốt 28/11/2026).
+   Một bản duy nhất: scripts/sector_package/sector-frame.css → scripts/sync_sector_frame.py chép vào <Ngành>/app/ và nạp cuối <head>.
+   Chép đúng giao diện Dien/app/power-overview.css (.ov-nav) và Dien/app/power-picture.js (.pp-*). Tiền tố "html body" để thắng
+   CSS do từng engine tự chèn lúc chạy (cùng tên lớp). Sửa giao diện khung thì sửa ở đây, không sửa trong engine ngành. */
+
+/* Tab Tổng quan ngành: thẻ số 00/01 + tiêu đề + dòng phụ */
+html body .ov-nav{position:sticky;top:var(--of-top,0px);z-index:6;display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;margin:6px 0 14px;padding:6px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);box-shadow:0 2px 10px rgba(29,38,120,.06)}
+html body .ov-nav .ov-tab{flex:1 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:0;white-space:nowrap;border:0;border-radius:8px;padding:6px 12px;margin:0;background:transparent;box-shadow:none;color:var(--ink2,#3b4256);font:600 13px/1.25 Inter,system-ui,sans-serif;cursor:pointer;text-align:left;min-height:0}
+html body .ov-nav .ov-tab span{display:inline;font-variant-numeric:tabular-nums;color:var(--muted,#7a8399);font-weight:500;font-size:11px;margin:0}
+html body .ov-nav .ov-tab small{display:block;font-weight:500;font-size:10.5px;color:var(--muted,#7a8399)}
+html body .ov-nav .ov-tab:hover{background:color-mix(in srgb,#2938A8 6%,transparent)}
+html body .ov-nav .ov-tab[aria-selected=true]{background:#2938A8;color:#fff}
+html body .ov-nav .ov-tab[aria-selected=true] span,html body .ov-nav .ov-tab[aria-selected=true] small{color:#cfd5f5}
+html body .ov-nav .ov-tab:focus-visible{outline:2px solid #c98a00;outline-offset:2px}
+
+/* Tab Bức tranh ngành, Tài chính ngành: thanh gọn 01, 02 … */
+html body .pp-nav{position:sticky;top:var(--of-top,0px);z-index:6;display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;margin:6px 0 14px;padding:6px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);box-shadow:0 2px 10px rgba(29,38,120,.06)}
+html body .pp-nav .pp-tab{flex:0 0 auto;white-space:nowrap;border:0;border-radius:8px;padding:7px 12px;margin:0;background:transparent;box-shadow:none;color:var(--ink2,#3b4256);font:600 13px/1.2 Inter,system-ui,sans-serif;cursor:pointer;min-height:0}
+html body .pp-nav .pp-tab span{font-variant-numeric:tabular-nums;color:var(--muted,#7a8399);margin-right:6px;font-weight:500}
+html body .pp-nav .pp-tab:hover{background:color-mix(in srgb,#2938A8 6%,transparent)}
+html body .pp-nav .pp-tab[aria-selected=true]{background:#2938A8;color:#fff}
+html body .pp-nav .pp-tab[aria-selected=true] span{color:#cfd5f5}
+html body .pp-nav .pp-tab:focus-visible{outline:2px solid #c98a00;outline-offset:2px}
+
+/* Đầu sub-tab: số · tiêu đề · mục tiêu, bên phải "Dữ liệu mới nhất" */
+html body .pp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:2px 0 12px;flex-wrap:wrap}
+html body .pp-head h2{display:block;margin:0;font:700 19px/1.3 Inter,system-ui,sans-serif}
+html body .pp-head p{margin:4px 0 0;color:var(--ink2,#3b4256);font-size:13.5px}
+html body .pp-k{font:600 12px Inter,sans-serif;color:var(--muted,#7a8399);letter-spacing:.04em}
+html body .pp-asof{font-size:12px;color:var(--muted,#7a8399);white-space:nowrap}
+html body .pp-pane>.pp-kpis,html body .pp-kpis{margin-bottom:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
+
+/* Thanh luồng Đầu vào → Sản xuất → Đầu ra và tiêu đề khâu */
+html body .pp-flow{display:flex;align-items:stretch;gap:6px;margin:0 0 16px;flex-wrap:wrap}
+html body .pp-flow-s{flex:1 1 170px;display:flex;flex-direction:column;gap:3px;padding:10px 14px;border:1px solid var(--line,#d6dbe8);border-radius:12px;background:var(--card,#fff);color:var(--ink,#1d2333);text-decoration:none}
+html body .pp-flow-s small{font:700 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}
+html body .pp-flow-s b{font-size:14px;line-height:1.3}
+html body .pp-flow-s:hover,html body .pp-flow-s:focus-visible{border-color:#2938A8}
+html body .pp-flow-ar{align-self:center;color:#2938A8;font-weight:700}
+html body .pp-stage{display:flex;align-items:center;gap:10px;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid #1D2678;scroll-margin-top:130px}
+html body .pp-stage span{font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D2678;border-radius:6px;padding:3px 9px}
+html body .pp-stage h3{margin:0;font-size:16px}
+html body .pp-grp{margin:22px 0 10px;font:700 12px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}
+
+/* Câu hỏi đánh số: chart chính → chart phụ → xem thêm */
+html body .pp-panel{margin:0 0 22px;padding:14px 14px 10px;border:1px solid var(--line,#e3e7f0);border-radius:14px;background:color-mix(in srgb,var(--card,#fff) 92%,#2938A8 3%)}
+html body .pp-ph{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+html body .pp-num{flex:0 0 auto;font:700 12px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:3px 7px;margin-top:2px}
+html body .pp-ph h3{margin:0 0 4px;font-size:15.5px;line-height:1.35}
+html body .pp-main>.card,html body .pp-panel>.card{margin-bottom:12px}
+html body .pp-sup,html body .pp-sup1{margin-bottom:12px}
+
+/* Thẻ dẫn sang chart ở sub-tab khác (dời, không nhân bản) */
+html body .th-link{display:flex;flex-direction:column;gap:2px;margin:0 0 16px;padding:10px 14px;border:1px dashed #B9C0DC;border-radius:12px;background:var(--card,#fff);color:var(--ink,#1d2333);text-decoration:none}
+html body .th-link small{font-size:11.5px;color:var(--muted,#7a8399)}html body .th-link b{font-size:14px;color:#2938A8}html body .th-link span{font-size:12.5px;color:var(--ink2,#3b4256)}
+
+/* Ô số: sector-base.css tô chữ sáng khi máy để chế độ tối (prefers-color-scheme) dù trang vẫn nền sáng → số gần như trắng trên nền trắng.
+   Trang chỉ đổi màu tối khi data-theme=dark, nên giữ màu navy ở mọi trường hợp còn lại. */
+html:root:not([data-theme=dark]) body .kpis .kpi .value{color:var(--fs-navy,#1D2678)}
+
+:root[data-theme=dark] .ov-nav,:root[data-theme=dark] .pp-nav{border-color:#2a3152}
+:root[data-theme=dark] .pp-panel{background:color-mix(in srgb,var(--card,#141a33) 94%,#6171C5 6%)}
+:root[data-theme=dark] .pp-stage{border-color:#8997D6}:root[data-theme=dark] .pp-stage span{background:#2938A8}
+@media (max-width:760px){html body .pp-asof{white-space:normal}html body .ov-nav .ov-tab small{display:none}html body .pp-pane>.pp-kpis,html body .pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}html body .pp-flow-ar{display:none}html body .pp-flow-s{flex-basis:100%}html body .pp-panel{padding:12px 10px}}

@@ -1,11 +1,15 @@
-/* Dầu khí · khung 5 tab theo flow ngành Điện (người dùng chốt 26/11/2026).
-   Tab lớn: Tổng quan ngành (00 Bản đồ ngành · 01 Chuỗi giá trị · 02 Doanh nghiệp niêm yết · 03 Triển vọng)
-          · Bức tranh ngành (01 Dầu thô toàn cầu · 02 Thượng nguồn VN · 03 Khí & LNG · 04 Lọc dầu · 05 Phân phối xăng dầu · 06 Vận tải & dòng chảy)
-          · Chính sách (01 Điều hành giá · 02 Luật Dầu khí 2026 · 03 Thuế & phí · 04 Quy hoạch khí & LNG)
-          · Tài chính ngành (#mt14, app/oil-finance.js) · Chủ đề nóng.
-   Card cũ được DỜI theo data-block-id, không nhân bản, không xóa. Card không có trong bảng dời vẫn ở lại trong tab cũ của nó,
-   gom vào mục "Nội dung khác" cuối tab để không mất dữ liệu. Chạy sau research-layout / research-editorial / pane-subtabs.
-   Deep-link: Dau-khi/?sub=<khóa sub-tab>#mt2 ; link cũ #mt3 → #mt2, #mt5/#mt6/#mt8 → #mt1. */
+/* Dầu khí · khung chuẩn Điện 4 tab (28/11/2026, DASHBOARD_WORKFLOW.md §42; thay khung 5 tab 26/11/2026).
+   Tab lớn: Tổng quan ngành (.ov-nav: 00 Bản đồ ngành · 01 Chuỗi giá trị)
+          · Bức tranh ngành (.pp-nav: 01 Dầu thô toàn cầu · 02 Thượng nguồn VN · 03 Khí & LNG · 04 Lọc dầu · 05 Phân phối xăng dầu
+            · 06 Vận tải & dòng chảy · 07 Chính sách (thanh con .pp-subnav: Luật Dầu khí 2026 · Kinh doanh xăng dầu & điều hành giá
+            · Thuế xăng dầu · Xăng sinh học E10 · Quy hoạch điện VIII & LNG · Mới duyệt gần đây) — buildPicture(), cây PICT)
+          · Tài chính ngành (#mt14, .pp-nav: 01 Tài chính ngành = app/oil-finance.js · 02 Doanh nghiệp niêm yết · 03 Định giá = app/peer-valuation.js)
+          · Chủ đề nóng.
+   Hai bước: (1) buildTab() dựng khung tạm cho #mt2, #mt4 như cũ để các hàm thêm chart (lngPrices, vnMonthly, opsCards…) có chỗ gắn;
+   (2) buildPicture() DỜI thẻ vào câu hỏi đánh số theo PICT. Thẻ không nhân bản, không xóa: thẻ không còn chỗ vào details.of-rest ẩn.
+   Deep-link: ?sub=<crude|upstream|gas|refining|retail|flows|policy>#mt2, ?sub=policy&pol=<law|price|tax|e10|plan|docs>#mt2,
+   ?sub=<fin|listed|valuation>#mt14. Link cũ: #mt3 → #mt2; #mt4 (?sub=law…) → Bức tranh ngành › Chính sách; #mt5/#mt6/#mt8 → #mt1;
+   ?sub=listed#mt1 → Tài chính ngành › 02; ?sub=total|compare#mt14 → 01|02. */
 (() => {
 'use strict';
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
@@ -16,15 +20,16 @@ const byCanvas = id => $('#' + id)?.closest('.card,.viz-block');
 
 const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
 const TREE = {
-  mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành dầu khí', intro: 'Nhìn để hiểu ngành: chuỗi giá trị → cơ chế lợi nhuận từng khâu → doanh nghiệp niêm yết → triển vọng.', subs: [
-    {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Thượng nguồn → trung nguồn → hạ nguồn, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap'], ids: ['dau-khi-01']},
-    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Giá dầu đi vào lợi nhuận từng khâu qua năm kênh.', ids: ['dau-khi-38'], rest: true},
-    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh từng mã: vị trí trong chuỗi, biến quyết định lợi nhuận, độ trễ so với giá dầu.', sel: ['.business-models'], ids: ['dau-khi-03']},
+  // 28/11/2026 (§42): Tổng quan chỉ 00 Bản đồ ngành · 01 Chuỗi giá trị; Doanh nghiệp niêm yết (.business-models) sang Tài chính ngành › 02.
+  // Không có khối triển vọng (02 vị trí chu kỳ, 14 chế độ thị trường đã bỏ 26/11/2026) nên không có thẻ 02 Triển vọng. `sm` = dòng phụ trên thẻ.
+  mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành dầu khí', intro: 'Nhìn để hiểu ngành: chuỗi giá trị → cơ chế lợi nhuận từng khâu.', ov: true, subs: [
+    {k: 'map', n: '00', t: 'Bản đồ ngành', sm: 'Thượng – trung – hạ nguồn, mã niêm yết', d: 'Thượng nguồn → trung nguồn → hạ nguồn, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap'], ids: ['dau-khi-01']},
+    {k: 'chain', n: '01', t: 'Chuỗi giá trị', sm: 'Năm kênh giá dầu vào lợi nhuận', d: 'Giá dầu đi vào lợi nhuận từng khâu qua năm kênh.', ids: ['dau-khi-38'], rest: true},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo khâu: dầu thô toàn cầu → thượng nguồn Việt Nam → khí & LNG → lọc dầu → phân phối → vận tải & dòng chảy.', subs: [
     {k: 'crude', n: '01', t: 'Dầu thô toàn cầu', d: 'Cung OPEC+ và ngoài OPEC, cầu, tồn kho, Brent/WTI, đường cong kỳ hạn, vị thế quỹ.', ids: ['dau-khi-05', 'dau-khi-12', 'dau-khi-23', 'dau-khi-24', 'dau-khi-25', 'dau-khi-11', 'dau-khi-06', 'dau-khi-07', 'dau-khi-08', 'dau-khi-09', 'dau-khi-10', 'dau-khi-13'], canv: ['chFastPrice'], sel: ['.opec-drivers', '.inventory-group'], kpis: true},
     {k: 'upstream', n: '02', t: 'Thượng nguồn VN', d: 'Sản lượng khai thác dầu và khí, chuỗi dự án và dòng khí đầu tiên.', ids: ['dau-khi-15', 'dau-khi-19'],
-      gap: 'Chưa có chuỗi giá thuê và tỷ lệ sử dụng giàn khoan Đông Nam Á theo thời gian; số của PVD ở thẻ PVD (Tài chính ngành › So sánh doanh nghiệp).'},
+      gap: 'Chưa có chuỗi giá thuê và tỷ lệ sử dụng giàn khoan Đông Nam Á theo thời gian; thẻ PVD chỉ có số quý gần nhất doanh nghiệp công bố.'},
     {k: 'gas', n: '03', t: 'Khí & LNG', d: 'Khí vào bờ, LNG nhập khẩu và vị trí của PV GAS.', ids: ['dau-khi-16', 'dau-khi-17']},
     {k: 'refining', n: '04', t: 'Lọc dầu', d: 'Crack spread Singapore và Mỹ, giá sản phẩm, cân đối hai nhà máy lọc dầu.', ids: ['dau-khi-singapore-crack', 'dau-khi-20', 'dau-khi-21', 'dau-khi-18'],
       gap: 'Biên lọc dầu thực tế của BSR không công bố theo tháng; crack Singapore so Dubai là proxy.'},
@@ -43,8 +48,21 @@ const TREE = {
     {k: 'docs', n: '06', t: 'Mới duyệt gần đây', d: 'Văn bản mới thông qua, mới hiệu lực, dự thảo đang trình.', ids: []},
   ]},
 };
-const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
-const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
+// 28/11/2026 (§42): đúng 4 tab lớn; Chính sách (#mt4) thành sub-tab cuối của Bức tranh ngành.
+const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
+const ALIAS = {mt3: 'mt2', mt4: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
+const POL = ['law', 'price', 'tax', 'e10', 'plan', 'docs'];
+const POL_ALIAS = {lng: 'plan'};  // khóa cũ §35 "Quy hoạch khí & LNG"
+// Khóa sub-tab cũ → [tab lớn, sub-tab mới] (link ?sub= của khung 5 tab).
+const SUB_ROUTE = {mt1: {listed: ['mt14', 'listed'], outlook: ['mt1', 'map']}, mt14: {total: ['mt14', 'fin'], compare: ['mt14', 'listed']}};
+// Đường đi chuẩn từ (hash, ?sub=, ?pol=) cũ hoặc mới → {key, sub, pol}.
+function route(raw, sub, pol) {
+  let key = ALIAS[raw] || raw; if (!ROUTES.some(r => r[0] === key)) key = 'mt1';
+  if (POL_ALIAS[sub]) sub = POL_ALIAS[sub];
+  if (raw === 'mt4' || (key === 'mt2' && POL.includes(sub))) return {key: 'mt2', sub: 'policy', pol: POL.includes(sub) ? sub : (POL.includes(pol) ? pol : POL[0])};
+  const hit = SUB_ROUTE[key]?.[sub]; if (hit) return {key: hit[0], sub: hit[1]};
+  return {key, sub, pol};
+}
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
@@ -121,13 +139,14 @@ body[data-oil-frame] .majorpane .comparison-heading h2{color:#fff!important;back
 .tx-row.mix{border-left:4px solid #A78BFA}.tx-row.mix .tx-dir{background:#F1EDFF;color:#5B4FD6}
 @media (max-width:900px){.tx-flow{grid-template-columns:1fr;gap:12px}.tx-row{grid-template-columns:1fr}.tx-rows{padding-left:14px}.tx-row::before{width:14px;left:-15px}.tx-row::after{left:-20px}}
 :root[data-theme=dark] .tx-row{background:var(--card);border-color:var(--line)}:root[data-theme=dark] .tx-ch,:root[data-theme=dark] .tx-who{color:#E8EBFA}:root[data-theme=dark] .tx-mech{color:#B8BEDA}
-.of-nav{position:sticky;top:var(--of-top,76px);z-index:30;display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 20px;padding:10px 0 12px;background:var(--fs-page,#F7F8FC);border-bottom:1px solid #E6E9F2}
-body .of-nav button.of-tab{display:flex;align-items:center;padding:10px 20px;border:1px solid #E2E5EE;border-radius:12px;background:#fff;font:600 15.5px/1.2 Inter,system-ui,sans-serif;color:#3D4566;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
-body .of-nav button.of-tab:hover{border-color:#B9C0DC;color:#1F2677}
-body .of-nav .of-n{display:none}
-body .of-nav b{font-weight:600}
-body .of-nav button.of-tab[aria-selected=true]{background:#1F2677!important;border-color:#1F2677!important;color:#fff!important;box-shadow:0 4px 12px -4px rgba(31,38,119,.45)!important}
-:root[data-theme=dark] .of-nav{background:#0A0A0A;border-color:#2A2A2A}:root[data-theme=dark] body .of-nav button.of-tab{background:#161616;border-color:#2A2A2A;color:#C8CCE0}:root[data-theme=dark] body .of-nav button.of-tab[aria-selected=true]{background:#2938A8!important;color:#fff!important}
+/* 28/11/2026: thanh .of-nav tự chế bỏ; giao diện .ov-nav/.pp-nav/.pp-* ở app/sector-frame.css (một bản cho mọi ngành).
+   Ở đây chỉ còn thanh con của 07 Chính sách (.pp-subnav, kiểu viên thuốc như Dien/app/power-policy.css) và lưới thẻ trong câu hỏi. */
+.dk-pol .pp-subnav{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 8px;margin:0 0 12px;scrollbar-width:thin}
+.dk-pol .pp-subnav button{flex:0 0 auto;font:500 12.5px/1.2 Inter,system-ui,sans-serif;padding:7px 12px;border-radius:999px;border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);color:var(--ink2,#3b4256);cursor:pointer;white-space:nowrap}
+.dk-pol .pp-subnav button[aria-selected=true]{background:#E8ECFB;border-color:#2938A8;color:#1D2678;font-weight:700}
+.pp-panel>.of-body{margin:0 0 12px}.pp-panel>.of-body:last-child{margin-bottom:4px}.pp-panel>.of-gap{margin:0 0 10px}
+.pp-pane>.of-rest,.pp-pane .of-next{margin-top:8px}
+:root[data-theme=dark] .dk-pol .pp-subnav button{background:#161616;border-color:#2A2A2A;color:#C8CCE0}:root[data-theme=dark] .dk-pol .pp-subnav button[aria-selected=true]{background:#2938A8;color:#fff}
 .of-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin:4px 0 12px;padding:10px 0;border-bottom:1px solid var(--line,#e3e7f0)}
 .of-head h2{margin:0;font-size:24px}.of-head .of-k{font:500 13px Inter,sans-serif;color:var(--muted,#7a8399);margin-right:8px}.of-head p{margin:4px 0 0;color:var(--ink2,#3b4256)}
 .of-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}.of-body>*{min-width:0;margin:0!important}
@@ -164,11 +183,13 @@ function buildTab(key) {
   ['dau-khi-04', 'dau-khi-26', 'dau-khi-02', 'dau-khi-14'].forEach(id => $$(`[data-block-id="${id}"]`).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
   const sec = el('section', 'section of-section');
   const brief = key === 'mt1' && $('#dataBrief'); if (brief) sec.append(brief);
-  const nav = el('div', 'of-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
+  // Tổng quan (def.ov): thanh .ov-nav chuẩn Điện (số 00, 01 · tiêu đề · dòng phụ). #mt2, #mt4: khung tạm, buildPicture() dựng lại.
+  const nav = el('div', def.ov ? 'ov-nav' : 'of-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
   const used = new Set();
   const subs = def.subs.map((s, i) => {
-    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
-    const p = el('div', 'pane-subpane of-pane'); p.id = `of-${key}-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
+    const b = def.ov ? el('button', 'tabbtn ov-tab', `<span>${s.n}</span>${s.t}<small>${s.sm}</small>`) : el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`);
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
+    const p = el('div', 'pane-subpane of-pane' + (def.ov ? ' ov-pane' : '')); p.id = `of-${key}-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
         const body = el('div', 'of-body'); p.append(body);
     if (s.kpis) { const k = $('.majorpane[data-tab="mt2"] .kpis'); if (k) { body.append(k); used.add(k); } }
     const put = n => { if (!n || used.has(n) || [...used].some(u => u.contains?.(n))) return; body.append(n); used.add(n); wideIfTable(n); };
@@ -177,7 +198,7 @@ function buildTab(key) {
     s.ids.forEach(id => put(block(id)));
     if (s.gap) body.insertAdjacentHTML('beforeend', GAP(s.gap));
     if (!body.children.length) body.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu cho mục này.'));
-    const nx = def.subs[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${nx.t} →`); go.type = 'button'; go.addEventListener('click', () => { open(key, nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
+    // Nút "Tiếp: …" do buildPicture() thêm cho Bức tranh ngành; khung tạm #mt2, #mt4 và Tổng quan không cần.
     nav.append(b); sec.append(p);
     b.addEventListener('click', () => open(key, s.k, true));
     return {s, b, p, body};
@@ -209,27 +230,295 @@ function buildTab(key) {
   [100, 600, 1500].forEach(t => setTimeout(() => { window.dispatchEvent(new Event('resize')); $$('.of-body canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
 }
 const TABS = {};
+// key 'mt4' = thanh con của Bức tranh ngành › 07 Chính sách (TABS.mt4 trỏ vào nút .pp-subnav); khóa văn bản ở mt2 cũng về đây.
 function open(key, sub, push) {
+  if (key === 'mt2' && (POL.includes(sub) || POL_ALIAS[sub])) { open('mt2', 'policy', push); open('mt4', POL_ALIAS[sub] || sub, push); return; }
+  if (key === 'mt4') open('mt2', 'policy');
+  if (key === 'mt14' && sub === 'valuation') { const vb = $('#of-mt14-valuation-tab'); if (vb) vb.click(); return; }  // sub-tab do peer-valuation.js tự thêm
   const subs = TABS[key]; if (!subs) return;
   const hit = subs.find(x => x.s.k === sub) || subs[0];
-  subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
-  if (push) { const u = new URL(location.href); u.searchParams.set('sub', hit.s.k); u.hash = key; history.replaceState(null, '', u.pathname + u.search + u.hash); }
-  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+  subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.classList.toggle('active', on); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
+  if (push) { const u = new URL(location.href);
+    if (key === 'mt4') { u.searchParams.set('sub', 'policy'); u.searchParams.set('pol', hit.s.k); u.hash = 'mt2'; }
+    else { u.searchParams.set('sub', hit.s.k); if (hit.s.k !== 'policy') u.searchParams.delete('pol'); u.hash = key; }
+    history.replaceState(null, '', u.pathname + u.search + u.hash); }
+  setTimeout(() => { window.dispatchEvent(new Event('resize')); hit.p.querySelectorAll('canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, 30);
 }
 
+/* ===== Bức tranh ngành theo khung chuẩn Điện (28/11/2026, DASHBOARD_WORKFLOW.md §42) =====
+   Mỗi sub-tab: .pp-head (+ "Dữ liệu mới nhất" tính từ chính các chuỗi của sub-tab) · .pp-kpis 2–4 ô số · .pp-flow Đầu vào → Sản xuất → Đầu ra
+   · tiêu đề khâu .pp-stage · câu hỏi đánh số .pp-panel (.pp-main chart trả lời chính → .pp-sup1 chart phụ → .pp-more xem thêm).
+   Thẻ được DỜI từ khung tạm (buildTab mt2/mt4), không nhân bản; chart ở sub-tab khác thì đặt thẻ dẫn a.th-link.
+   Ô số: ô .kpi có sẵn trên trang (['old', nhãn]) hoặc ô tính từ đúng chuỗi dữ liệu chart trong sub-tab dùng (SECTOR_DAILY, OIL_PUBLIC,
+   SHIPPING_DAILY) — không nhập tay số mới. Mục trong items: {stage} · {q, id, main, sup, more, gap} · L(href, tiêu đề, mô tả). */
+const L = (href, t, s) => ({link: [href, t, s]});
+const PICT = [
+  {k: 'crude', t: 'Dầu thô toàn cầu', goal: 'Cung – cầu, tồn kho và giá dầu thế giới: biến đầu vào chung của mọi khâu trong ngành.',
+    kpis: [['old', 'Brent spot'], ['wb'], ['old', 'Tồn kho dầu thô Mỹ']],
+    asof: {sd: ['brent', 'crude_stock', 'gasoline_stock', 'distillate_stock', 'cushing', 'wti_curve', 'wti_cot', 'opec_capacity', 'top_producers', 'world_demand']},
+    flow: [['sup', 'Cung – cầu', 'Cân bằng, nguồn cung theo nước, cầu theo khu vực'], ['inv', 'Tồn kho', 'Dầu thô, xăng, distillate và Cushing ở Mỹ'], ['px', 'Giá & dòng tiền', 'Brent, đường cong kỳ hạn, vị thế quỹ']],
+    items: [
+      {stage: 'sup'},
+      {q: 'Thị trường dầu đang dư cung hay thiếu cung?', id: 'sd', main: ['#chSDCombo']},
+      {q: 'Nước nào đang kéo nguồn cung dầu tăng hoặc giảm?', id: 'supply', main: ['#of-contrib-supply']},
+      {q: 'Cầu dầu tăng hay giảm, ở khu vực nào?', id: 'demand', main: ['#of-contrib-demand']},
+      {q: 'OPEC còn bao nhiêu công suất dự phòng để bù gián đoạn?', id: 'spare', main: ['dau-khi-12']},
+      {stage: 'inv'},
+      // Khối tab Tồn kho Mỹ (chart-cards.js groupInventories) tách ra theo chuẩn Điện: một chart chính, một chart phụ, còn lại xem thêm.
+      {q: 'Tồn kho dầu Mỹ đang tích lũy hay rút xuống?', id: 'stock', main: ['.inventory-overview', 'dau-khi-06'], sup: ['dau-khi-07'], more: ['dau-khi-08', 'dau-khi-10']},
+      {stage: 'px'},
+      {q: 'Giá Brent đang cao hay thấp so với các năm trước?', id: 'brent', main: ['dau-khi-24']},
+      {q: 'Thị trường kỳ hạn đang định giá dầu tương lai thấp hơn hay cao hơn hiện tại?', id: 'curve', main: ['dau-khi-11']},
+      {q: 'Quỹ đầu cơ đang đặt cược giá dầu tăng hay giảm?', id: 'cot', main: ['dau-khi-13']},
+    ]},
+  {k: 'upstream', t: 'Thượng nguồn VN', goal: 'Dự án khí mới, sản lượng khai thác dầu khí trong nước, giàn khoan và xuất khẩu dầu thô.',
+    kpis: [['old', 'Khai thác PVN'], ['cus', 'exp_crude', 'Xuất khẩu dầu thô']],
+    asof: {cus: ['exp_crude'], nso: ['crude_output', 'gas_output']},
+    flow: [['in', 'Đầu vào', 'Mỏ, dự án khí mới và khung pháp lý'], ['prod', 'Sản xuất', 'Sản lượng khai thác dầu, khí; giàn khoan PVD'], ['out', 'Đầu ra', 'Xuất khẩu dầu thô']],
+    items: [
+      {stage: 'in'},
+      {q: 'Dòng khí từ các dự án mới bắt đầu khi nào?', id: 'projects', main: ['dau-khi-19']},
+      L('#of-mt4-law', 'Luật Dầu khí 2026', 'Phân cấp cho Petrovietnam, ưu đãi mỏ cận biên: tác động ở đầu nguồn chu kỳ đầu tư'),
+      {stage: 'prod'},
+      {q: 'Sản lượng khai thác dầu khí trong nước đang tăng hay giảm?', id: 'output', main: ['dau-khi-15'], more: ['#chVnOutputM']},
+      {q: 'Giàn khoan của PVD có được thuê kín không?', id: 'rigs', main: ['#of-ops-pvd'], gap: true},
+      {stage: 'out'},
+      {q: 'Xuất khẩu dầu thô đang tăng hay giảm?', id: 'export', main: ['#chExpCrude']},
+    ]},
+  {k: 'gas', t: 'Khí & LNG', goal: 'Nguồn khí trong nước, giá và lượng LNG, LPG nhập khẩu, hạ tầng và khách hàng của PV GAS.',
+    kpis: [['sd', 'lng_jkm', 'LNG châu Á (JKM)'], ['sd', 'henry_hub', 'Khí Mỹ (Henry Hub)'], ['cus', 'imp_lpg', 'Nhập khẩu LPG']],
+    asof: {sd: ['lng_jkm', 'henry_hub'], cus: ['imp_lpg']},
+    flow: [['in', 'Đầu vào', 'Giá LNG nhập khẩu, LPG'], ['prod', 'Sản xuất', 'Khí vào bờ, LNG qua kho Thị Vải'], ['out', 'Đầu ra', 'Khách hàng điện, đạm, công nghiệp · KQKD GAS']],
+    items: [
+      {stage: 'in'},
+      {q: 'LNG nhập khẩu đắt hay rẻ so với khí Mỹ?', id: 'lng', main: ['#chLngSpread']},
+      {q: 'Nhập khẩu LPG đang tăng hay giảm?', id: 'lpg', main: ['#chImpLpg']},
+      {stage: 'prod'},
+      {q: 'Khí trong nước và LNG nhập khẩu thay đổi thế nào qua các năm?', id: 'gasvol', main: ['dau-khi-16'], sup: ['#of-ops-thivai']},
+      {stage: 'out'},
+      {q: 'Khí của PV GAS đi vào những ngành nào?', id: 'customers', main: ['dau-khi-17']},
+      {q: 'PV GAS bán nhiều khí hơn và lãi hơn cùng kỳ không?', id: 'gasq', main: ['#of-ops-gas']},
+      L('#of-mt4-plan', 'Nhu cầu khí cho phát điện đến 2030', 'Quy hoạch điện VIII điều chỉnh: nhiệt điện LNG và khí trong nước'),
+    ]},
+  {k: 'refining', t: 'Lọc dầu', goal: 'Dầu thô đầu vào, công suất hai nhà máy lọc dầu và biên lọc (crack spread).',
+    kpis: [['crack'], ['old', 'Crack diesel'], ['old', 'Tồn kho distillate Mỹ'], ['cus', 'imp_crude', 'Nhập khẩu dầu thô']],
+    asof: {sd: ['singapore_cracks', 'diesel', 'gasoline', 'distillate_stock'], cus: ['imp_crude']},
+    flow: [['in', 'Đầu vào', 'Dầu thô nhập khẩu'], ['prod', 'Sản xuất', 'Công suất, sản lượng BSR và Nghi Sơn'], ['out', 'Đầu ra', 'Crack spread và biên lọc']],
+    items: [
+      {stage: 'in'},
+      {q: 'Nhập khẩu dầu thô cho lọc dầu đang tăng hay giảm?', id: 'crudeimp', main: ['#chImpCrude']},
+      {stage: 'prod'},
+      {q: 'Hai nhà máy lọc dầu đáp ứng được bao nhiêu nhu cầu trong nước?', id: 'balance', main: ['dau-khi-18']},
+      {q: 'BSR đang sản xuất và tiêu thụ bao nhiêu?', id: 'bsr', main: ['#of-ops-bsr']},
+      {stage: 'out'},
+      {q: 'Crack spread đang nới rộng hay thu hẹp?', id: 'crack', main: ['dau-khi-singapore-crack'], sup: ['dau-khi-20'], gap: true},
+    ]},
+  {k: 'retail', t: 'Phân phối xăng dầu', goal: 'Nguồn hàng nhập khẩu, cơ chế điều hành và giá bán lẻ xăng dầu trong nước.',
+    kpis: [['rf', 'ron95', 'E10 RON 95-III'], ['rf', 'diesel', 'DO 0,05S-II'], ['cus', 'imp_fuel', 'Nhập khẩu xăng dầu']],
+    asof: {sd: ['retail_fuel'], cus: ['imp_fuel']},
+    flow: [['in', 'Đầu vào', 'Hai nhà máy trong nước, nhập khẩu thành phẩm'], ['prod', 'Phân phối', 'Điều hành giá theo kỳ, thuế'], ['out', 'Đầu ra', 'Giá bán lẻ trong nước']],
+    items: [
+      {stage: 'in'},
+      {q: 'Nhập khẩu xăng dầu thành phẩm đang tăng hay giảm?', id: 'fuelimp', main: ['#chImpFuel']},
+      L('#dk-q-balance', 'Hai nhà máy lọc dầu đáp ứng khoảng 70% nhu cầu', 'Phần còn lại phải nhập khẩu thành phẩm'),
+      {stage: 'prod'},
+      L('#of-mt4-price', 'Kinh doanh xăng dầu & điều hành giá', 'Giá trần bán lẻ theo kỳ, chênh lệch diesel – RON95, mức điều chỉnh từng kỳ'),
+      L('#of-mt4-tax', 'Thuế xăng dầu đang giảm đến khi nào', 'Thuế bảo vệ môi trường, GTGT, tiêu thụ đặc biệt và mốc hết hạn'),
+      {stage: 'out'},
+      {q: 'Giá bán lẻ xăng dầu trong nước đang tăng hay giảm?', id: 'retail', main: ['dau-khi-22'], gap: true},
+    ]},
+  {k: 'flows', t: 'Vận tải & dòng chảy', goal: 'Dầu thô Trung Đông đi qua các eo biển nào, lưu lượng tàu và cước tàu dầu.',
+    kpis: [['hz', 'hormuz', 'Tàu dầu qua Hormuz'], ['hz', 'bab_el_mandeb', 'Tàu dầu qua Bab el-Mandeb'], ['bdti']],
+    asof: {sd: ['hormuz', 'bab_el_mandeb', 'middle_east_crude_exports'], em: ['bdti', 'bcti']},
+    flow: [['in', 'Đầu vào', 'Xuất khẩu dầu thô Trung Đông'], ['prod', 'Vận chuyển', 'Lưu lượng tàu qua Hormuz, Bab el-Mandeb'], ['out', 'Đầu ra', 'Cước tàu dầu (PVT)']],
+    items: [
+      {stage: 'in'},
+      {q: 'Xuất khẩu dầu thô của Ả Rập Xê Út và Kuwait đang tăng hay giảm?', id: 'mex', main: ['dau-khi-40']},
+      {stage: 'prod'},
+      {q: 'Còn bao nhiêu tàu dầu đi qua eo Hormuz?', id: 'hormuz', main: ['dau-khi-37']},
+      {q: 'Lưu lượng tàu qua Bab el-Mandeb (Biển Đỏ) ra sao?', id: 'bab', main: ['dau-khi-41']},
+      {stage: 'out'},
+      {q: 'Cước tàu dầu đang tăng hay giảm?', id: 'tanker', main: ['#chTankerIdx']},
+    ]},
+  {k: 'policy', t: 'Chính sách', goal: 'Mỗi mục là một văn bản pháp lý lớn: tóm tắt, quy định trước và sau, tác động lên doanh nghiệp.', policy: true,
+    asof: {sd: ['retail_fuel', 'vn_power_daily']}},
+];
+
+// Ngày dữ liệu và ô số tính từ chuỗi gốc (cùng nguồn với chart trong sub-tab).
+const nfv = (v, d = 0) => v == null || !isFinite(v) ? '—' : v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
+const dmy = s => { const [y, m, d] = s.split('-'); return d ? `${d}/${m}/${y}` : `${m}/${y}`; };
+const today = () => new Date().toISOString().slice(0, 10);
+function asOf(spec) {
+  const S = window.SECTOR_DAILY?.sources || {}, P = window.OIL_PUBLIC || {}, E = window.SHIPPING_DAILY?.eastmoney?.series || {}, t = today(), ds = [];
+  (spec.sd || []).forEach(k => (S[k]?.records || []).forEach(r => { if (r.date && !r.estimate && r.date <= t) ds.push(r.date); }));
+  (spec.cus || []).forEach(k => ds.push(...Object.keys(P.customs?.series?.[k] || {})));
+  (spec.nso || []).forEach(k => ds.push(...Object.keys(P.nso?.series?.[k] || {})));
+  (spec.em || []).forEach(k => { const r = E[k]?.records?.at(-1); if (r) ds.push(r[0]); });
+  const best = ds.filter(d => d <= t).sort().at(-1);
+  return best ? dmy(best) : '';
+}
+const arrow = v => v > 0 ? '▲' : v < 0 ? '▼' : '■';
+const pct = (a, b) => b ? (a / b - 1) * 100 : null;
+const sgn = (v, d = 0) => (v > 0 ? '+' : v < 0 ? '−' : '') + nfv(Math.abs(v), d);
+// Bản ghi gần nhất có ngày ≤ (ngày cuối − 365 ngày), để so cùng kỳ.
+const yearAgo = (rec, date, get = r => r.date) => { const d = new Date(date + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() - 365); const k = d.toISOString().slice(0, 10); let hit = null; for (const r of rec) { if (get(r) <= k) hit = r; else break; } return hit; };
+function kpiTile(label, value, delta, sub) {
+  const k = el('div', 'kpi dk-kpi'); k.innerHTML = `<div class="label l">${label}</div><div class="value v">${value}</div><div class="delta">${delta}</div><div class="sub s">${sub}</div>`; return k;
+}
+function makeKpi(spec, oldTiles) {
+  const [kind, key, label] = spec, S = window.SECTOR_DAILY?.sources || {}, A = (u, t) => u ? `<a href="${u}" target="_blank" rel="noopener">${t}</a>` : t;
+  if (kind === 'old') return oldTiles.find(t => (t.querySelector('.label')?.textContent || '').trim().startsWith(key)) || null;
+  if (kind === 'wb') {  // cân bằng cung – cầu năm hiện tại (EIA STEO), cùng chuỗi chart 1.1
+    const src = S.world_balance, y = +today().slice(0, 4), r = src?.records?.find(x => x.year === y); if (!r) return null;
+    return kpiTile(`Cung − cầu ${y}${r.estimate ? 'E' : ''}`, sgn(r.balance, 2), r.balance >= 0 ? 'dư cung' : 'thiếu cung', `triệu thùng/ngày · ${A('https://www.eia.gov/outlooks/steo/', 'EIA STEO ' + (src.issue || ''))}`);
+  }
+  if (kind === 'cus') {  // Hải quan theo tháng, cùng chuỗi chart nhập/xuất khẩu
+    const P = window.OIL_PUBLIC, v = P?.customs?.series?.[key], q = P?.customs?.series?.[key + '_q']; if (!v) return null;
+    const ms = Object.keys(q || v).sort(), m = ms.at(-1), prev = (+m.slice(0, 4) - 1) + m.slice(4), mm = `T${+m.slice(5)}/${m.slice(0, 4)}`;
+    const cur = q ? q[m] / 1000 : v[m], ago = q ? (q[prev] != null ? q[prev] / 1000 : null) : v[prev], ch = ago ? pct(cur, ago) : null;
+    return kpiTile(`${label} ${mm}`, nfv(cur), ch == null ? 'chưa có số cùng kỳ' : `${arrow(ch)} ${sgn(ch)}% so cùng kỳ`, `${q ? 'nghìn tấn' : 'triệu USD'} · ${nfv(v[m])} triệu USD · ${A(P.customs.url, 'Hải quan')}`);
+  }
+  if (kind === 'sd') {  // giá khí: JKM (nối chuỗi lịch sử như chart 3.1), Henry Hub
+    const live = S[key]?.records || [], cut = live[0]?.date || '9999';
+    const rec = key === 'lng_jkm' ? [...(S.lng_jkm_history?.records || []).filter(r => r.date < cut), ...live] : live; if (!rec.length) return null;
+    const r = rec.at(-1), a = yearAgo(rec, r.date), ch = a ? pct(r.value, a.value) : null;
+    return kpiTile(label, nfv(r.value, 2), ch == null ? '' : `${arrow(ch)} ${sgn(ch)}% so cùng kỳ`, `USD/MMBtu · ${dmy(r.date)} · ${A(S[key].source_url, key === 'lng_jkm' ? 'ICE' : 'EIA')}`);
+  }
+  if (kind === 'crack') {  // crack gasoil Singapore − Dubai, cùng chuỗi chart 4.4
+    const src = S.singapore_cracks, rec = (src?.records || []).filter(x => x.gasoil_crack != null); if (!rec.length) return null;
+    const r = rec.at(-1), a = yearAgo(rec, r.date), ch = a ? r.gasoil_crack - a.gasoil_crack : null;
+    return kpiTile('Crack gasoil Singapore', nfv(r.gasoil_crack, 1), ch == null ? 'gasoil 10ppm − Dubai' : `${arrow(ch)} ${sgn(ch, 1)} USD so cùng kỳ`, `USD/thùng · gasoil 10ppm − Dubai · ${dmy(r.date)} · ${A(src.source_url, 'nguồn')}`);
+  }
+  if (kind === 'rf') {  // giá bán lẻ Petrolimex Vùng 1, cùng chuỗi chart 5.2
+    const src = S.retail_fuel, rec = (src?.records || []).filter(x => x[key] != null); if (!rec.length) return null;
+    const r = rec.at(-1), p = rec.at(-2), ch = p ? r[key] - p[key] : null;
+    return kpiTile(label, nfv(r[key]), ch == null ? '' : `${arrow(ch)} ${sgn(ch)} đ so kỳ ${dmy(p.date).slice(0, 5)}`, `đồng/lít, Vùng 1 · kỳ ${dmy(r.date)} · ${A(r.article_url || src.source_url, 'Petrolimex')}`);
+  }
+  if (kind === 'hz') {  // tàu chở dầu qua eo biển, bình quân 7 ngày (IMF PortWatch), cùng chuỗi chart 6.2, 6.3
+    const src = S[key], rec = (src?.records || []).filter(x => x.tanker != null); if (rec.length < 7) return null;
+    const avg = xs => xs.reduce((s, x) => s + x.tanker, 0) / xs.length, r = rec.at(-1), now = avg(rec.slice(-7));
+    const a = yearAgo(rec, r.date), i = a ? rec.indexOf(a) : -1, then = i >= 6 ? avg(rec.slice(i - 6, i + 1)) : null;
+    return kpiTile(label, nfv(now, 1), then == null ? 'bình quân 7 ngày' : `cùng kỳ năm trước ${nfv(then, 1)}`, `tàu/ngày, bình quân 7 ngày đến ${dmy(r.date)} · ${A(src.source_url, 'IMF PortWatch')}`);
+  }
+  if (kind === 'bdti') {  // cước tàu dầu thô Baltic, cùng chuỗi chart 6.4
+    const rec = window.SHIPPING_DAILY?.eastmoney?.series?.bdti?.records; if (!rec?.length) return null;
+    const r = rec.at(-1), a = yearAgo(rec, r[0], x => x[0]), ch = a ? pct(r[1], a[1]) : null;
+    return kpiTile('Cước tàu dầu thô (BDTI)', nfv(r[1]), ch == null ? '' : `${arrow(ch)} ${sgn(ch)}% so cùng kỳ`, `điểm · ${dmy(r[0])} · ${A('https://data.eastmoney.com/cjsj/hyzs_list_EMI00107668.html', 'Baltic Exchange qua East Money')}`);
+  }
+  return null;
+}
+
+function buildPicture() {
+  const pane = $('.majorpane[data-tab="mt2"]'), polPane = $('.majorpane[data-tab="mt4"]'); if (!pane) return;
+  const stage = [...pane.children];  // khung tạm của buildTab('mt2')
+  const oldTiles = [...pane.querySelectorAll('.kpis .kpi')];
+  // Đổi id khung tạm để sub-tab mới giữ id cũ (#of-mt2-<k>: link Chủ đề nóng, shortTitles, test).
+  pane.querySelectorAll('[id^="of-mt2-"]').forEach(n => { n.id = 'dk-old-' + n.id; });
+  const used = new Set();
+  const pick = sel => {
+    let n = /^dau-khi-/.test(sel) ? block(sel) : $(sel); if (!n) return null;
+    if (!n.matches('.card,.viz-block,.inventory-group,.inventory-overview')) n = n.closest('.fs-share-host') || n.closest('.card') || n;
+    if (used.has(n) || [...used].some(u => u.contains(n))) return null;
+    used.add(n); n.hidden = false; n.classList.remove('of-span'); return n;
+  };
+  // Ô trong câu hỏi (như Dien/app/power-picture.js qpanel): .pp-main một chart · .pp-sup1 một chart · .pp-more (≥2 thẻ: grid two g2 pp-sup pp-more).
+  // Khối không phải thẻ (ô tóm tắt tồn kho) trải hết hàng, không tính là chart.
+  const slot = (cls, nodes) => { const xs = nodes.filter(Boolean); if (!xs.length) return null; const cards = xs.filter(n => n.matches('.card,.viz-block'));
+    const g = el('div', (cls === 'pp-more' ? (cards.length > 1 ? 'grid two g2 pp-sup pp-more' : 'pp-sup1 pp-more') : cls) + ' of-body'); xs.forEach(n => g.append(n));
+    xs.filter(n => !cards.includes(n)).forEach(n => n.classList.add('of-wide'));
+    if (cards.length % 2) cards.at(-1).classList.add('of-span'); return g; };
+  const qnum = {};  // id câu hỏi → [sub-tab, "4.2"] để ghi trên thẻ dẫn
+  const sec = el('section', 'section of-section dk-picture');
+  const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Bức tranh ngành'); sec.append(nav);
+  const subs = PICT.map((s, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    const b = el('button', 'tabbtn pp-tab', `<span>${num}</span>${s.t}`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt2-${s.k}-tab`;
+    const p = el('div', 'pp-pane of-pane' + (s.policy ? ' dk-pol' : '')); p.id = `of-mt2-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
+    const d = asOf(s.asof || {});
+    p.append(el('header', 'pp-head', `<div><span class="pp-k">${num}</span><h2>${s.t}</h2><p>${s.goal}</p></div><span class="pp-asof">${d ? 'Dữ liệu mới nhất: ' + d : ''}</span>`));
+    nav.append(b); sec.append(p);
+    b.addEventListener('click', () => open('mt2', s.k, true));
+    b.addEventListener('keydown', e => { const dd = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!dd) return; e.preventDefault(); const j = (i + dd + PICT.length) % PICT.length; nav.children[j].click(); nav.children[j].focus(); });
+    if (s.policy) { buildPolicy(p, polPane); return {s, b, p}; }
+    const g = el('section', 'grid kpis pp-kpis'); (s.kpis || []).forEach(sp => { const t = makeKpi(sp, oldTiles); if (t && !used.has(t)) { used.add(t); g.append(t); } }); if (g.children.length) p.append(g);
+    const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + s.t.toLowerCase());
+    bar.innerHTML = s.flow.map(([id, k, t], j) => `${j ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#dk-st-${s.k}-${id}" class="pp-flow-s"><small>${k}</small><b>${t}</b></a>`).join('');
+    p.append(bar);
+    const gap = $(`#dk-old-of-mt2-${s.k} .of-gap`);
+    let qn = 0;
+    s.items.forEach(it => {
+      if (it.stage) { const f = s.flow.find(x => x[0] === it.stage); const h = el('div', 'pp-stage', `<span>${f[1]}</span><h3>${f[2]}</h3>`); h.id = `dk-st-${s.k}-${f[0]}`; p.append(h); return; }
+      if (it.link) { const [href, t, sub] = it.link, tgt = href.slice(1);
+        const where = qnum[tgt] ? `${qnum[tgt][0]} › ${qnum[tgt][1]}` : 'Chính sách › ' + (TREE.mt4.subs.find(x => 'of-mt4-' + x.k === tgt)?.t || '');
+        const a = el('a', 'th-link', `<small>Xem ở ${where}</small><b>${t} →</b><span>${sub}</span>`); a.href = href; p.append(a); return; }
+      let main = (it.main || []).map(pick).filter(Boolean); const sup = (it.sup || []).map(pick).filter(Boolean), more = (it.more || []).map(pick).filter(Boolean);
+      if (!main.length && sup.length) main = [sup.shift()];
+      if (!main.length && more.length) main = [more.shift()];
+      if (!main.length) return;
+      qn++; const n = `${i + 1}.${qn}`; qnum['dk-q-' + it.id] = [s.t, n];
+      const panel = el('section', 'pp-panel pp-q'); panel.id = 'dk-q-' + it.id;
+      panel.innerHTML = `<header class="pp-ph"><span class="pp-num">${n}</span><div><h3>${it.q}</h3></div></header>`;
+      panel.append(slot('pp-main', main));
+      const s1 = slot('pp-sup1', sup); if (s1) panel.append(s1);
+      const m1 = slot('pp-more', more); if (m1) panel.append(m1);
+      if (it.gap && gap) { gap.hidden = false; panel.append(gap); }
+      p.append(panel);
+    });
+    const nx = PICT[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${nx.t} →`); go.type = 'button'; go.addEventListener('click', () => { open('mt2', nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
+    return {s, b, p};
+  });
+  // Phần còn lại của khung tạm: thẻ chưa dời (đã ẩn từ trước: trùng chart khác, người dùng bỏ 26/11/2026) và ô số không dùng. Không xóa: vào of-rest ẩn.
+  const rest = [];
+  const keep = n => { if (!n || used.has(n) || [...used].some(u => u.contains(n))) return;
+    if (n.matches('.of-group,.of-gap,.of-next,.pp-head') || !(n.matches('[data-block-id],.card,.viz-block,.kpi') || n.querySelector('[data-block-id],.card,canvas,svg,table'))) return; rest.push(n); };
+  oldTiles.forEach(keep);
+  stage.forEach(root => root.querySelectorAll('.of-body').forEach(b => [...b.children].forEach(n => {
+    if (n.matches('details.of-rest')) { [...(n.querySelector('.research-detail') || n).children].forEach(keep); return; }
+    if (n.matches('.kpis')) return; keep(n); })));
+  if (rest.length) { const d = el('details', 'research-fold of-rest'); const box = el('div', 'research-detail'); rest.forEach(n => box.append(n)); d.append(el('summary', '', 'Nội dung khác của tab cũ'), box); sec.append(d); }
+  pane.replaceChildren(sec);
+  TABS.mt2 = subs;
+  open('mt2', 'crude');
+}
+
+// 07 Chính sách: dời 6 sub-tab văn bản của tab Chính sách cũ (#mt4, khung tạm buildTab) vào thanh con .pp-subnav.
+// Giữ id #of-mt4-<k> và .of-body bên trong để app/oil-legal.js gắn tóm tắt, chart như trước.
+function buildPolicy(p, polPane) {
+  const sn = el('div', 'pp-subnav'); sn.setAttribute('role', 'tablist'); sn.setAttribute('aria-label', 'Chính sách'); p.append(sn);
+  const items = TREE.mt4.subs.map(s => {
+    const sp = $('#of-mt4-' + s.k); if (!sp) return null;
+    const b = el('button', 'tabbtn', s.t); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt4-${s.k}-tab`; b.setAttribute('aria-controls', sp.id); sp.setAttribute('aria-labelledby', b.id);
+    b.addEventListener('click', () => open('mt4', s.k, true)); sn.append(b); p.append(sp);
+    return {s, b, p: sp};
+  }).filter(Boolean);
+  // Phần còn lại của tab Chính sách cũ (nếu có) cũng dời theo; pane #mt4 để trống trong DOM (link #mt4 chuyển ở route()).
+  polPane?.querySelectorAll('details.of-rest').forEach(d => p.append(d));
+  polPane?.replaceChildren();
+  TABS.mt4 = items; open('mt4', POL[0]);
+}
+
+// Tài chính ngành (#mt14) theo §42: .pp-nav đúng ba sub-tab 01 Tài chính ngành (app/oil-finance.js, số cộng gộp BCTC quý)
+// · 02 Doanh nghiệp niêm yết (mô hình kinh doanh từng mã từ Tổng quan cũ + bảng so sánh, xu hướng theo kỳ) · 03 Định giá (peer-valuation.js tự thêm).
+const FIN = {built: false};
+function finBuild() {
+  const mp = $('.majorpane[data-tab="mt14"]');
+  if (FIN.built || !FIN.host || !window.OilFinance || !mp || mp.hidden || FIN.pane.hidden) return;
+  FIN.built = true; window.OilFinance.build(FIN.host);
+}
 function financePane() {
   let p = $('.majorpane[data-tab="mt14"]');
   if (!p) { p = el('section', 'majorpane'); p.dataset.tab = 'mt14'; p.id = 'pane-mt14'; p.hidden = true; ($('.majorpane[data-tab="mt7"]') || $('.majorpane:last-of-type')).before(p); }
   const sec = el('section', 'section');
-  sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 12 doanh nghiệp dầu khí niêm yết, tổng hợp theo khâu, từ BCTC hợp nhất quý.</p></div>'));
+  sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 12 doanh nghiệp dầu khí niêm yết: tổng hợp theo khâu, từng doanh nghiệp và định giá.</p></div>'));
   const host = el('div', 'of-fin'); host.id = 'dk-fin-root';
-  // 27/11/2026 (người dùng chốt): Tài chính ngành có 2 sub-tab. 01 Tổng quan ngành = chỉ số cộng gộp (tổng tử số ÷ tổng mẫu số);
-  // 02 So sánh doanh nghiệp = từng mã (xu hướng tài chính, P/E, kế hoạch – kết quả, số vận hành riêng). Tổng quan ngành (mt1) chỉ giữ mô hình kinh doanh.
-  const CMP_IDS = ['dau-khi-34', 'dau-khi-30', 'dau-khi-31', 'dau-khi-32', 'dau-khi-33', 'dau-khi-35'], CMP_SEL = [];
-  const fnav = el('div', 'of-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
-  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}].map((s, i) => {
-    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
-    const sp = el('div', 'pane-subpane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
+  const CMP_IDS = ['dau-khi-34', 'dau-khi-30', 'dau-khi-31', 'dau-khi-32', 'dau-khi-33', 'dau-khi-35'];  // thẻ cũ tab Key players (research-layout.js đã rút khỏi trang; còn thì dời vào 02)
+  const fnav = el('div', 'pp-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
+  const subs = [{k: 'fin', t: 'Tài chính ngành', d: 'Chỉ số cộng gộp của doanh nghiệp dầu khí niêm yết theo khâu (tổng tử số ÷ tổng mẫu số), từ BCTC hợp nhất quý.'},
+    {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh từng mã; so sánh sinh lời, nợ vay, định giá và xu hướng tài chính theo kỳ.'}].map((s, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    const b = el('button', 'tabbtn pp-tab', `<span>${num}</span>${s.t}`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
+    const sp = el('div', 'pane-subpane pp-pane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
+    sp.append(el('header', 'pp-head', `<div><span class="pp-k">${num}</span><h2>${s.t}</h2><p>${s.d}</p></div>`));
     const body = el('div', 'of-body'); sp.append(body); fnav.append(b); sec.append(sp);
     b.addEventListener('click', () => open('mt14', s.k, true));
     return {s, b, p: sp, body};
@@ -237,31 +526,38 @@ function financePane() {
   subs[0].body.append(host); host.classList.add('of-wide');
   const cb = subs[1].body, moved = new Set();
   const take = n => { if (!n || moved.has(n) || [...moved].some(m => m.contains(n))) return; const was = n.closest('.of-rest'); n.hidden = false; cb.append(n); moved.add(n);
-    if (n.matches('.financial-comparison') || n.querySelector('table')) n.classList.add('of-wide');
+    if (n.matches('.financial-comparison,.business-models') || n.querySelector('table')) n.classList.add('of-wide');
     if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); };
+  take($('.business-models'));  // 28/11/2026: từ Tổng quan › Doanh nghiệp niêm yết cũ (§42: doanh nghiệp niêm yết thuộc Tài chính ngành › 02)
   take($('.financial-comparison'));
-  CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
+  CMP_IDS.forEach(id => take(block(id)));
   if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
   { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
     [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }
   p.replaceChildren(sec);
-  TABS.mt14 = subs; open('mt14', new URL(location.href).searchParams.get('sub'));
+  FIN.host = host; FIN.pane = subs[0].p;
+  TABS.mt14 = subs; open('mt14', 'fin');
   return host;
 }
 
-function nav(finHost) {
+function nav() {
   const bar = $('.majortabbtn')?.parentElement; if (!bar) return;
   bar.replaceChildren();
-  let built = false;
+  const syncUrl = key => { const u = new URL(location.href), cur = TABS[key]?.find(x => !x.p.hidden), pv = key === 'mt14' && $('#of-mt14-valuation:not([hidden])');
+    if (cur) u.searchParams.set('sub', cur.s.k); else if (pv) u.searchParams.set('sub', 'valuation'); else u.searchParams.delete('sub');
+    if (!(key === 'mt2' && cur?.s.k === 'policy')) u.searchParams.delete('pol');
+    u.hash = key; history.replaceState(null, '', u.pathname + u.search + u.hash); };
   const select = (key, hash) => {
     key = ALIAS[key] || key; if (!ROUTES.some(r => r[0] === key)) key = 'mt1';
     $$('.majorpane').forEach(p => { const on = p.dataset.tab === key; p.hidden = !on; p.classList.toggle('active', on); });
     [...bar.children].forEach(b => { const on = b.dataset.tab === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
-    if (key === 'mt14' && !built && window.OilFinance) { built = true; window.OilFinance.build(finHost); }
-    if (hash) { const u = new URL(location.href); if (!TABS[key]) u.searchParams.delete('sub'); u.hash = key; history.replaceState(null, '', u.pathname + u.search + u.hash); }
+    if (key === 'mt14') finBuild();
+    if (hash) syncUrl(key);
     setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
     return key;
   };
+  // Mở theo đường đi chuẩn (link cũ #mt4, ?sub=listed#mt1… được chuyển ở route()).
+  const go = (raw, sub, pol, push) => { const r = route(raw, sub, pol); select(r.key, false); if (TABS[r.key] && r.sub) open(r.key, r.sub); if (r.pol) open('mt4', r.pol); if (push) { syncUrl(r.key); if (r.pol) open('mt4', r.pol, true); } return r; };
   ROUTES.forEach(([key, label], i) => {
     const b = el('button', 'majortabbtn', label); b.type = 'button'; b.dataset.tab = key; b.id = 'research-tab-' + key; b.setAttribute('role', 'tab');
     const p = $(`.majorpane[data-tab="${key}"]`); if (p) { p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id); }
@@ -270,21 +566,24 @@ function nav(finHost) {
       const j = e.key === 'Home' ? 0 : e.key === 'End' ? ROUTES.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : ROUTES.length - 1)) % ROUTES.length; bar.children[j].click(); bar.children[j].focus(); });
     bar.append(b);
   });
-  window.showMajorTab = k => select(k, true);
-  window.addEventListener('hashchange', () => select(location.hash.slice(1)));
-  const key = select(location.hash.slice(1) || 'mt1');
-  if (TABS[key]) open(key, new URL(location.href).searchParams.get('sub'));
-  // Link trỏ vào thẻ đã dời: mở đúng tab lớn + sub-tab rồi cuộn tới.
+  window.showMajorTab = k => go(k, null, null, true);
+  window.OilFrame = {go: (k, sub, pol) => go(k, sub, pol, true), open};
+  window.addEventListener('hashchange', () => { const u = new URL(location.href); go(location.hash.slice(1), u.searchParams.get('sub'), u.searchParams.get('pol'), true); });
+  // Mở lần đầu theo URL; link cũ thì viết lại URL về dạng mới.
+  const u0 = new URL(location.href), raw0 = location.hash.slice(1) || 'mt1', s0 = u0.searchParams.get('sub'), r0 = go(raw0, s0, u0.searchParams.get('pol'), false);
+  if (location.hash && (raw0 !== r0.key || (s0 && s0 !== r0.sub))) { syncUrl(r0.key); if (r0.pol) open('mt4', r0.pol, true); }
+  // Link trỏ vào thẻ đã dời: mở đúng tab lớn + sub-tab (+ mục Chính sách) rồi cuộn tới. Link "#mtN" cũ trong nội dung đi qua route().
   document.addEventListener('click', e => {
-    const a = e.target.closest('a[href^="#"]'); if (!a) return;
-    const t = document.getElementById(a.getAttribute('href').slice(1)); if (!t || t.matches('.majorpane')) return;
-    const pane = t.closest('.majorpane'), sub = t.closest('.of-pane');
+    const a = e.target.closest('a[href^="#"]'); if (!a || a.matches('.re-lg-go')) return;
+    const href = a.getAttribute('href').slice(1);
+    if (/^mt\d+$/.test(href)) { e.preventDefault(); go(href, null, null, true); window.scrollTo({top: 0}); return; }
+    const t = href && document.getElementById(href); if (!t || t.matches('.majorpane')) return;
+    const pane = t.closest('.majorpane'), sub = t.closest('.of-pane,.pp-pane');
     if (!pane) return; e.preventDefault();
-    select(pane.dataset.tab, true); if (sub) open(pane.dataset.tab, sub.dataset.sub, true);
+    select(pane.dataset.tab, false); if (sub) open(pane.dataset.tab, sub.dataset.sub, true); else syncUrl(pane.dataset.tab);
     setTimeout(() => t.scrollIntoView({behavior: 'smooth', block: 'start'}), 120);
   });
 }
-
 
 // Năm kênh truyền dẫn (dau-khi-38): vẽ sơ đồ cú sốc → kênh → ai chịu → chiều tác động; bảng gốc giữ trong "Xem bảng".
 function channelDiagram() {
@@ -588,9 +887,12 @@ function run() {
   gasTimeline();
   stickySub();
   // Hormuz: thẻ đang nằm trong chủ đề "Hormuz · dòng chảy & tác động" ở Chủ đề nóng → Bức tranh ngành › 06.
-  ['mt1', 'mt2', 'mt4'].forEach(buildTab);
+  ['mt1', 'mt2', 'mt4'].forEach(buildTab);  // mt1: Tổng quan (.ov-nav); mt2, mt4: khung tạm cho các hàm thêm chart bên dưới
+  open('mt1', 'map');
   // Thẻ truyền dẫn dau-khi-38 nằm cùng chủ đề Hormuz; đã dời sang Tổng quan › 01. Chủ đề rỗng thì ẩn.
-  // Chủ đề Hormuz giữ lại (ghi chú chuyên viên lưu theo chủ đề), thêm đường dẫn tới số liệu đã chuyển.
+  // 28/11/2026: Chủ đề nóng là luồng tin như Điện (app/oil-news.js); chủ đề Hormuz nằm trong "Chủ đề đang theo dõi"
+  // (data/oil/news.json, topic hormuz → ?sub=flows#mt2). Đoạn dưới chỉ còn chạy khi thiếu data/oil-news.js
+  // (research-editorial.js khi đó vẫn gói tab thành chủ đề Hormuz): thêm đường dẫn tới số liệu đã chuyển.
   $$('.majorpane[data-tab="mt7"] .research-topic').forEach(t => {
     if (!/Hormuz/.test(t.textContent) || t.querySelector('.of-moved')) return;
     const a = el('p', 'research-caption of-moved', 'Biểu đồ Hormuz, Bab el-Mandeb và xuất khẩu dầu Trung Đông đã chuyển sang <a href="#of-mt2-flows">Bức tranh ngành › 06 Vận tải & dòng chảy</a>; năm kênh truyền dẫn ở <a href="#of-mt1-chain">Tổng quan › 01 Chuỗi giá trị</a>.');
@@ -610,8 +912,9 @@ function run() {
   // 26/11/2026: Giá sản phẩm USGC (Brent, xăng, diesel) trùng chart Crack spread USGC, cùng ba chuỗi EIA.
   { const m = block('dau-khi-21'); if (m) { m.hidden = true; m.classList.add('of-hidden-legacy'); } }
   hideEmptyGaps();
-  const finHost = financePane();
-  nav(finHost);
+  buildPicture();  // 28/11/2026: khung tạm #mt2 + #mt4 → Bức tranh ngành theo câu hỏi, Chính sách là sub-tab 07
+  financePane();
+  nav();
   // Tab Sources không còn trong thanh tab (nguồn đã ghi dưới từng chart, như Điện); nội dung vẫn trong DOM.
   shortTitles(); setTimeout(shortTitles, 1600);  // lần hai sau các module đặt lại tiêu đề muộn
   window.dispatchEvent(new Event('oil:frame'));

@@ -10,7 +10,7 @@
     addEventListener('load', measure); addEventListener('resize', measure); addEventListener('scroll', measure, {passive: true});
   }
   const script = document.currentScript;
-  const root = new URL('../../', script.src); // gói riêng: Dien/app/ → gốc trang web
+  const root = new URL('../../', script.src); // gói riêng: <Ngành>/app/ → gốc trang web
   const version = script.dataset.release;
   const routes = {
     home: {path: '', label: 'Trang tổng'},
@@ -287,7 +287,7 @@
     list.forEach(n => { n.nodeValue = n.nodeValue.replace(/\b(\d{4})-(\d{2})-(\d{2})\b/g, '$3/$2/$1'); });
   }
   const run = () => { merge(); dmy(document.body); setTimeout(() => { merge(); dmy(document.body); }, 1200); };
-  DienBoot.add(-1, run); // dien-boot.js (gói Điện)
+  SectorBoot.add(-1, run); // sector-boot.js (gói ngành)
   document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn')) setTimeout(() => { merge(); dmy(document.body); }, 300); });
 })();
 
@@ -406,7 +406,7 @@
     ink();
   }
   const later = () => setTimeout(scan, 260);
-  DienBoot.add(-1, scan); DienBoot.add(2000, scan); // dien-boot.js (gói Điện)
+  SectorBoot.add(-1, scan); SectorBoot.add(2000, scan); // sector-boot.js (gói ngành)
   document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn, [role="tab"]')) later(); });
   let st = 0; addEventListener('scroll', () => { const s = scrollY > 120; if (s !== st) { st = s; document.documentElement.classList.toggle('fs-scrolled', s); } }, {passive: true});
 })();
@@ -526,6 +526,6 @@
     document.querySelectorAll('.research-caption').forEach(p => { if (!p.dataset.fsVis && /^Tác động:/.test(p.textContent)) { p.dataset.fsVis = '1'; p.innerHTML = p.innerHTML.replace(/^Tác động:\s*/, '<span class="fs-chip-lbl">Tác động</span>').replace(/\s·\s(qua\s)/, ' <span class="fs-chip-lbl alt">Kênh</span> '); } });
   }
   const later = () => setTimeout(run, 350);
-  DienBoot.add(-1, run); DienBoot.add(2000, run); // dien-boot.js (gói Điện)
+  SectorBoot.add(-1, run); SectorBoot.add(2000, run); // sector-boot.js (gói ngành)
   document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn, summary')) later(); });
 })();

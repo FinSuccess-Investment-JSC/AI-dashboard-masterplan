@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><title>Kiểm khung chuẩn Điện</title>
+<meta name="robots" content="noindex">
+<!-- Kiểm khung 4 tab theo chuẩn Điện (DASHBOARD_WORKFLOW.md §42). Dùng qua scripts/check_sector_frame.py:
+     Chrome headless nạp trang này (?s=<Thư-mục-ngành>), trang nhúng dashboard vào iframe cùng gốc, bấm qua mọi tab lớn và sub-tab,
+     đo cấu trúc rồi ghi JSON vào #out. Không dùng trong trang thật. -->
+<style>body{margin:0}iframe{width:1440px;height:1000px;border:0}</style></head>
+<body><pre id="out">pending</pre><iframe id="f"></iframe>
+<script>
+(async () => {
+const q = new URLSearchParams(location.search), sector = q.get('s') || 'Dien';
+const out = document.getElementById('out'), f = document.getElementById('f');
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+f.src = '../' + sector + '/' + (q.get('qs') || '');
+await new Promise(r => f.addEventListener('load', r, {once: true}));
+await sleep(+(q.get('wait') || 6000));
+const w = f.contentWindow, d = f.contentDocument;
+const t = s => (s || '').trim().replace(/\s+/g, ' ');
+const vis = e => !!(e && e.offsetParent !== null && e.getClientRects().length);
+const res = {sector, title: d.title, errors: [], tabs: []};
+w.addEventListener('error', e => res.errors.push(String(e.message)));
+const bar = d.querySelector('.majortabs');
+if (!bar) { res.err = 'no .majortabs'; out.textContent = JSON.stringify(res); return; }
+const NAVRE = /(^|\s)(ov-nav|pp-nav|of-nav|pp-subnav|subnav|supply-tabs|pane-subtabs|topic-tabs)(\s|$)/;
+function navInfo(nav) {
+  const b = [...nav.querySelectorAll(':scope > button, :scope > a')].filter(vis);
+  return {cls: nav.className, n: b.length,
+    items: b.map(x => ({num: t(x.querySelector('span')?.textContent || ''), label: t([...x.childNodes].filter(c => c.nodeType === 3 || c.tagName === 'B').map(c => c.textContent).join(' ')), sub: t(x.querySelector('small')?.textContent || ''), cls: x.className}))};
+}
+function metrics(pane) {
+  const V = sel => [...pane.querySelectorAll(sel)].filter(vis);
+  const cards = V('.card').filter(c => !c.closest('.kpi') && !c.parentElement.closest('.card'));
+  const q = V('.pp-panel');
+  const loose = cards.filter(c => !c.closest('.pp-panel'));
+  const head = V('.pp-head')[0];
+  return {
+    head: head ? t(head.querySelector('h2')?.textContent || '') : null,
+    asof: t(V('.pp-asof')[0]?.textContent || ''),
+    kpi: V('.pp-kpis .kpi, .pp-kpis > *').length, kpiAny: V('.kpi').length,
+    flow: V('.pp-flow .pp-flow-s').map(x => t(x.querySelector('small')?.textContent || '')),
+    stages: V('.pp-stage').length,
+    q: q.length, qnum: V('.pp-panel .pp-num').map(x => t(x.textContent)),
+    qNoMain: q.filter(x => !x.querySelector(':scope > .pp-main')).length,
+    qMainMulti: q.filter(x => [...x.querySelectorAll(':scope > .pp-main')].reduce((s, m) => s + m.querySelectorAll(':scope > .card, :scope > .viz-block, :scope > * > .card').length, 0) > 1).length,
+    main: V('.pp-main').length, sup: V('.pp-sup1, .pp-sup').length, more: V('.pp-more').length,
+    cards: cards.length, loose: loose.length,
+    looseIds: loose.slice(0, 12).map(c => c.dataset.blockId || c.id || String(c.className).slice(0, 30)),
+    empty: cards.filter(c => /Chưa có dữ liệu/i.test(c.textContent)).map(c => c.dataset.blockId || c.id || ''),
+    links: V('.th-link, .rf-xlink, .pp-xlink').length,
+    qTitles: q.map(x => t(x.querySelector('h3')?.textContent || '')).slice(0, 20),
+    hAll: V('h2, h3, h4').map(h => t(h.textContent).slice(0, 50)).slice(0, 30),
+    h: V('h2, h3').filter(h => !h.closest('.pp-panel, .card, .kpi')).map(h => t(h.textContent).slice(0, 50)).slice(0, 10)
+  };
+}
+const tabs = [...bar.querySelectorAll('[data-tab]')].filter(vis);
+for (const tb of tabs) {
+  tb.click(); await sleep(1500);
+  const pane = d.getElementById('pane-' + tb.dataset.tab) || d.querySelector('.majorpane.active');
+  const T = {name: t(tb.textContent), id: tb.dataset.tab, subs: []};
+  if (!pane) { T.err = 'no pane'; res.tabs.push(T); continue; }
+  const navs = [...pane.querySelectorAll('div, nav')].filter(n => vis(n) && NAVRE.test(n.className) && [...n.querySelectorAll('button, a')].filter(vis).length >= 1);
+  const nav = navs[0];
+  if (!nav) { T.nav = null; T.m = metrics(pane); res.tabs.push(T); continue; }
+  T.nav = navInfo(nav);
+  const btns = [...nav.querySelectorAll(':scope > button, :scope > a')].filter(vis);
+  for (const b of btns) {
+    b.click(); await sleep(1100);
+    const sub = {name: t(b.textContent).slice(0, 60)};
+    const inner = [...pane.querySelectorAll('div, nav')].filter(n => n !== nav && vis(n) && NAVRE.test(n.className) && !n.contains(nav) && [...n.querySelectorAll('button, a')].filter(vis).length >= 2);
+    if (inner.length) sub.subnav = navInfo(inner[0]);
+    sub.m = metrics(pane);
+    T.subs.push(sub);
+  }
+  res.tabs.push(T);
+}
+res.overflow = d.documentElement.scrollWidth > f.clientWidth + 1;
+out.textContent = JSON.stringify(res);
+})().catch(e => { document.getElementById('out').textContent = JSON.stringify({err: String(e && e.stack || e)}); });
+</script></body></html>

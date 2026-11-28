@@ -188,3 +188,8 @@
 .pf-chips button i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
 @media (max-width:700px){.xd-mtabs{grid-template-columns:repeat(2,minmax(0,1fr))}.xd-mtab{padding:7px 9px;font-size:12px}.xd-mtab small{display:none}}
 :root[data-theme=dark] .xd-mtabs{background:#262c45}
+
+/* 28/11/2026 khung chuẩn Điện: thẻ không còn chỗ trong câu hỏi giữ ở mục ẩn (không xóa khỏi trang). */
+.of-rest{display:none!important}
+/* Ngày dữ liệu nhiều chuỗi: cho xuống dòng ở màn hình hẹp (sector-frame.css đặt nowrap). */
+@media (max-width:760px){html body .pp-head .pp-asof{white-space:normal}}

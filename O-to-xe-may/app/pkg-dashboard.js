@@ -145,7 +145,15 @@ function kpi(k) {
     if (l && k.pct) { const p = rs.find(x => x.date.slice(0, 7) === String(Number(l.date.slice(0, 4)) - 1) + l.date.slice(4, 7)); value = (k.signed ? signed(l.value, 1) : nf(l.value, 1)) + '%'; sub = mon(l.date) + (k.note ? ' · ' + k.note : ''); delta = p ? 'cùng tháng năm trước ' + (k.signed ? signed(p.value, 1) : nf(p.value, 1)) + '%' : ''; spark = rs.slice(-12).map(r => r.value); }
     else if (l) { value = nf(l.value / (k.div || 1), k.digits ?? 0); unit = k.unit || ''; sub = mon(l.date) + (k.note ? ' · ' + k.note : ''); delta = signed(yoyAt(rs, l), 0) + '% so cùng kỳ' + (k.ytd === false ? '' : ' · lũy kế ' + signed(ytdYo(rs), 0) + '%'); spark = rs.slice(-12).map(r => r.value); }
   } else if (k.pe) {
-    const rs = sec[k.pe]?.records || [], l = rs.at(-1); if (l) { value = nf(l[1], 1) + 'x'; sub = 'P/E rổ ' + (k.label || '') + ' · ' + short(l[0]); delta = 'P/B ' + nf(l[2], 2) + 'x'; spark = rs.slice(-30).map(r => r[1]); color = C.grey; }
+    // 28/11/2026: bỏ phiên P/E âm hoặc quá lớn (lợi nhuận 4 quý của rổ âm/gần 0, VNDirect vẫn chia ra số −56.376x), cùng ngưỡng 0–80 với chart P/E rổ (T.val).
+    const all = sec[k.pe]?.records || [], rs = all.filter(r => r[1] > 0 && r[1] < 80), l = rs.at(-1), skip = all.length && all.at(-1) !== l;
+    if (l) { value = nf(l[1], 1) + 'x'; sub = 'P/E rổ ' + (k.label || '') + ' · ' + short(l[0]) + (skip ? ' (phiên gần nhất có P/E dương)' : ''); delta = 'P/B ' + nf(l[2], 2) + 'x'; spark = rs.slice(-30).map(r => r[1]); color = C.grey; }
+  } else if (k.calc) {
+    // 28/11/2026 (cùng cách Chan-nuoi/app/pkg-dashboard.js): ô số tính từ dữ liệu trên trang bằng hàm của cấu hình (Ô tô: biên đại lý từ window.AUTO_FIN); hàm trả null thì ô giữ "—".
+    const r = k.calc({S, nf, signed, mon, short, yoyAt}) || {}; ({value = '—', unit = '', sub = '', delta = '', spark = []} = r); if (r.color) color = r.color;
+  } else if (k.fixed) {
+    // Ô số ảnh chụp có kỳ ghi rõ (cùng số với thẻ nguồn trên trang), chép cách Nhựa.
+    [value, unit, sub, delta] = k.fixed; spark = k.spark2 || [];
   }
   const ve = card.querySelector('.value'); ve.textContent = value; if (unit) { const u = make('span', 'unit', unit); u.style.cssText = 'font-size:12px;font-weight:600;color:var(--muted,#6b7a90);margin-left:6px;letter-spacing:0'; ve.append(u); }
   card.querySelector('.sub').textContent = sub; card.querySelector('.delta').textContent = delta;

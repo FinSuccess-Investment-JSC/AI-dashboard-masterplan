@@ -4,7 +4,7 @@
    Cách làm: các script cũ (construction-dashboard.js, research-layout.js) vẫn dựng thẻ, chart như trước; module này dời từng thẻ theo
    data-block-id vào khung mới, thêm Bản tin dữ liệu, bảng dự án chính, chính sách, tài chính ngành. Không tạo số: số mới lấy từ
    window.XD_HUB (data/construction/hub.json), window.XD_FIN (BCTC VNDirect), window.XD_SHARE (chuỗi đã có của construction-dashboard.js).
-   URL: ?ov=<map|model|forward>#mt1 · ?section=<market|public|contractor|cement|stone|asphalt|glass|policy>[&g=<nhóm>]#mt2 ·
+   URL: ?ov=<map|model|forward>#mt1 · ?section=<market|civil|infra|policy (Xây dựng) · industry|cement|stone|asphalt|glass (VLXD)>[&g=<nhóm>]#mt2 ·
    ?fin=<fin|companies>#mt14. Link cũ: #mt3 → Nhà thầu & BOT › chi phí nhà thầu hạ tầng; #mt4 → Chính sách; #mt6 → Doanh nghiệp niêm yết;
    #mt10 → Đầu tư công; #mt8 → danh mục nguồn (mục thu gọn cuối Bức tranh ngành). */
 (() => {
@@ -35,15 +35,16 @@ const PAGES = {contractor: 'Xay-dung/', materials: 'Vat-lieu-xay-dung/'};
 // 27/11/2026 người dùng bỏ dashboard Đầu tư công & BOT (dữ liệu không đủ ổn để cập nhật): mục thuộc publicbot không còn trang đích.
 const GONE = 'publicbot';
 const goneHref = h => { try { const u = new URL(h, location.href); return HOME[u.searchParams.get('section')] === GONE || GROUP_HOME[u.searchParams.get('m')] === GONE; } catch (e) { return false; } };
-const HOME = {market: 'contractor', civil: 'contractor', infra: 'contractor', cement: 'materials', stone: 'materials', asphalt: 'materials', glass: 'materials', public: 'publicbot', projects: 'publicbot', bot: 'publicbot', policy: 'publicbot'};
+// 28/11/2026: Chính sách (giao vốn, đấu thầu) về trang Xây dựng; VLXD thêm 01 Toàn ngành.
+const HOME = {market: 'contractor', civil: 'contractor', infra: 'contractor', policy: 'contractor', industry: 'materials', cement: 'materials', stone: 'materials', asphalt: 'materials', glass: 'materials', public: 'publicbot', projects: 'publicbot', bot: 'publicbot'};
 const GROUP_HOME = {civil: 'contractor', infra: 'contractor', materials: 'materials', bot: 'publicbot'};
 const CFG = {
   contractor: {name: 'Xây dựng', full: 'xây dựng', groups: ['civil', 'infra'], brief: ['gdp', 'cred', 'disb', 'basket'], models: [0, 1],
-    mt2: [['market', 'Toàn thị trường'], ['civil', 'Dân dụng & nhà xưởng'], ['infra', 'Thi công hạ tầng']],
+    mt2: [['market', 'Toàn thị trường'], ['civil', 'Dân dụng & nhà xưởng'], ['infra', 'Thi công hạ tầng'], ['policy', 'Chính sách']], policyGroups: ['capital', 'bidding'],
     topics: ['contractor-cash', 'rail-airport'], seg: ['Dân dụng & nhà xưởng', 'Thi công hạ tầng'],
     ov: 'Nhà thầu dân dụng, nhà xưởng (CTD, HBC) và nhà thầu hạ tầng (VCG, FCN, DPG, C4G, LCG). Vật liệu ở dashboard <a href="../Vat-lieu-xay-dung/">VLXD</a>, thép ở <a href="../Thep/">Thép</a>.'},
   materials: {name: 'Vật liệu xây dựng', full: 'vật liệu xây dựng', groups: ['materials'], brief: ['cem', 'coal', 'asph', 'stone'], models: [3],
-    mt2: [['cement', 'Xi măng'], ['stone', 'Đá & cát'], ['asphalt', 'Nhựa đường'], ['glass', 'Kính & gạch']],
+    mt2: [['industry', 'Toàn ngành'], ['cement', 'Xi măng'], ['stone', 'Đá & cát'], ['asphalt', 'Nhựa đường'], ['glass', 'Kính & gạch']],
     topics: ['materials'], seg: ['Xi măng', 'Đá & cát', 'Nhựa đường', 'Kính & gạch'],
     ov: 'Xi măng (HT1, BCC), đá xây dựng (VLB, KSB, DHA), nhựa đường (PLC), kính, gạch, sứ (VGC). Nhà thầu ở dashboard <a href="../Xay-dung/">Xây dựng</a>, thép ở <a href="../Thep/">Thép</a>.'},
   publicbot: {name: 'Đầu tư công & BOT', full: 'đầu tư công & BOT', groups: ['bot'], brief: ['pi', 'disb', 'toll'], models: [2],
@@ -74,12 +75,26 @@ const SRC_MANUAL = {
   'xd-71': `<a href="https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html" target="_blank" rel="noopener">Sở Xây dựng Bắc Ninh · QĐ 913/QĐ-SXD (qua Thư viện Nhà đất)</a>`
 };
 const take = id => { const n = block(id); if (!n) { LOG('thiếu ' + id); return null; } n.style.marginTop = ''; return srcOf(n); };
+// 28/11/2026 (khung chuẩn Điện §42): câu hỏi = chart trả lời chính (.pp-main) → chart phụ (.pp-sup1) → xem thêm (.pp-more).
+// Thẻ đầu tiên trong nodes là chart chính, thẻ thứ hai là chart phụ, còn lại vào "xem thêm"; ghi chú, "Chưa có dữ liệu" giữ đúng vị trí.
+const isCard = n => n?.nodeType === 1 && (n.classList.contains('card') || !!n.querySelector?.(':scope > .card'));
 function panel(id, num, q, nodes, sub) {
   const s = el('section', 'pp-panel pp-q'); s.id = 'xd-' + id;
   s.innerHTML = `<header class="pp-ph"><span class="pp-num">${esc(num)}</span><div><h3>${esc(q)}</h3>${sub ? `<p class="kc-q-sub">${sub}</p>` : ''}</div></header>`;
-  [].concat(nodes).flat().filter(Boolean).forEach(n => s.append(typeof n === 'string' ? el('div', '', n) : n));
+  const list = [].concat(nodes).flat().filter(Boolean).map(n => typeof n === 'string' ? el('div', '', n) : n);
+  let k = 0, more = null;
+  list.forEach(n => {
+    if (!isCard(n)) { s.append(n); return; }
+    if (k === 0) { const w = el('div', 'pp-main'); w.append(n); s.append(w); }
+    else if (k === 1) { const w = el('div', 'pp-sup1'); w.append(n); s.append(w); }
+    else { if (!more) { more = el('div', 'pp-sup1 pp-more'); s.append(more); } more.append(n); }
+    k++;
+  });
+  if (more && more.children.length > 1) more.className = 'grid two g2 pp-sup pp-more';
   return s;
 }
+// Thẻ dẫn sang chart đã đặt ở sub-tab khác (dời, không nhân bản).
+const thLink = (href, label, where, why) => { const a = el('a', 'th-link', `<small>${esc(where)}</small><b>${esc(label)} →</b>${why ? `<span>${esc(why)}</span>` : ''}`); a.href = href; a.dataset.xdHref = href; return a; };
 const grid2 = (...ns) => { const g = el('div', 'grid two g2'); ns.filter(Boolean).forEach(n => g.append(n)); return g.children.length ? g : null; };
 const stage = (id, kind, label) => { const h = el('div', 'pp-stage'); h.id = 'xd-st-' + id; h.innerHTML = `<span>${esc(kind)}</span><h3>${esc(label)}</h3>`; return h; };
 function flow(items) { // [[id, nhãn nhỏ, tên]]
@@ -134,7 +149,7 @@ function dataBrief() {
       add({label: 'Vốn NSNN thực hiện lũy kế', value: nf(a.cur / 1000, 0), unit: 'nghìn tỷ đồng', yoy: fin(a.yoy) ? up(a.yoy) : '', period: `${a.m}T/${a.y}`, scope: 'Vốn đầu tư thực hiện từ NSNN (Trung ương + địa phương); số tháng cuối là ước tính', spark: cum, src: NSO(), go: '?section=public&g=nso#mt2'});
       lead.push(`vốn NSNN thực hiện ${a.m}T/${a.y} đạt <b>${nf(a.cur / 1000, 0)} nghìn tỷ đồng</b>${fin(a.yoy) ? ` (${sg(a.yoy, 1)}% so cùng kỳ)` : ''}`); },
     disb() { const W = X.WEEK || []; if (!W.length) return; const l = W.at(-1);
-      add({label: 'Giải ngân / kế hoạch Thủ tướng giao', value: nf(l[2], 1), unit: '% kế hoạch', yoy: 'chưa có số cùng mốc 2025', period: `lũy kế đến ${l[0]}/2026`, scope: `${nf(l[1], 0)} tỷ đồng ÷ kế hoạch ${nf(X.PLAN?.['2026'], 0)} tỷ đồng`, spark: W.map(w => w[2]), src: MOF_SRC, go: '?section=public&g=mof#mt2'});
+      add({label: 'Giải ngân / kế hoạch Thủ tướng giao', value: nf(l[2], 1), unit: '% kế hoạch', yoy: 'chưa có số cùng mốc 2025', period: `lũy kế đến ${l[0]}/2026`, scope: `${nf(l[1], 0)} tỷ đồng ÷ kế hoạch ${nf(X.PLAN?.['2026'], 0)} tỷ đồng`, spark: W.map(w => w[2]), src: MOF_SRC, go: VAR === 'contractor' ? '?section=infra&g=infra-pub#mt2' : '?section=public&g=mof#mt2'});
       lead.push(`giải ngân theo kế hoạch đạt <b>${nf(l[2], 1)}%</b> đến ${l[0]}`); },
     cem() { const cem = S.cem || []; if (!cem.length) return; const l = cem.at(-1), y = sameMonthYoY(cem), t = ytd(cem);
       add({label: 'Sản lượng xi măng', value: nf(l.value, 1), unit: 'triệu tấn', yoy: fin(y) ? up(y) + (t && fin(t.yoy) ? ` · lũy kế ${sg(t.yoy, 1)}%` : '') : '', period: 'T' + (+l.date.slice(5, 7)) + '/' + l.date.slice(0, 4), scope: 'Sản lượng sản xuất toàn ngành (gồm phần xuất khẩu), số tháng cuối ước tính', spark: cem.slice(-18).map(r => r.value), src: NSO(), go: '?section=cement&g=cement-output#mt2'});
@@ -329,20 +344,123 @@ const kCem = () => { const l = lastRec(S.cem); return l ? ['Sản lượng xi m�
 const kCoal = () => { const l = lastRec(S.coal); return l ? ['Than Newcastle', nf(l.value, 0), 'USD/tấn', `${sg(yoyDay(S.coal), 1)}% so cùng kỳ`, `${dmy(l.date)} · ICE`, '?section=cement&g=cement-input#mt2'] : null; };
 const kCp = () => { const l = lastRec(S.cp); return l ? ['Xi măng PCB40 Hà Nội', nf(l.value / 1e6, 2), 'triệu đ/tấn', '', `${dmy(l.date)} · Sở Xây dựng Hà Nội`, '?section=stone#mt2'] : null; };
 const kAsph = () => { const l = lastRec(S.asph); return l ? ['Nhựa đường SHFE (giá tham chiếu quốc tế)', nf(l.value, 0), 'CNY/tấn', `${sg(yoyDay(S.asph), 1)}% so cùng kỳ`, `${dmy(l.date)} · SHFE`, '?section=asphalt#mt2'] : null; };
-const kStone = () => { const l = lastRec(S.stone); return l ? ['Đá 1x2 (giá công bố)', nf(l.value, 0), 'đồng', `${sg(yoyDay(S.stone), 1)}% so cùng kỳ`, `${dmy(l.date)} · Sở Xây dựng qua WiData`, '?section=stone#mt2'] : null; };
+const kStone = () => { const l = lastRec(S.stone); return l ? ['Đá 1x2 Hà Nội (giá công bố)', nf(l.value / 1000, 0), 'nghìn đ/m³', 'trung vị các mỏ, bãi; chưa VAT', `${l.period ? dmy(l.period) : dmy(l.date)} · Sở Xây dựng Hà Nội`, '?section=stone#mt2'] : null; };
 function yoyDay(rs) { const l = lastRec(rs); if (!l) return null; const t = new Date(l.date); t.setFullYear(t.getFullYear() - 1); const k = t.toISOString().slice(0, 10); const p = [...rs].reverse().find(r => r.date <= k); return p && p.value ? (l.value / p.value - 1) * 100 : null; }
 function coalChart() {
   const m = monthly(S.coal || []).slice(-36); if (!m.length) return gap('chưa có chuỗi giá than.');
   return lineChart('Giá than Newcastle, cuối tháng (USD/tấn)', 'phiên cuối mỗi tháng · chi phí nhiên liệu của lò nung clinker', m.map(([k]) => dmy(k)), [{name: 'Than Newcastle', color: '#3d4653', values: m.map(x => x[1])}], {unit: 'USD/tấn', src: SRCN('coal_newcastle', 'ICE Newcastle'), note: 'Giá tham chiếu quốc tế; giá than doanh nghiệp xi măng mua trong nước chưa có chuỗi.'});
 }
+/* ---------- 28/11/2026 khung chuẩn Điện (§42): ngày dữ liệu, ô số, chart từ BCTC quý cho từng sub-tab ----------
+   Mọi số lấy từ chuỗi đã có trên trang (XD_SHARE, CONSTRUCTION_PUBLIC, CONSTRUCTION_WI) và BCTC quý (XD_FIN); không tạo số. */
+const mL = d => d ? 'T' + (+String(d).slice(5, 7)) + '/' + String(d).slice(0, 4) : null;
+const WIC = window.CONSTRUCTION_WI?.blocks?.commodity?.series || {};
+const MACS = () => PUB.macro?.series || {};
+const CIV = ['CTD', 'HBC'], INF = ['VCG', 'FCN', 'DPG', 'C4G', 'LCG'], BOT = ['HHV', 'CII', 'HUT'];
+const CEM = ['HT1', 'BCC'], STN = ['VLB', 'KSB', 'DHA'], ASP = ['PLC'], GLS = ['VGC'], MAT = [...CEM, ...STN, ...ASP, ...GLS];
+const FIN_SRC = `${ext('BCTC hợp nhất theo quý (VNDirect finfo)', 'https://api-finfo.vndirect.com.vn/v4/financial_statements')}; tự tính`;
+// Quý BCTC mới nhất có doanh thu của nhóm mã.
+function lastQ(codes) { if (!F) return -1; let best = -1; codes.forEach(t => { const d = F.data[t]; if (!d) return; let i = F.periods.length - 1; while (i >= 0 && !fin(d.revenue[i])) i--; best = Math.max(best, i); }); return best; }
+// Cộng nhóm mã trong một quý: chỉ khi đủ số của mọi mã (thiếu một mã thì để trống, không cộng thiếu).
+function sumQ(codes, key, i) { if (!F || i < 0) return null; const v = codes.filter(t => F.data[t]).map(t => F.data[t][key]?.[i]); return v.length && v.every(fin) ? v.reduce((a, b) => a + b, 0) : null; }
+function ttmQ(codes, key, i) { if (i < 3) return null; const v = [0, 1, 2, 3].map(k => sumQ(codes, key, i - k)); return v.every(fin) ? v.reduce((a, b) => a + b, 0) : null; }
+const gmQ = (codes, i) => { const g = sumQ(codes, 'gross', i), r = sumQ(codes, 'revenue', i); return fin(g) && fin(r) && r > 0 ? g / r * 100 : null; };
+const advQ = (codes, i) => { const a = sumQ(codes, 'adv_customers', i); if (!fin(a)) return null; const lt = codes.filter(t => F.data[t]).reduce((s, t) => s + (F.data[t].adv_customers_lt?.[i] || 0), 0); return a + lt; };
+const who = codes => codes.length > 1 ? codes.join(' + ') : codes[0];
+const kGm = (codes, label, g) => { const i = lastQ(codes), v = gmQ(codes, i), p = gmQ(codes, i - 4); return fin(v) ? [label || `Biên gộp ${who(codes)}`, nf(v, 1), '%', fin(p) ? `${sg(v - p, 1)} điểm % so cùng kỳ` : '', `${qL(F.periods[i])} · BCTC hợp nhất, quý riêng`, g] : null; };
+const kRev = (codes, label, g) => { const i = lastQ(codes), v = sumQ(codes, 'revenue', i), p = sumQ(codes, 'revenue', i - 4); return fin(v) ? [label || `Doanh thu quý ${who(codes)}`, nf(v, 0), 'tỷ đồng', fin(p) && p ? `${sg((v / p - 1) * 100, 1)}% so cùng kỳ` : '', `${qL(F.periods[i])} · BCTC hợp nhất`, g] : null; };
+const kRecv = (codes, g) => { const i = lastQ(codes), r = sumQ(codes, 'receivables', i), t = ttmQ(codes, 'revenue', i), r4 = sumQ(codes, 'receivables', i - 4), t4 = ttmQ(codes, 'revenue', i - 4); return fin(r) && t ? ['Phải thu KH ÷ doanh thu TTM', nf(r / t, 2), 'lần', fin(r4) && t4 ? `4 quý trước ${nf(r4 / t4, 2)} lần` : '', `${qL(F.periods[i])} · ${who(codes)} cộng gộp`, g] : null; };
+const kAdv = (codes, g) => { const i = lastQ(codes), a = advQ(codes, i), t = ttmQ(codes, 'revenue', i), a4 = advQ(codes, i - 4), t4 = ttmQ(codes, 'revenue', i - 4); return fin(a) && t ? ['Ứng trước của chủ đầu tư ÷ doanh thu TTM', nf(a / t, 2), 'lần', fin(a4) && t4 ? `4 quý trước ${nf(a4 / t4, 2)} lần` : '', `${qL(F.periods[i])} · ${who(codes)} cộng gộp`, g] : null; };
+const kPi = () => { const a = ytd(S.pi || []); return a ? ['Vốn NSNN thực hiện lũy kế', nf(a.cur / 1000, 0), 'nghìn tỷ đồng', fin(a.yoy) ? `${sg(a.yoy, 1)}% so cùng kỳ` : '', `${a.m}T/${a.y} · Cục Thống kê`, '?section=infra&g=infra-pub#mt2'] : null; };
+const kBasket = () => { const K = X.basket; if (!K) return null; const i = K.values.findLastIndex(fin); if (i < 0) return null; const p = K.months.indexOf(String(+K.months[i].slice(0, 4) - 1) + K.months[i].slice(4)), y = p >= 0 && K.values[p] ? (K.values[i] / K.values[p] - 1) * 100 : null;
+  return ['Rổ giá vật liệu nhà thầu đường', nf(K.values[i], 0), '(2024 = 100)', fin(y) ? `${sg(y, 1)}% so cùng kỳ` : '', `${mL(K.months[i])} · đá, nhựa đường, xi măng, thép`, '?section=infra&g=infra-cost#mt2']; };
+const kGdp = () => { const rs = MACS().gdp_construction_nominal?.records || [], l = rs.at(-1); if (!l) return null; const y = sameMonthYoY(rs); return ['GDP ngành xây dựng lũy kế', nf(l.value / 1000, 0), 'nghìn tỷ đồng', fin(y) ? `${sg(y, 1)}% so cùng kỳ (giá hiện hành)` : '', `${+l.date.slice(5, 7)}T/${l.date.slice(0, 4)} · Cục Thống kê`, '?section=market&g=activity#mt2']; };
+const kCred = () => { const rs = MACS().credit_construction?.records || [], l = rs.at(-1); if (!l) return null; const y = sameMonthYoY(rs); return ['Dư nợ tín dụng ngành xây dựng', nf(l.value / 1000, 0), 'nghìn tỷ đồng', fin(y) ? `${sg(y, 1)}% so cùng kỳ` : '', `${mL(l.date)} · Ngân hàng Nhà nước`, '?section=market&g=credit#mt2']; };
+const kCemYtd = () => { const a = ytd(S.cem || []); return a ? ['Sản lượng xi măng lũy kế', nf(a.cur, 1), 'triệu tấn', fin(a.yoy) ? `${sg(a.yoy, 1)}% so cùng kỳ` : '', `${a.m}T/${a.y} · Cục Thống kê`, '?section=cement&g=cement-output#mt2'] : null; };
+const kCexpYtd = () => { const a = ytd(S.cexp || []); return a ? ['Xuất khẩu clinker, xi măng lũy kế', nf(a.cur, 0), 'triệu USD', fin(a.yoy) ? `${sg(a.yoy, 1)}% so cùng kỳ` : '', `${a.m}T/${a.y} · Hải quan`, '?section=cement&g=cement-sales#mt2'] : null; };
+const kIip = () => { const rs = MACS().iip_nonmetal?.records || [], l = rs.at(-1); return l ? ['IIP khoáng phi kim (xi măng, gạch, kính)', sg(l.value, 1), '%', 'so cùng kỳ', `${mL(l.date)} · Cục Thống kê`, '?section=glass&g=glass-sales#mt2'] : null; };
+const kSand = () => { const l = (PUB.commodity?.series?.sand_yellow?.records || []).at(-1); return l ? ['Cát vàng Hà Nội (giá công bố)', nf(l.value / 1000, 0), 'nghìn đ/m³', 'trung vị các bãi; chưa VAT', `${l.period ? dmy(l.period) : dmy(l.date)} · Sở Xây dựng Hà Nội`, '?section=stone#mt2'] : null; };
+const kStoneWi = () => { const rs = WIC.stone_1x2?.records || [], l = rs.at(-1); if (!l) return null; const y = sameMonthYoY(rs); return ['Đá 1x2 (Sở Xây dựng, WiData)', nf(l.value, 1), 'nghìn đ/tấn', fin(y) ? `${sg(y, 1)}% so cùng kỳ` : '', `${mL(l.date)} · Sở Xây dựng qua WiData`, '?section=stone&g=stone-price#mt2']; };
+// Chart theo quý từ BCTC (từ 2022): biên gộp nhóm, doanh thu, phải thu ÷ doanh thu TTM.
+const COLS = ['#1D2678', '#2a9fa3', '#c98a00', '#861C52', '#3d4653', '#8997D6'];
+const qStart = () => Math.max(0, F.periods.findIndex(p => p >= '2022Q1'));
+function revChart(codes, title, note) {
+  if (!F) return gap('chưa tải được BCTC quý.');
+  const P = F.periods, s0 = qStart(), end = lastQ(codes) + 1;
+  const series = codes.filter(t => F.data[t]).map((t, k) => ({name: t, color: COLS[k % COLS.length], values: P.slice(s0, end).map((_, j) => { const v = F.data[t].revenue[s0 + j]; return fin(v) ? Math.round(v) : null; })}));
+  return lineChart(title || 'Doanh thu thuần theo quý (tỷ đồng)', 'quý riêng · BCTC hợp nhất · cột chồng theo mã', P.slice(s0, end).map(qL), series, {unit: 'tỷ đồng', native: 'stack', stackable: true, zeroBase: true, src: FIN_SRC, note});
+}
+function recvChart(codes, title) {
+  if (!F) return gap('chưa tải được BCTC quý.');
+  const P = F.periods, s0 = Math.max(qStart(), 3), end = lastQ(codes) + 1;
+  const series = codes.filter(t => F.data[t]).map((t, k) => ({name: t, color: COLS[k % COLS.length], values: P.slice(s0, end).map((_, j) => { const i = s0 + j, r = F.data[t].receivables[i], tt = ttmQ([t], 'revenue', i); return fin(r) && tt > 0 ? Math.round(r / tt * 100) / 100 : null; })}));
+  return lineChart(title || 'Phải thu khách hàng ÷ doanh thu TTM (lần)', 'số dư phải thu KH ngắn hạn cuối quý ÷ doanh thu 4 quý gần nhất · BCTC hợp nhất', P.slice(s0, end).map(qL), series, {unit: 'lần', digits: 2, src: FIN_SRC, note: 'Không gồm phải thu theo tiến độ hợp đồng xây dựng; số dư cao và tăng nghĩa là tiền thu từ chủ đầu tư chậm hơn doanh thu ghi nhận.'});
+}
+// Biên gộp và doanh thu theo nhóm vật liệu (cộng các mã trong nhóm, quý riêng).
+const SEGS = [['Xi măng (HT1, BCC)', CEM], ['Đá xây dựng (VLB, KSB, DHA)', STN], ['Nhựa đường (PLC)', ASP], ['Kính, gạch, sứ (VGC)', GLS]];
+function segChart(kind) {
+  if (!F) return gap('chưa tải được BCTC quý.');
+  const P = F.periods, s0 = qStart(), end = lastQ(MAT) + 1, cats = P.slice(s0, end).map(qL);
+  const series = SEGS.map(([n, c], k) => ({name: n, color: COLS[k], values: P.slice(s0, end).map((_, j) => { const i = s0 + j; if (kind === 'gm') { const v = gmQ(c, i); return fin(v) ? Math.round(v * 10) / 10 : null; } const v = sumQ(c, 'revenue', i); return fin(v) ? Math.round(v) : null; })}));
+  return kind === 'gm'
+    ? lineChart('Biên gộp theo nhóm vật liệu (%)', 'LN gộp ÷ doanh thu thuần, cộng các mã trong nhóm, quý riêng · BCTC hợp nhất', cats, series, {unit: '%', digits: 1, src: FIN_SRC, note: 'Số toàn doanh nghiệp: VGC gồm khu công nghiệp, PLC gồm dầu nhờn, hóa chất. Quý thiếu số của một mã trong nhóm thì để trống.'})
+    : lineChart('Doanh thu thuần theo nhóm vật liệu (tỷ đồng)', 'cộng các mã trong nhóm, quý riêng · BCTC hợp nhất', cats, series, {unit: 'tỷ đồng', native: 'stack', stackable: true, zeroBase: true, src: FIN_SRC, note: 'Số toàn doanh nghiệp, gồm mảng ngoài vật liệu (VGC có khu công nghiệp).'});
+}
+// Giá thép CB300 và xi măng (thành phần của rổ vật liệu, bình quân 2024 = 100): chi phí chính của nhà thầu dân dụng.
+function civilCostChart() {
+  const K = X.basket; if (!K?.parts) return gap('chưa có chuỗi giá thép, xi măng theo tháng.');
+  const i0 = K.months.findIndex((_, i) => fin(K.parts.steel[i]) || fin(K.parts.cement[i]));
+  const ms = K.months.slice(i0);
+  return lineChart('Giá thép CB300 và xi măng, chỉ số bình quân 2024 = 100', 'theo tháng · thành phần của rổ vật liệu nhà thầu', ms.map(mL), [{name: 'Thép CB300 Hòa Phát', color: '#3d4653', values: K.parts.steel.slice(i0).map(v => fin(v) ? Math.round(v * 10) / 10 : null)}, {name: 'Xi măng (Sở Xây dựng)', color: '#2a9fa3', values: K.parts.cement.slice(i0).map(v => fin(v) ? Math.round(v * 10) / 10 : null)}],
+    {unit: 'chỉ số', digits: 1, src: `Sở Xây dựng qua ${ext('WiData', 'https://widata.vn/')} (xi măng) · Hòa Phát qua WiData (thép CB300); tự tính chỉ số`, note: 'Thép có chuỗi từ 6/2024 nên gốc thép là bình quân 6–12/2024. Chưa có chuỗi giá nhân công, cơ điện; chưa so với đơn giá hợp đồng.'});
+}
+function stonePriceChart() {
+  const rs = WIC.stone_1x2?.records || []; if (!rs.length) return gap('chưa có chuỗi giá đá theo tháng.');
+  return lineChart('Giá đá 1x2 công bố theo tháng (nghìn đồng/tấn)', 'Sở Xây dựng qua WiData · giá bán của doanh nghiệp có mỏ', rs.map(r => mL(r.date)), [{name: 'Đá 1x2', color: '#c98a00', values: rs.map(r => r.value)}], {unit: 'nghìn đ/tấn', digits: 1, src: `Sở Xây dựng qua ${ext('WiData', 'https://widata.vn/')} (chỉ tiêu 80968)`, note: 'Phạm vi địa phương theo WiData, khác giá công bố Hà Nội (đồng/m³) ở ô số. Giá đá tại công trình cao hơn giá công bố do phí vận chuyển.'});
+}
+// Ngày dữ liệu mới nhất của từng sub-tab: lấy từ chính các chuỗi trong sub-tab (không lấy ngày dựng trang).
+const qOf = codes => { const i = lastQ(codes); return i >= 0 ? 'BCTC ' + qL(F.periods[i]) : null; };
+const lastOf = rs => rs?.length ? rs.at(-1).date : null;
+function asofOf(key) {
+  const M = MACS(), gdp = lastOf(M.gdp_construction_nominal?.records), K = X.basket, kb = K ? K.months[K.values.findLastIndex(fin)] : null;
+  const L = {
+    market: [['GDP xây dựng', gdp ? `${+gdp.slice(5, 7)}T/${gdp.slice(0, 4)}` : null], ['tín dụng', mL(lastOf(M.credit_construction?.records))]],
+    civil: [['giá thép, xi măng', mL(kb)], ['', qOf(CIV)]],
+    infra: [['vốn NSNN', mL(lastOf(S.pi))], ['rổ vật liệu', mL(kb)], ['', qOf(INF)]],
+    policy: [['rà soát văn bản', H.updated_at ? dmy(H.updated_at) : null]],
+    industry: [['sản lượng xi măng', mL(lastOf(S.cem))], ['IIP', mL(lastOf(M.iip_nonmetal?.records))], ['', qOf(MAT)]],
+    cement: [['than', lastOf(S.coal) ? dmy(lastOf(S.coal)) : null], ['sản lượng', mL(lastOf(S.cem))], ['', qOf(CEM)]],
+    stone: [['giá đá', mL(lastOf(WIC.stone_1x2?.records))], ['', qOf(STN)]],
+    asphalt: [['SHFE', lastOf(S.asph) ? dmy(lastOf(S.asph)) : null], ['', qOf(ASP)]],
+    glass: [['IIP', mL(lastOf(M.iip_nonmetal?.records))], ['', qOf(GLS)]]
+  }[key] || [];
+  const t = L.filter(x => x[1]).map(([l, d]) => (l ? l + ' ' : '') + d).join(' · ');
+  return t ? 'Dữ liệu mới nhất: ' + t : '';
+}
+const GOALS = {
+  market: 'Nhu cầu xây dựng chung: chuỗi số so cùng kỳ, hoạt động và tín dụng ngành.',
+  civil: 'CTD, HBC: giá vật liệu → doanh thu và biên gộp → tiền thu từ chủ đầu tư.',
+  infra: 'VCG, FCN, DPG, C4G, LCG: vốn đầu tư công và giá vật liệu → biên gộp → tiền thu từ chủ đầu tư.',
+  policy: 'Văn bản về giao vốn, đấu thầu và PPP đang áp dụng, khâu và nhóm doanh nghiệp chịu tác động.',
+  industry: 'Bốn nhóm vật liệu cùng lúc: chuỗi số so cùng kỳ, doanh thu và biên gộp theo nhóm.',
+  cement: 'HT1, BCC: giá than → sản lượng → tiêu thụ nội địa, xuất khẩu → biên gộp.',
+  stone: 'VLB, KSB, DHA: công suất mỏ → giá đá → biên gộp.',
+  asphalt: 'PLC: giá nhựa đường tham chiếu quốc tế → biên gộp.',
+  glass: 'VGC: công suất → sản xuất sản phẩm khoáng phi kim → biên gộp.'
+};
+// Bảng nhiệt so cùng kỳ (sector-visuals.js dựng ở đầu tab Bức tranh cũ): mục đầu của sub-tab toàn ngành. Đặt trong câu hỏi thì
+// sector-visuals.js thấy đã có bảng, không dựng lại thẻ trôi.
+function heatPanel(num) {
+  const heat = document.querySelector('#pane-mt2 .fsv-heat'); if (!heat) return null;
+  if (!heat.querySelector('.pw-src')) heat.append(el('div', 'pw-src', `Nguồn: ${NSO()} (vốn NSNN, xi măng, xuất khẩu) · ICE (than Newcastle) · ${ext('SHFE', 'https://www.shfe.com.cn/eng/Market/Futures/')} (nhựa đường); tự tính so cùng kỳ`));
+  return panel('heat', num, 'Chuỗi số nào đang tăng, chuỗi nào giảm so cùng kỳ?', heat, 'Mỗi ô so với cùng tháng năm trước của chính chuỗi đó; các chuỗi khác đơn vị, chỉ đọc chiều.');
+}
 function marketPane(p) {
-  // 26/11/2026 (người dùng): bỏ mục "Nguồn cầu nào đang có dữ liệu?" (danh sách dẫn link); dự án trọng điểm thành 1.3.
-  // Bảng nhiệt so cùng kỳ của sector-visuals.js (đầu tab Bức tranh cũ, hiện ở mọi tab con) → mục 1.0 của Toàn thị trường.
-  const heat = document.querySelector('#pane-mt2 > .fsv-heat');
-  if (heat && !heat.querySelector('.pw-src')) heat.append(el('div', 'pw-src', `Nguồn: ${NSO()} (vốn NSNN, xi măng, xuất khẩu) · ICE (than Newcastle) · ${ext('SHFE', 'https://www.shfe.com.cn/eng/Market/Futures/')} (nhựa đường); tự tính so cùng kỳ`));
-  p.append(heat ? panel('heat', '1.0', 'Chuỗi số nào đang tăng, chuỗi nào giảm so cùng kỳ?', heat, 'Mỗi ô so với cùng tháng năm trước của chính chuỗi đó; các chuỗi khác đơn vị, chỉ đọc chiều.') : '',
-    panel('activity', '1.1', 'Hoạt động xây dựng đang tăng nhanh hay chậm lại?', take('xd-31')),
-    panel('credit', '1.2', 'Tín dụng cho ngành xây dựng tăng bao nhiêu?', take('xd-30')));
+  // 26/11/2026 (người dùng): bỏ mục "Nguồn cầu nào đang có dữ liệu?" (danh sách dẫn link).
+  // 28/11/2026: ô số GDP (giá hiện hành), tín dụng — GDP giá so sánh đổi năm gốc từ 2026 nên không so cùng kỳ; vốn đầu tư công ở Thi công hạ tầng (nguồn việc của nhà thầu hạ tầng), ô số ở đó.
+  p.append(kpiTiles([kGdp(), kCred()]) || '',
+    heatPanel('1.1') || '',
+    panel('activity', '1.2', 'Hoạt động xây dựng đang tăng nhanh hay chậm lại?', take('xd-31')),
+    panel('credit', '1.3', 'Tín dụng cho ngành xây dựng tăng bao nhiêu?', take('xd-30')));
 }
 function projectsPane(p) {
   p.append(panel('projects', '2.1', 'Dự án trọng điểm: vốn từ đâu, gói thầu nào, đang ở bước nào, doanh nghiệp nào liên quan?', projectMaster(), 'Một bảng dự án chính cho cả ba dashboard Xây dựng, VLXD, Đầu tư công & BOT; các trang khác dẫn về đúng dòng.'));
@@ -360,18 +478,32 @@ function publicPane(p) {
   stage('prog', 'Bước 3', 'Tiến độ dự án, gói thầu'),
   panel('pubproj', '2.4', 'Dự án đầu tư công đang ở bước nào?', projectList(x => /Đầu tư công/.test(x.capital))));
 }
-const CIV = ['CTD', 'HBC'], INF = ['VCG', 'FCN', 'DPG', 'C4G', 'LCG'], BOT = ['HHV', 'CII', 'HUT'];
 // 26/11/2026 (người dùng): bỏ khâu "Ký mới, backlog", "Thi công, nghiệm thu", "Đầu tư dự án BOT"; tách thành 3 tab con ở 2 dashboard.
+// 28/11/2026 (khung chuẩn Điện): mỗi phân khúc đi theo luồng Đầu vào → Sản xuất → Đầu ra, câu hỏi nào cũng có chart trả lời chính.
 function civilPane(p) {
-  p.append(stage('civil-margin', 'Khâu 1', 'Doanh thu và biên'),
-    panel('civil-m', '2.1', 'Biên gộp nhà thầu dân dụng đi thế nào?', gmChart(CIV)));
+  p.append(kpiTiles([kRev(CIV, 'Doanh thu quý CTD + HBC', '?section=civil&g=civil-make#mt2'), kGm(CIV, 'Biên gộp CTD + HBC', '?section=civil&g=civil-make#mt2'), kRecv(CIV, '?section=civil&g=civil-out#mt2'), kAdv(CIV, '?section=civil&g=civil-out#mt2')]) || '',
+    flow([['xd-st-civil-in', 'Đầu vào', 'Giá thép, xi măng'], ['xd-st-civil-make', 'Sản xuất', 'Doanh thu và biên gộp'], ['xd-st-civil-out', 'Đầu ra', 'Tiền thu từ chủ đầu tư']]),
+    stage('civil-in', 'Đầu vào', 'Giá thép, xi măng'),
+    panel('civil-cost', '2.1', 'Giá thép, xi măng — chi phí chính của nhà thầu dân dụng — đang tăng hay giảm?', civilCostChart()),
+    stage('civil-make', 'Sản xuất', 'Doanh thu và biên gộp'),
+    panel('civil-m', '2.2', 'Biên gộp nhà thầu dân dụng đang cải thiện hay thu hẹp?', [gmChart(CIV), revChart(CIV, 'Doanh thu thuần CTD, HBC theo quý (tỷ đồng)', 'CTD có năm tài chính 1/7–30/6; quý theo ngày kết thúc kỳ BCTC.')]),
+    stage('civil-out', 'Đầu ra', 'Tiền thu từ chủ đầu tư'),
+    panel('civil-cash', '2.3', 'Tiền thu từ chủ đầu tư có theo kịp doanh thu không?', [recvChart(CIV), finSnapshot(CIV)]));
 }
 function infraPane(p) {
   const basket = take('xd-72'); if (basket) { basket.querySelector('.pw-src') || basket.append(el('div', 'pw-src', 'Nguồn: ' + BASKET_SRC)); basket.append(el('div', 'pw-src-note', BASKET_W)); }
   block('xd-71')?.remove(); // 26/11/2026 (người dùng): bỏ thẻ chỉ số giá xây dựng Bắc Ninh Q3/2026
-  p.append(stage('infra-margin', 'Khâu 1', 'Doanh thu, biên và chi phí vật liệu'),
-    panel('infra-m', '3.1', 'Biên gộp nhà thầu hạ tầng đi thế nào?', gmChart(INF, 'Biên gộp theo quý (%)', 'Số toàn doanh nghiệp; VCG, DPG, LCG gồm mảng ngoài xây lắp.')),
-    panel('infra-cost', '3.2', 'Chi phí vật liệu của nhà thầu đường tăng bao nhiêu?', basket, 'Rổ giá vật liệu đặt cạnh biên gộp; chưa so với đơn giá hợp đồng.'));
+  // 28/11/2026: vốn NSNN thực hiện theo tháng (Cục Thống kê, tự cập nhật) là nguồn việc của nhà thầu hạ tầng → khâu Đầu vào.
+  // Thẻ kế hoạch so giải ngân, đường đua giải ngân (số Bộ Tài chính nhập tay) vẫn bỏ theo quyết định 27/11/2026.
+  p.append(kpiTiles([kPi(), kBasket(), kGm(INF, 'Biên gộp 5 nhà thầu hạ tầng', '?section=infra&g=infra-make#mt2'), kRecv(INF, '?section=infra&g=infra-out#mt2')]) || '',
+    flow([['xd-st-infra-in', 'Đầu vào', 'Vốn đầu tư công, giá vật liệu'], ['xd-st-infra-make', 'Sản xuất', 'Doanh thu và biên gộp'], ['xd-st-infra-out', 'Đầu ra', 'Tiền thu từ chủ đầu tư']]),
+    stage('infra-in', 'Đầu vào', 'Vốn đầu tư công, giá vật liệu'),
+    panel('infra-pub', '3.1', 'Vốn đầu tư công — nguồn việc của nhà thầu hạ tầng — đang tăng hay giảm?', [take('xd-41'), take('xd-40')], 'Vốn NSNN thực hiện (Cục Thống kê), khác phạm vi số giải ngân theo kế hoạch của Bộ Tài chính.'),
+    panel('infra-cost', '3.2', 'Chi phí vật liệu của nhà thầu đường tăng bao nhiêu?', basket, 'Rổ giá vật liệu đặt cạnh biên gộp; chưa so với đơn giá hợp đồng.'),
+    stage('infra-make', 'Sản xuất', 'Doanh thu và biên gộp'),
+    panel('infra-m', '3.3', 'Biên gộp nhà thầu hạ tầng đang cải thiện hay thu hẹp?', [gmChart(INF, 'Biên gộp theo quý (%)', 'Số toàn doanh nghiệp; VCG, DPG, LCG gồm mảng ngoài xây lắp.'), revChart(INF, 'Doanh thu thuần 5 nhà thầu hạ tầng theo quý (tỷ đồng)', 'Số toàn doanh nghiệp; VCG, DPG, LCG gồm mảng ngoài xây lắp.')]),
+    stage('infra-out', 'Đầu ra', 'Tiền thu từ chủ đầu tư'),
+    panel('infra-cash', '3.4', 'Tiền thu từ chủ đầu tư có theo kịp doanh thu không?', [recvChart(INF), finSnapshot(INF)]));
 }
 function botPane(p) {
   p.append(stage('bot-toll', 'Khâu 1', 'Vận hành, thu phí'),
@@ -380,19 +512,26 @@ function botPane(p) {
     panel('bot-m', '3.2', 'Biên gộp doanh nghiệp BOT đi thế nào?', gmChart(BOT, 'Biên gộp theo quý (%)', 'Số hợp nhất gồm thu phí, xây lắp và mảng khác (CII, HUT có bất động sản).')),
     panel('bot-p', '3.3', 'Dự án BOT đang ở bước nào?', projectList(x => x.segment === 'BOT & thu phí')));
 }
+// VLXD › 01 Toàn ngành (28/11/2026): bảng nhiệt so cùng kỳ + doanh thu, biên gộp theo bốn nhóm vật liệu (BCTC quý).
+function industryPane(p) {
+  p.append(kpiTiles([kCemYtd(), kCexpYtd(), kIip(), kGm(MAT, 'Biên gộp 7 doanh nghiệp vật liệu', '?section=industry&g=ind-gm#mt2')]) || '',
+    heatPanel('1.1') || '',
+    panel('ind-gm', '1.2', 'Nhóm vật liệu nào đang giữ được biên gộp?', segChart('gm')),
+    panel('ind-rev', '1.3', 'Doanh thu nhóm vật liệu nào đang tăng, nhóm nào giảm?', segChart('rev')));
+}
 function cementPane(p) {
   block('xd-61')?.remove(); // 26/11/2026 (người dùng): bỏ bảng "Xi măng: công suất, kế hoạch, kết quả 6T/2026"
-  p.append(kpiTiles([kCem(), kCoal(), kCp()]) || '',
-    flow([['xd-st-cement-input', 'Khâu 1', 'Than, chi phí đầu vào'], ['xd-st-cement-output', 'Khâu 2', 'Sản lượng'], ['xd-st-cement-sales', 'Khâu 3', 'Tiêu thụ nội địa, xuất khẩu'], ['xd-st-cement-price', 'Khâu 4', 'Biên gộp']]),
-    stage('cement-input', 'Khâu 1', 'Than, chi phí đầu vào'),
-    panel('cement-coal', '4.1', 'Giá than, nhiên liệu chính của lò nung, đang ở đâu?', coalChart()),
-    stage('cement-output', 'Khâu 2', 'Sản lượng'),
-    panel('cement-out', '4.2', 'Sản lượng xi măng theo tháng', take('xd-20')),
-    stage('cement-sales', 'Khâu 3', 'Tiêu thụ nội địa, xuất khẩu'),
-    panel('cement-sd', '4.3', 'Tiêu thụ nội địa và xuất khẩu so công suất (cùng năm 2025, triệu tấn)', take('xd-23'), 'Chỉ so cung với cầu trong cùng kỳ, cùng đơn vị. Thuế xuất khẩu clinker 5% đến hết 2026 ghi trong bảng.'),
-    panel('cement-exp', '4.4', 'Kim ngạch xuất khẩu clinker, xi măng theo tháng (triệu USD)', take('xd-21'), 'Đơn vị USD, không so trực tiếp với số tấn ở mục trên.'),
-    stage('cement-price', 'Khâu 4', 'Biên gộp'),
-    panel('cement-m', '4.5', 'Biên gộp HT1, BCC đi thế nào?', gmChart(['HT1', 'BCC'], 'Biên gộp HT1, BCC theo quý (%)', 'Số hợp nhất toàn doanh nghiệp.')));
+  p.append(kpiTiles([kCem(), kCoal(), kCp(), kGm(CEM, 'Biên gộp HT1 + BCC', '?section=cement&g=cement-price#mt2')]) || '',
+    flow([['xd-st-cement-input', 'Đầu vào', 'Giá than'], ['xd-st-cement-output', 'Sản xuất', 'Sản lượng'], ['xd-st-cement-sales', 'Đầu ra', 'Tiêu thụ nội địa, xuất khẩu'], ['xd-st-cement-price', 'Kết quả', 'Biên gộp']]),
+    stage('cement-input', 'Đầu vào', 'Giá than'),
+    panel('cement-coal', '2.1', 'Giá than — nhiên liệu chính của lò nung — đang tăng hay giảm?', coalChart()),
+    stage('cement-output', 'Sản xuất', 'Sản lượng'),
+    panel('cement-out', '2.2', 'Sản lượng xi măng đang tăng hay giảm?', take('xd-20')),
+    stage('cement-sales', 'Đầu ra', 'Tiêu thụ nội địa, xuất khẩu'),
+    panel('cement-sd', '2.3', 'Tiêu thụ nội địa và xuất khẩu có hấp thụ hết công suất không?', take('xd-23'), 'Năm 2025, triệu tấn; chỉ so cung với cầu trong cùng kỳ, cùng đơn vị. Thuế xuất khẩu clinker 5% đến hết 2026 ghi trong bảng.'),
+    panel('cement-exp', '2.4', 'Xuất khẩu clinker, xi măng đang tăng hay giảm?', take('xd-21'), 'Đơn vị triệu USD, không so trực tiếp với số tấn ở mục trên.'),
+    stage('cement-price', 'Kết quả', 'Biên gộp'),
+    panel('cement-m', '2.5', 'Biên gộp HT1, BCC đang cải thiện hay thu hẹp?', [gmChart(CEM, 'Biên gộp HT1, BCC theo quý (%)', 'Số hợp nhất toàn doanh nghiệp.'), revChart(CEM, 'Doanh thu thuần HT1, BCC theo quý (tỷ đồng)')]));
 }
 function stonePane(p) {
   // 26/11/2026 (người dùng): bỏ khâu "Mỏ, giấy phép" (bảng xd-63); nguồn từng mã của bảng công suất lấy từ cột Nguồn của bảng đó.
@@ -403,38 +542,49 @@ function stonePane(p) {
     <tr><td><span class="xd-tk">DHA</span></td><td>3 mỏ 1,606 triệu m³/năm; Tân Cang 3 trữ lượng 35,6 triệu m³ (2025)</td><td>Đồng Nai</td><td><span class="xd-na">Chưa có nguồn xác nhận; nhu cầu đá Long Thành ~18 triệu m³ (số 2025) là nhu cầu dự án, không phải hợp đồng của DHA</span></td><td>${srcOfTk('DHA')}</td></tr></tbody></table></div><div class="pw-src">Nguồn: cột Nguồn từng dòng</div>`);
   x63?.remove();
   // 26/11/2026 (người dùng): bỏ khâu "Giá, chi phí giao tới công trình" (giá công bố Hà Nội xd-24, giá tại công trình phía Nam xd-62,
-  // biến động giá T6/2025). Giá đá 1x2, xi măng PCB40 vẫn ở ô số đầu tab.
+  // biến động giá T6/2025). Giá đá 1x2, cát vàng Hà Nội vẫn ở ô số đầu tab.
   ['xd-24', 'xd-62'].forEach(id => block(id)?.remove());
-  p.append(kpiTiles([kStone(), kCp()]) || '',
-    stage('stone-cap', 'Khâu 1', 'Công suất được phép, vùng cung'),
-    panel('stone-c', '5.1', 'Công suất khai thác và vùng cung ứng', cap, 'Chỉ gắn mỏ với công trình khi có nguồn xác nhận quan hệ cung ứng.'));
+  p.append(kpiTiles([kStone(), kSand(), kStoneWi(), kGm(STN, 'Biên gộp VLB + KSB + DHA', '?section=stone&g=stone-m#mt2')]) || '',
+    flow([['xd-st-stone-cap', 'Đầu vào', 'Mỏ, công suất được phép'], ['xd-st-stone-price', 'Đầu ra', 'Giá đá công bố'], ['xd-st-stone-eff', 'Kết quả', 'Biên gộp']]),
+    stage('stone-cap', 'Đầu vào', 'Mỏ, công suất được phép'),
+    panel('stone-c', '3.1', 'Doanh nghiệp đá được phép khai thác bao nhiêu, cung cho vùng nào?', cap, 'Chỉ gắn mỏ với công trình khi có nguồn xác nhận quan hệ cung ứng.'),
+    stage('stone-price', 'Đầu ra', 'Giá đá công bố'),
+    panel('stone-p', '3.2', 'Giá đá 1x2 đang tăng hay đi ngang?', stonePriceChart()),
+    stage('stone-eff', 'Kết quả', 'Biên gộp'),
+    panel('stone-m', '3.3', 'Biên gộp VLB, KSB, DHA đang cải thiện hay thu hẹp?', [gmChart(STN, 'Biên gộp VLB, KSB, DHA theo quý (%)', 'Số hợp nhất toàn doanh nghiệp.'), revChart(STN, 'Doanh thu thuần VLB, KSB, DHA theo quý (tỷ đồng)')]));
 }
 function asphaltPane(p) {
   const x22 = take('xd-22'); if (x22) x22.append(el('div', 'pw-src-note', 'SHFE là giá hợp đồng tương lai nhựa đường sàn Thượng Hải (CNY/tấn), dùng làm giá tham chiếu quốc tế; không phải giá nhà thầu mua trong nước.'));
   // 26/11/2026 (người dùng): bỏ khâu "Giá mua trong nước" (bảng PLC xd-64) và "Chi phí thi công".
   block('xd-64')?.remove();
-  p.append(kpiTiles([kAsph()]) || '',
-    stage('asph-ref', 'Khâu 1', 'Giá tham chiếu quốc tế'),
-    panel('asph-r', '6.1', 'Giá nhựa đường tham chiếu (SHFE) đi thế nào?', x22));
+  p.append(kpiTiles([kAsph(), kRev(ASP, 'Doanh thu quý PLC', '?section=asphalt&g=asph-m#mt2'), kGm(ASP, 'Biên gộp PLC', '?section=asphalt&g=asph-m#mt2')]) || '',
+    flow([['xd-st-asph-ref', 'Đầu vào', 'Giá tham chiếu quốc tế'], ['xd-st-asph-eff', 'Kết quả', 'Doanh thu và biên gộp PLC']]),
+    stage('asph-ref', 'Đầu vào', 'Giá tham chiếu quốc tế'),
+    panel('asph-r', '4.1', 'Giá nhựa đường tham chiếu (SHFE) đang tăng hay giảm?', x22),
+    stage('asph-eff', 'Kết quả', 'Doanh thu và biên gộp PLC'),
+    panel('asph-m', '4.2', 'Biên gộp PLC có giữ được khi giá nhựa đường tăng không?', [gmChart(ASP, 'Biên gộp PLC theo quý (%)', 'Số hợp nhất toàn doanh nghiệp, gồm dầu nhờn, hóa chất; chưa có số riêng mảng nhựa đường theo quý.'), revChart(ASP, 'Doanh thu thuần PLC theo quý (tỷ đồng)')]));
 }
 function glassPane(p) {
-  p.append(flow([['xd-st-glass-cap', 'Khâu 1', 'Công suất'], ['xd-st-glass-sales', 'Khâu 2', 'Tiêu thụ, giá bán'], ['xd-st-glass-eff', 'Khâu 3', 'Hiệu quả mảng vật liệu']]),
-    stage('glass-cap', 'Khâu 1', 'Công suất'),
-    panel('glass-c', '7.1', 'VGC: công suất, kế hoạch, kết quả', take('xd-65')),
-    stage('glass-sales', 'Khâu 2', 'Tiêu thụ, giá bán'),
-    panel('glass-s', '7.2', 'Sản xuất sản phẩm khoáng phi kim đi thế nào?', [take('xd-25'), gap('chưa có giá bán kính, gạch theo kỳ.')], 'IIP gộp xi măng, gạch, kính; không tách riêng kính, gạch.'),
-    stage('glass-eff', 'Khâu 3', 'Hiệu quả mảng vật liệu'),
-    panel('glass-e', '7.3', 'Biên gộp VGC (hợp nhất, gồm khu công nghiệp)', [gmChart(['VGC'], 'Biên gộp VGC theo quý (%)', 'Số hợp nhất gồm cả khu công nghiệp. Số riêng mảng vật liệu chỉ có khi doanh nghiệp công bố: doanh thu kính Q1/2026 792 tỷ đồng (+214%) theo bảng VGC.'), gap('báo cáo bộ phận theo quý của VGC chưa có trong dữ liệu.')]));
+  p.append(kpiTiles([kIip(), kRev(GLS, 'Doanh thu quý VGC', '?section=glass&g=glass-eff#mt2'), kGm(GLS, 'Biên gộp VGC (hợp nhất)', '?section=glass&g=glass-eff#mt2')]) || '',
+    flow([['xd-st-glass-cap', 'Đầu vào', 'Công suất'], ['xd-st-glass-sales', 'Sản xuất', 'Sản xuất khoáng phi kim'], ['xd-st-glass-eff', 'Kết quả', 'Doanh thu và biên gộp VGC']]),
+    stage('glass-cap', 'Đầu vào', 'Công suất'),
+    panel('glass-c', '5.1', 'VGC có công suất, kế hoạch và kết quả thế nào?', take('xd-65')),
+    stage('glass-sales', 'Sản xuất', 'Sản xuất khoáng phi kim'),
+    panel('glass-s', '5.2', 'Sản xuất sản phẩm khoáng phi kim đang tăng hay chậm lại?', [take('xd-25'), gap('chưa có giá bán kính, gạch theo kỳ.')], 'IIP gộp xi măng, gạch, kính; không tách riêng kính, gạch.'),
+    stage('glass-eff', 'Kết quả', 'Doanh thu và biên gộp VGC'),
+    panel('glass-e', '5.3', 'Biên gộp VGC đang cải thiện hay thu hẹp?', [gmChart(GLS, 'Biên gộp VGC theo quý (%)', 'Số hợp nhất gồm cả khu công nghiệp. Số riêng mảng vật liệu chỉ có khi doanh nghiệp công bố: doanh thu kính Q1/2026 792 tỷ đồng (+214%) theo bảng VGC.'), revChart(GLS, 'Doanh thu thuần VGC theo quý (tỷ đồng)', 'Gồm cả khu công nghiệp.'), gap('báo cáo bộ phận theo quý của VGC chưa có trong dữ liệu.')]));
 }
+// Chính sách (sub-tab cuối): văn bản theo nhóm khâu từ data/construction/hub.json; trang Xây dựng: giao vốn, đấu thầu & PPP.
 function policyPane(p) {
   const G = {capital: ['Giao vốn', 'Kế hoạch vốn, giải ngân'], bidding: ['Đấu thầu, PPP', 'Chọn nhà thầu, nhà đầu tư, cơ chế đặc thù'], mine: ['Cấp mỏ', 'Cấp phép khai thác cát, đá']};
   const ST = {effective: 'Có hiệu lực', draft: 'Dự thảo', expired: 'Hết hiệu lực'};
   const tbl = list => card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Văn bản</th><th>Trạng thái</th><th>Hiệu lực</th><th>Nội dung</th><th>Khâu bị tác động</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody>${list.map(x => `<tr><td><b>${esc(x.title)}</b></td><td><span class="xd-chip xd-ps-${x.status}">${ST[x.status]}</span></td><td>${x.effective ? dmy(x.effective) : '<span class="xd-na">chưa xác định</span>'}</td><td>${esc(x.content)}</td><td>${esc(x.stage)}</td><td>${esc(x.tickers)}</td><td>${ext(x.source[0], x.source[1])}</td></tr>`).join('')}</tbody></table></div><div class="pw-src">Nguồn: cột Nguồn từng dòng</div>`);
-  const body = Object.entries(G).map(([k, [t, d]], i) => { const L = (H.policies || []).filter(x => x.group === k);
-    return panel('pol-' + k, '8.' + (i + 1), `${t}: văn bản nào đang áp dụng?`, [L.length ? tbl(L) : null, (H.policy_gaps || {})[k] ? gap(H.policy_gaps[k]) : null], d); });
+  const groups = Object.entries(G).filter(([k]) => !CFG.policyGroups || CFG.policyGroups.includes(k));
+  const body = groups.map(([k, [t, d]], i) => { const L = (H.policies || []).filter(x => x.group === k);
+    return panel('pol-' + k, '9.' + (i + 1), `${t}: văn bản nào đang áp dụng?`, [L.length ? tbl(L) : null, (H.policy_gaps || {})[k] ? gap(H.policy_gaps[k]) : null], d); });
   const b = block('xd-50'); if (b) b.remove(); // dòng giá vật liệu thương mại → Đá & cát, thuế clinker → Xi măng; văn bản còn lại ở bảng trên
   if (body[0]) { body[0].dataset.blockId = 'xd-50'; }
-  p.append(...body, el('p', 'xd-na', 'Giá vật liệu thương mại chuyển về Đá & cát (giá công bố) và Xi măng (thuế xuất khẩu clinker). Phòng vệ thương mại thép ở dashboard Thép.'));
+  p.append(...body, el('p', 'xd-na', 'Giá vật liệu thương mại, thuế xuất khẩu clinker ở dashboard Vật liệu xây dựng (Đá & cát, Xi măng). Văn bản cấp mỏ cát, đá chưa mở được. Phòng vệ thương mại thép ở dashboard Thép.'));
 }
 
 /* ---------- Tài chính ngành (#mt14): 4 tab loại hình doanh nghiệp (26/11/2026, người dùng) ----------
@@ -551,7 +701,8 @@ function tabset(pane, major, param, defs, kind) {
 /* ---------- Điều hướng: URL ↔ tab chính, tab con, nhóm ---------- */
 const PARAMS = {mt1: 'ov', mt2: 'section', mt14: 'fin'};
 const ALL_P = ['ov', 'section', 'fin', 'g', 'm'];
-const LEGACY = {mt3: '?section=infra&g=infra-cost#mt2', mt4: '?section=policy#mt2', mt6: '?fin=companies#mt14', mt10: '?section=public#mt2', mt8: `?section=${CFG.mt2[0][0]}&g=sources#mt2`};
+// 28/11/2026: #mt10 (Đầu tư công) → Thi công hạ tầng › vốn đầu tư công; #mt8 (Nguồn dữ liệu) → đầu Bức tranh ngành (nguồn ghi dưới từng chart).
+const LEGACY = {mt3: '?section=infra&g=infra-cost#mt2', mt4: '?section=policy#mt2', mt6: '?fin=companies#mt14', mt10: '?section=infra&g=infra-pub#mt2', mt8: `?section=${CFG.mt2[0][0]}#mt2`};
 // Tab con cũ (trước khi tách 3 dashboard): Nhà thầu & BOT, Toàn thị trường (bảng dự án).
 const OLD_SECTION = (sec, g) => sec === 'contractor' ? (g === 'bot' || /^bot/.test(g || '') ? ['bot', null] : g === 'infra' || /^infra/.test(g || '') ? ['infra', /^infra-/.test(g || '') ? g : null] : ['civil', null]) : sec === 'market' && (g === 'projects' || /^proj-/.test(g || '')) ? ['projects', g === 'projects' ? null : g] : [sec, g];
 // Trang đích của một link: null = trang này; chuỗi = URL trang khác.
@@ -631,14 +782,15 @@ function build() {
   const T2 = tabset(p2, 'mt2', 'section', CFG.mt2.map(([k, l], i) => [k, String(i + 1).padStart(2, '0'), l]), 'pp');
   const ws = el('div', 'xd-ws'); ws.id = 'xd-workspace'; ws.append(T2.nav);
   const TITLES = Object.fromEntries(CFG.mt2);
-  T2.keys.forEach(k => { T2.P[k].innerHTML = `<header class="pp-head"><div><h2>${esc(TITLES[k])}</h2></div></header>`; ws.append(T2.P[k]); });
+  // 28/11/2026 (khung chuẩn Điện): đầu sub-tab = số · tiêu đề · mục tiêu, bên phải "Dữ liệu mới nhất" tính từ chuỗi của chính sub-tab.
+  T2.keys.forEach((k, i) => { const as = asofOf(k); T2.P[k].innerHTML = `<header class="pp-head"><div><span class="pp-k">${String(i + 1).padStart(2, '0')}</span><h2>${esc(TITLES[k])}</h2>${GOALS[k] ? `<p>${esc(GOALS[k])}</p>` : ''}</div><span class="pp-asof">${esc(as)}</span></header>`; ws.append(T2.P[k]); });
   (head2 ? head2.after(ws) : p2.prepend(ws));
   // Bảng dự án trọng điểm và timeline cũ (xd-32, xd-73): nội dung đã chuyển vào data/construction/hub.json → bảng dự án chính, mốc sắp tới.
   document.querySelectorAll('[data-block-id="xd-32"], [data-block-id="xd-73"]').forEach(n => n.remove());
   // Nội dung từng tab con (mỗi phần riêng try để một lỗi không làm mất cả trang)
   const run = (name, fn) => { try { fn(); } catch (e) { LOG(name + ':' + e.message); console.error(e); } };
   run('map', () => mapPane(T1.P.map)); run('model', () => modelPane(T1.P.model, p1)); run('forward', () => forwardPane(T1.P.forward));
-  const PANES = {market: marketPane, civil: civilPane, infra: infraPane, public: publicPane, projects: projectsPane, bot: botPane, cement: cementPane, stone: stonePane, asphalt: asphaltPane, glass: glassPane, policy: policyPane};
+  const PANES = {market: marketPane, industry: industryPane, civil: civilPane, infra: infraPane, public: publicPane, projects: projectsPane, bot: botPane, cement: cementPane, stone: stonePane, asphalt: asphaltPane, glass: glassPane, policy: policyPane};
   T2.keys.forEach(k => run(k, () => PANES[k](T2.P[k])));
   run('companies', () => companiesPane(T14.P.companies));
   // Số mục theo vị trí tab con của trang này (2.1, 2.2 …).
@@ -646,9 +798,10 @@ function build() {
   // Khối không thuộc trang này (thuộc hai dashboard còn lại) gỡ khỏi trang.
   $$('#pane-mt2 > .fsv-heat').forEach(n => n.remove());
   run('model', () => setModel(new URL(location.href).searchParams.get('m') || MODEL));
-  // Danh mục nguồn và lịch cập nhật (tab Nguồn dữ liệu cũ #mt8): mục thu gọn cuối Bức tranh ngành.
+  // Danh mục nguồn và lịch cập nhật (tab Nguồn dữ liệu cũ #mt8): 28/11/2026 theo trang Điện (bỏ tab Nguồn, nguồn ghi dưới từng chart)
+  // → giữ trong mục ẩn details.of-rest (không xóa khỏi trang, vẫn tra được), không còn là thẻ trôi dưới các sub-tab.
   const p8 = document.getElementById('pane-mt8');
-  const src = el('details', 'xd-src-fold'); src.id = 'xd-sources'; src.innerHTML = '<summary>Danh mục nguồn và lịch cập nhật</summary>';
+  const src = el('details', 'xd-src-fold of-rest'); src.id = 'xd-sources'; src.hidden = true; src.innerHTML = '<summary>Danh mục nguồn và lịch cập nhật</summary>';
   if (p8) { $$('.pane-subpane', p8).forEach(sp => { const t = document.getElementById(sp.getAttribute('aria-labelledby') || '')?.textContent; if (t) src.append(el('h4', '', esc(t))); [...sp.children].forEach(n => src.append(n)); }); $$('.card,[data-block-id]', p8).forEach(n => src.append(n)); }
   else { const x90 = block('xd-90'); if (x90) src.append(x90); }
   p2.append(src);

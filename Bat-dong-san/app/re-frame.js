@@ -1,319 +1,520 @@
-/* BĐS dân cư · khung 5 tab theo flow ngành Dầu khí / Điện (26/11/2026). Chép phần dựng tab từ Dau-khi/app/oil-frame.js.
-   Tab lớn: Tổng quan ngành (00 Bản đồ ngành · 01 Mô hình kinh doanh · 02 Vị trí chu kỳ)
-          · Bức tranh ngành (01 Vĩ mô & FDI · 02 Nguồn cung · 03 Giao dịch & tồn kho · 04 Giá nhà & chi phí · 05 Tín dụng & trái phiếu · 06 Hạ tầng)
-          · Chính sách (01 Luật mới 2026 · 02 Đất đai & bảng giá đất · 03 Nhà ở & NOXH · 04 Tín dụng & trái phiếu · 05 Văn bản & dự án theo dõi)
-          · Tài chính ngành (#mt14, app/re-finance.js) · Chủ đề nóng.
-   Card cũ được DỜI theo data-block-id, không nhân bản, không xóa. Deep-link: Bat-dong-san/?sub=<khóa>#mt2.
-   Link cũ: #mt3 → Bức tranh › 04, #mt10 → Bức tranh › 05, #mt12 → Bức tranh › 06, #mt11 → Chính sách › 05, #mt6/#mt8 → Tổng quan. */
+/* BĐS dân cư · khung chuẩn Điện, 4 tab (28/11/2026, DASHBOARD_WORKFLOW.md §42; thay khung 5 tab of-nav ngày 26/11/2026).
+   Tab lớn: Tổng quan ngành (#mt1, .ov-nav: 00 Bản đồ ngành · 01 Mô hình kinh doanh · 02 Triển vọng)
+          · Bức tranh ngành (#mt2, .pp-nav: 01 Toàn thị trường · 02 Đất, vốn & chi phí · 03 Nguồn cung & mở bán · 04 Giao dịch, giá & tồn kho
+            · 05 Chính sách — thanh con .pp-subnav 7 văn bản, giữ id #of-mt4-<khóa> cho app/re-legal.js, app/re-policy.js)
+          · Tài chính ngành (#mt14, .pp-nav: 01 Tài chính ngành = app/re-finance.js · 02 Doanh nghiệp niêm yết · 03 Định giá = app/peer-valuation.js)
+          · Chủ đề nóng (#mt7: khối tin app/re-news.js như Điện, 28/11/2026; thẻ chủ đề cũ ẩn trong details.of-rest).
+   Bức tranh ngành theo luồng ngành: Toàn thị trường → Đầu vào (đất, vốn, chi phí) → Sản xuất (nguồn cung, mở bán) → Đầu ra (giao dịch, giá, tồn kho).
+   Mỗi sub-tab: pp-head + ngày dữ liệu mới nhất (tính từ REALESTATE_PUBLIC, RE_MARKET_HISTORY), ô số, thanh luồng, câu hỏi đánh số
+   (pp-main → pp-sup1 → pp-more). Thẻ cũ được DỜI theo data-block-id, không nhân bản, không xóa; thẻ không dùng nằm trong details.of-rest ẩn.
+   Deep-link: ?sub=<khóa>#mtN (Chính sách: ?sub=policy&pol=<văn bản>#mt2). Link cũ: #mt3 → 04 › Giá, #mt10 → 02 › Vốn, #mt12 → 02 › Đất,
+   #mt4 (?sub=<văn bản>) → 05 Chính sách, #mt11 → 05 › Mới duyệt, #mt5/#mt6 → Tổng quan, #mt8 → Tổng quan › Nguồn dữ liệu,
+   ?sub=listed#mt1 → Tài chính › 02; khóa sub-tab cũ macro, demand, price, capital, infra, total, compare tự chuyển. */
 (() => {
 'use strict';
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 if (!$('[data-block-id="bds-01"]') || !$('[data-block-id="bds-28"]')) return;  // chỉ trang BĐS dân cư
 const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 const block = id => $(`[data-block-id="${id}"]`);
-const byCanvas = id => $('#' + id)?.closest('.card,.viz-block');
-
+const fin = v => typeof v === 'number' && Number.isFinite(v);
+const nf = (v, d = 0) => fin(v) ? v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d}) : '—';
+const sg = (v, d = 1) => fin(v) ? (v > 0 ? '+' : v < 0 ? '−' : '') + nf(Math.abs(v), d) : '—';
 const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
 const HIDE = ['bds-51'];
-const HIDE_SEL = ['.business-models'];  // 26/11/2026: người dùng bỏ thẻ tính trả góp mua nhà 3 tỷ
-const TREE = {
-  mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành BĐS dân cư', intro: 'Chuỗi giá trị → mô hình kinh doanh → doanh nghiệp niêm yết → vị trí chu kỳ.', subs: [
-    {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Quỹ đất → pháp lý → vốn → xây dựng → bán hàng → bàn giao, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap', '.value-chain-card'], ids: ['bds-01']},
-    {k: 'model', n: '01', t: 'Mô hình kinh doanh', d: 'Doanh nghiệp kiếm tiền từ đâu, người mua trả tiền thế nào.', ids: [], rest: true},  // 26/11/2026: bỏ thẻ mô tả cũ .business-models (lặp Bản đồ ngành)
-    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh từng mã: quỹ đất, phân khúc, doanh thu đến từ đâu, biến quyết định.', ids: ['bds-03']},
-    {k: 'cycle', n: '03', t: 'Vị trí chu kỳ', d: 'Giá, thanh khoản và vốn đang ở đâu trong chu kỳ.', ids: ['bds-02']},
-  ]},
-  mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo chuỗi: vĩ mô & vốn ngoại → nguồn cung → giao dịch → giá → vốn vay → hạ tầng.', subs: [
-    {k: 'macro', n: '01', t: 'Vĩ mô & FDI', d: 'GDP ngành, vốn FDI vào BĐS và CPI nhà ở.', ids: ['bds-04', 'bds-05', 'bds-05c', 'bds-05d', 'bds-05b', 'bds-06']},
-    {k: 'supply', n: '02', t: 'Nguồn cung', d: 'Căn hộ mở bán mới theo thành phố, khu vực, mức giá; tỉnh lớn.', ids: ['bds-08b', 'bds-08', 'bds-08c', 'bds-08e', 'bds-08d']},
-    {k: 'demand', n: '03', t: 'Giao dịch & tồn kho', d: 'Giao dịch thành công và tồn kho chủ đầu tư theo quý.', ids: ['bds-07', 'bds-07b'],
-      gap: 'Chưa có chuỗi tỷ lệ hấp thụ theo quý cùng định nghĩa cho cả Hà Nội và TP.HCM.'},
-    {k: 'price', n: '04', t: 'Giá nhà & chi phí', d: 'Giá sơ cấp Hà Nội, TP.HCM; giá thép, xi măng.', ids: ['bds-13', 'bds-13b', 'bds-52', 'bds-14', 'bds-15']},
-    {k: 'capital', n: '05', t: 'Tín dụng & trái phiếu', d: 'Lãi suất, tín dụng BĐS, phát hành – đáo hạn – chậm trả trái phiếu.', ids: ['bds-16', 'bds-36', 'bds-33', 'bds-34', 'bds-35', 'bds-28', 'bds-29', 'bds-30', 'bds-31', 'bds-32'],
-      gap: 'Chưa có chuỗi tín dụng kinh doanh BĐS theo tháng (NHNN chỉ công bố theo đợt).'},
-    {k: 'infra', n: '06', t: 'Hạ tầng', d: 'Cao tốc và dự án hạ tầng trọng điểm mở quỹ đất mới.', ids: ['bds-48', 'bds-50']},
-  ]},
-  // 27/11/2026 (người dùng chốt flow "ngành nhiều luật"): mỗi sub-tab là một văn bản lớn; tóm tắt 3–5 dòng ở đầu do app/re-legal.js thêm;
-  // bảng bds-20 (gộp nhiều văn bản) được re-legal.js tách dòng sang sub-tab 02, 03, 04. Sub-tab cuối: văn bản mới duyệt.
-  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Mỗi sub-tab là một văn bản pháp lý lớn: tóm tắt, quy định trước và sau, tác động lên doanh nghiệp.', subs: [
-    {k: 'land', n: '01', t: 'Luật Đất đai 2024', d: 'Bảng giá đất hằng năm, thu hồi đất, tiền sử dụng đất.', ids: ['bds-19', 'bds-38']},
-    {k: 'housing', n: '02', t: 'Luật Nhà ở & NOXH', d: 'Luật Nhà ở 2023, cơ chế nhà ở xã hội, Quỹ nhà ở quốc gia.', ids: []},
-    {k: 'kdbds', n: '03', t: 'Luật Kinh doanh BĐS', d: 'Đặt cọc, công khai thông tin dự án, sàn và môi giới.', ids: []},
-    {k: 'nq171', n: '04', t: 'NQ 171 thí điểm', d: 'Nhà ở thương mại trên đất không phải đất ở.', ids: []},
-    {k: 'law', n: '05', t: 'Luật sửa đổi 2026', d: 'Bộ ba luật thông qua 21/11/2026: đổi gì trong vòng đời dự án, tác động theo doanh nghiệp, lộ trình.', ids: ['bds-44', 'bds-60', 'bds-57', 'bds-58', 'bds-59'], rest: true},
-    {k: 'credit', n: '06', t: 'Tín dụng & trái phiếu', d: 'Room tín dụng BĐS, gói NOXH, trái phiếu doanh nghiệp.', ids: ['bds-21']},
-    {k: 'docs', n: '07', t: 'Mới duyệt gần đây', d: 'Văn bản mới thông qua, mới hiệu lực; danh sách đầy đủ và dự án theo dõi.', ids: ['bds-37', 'bds-39', 'bds-20']},
-  ]},
-};
-const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
-const ALIAS = {mt3: 'mt2:price', mt10: 'mt2:capital', mt12: 'mt2:infra', mt11: 'mt4:docs', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1'};
+const HIDE_SEL = ['.business-models'];  // 26/11/2026: người dùng bỏ thẻ tính trả góp mua nhà 3 tỷ và thẻ mô tả mô hình cũ
 
+/* ---------- Cây tab ---------- */
+// Tổng quan ngành: thanh .ov-nav đánh số từ 00 (như Điện). Doanh nghiệp niêm yết (bds-03) sang Tài chính ngành › 02.
+const OV = [
+  {k: 'map', t: 'Bản đồ ngành', s: 'Chuỗi giá trị, khung pháp lý', d: 'Quỹ đất → pháp lý → vốn → xây dựng → bán hàng → bàn giao, mỗi khâu gắn mã niêm yết và văn bản pháp lý.', sel: ['.research-roadmap', '.value-chain-card'], ids: ['bds-01']},
+  {k: 'model', t: 'Mô hình kinh doanh', s: 'Vòng đời tiền dự án, mô hình từng mã', d: 'Doanh nghiệp kiếm tiền từ đâu, tiền đi qua BCTC thế nào; các mã khác nhau ở quỹ đất và nguồn vốn.', ids: [], rest: true},
+  {k: 'cycle', t: 'Triển vọng', s: 'Vị trí trong chu kỳ', d: 'Giá, thanh khoản và vốn đang ở đâu trong chu kỳ nhà ở.', ids: ['bds-02']},
+];
+// Chính sách (sub-tab cuối của Bức tranh ngành): mỗi văn bản lớn một thẻ con (27/11/2026, người dùng chốt flow "ngành nhiều luật").
+// Tóm tắt đầu mỗi thẻ con do app/re-legal.js thêm; bảng bds-20 được re-legal.js tách dòng sang 02, 03, 04.
+const POL = [
+  {k: 'land', t: 'Luật Đất đai 2024', ids: ['bds-19', 'bds-38']},
+  {k: 'housing', t: 'Luật Nhà ở & NOXH', ids: []},
+  {k: 'kdbds', t: 'Luật Kinh doanh BĐS', ids: []},
+  {k: 'nq171', t: 'NQ 171 thí điểm', ids: []},
+  {k: 'law', t: 'Luật sửa đổi 2026', ids: ['bds-44', 'bds-60', 'bds-57', 'bds-58', 'bds-59'], rest: true},
+  {k: 'credit', t: 'Tín dụng & trái phiếu', ids: ['bds-21']},
+  {k: 'docs', t: 'Mới duyệt gần đây', ids: ['bds-37', 'bds-39', 'bds-20']},
+];
+/* Bức tranh ngành (28/11/2026): 01 Toàn thị trường rồi đi theo chuỗi Đầu vào → Sản xuất → Đầu ra như Điện đi theo loại nguồn.
+   Mục: {grp} tiêu đề nhóm · {stage} tiêu đề khâu (khớp flow) · {link: [href, nơi, tiêu đề, mô tả]} thẻ dẫn (.th-link)
+   · {q, id, main, sup, more, gap} câu hỏi: main = chart trả lời chính, sup = chart phụ, more = xem thêm, gap = hạn chế dữ liệu ghi ngay dưới. */
+const LINK = (href, k, t, s) => ({link: [href, k, t, s]});
+const PICT = [
+  {k: 'market', t: 'Toàn thị trường', d: 'Quy mô ngành trong GDP, vốn ngoại vào BĐS và nhịp tăng giảm của các chỉ báo chính.', kpis: ['spk-gdp', 'spk-fdi', 'spk-pb'], items: [
+    {grp: 'Quy mô ngành'},
+    {q: 'Kinh doanh BĐS đóng góp vào GDP đang tăng hay chậm lại?', id: 're-q-gdp', main: ['bds-04']},
+    {grp: 'Vốn ngoại'},
+    {q: 'Vốn FDI đăng ký vào BĐS tăng hay giảm so với cùng kỳ?', id: 're-q-fdi', main: ['bds-05'], sup: ['bds-05c'], more: ['bds-05d']},
+    {q: 'Dự án FDI lớn nào đang vào BĐS?', id: 're-q-fdi-proj', main: ['bds-05b']},
+    {grp: 'Nhịp chỉ báo'},
+    {q: 'Chỉ báo nào đang tăng, chỉ báo nào giảm so với cùng kỳ?', id: 're-q-heat', main: ['.fsv-heat']},
+    {grp: 'Cung – cầu cả nước'},
+    LINK('#re-q-tx', 'Giao dịch, giá & tồn kho › 4.1', 'Giao dịch thành công và tồn kho cả nước', 'Số Bộ Xây dựng theo quý: giao dịch căn hộ, nhà riêng lẻ, đất nền; tồn kho chủ đầu tư'),
+    LINK('#re-q-launch', 'Nguồn cung & mở bán › 3.1', 'Căn hộ mở bán mới ở Hà Nội, TP.HCM', 'Số căn mở bán theo quý (CBRE), so sánh các nguồn'),
+  ]},
+  {k: 'input', t: 'Đất, vốn & chi phí', d: 'Đầu vào của một dự án: hạ tầng mở quỹ đất, chi phí và nguồn vốn vay, giá vật liệu xây dựng.', kpis: ['spk-refi', 'spk-maturity', 'spk-late', 'spk-steel'],
+    flow: [['land', 'Đất', 'Hạ tầng mở quỹ đất, bảng giá đất'], ['capital', 'Vốn', 'Lãi suất, tín dụng, trái phiếu'], ['cost', 'Chi phí xây dựng', 'Giá thép, xi măng']], items: [
+    {stage: 'land'},
+    {q: 'Cao tốc hoàn thành có theo kịp kế hoạch?', id: 're-q-road', main: ['bds-48']},
+    {q: 'Dự án hạ tầng trọng điểm nào đã khai thác, đang làm?', id: 're-q-infra', main: ['bds-50']},
+    LINK('#of-mt4-land', 'Chính sách › Luật Đất đai 2024', 'Bảng giá đất 2026 tại các thị trường lớn', 'Tiền sử dụng đất của dự án tăng theo bảng giá đất hằng năm'),
+    {stage: 'capital'},
+    {q: 'Chi phí vốn của người mua nhà đang ở mức nào?', id: 're-q-rate', main: ['bds-36'], sup: ['bds-16']},
+    {q: 'Tín dụng cho xây dựng, BĐS tăng nhanh hay chậm hơn tín dụng chung?', id: 're-q-credit', main: ['bds-33'], sup: ['bds-34'], more: ['bds-35'],
+      gap: 'Chưa có chuỗi tín dụng kinh doanh BĐS theo tháng (NHNN chỉ công bố theo đợt).'},
+    {q: 'Phát hành trái phiếu BĐS đã hồi lại chưa?', id: 're-q-bond', main: ['bds-28'], sup: ['bds-29']},
+    {q: 'Nợ trái phiếu BĐS chậm trả đang giảm hay tăng?', id: 're-q-late', main: ['bds-30']},
+    {q: 'Gốc trái phiếu đến hạn dồn vào tháng nào, doanh nghiệp nào?', id: 're-q-due', main: ['bds-31'], sup: ['bds-32']},
+    {stage: 'cost'},
+    {q: 'Giá thép, xi măng xây dựng đang tăng hay giảm?', id: 're-q-cost', main: ['bds-14'], sup: ['bds-15']},
+  ]},
+  {k: 'supply', t: 'Nguồn cung & mở bán', d: 'Căn hộ mở bán mới ở Hà Nội, TP.HCM theo quý, cơ cấu khu vực và mức giá, thị trường tỉnh lớn.', kpis: ['spk-hn-launch', 'spk-hn-abs', 'spk-hcm-launch'],
+    flow: [['city', 'Hà Nội, TP.HCM', 'Căn hộ mở bán mới theo quý'], ['mix', 'Cơ cấu', 'Theo khu vực và mức giá'], ['prov', 'Tỉnh lớn', 'Thị trường ngoài hai đô thị']], items: [
+    {stage: 'city'},
+    {q: 'Căn hộ mở bán mới ở Hà Nội, TP.HCM đang tăng hay giảm?', id: 're-q-launch', main: ['bds-08b'], sup: ['bds-08']},
+    {stage: 'mix'},
+    {q: 'Nguồn cung mới dồn vào mức giá, khu vực nào?', id: 're-q-mix', main: ['bds-08e'], sup: ['bds-08c']},
+    {stage: 'prov'},
+    {q: 'Thị trường tỉnh lớn ngoài Hà Nội, TP.HCM mở bán ra sao?', id: 're-q-prov', main: ['bds-08d']},
+  ]},
+  {k: 'output', t: 'Giao dịch, giá & tồn kho', d: 'Đầu ra của thị trường: giao dịch thành công, tồn kho chủ đầu tư, giá sơ cấp so với CPI nhà ở.', kpis: ['spk-tx', 'spk-inv', 'spk-hn-price', 'spk-cpi'],
+    flow: [['tx', 'Giao dịch', 'Giao dịch thành công cả nước'], ['inv', 'Tồn kho', 'Tồn kho chủ đầu tư'], ['px', 'Giá', 'Giá sơ cấp và CPI nhà ở']], items: [
+    {stage: 'tx'},
+    {q: 'Giao dịch nhà ở, đất nền cả nước đang tăng hay giảm?', id: 're-q-tx', main: ['bds-07']},
+    {stage: 'inv'},
+    {q: 'Tồn kho chủ đầu tư đang tăng hay giảm?', id: 're-q-inv', main: ['bds-07b'],
+      gap: 'Chưa có chuỗi tỷ lệ hấp thụ theo quý cùng định nghĩa cho cả Hà Nội và TP.HCM.'},
+    {stage: 'px'},
+    {q: 'Giá căn hộ sơ cấp Hà Nội, TP.HCM còn tăng không?', id: 're-q-price', main: ['bds-13'], more: ['bds-13b']},
+    {q: 'Giá nhà tăng nhanh hay chậm hơn CPI nhà ở?', id: 're-q-real', main: ['bds-52'], sup: ['bds-06']},
+  ]},
+  {k: 'policy', t: 'Chính sách', d: 'Mỗi văn bản pháp lý lớn một mục: tóm tắt, quy định trước và sau, tác động lên doanh nghiệp.', pol: true},
+];
+const FIN = [['sector', 'Tài chính ngành', 'Chỉ số cộng gộp từ BCTC hợp nhất quý theo nhóm mô hình kinh doanh (tổng tử số ÷ tổng mẫu số).'],
+  ['listed', 'Doanh nghiệp niêm yết', 'Từng mã: mô hình và biến quyết định, xu hướng tài chính theo quý, kế hoạch – kết quả, P/B rổ mã.'],
+  ['valuation', 'Định giá', 'P/B, P/E so với ROE và lợi suất lợi nhuận giữa các mã, số theo phiên.']];
+const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
+// Link cũ: tab → [tab mới, sub-tab, đích cuộn]. #mt4 giữ ?sub=<văn bản> cũ làm thẻ con Chính sách.
+const ALIAS = {mt3: ['mt2', 'output', 're-st-output-px'], mt10: ['mt2', 'input', 're-st-input-capital'], mt12: ['mt2', 'input', 're-st-input-land'],
+  mt4: ['mt2', 'policy'], mt11: ['mt2', 'policy', null, 'docs'], mt5: ['mt1'], mt6: ['mt1'], mt8: ['mt1', 'map', 're-sources'], mt9: ['mt14', 'sector'], mt13: ['mt1']};
+// Khóa sub-tab cũ → [tab, sub-tab mới, đích cuộn, thẻ con Chính sách].
+const SUBALIAS = {
+  mt1: {listed: ['mt14', 'listed']},
+  mt2: {macro: ['mt2', 'market'], demand: ['mt2', 'output', 're-st-output-tx'], price: ['mt2', 'output', 're-st-output-px'], capital: ['mt2', 'input', 're-st-input-capital'], infra: ['mt2', 'input', 're-st-input-land'],
+    ...Object.fromEntries(POL.map(p => [p.k, ['mt2', 'policy', null, p.k]]))},
+  mt14: {total: ['mt14', 'sector'], compare: ['mt14', 'listed']},
+};
+
+/* ---------- Số liệu cho ô số và ngày dữ liệu (chỉ đọc chuỗi đã vẽ trên trang) ---------- */
+const PUB = window.REALESTATE_PUBLIC?.blocks || {}, MH = window.RE_MARKET_HISTORY || {};
+const SER = k => PUB.macro?.series?.[k] || PUB.commodity?.series?.[k] || null;
+const recs = k => (SER(k)?.records || []).filter(r => r && fin(r.value));
+const dmy = d => `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(0, 4)}`, my = d => `${d.slice(5, 7)}/${d.slice(0, 4)}`;
+const qOf = s => { const m = /Q(\d)\s*\/\s*(\d{4})/.exec(s || ''); return m ? {key: `${m[2]}-${String(m[1] * 3).padStart(2, '0')}-01`, label: `Q${m[1]}/${m[2]}`} : null; };
+// Điểm cuối của một chuỗi: khóa so sánh (yyyy-mm-dd) + nhãn theo đúng tần suất (ngày / tháng / quý).
+function lastPt(k) {
+  const s = SER(k), r = recs(k).at(-1); if (!s || !r) return null;
+  if (s.latest_observation) return {key: s.latest_observation, label: dmy(s.latest_observation)};
+  if (s.time_type === 'quarterly') return r.period ? qOf(r.period.replace(/(\d{4})-Q(\d)/, 'Q$2/$1')) : qOf(`Q${Math.ceil(+r.date.slice(5, 7) / 3)}/${r.date.slice(0, 4)}`);
+  if (s.time_type === 'monthly') return {key: r.date.slice(0, 7) + '-01', label: my(r.date)};
+  return {key: r.date, label: dmy(r.date)};
+}
+const lastQ = (rows, f) => (rows || []).filter(f).map(r => qOf(r.quarter)).filter(Boolean).sort((a, b) => a.key.localeCompare(b.key)).at(-1) || null;
+const pbRecs = () => PUB.sector_ratio?.by_sector?.['160']?.records || [];
+const monthRec = (rows, f) => { const r = (rows || []).filter(f).at(-1); return r ? {key: r.date.slice(0, 7) + '-01', label: my(r.date)} : null; };
+const ASOF = {
+  market: () => [['GDP kinh doanh BĐS', lastPt('gdp_re_q')], ['FDI đăng ký vào BĐS', lastPt('fdi_re_ytd')], ['P/B rổ BĐS dân cư', (r => r ? {key: r[0], label: dmy(r[0])} : null)(pbRecs().at(-1))],
+    ['Dự án FDI lớn', (r => r?.month ? {key: `${r.year}-${String(r.month).padStart(2, '0')}-01`, label: `${String(r.month).padStart(2, '0')}/${r.year}`} : null)((MH.fdi_projects || []).filter(x => x.month).sort((a, b) => a.year - b.year || a.month - b.month).at(-1))]],
+  input: () => [['Lãi suất tái cấp vốn', lastPt('refi_rate')], ['Tín dụng xây dựng', lastPt('credit_construction')], ['Phát hành trái phiếu BĐS', monthRec(PUB.cbond_issuance?.records, r => fin(r.value))],
+    ['Trái phiếu chậm trả (HNX)', (r => r ? (r.as_of_date ? {key: r.as_of_date, label: dmy(r.as_of_date)} : {key: r.date, label: my(r.date)}) : null)((PUB.cbond_cashflow?.records || []).filter(r => fin(r.late_payment_debt)).at(-1))],
+    ['Giá thép CB300', lastPt('steel_price')], ['Giá xi măng PCB40', lastPt('cement_price')]],
+  supply: () => [['Mở bán Hà Nội (CBRE)', lastQ(MH.hn_series, r => r.new_supply != null)], ['Mở bán TP.HCM (CBRE)', lastQ(MH.hcm_series, r => r.new_supply != null)],
+    ['Cơ cấu nguồn cung', lastQ(MH.supply_detail, () => true)], ['Tỉnh lớn', lastQ(MH.provinces, () => true)]],
+  output: () => [['Giao dịch, tồn kho (Bộ Xây dựng)', lastQ(MH.moc_quarterly, r => r.transactions_total != null)], ['Giá sơ cấp (CBRE)', lastQ([...(MH.hn_series || []), ...(MH.hcm_series || [])], r => r.price != null)],
+    ['CPI nhà ở & VLXD', lastPt('cpi_housing_yoy')]],
+};
+function asOf(key) {
+  const xs = (ASOF[key]?.() || []).filter(x => x[1]); if (!xs.length) return null;
+  const top = xs.reduce((a, b) => b[1].key > a[1].key ? b : a);
+  return {label: top[1].label, title: xs.map(([n, p]) => `${n}: ${p.label}`).join(' · ')};
+}
+
+// Ô số mới (28/11/2026) cho sub-tab chưa có ô: số lấy từ cùng chuỗi các chart trong sub-tab vẽ, kỳ và nguồn ghi trên ô.
+function newTiles() {
+  const out = {};
+  const tile = (id, label, value, unit, delta, sub, spark, color) => {
+    const k = el('div', 'kpi re-kpi', `<div class="label">${esc(label)}</div><div class="value">${esc(value)}${unit ? `<span class="unit" style="font-size:12px;font-weight:600;color:var(--muted,#6b7a90);margin-left:6px;letter-spacing:0">${esc(unit)}</span>` : ''}</div><div class="delta">${esc(delta || '')}</div><div class="sub">${esc(sub)}</div><div id="${id}"></div>`);
+    k.dataset.reSpark = JSON.stringify((spark || []).filter(fin)); k.dataset.reColor = color || '#2938A8'; out[id] = k;
+  };
+  const yAgo = (rs, d) => rs.find(r => r.date.slice(0, 7) === String(+d.slice(0, 4) - 1) + d.slice(4, 7));
+  { const rs = recs('gdp_re_q'), r = rs.at(-1), p = r && yAgo(rs, r.date), q = r && qOf(`Q${Math.ceil(+r.date.slice(5, 7) / 3)}/${r.date.slice(0, 4)}`);
+    if (r) tile('spk-gdp', `GDP kinh doanh BĐS · ${q.label}`, nf(r.value / 1000, 1), 'nghìn tỷ VND', p ? `${sg((r.value / p.value - 1) * 100)}% so cùng kỳ (giá hiện hành)` : '', 'NSO · theo quý', rs.slice(-8).map(x => x.value), '#2938A8'); }
+  { const rs = recs('steel_price'), r = rs.at(-1), p = r && yAgo(rs, r.date), s = SER('steel_price');
+    if (r) tile('spk-steel', `Thép CB300 Hòa Phát · ${dmy(s.latest_observation || r.date)}`, nf(r.value, 2), 'nghìn đ/kg', p ? `${sg((r.value / p.value - 1) * 100)}% so cùng kỳ` : '', 'WiData · chưa VAT', rs.slice(-12).map(x => x.value), '#c29100'); }
+  const by = (rows, q) => (rows || []).find(r => r.quarter === q) || {};
+  const prevQ = (q, n) => { const [a, y] = [+q.slice(1, 2), +q.slice(-4)], i = y * 4 + a - 1 - n; return `Q${i % 4 + 1}/${Math.floor(i / 4)}`; };
+  const hn = MH.hn_series || [], hcm = MH.hcm_series || [], moc = MH.moc_quarterly || [];
+  { const r = hn.filter(x => x.new_supply != null).at(-1);
+    if (r) { const p = by(hn, prevQ(r.quarter, 4)).new_supply; tile('spk-hn-launch', `Căn hộ mở bán mới Hà Nội · ${r.quarter}`, nf(r.new_supply), 'căn', fin(p) ? `${sg((r.new_supply / p - 1) * 100)}% so cùng kỳ (${prevQ(r.quarter, 4)}: ${nf(p)} căn)` : '', 'CBRE', hn.slice(-8).map(x => x.new_supply), '#2938A8'); } }
+  { const r = hn.filter(x => x.absorption_pct != null).at(-1);
+    if (r) { const p = by(hn, prevQ(r.quarter, 1)).absorption_pct; tile('spk-hn-abs', `Tỷ lệ hấp thụ căn hộ Hà Nội · ${r.quarter}`, nf(r.absorption_pct), '%', fin(p) ? `${prevQ(r.quarter, 1)}: ${nf(p)}%` : '', 'CBRE · cách tính lúc theo dự án mới, lúc toàn thị trường', hn.slice(-8).map(x => x.absorption_pct), '#59C5C8'); } }
+  { const r = hcm.filter(x => x.new_supply != null).at(-1), nx = r && hcm.filter(x => qOf(x.quarter)?.key > qOf(r.quarter).key && x.new_supply == null).at(-1);
+    if (r) { const p = by(hcm, prevQ(r.quarter, 1)).new_supply; tile('spk-hcm-launch', `Căn hộ mở bán mới TP.HCM · ${r.quarter}`, nf(r.new_supply), 'căn', fin(p) ? `${prevQ(r.quarter, 1)}: ${nf(p)} căn` : '', `CBRE · TP.HCM sau sáp nhập từ Q1/2026${nx ? ` · ${nx.quarter} chưa công bố` : ''}`, hcm.slice(-8).map(x => x.new_supply), '#59C5C8'); } }
+  { const r = moc.filter(x => x.transactions_total != null).at(-1);
+    if (r) { const p = by(moc, prevQ(r.quarter, 4)).transactions_total; tile('spk-tx', `Giao dịch thành công cả nước · ${r.quarter}`, nf(r.transactions_total / 1000, 1), 'nghìn giao dịch', fin(p) ? `${sg((r.transactions_total / p - 1) * 100)}% so cùng kỳ` : '', `Bộ Xây dựng${r.release_date ? ' · công bố ' + dmy(r.release_date) : ''}`, moc.slice(-8).map(x => x.transactions_total), '#2938A8'); } }
+  { const r = moc.filter(x => x.inventory_total != null).at(-1);
+    if (r) { const p = by(moc, prevQ(r.quarter, 1)).inventory_total; tile('spk-inv', `Tồn kho chủ đầu tư · ${r.quarter}`, nf(r.inventory_total), 'sản phẩm', fin(p) ? `${sg((r.inventory_total / p - 1) * 100)}% so quý trước` : '', `Bộ Xây dựng${r.provinces_reporting ? ` · ${r.provinces_reporting} tỉnh báo cáo` : ''} · số tỉnh đổi theo quý`, moc.slice(-8).map(x => x.inventory_total), '#861C52'); } }
+  { const r = hn.filter(x => x.price != null && /VND/.test(x.price_unit || '')).at(-1);
+    if (r) { const p1 = by(hn, prevQ(r.quarter, 1)).price, p4 = by(hn, prevQ(r.quarter, 4)).price; tile('spk-hn-price', `Giá căn hộ sơ cấp Hà Nội · ${r.quarter}`, nf(r.price), 'triệu đ/m²', [fin(p1) && `${prevQ(r.quarter, 1)}: ${nf(p1)}`, fin(p4) && `${prevQ(r.quarter, 4)}: ${nf(p4)}`].filter(Boolean).join(' · '), 'CBRE · chưa VAT, phí bảo trì', hn.filter(x => /VND/.test(x.price_unit || '')).slice(-8).map(x => x.price), '#2938A8'); } }
+  return out;
+}
+const sparkNew = () => $$('.re-kpi').forEach(k => { const sp = k.querySelector('[id^="spk-"]'), v = JSON.parse(k.dataset.reSpark || '[]'); if (sp && v.length > 1 && typeof window.sparkline === 'function' && !sp.children.length) try { window.sparkline(sp.id, v, k.dataset.reColor); } catch (e) { /* ô vẫn có số */ } });
+
+/* ---------- Giao diện riêng của engine (thanh, khung câu hỏi lấy từ app/sector-frame.css) ---------- */
 function style() {
   const st = el('style'); st.id = 're-frame-style';
   st.textContent = `.of-lead{margin:6px 0 4px;font-size:14px;line-height:1.6;color:#3B4256}.of-lead b{color:#1F2A5C}.of-lead b.neg{color:#B3303F}.of-lead b.pos{color:#17784A}
-.dv-row.dv-total{border-bottom:2px solid #DCE1EE}.dv-row.dv-total .dv-l b{font-weight:800}.dv-row.dv-total .dv-bar{opacity:1}
-.dv{margin:10px 0 4px}.dv-axis{display:grid;grid-template-columns:260px 1fr;margin-bottom:4px}.dv-axis{position:relative}.dv-axis span{font:600 11.5px Inter,sans-serif;color:#9AA1BC}
-.dv-axis{display:flex;justify-content:space-between;padding-left:276px}.dv-g{margin:12px 0 4px;font:700 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#2938A8}
-.dv-row{display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px;align-items:center;min-height:44px;border-bottom:1px solid #F0F2F8}
-.dv-l b{display:block;font:600 14px/1.3 Inter,sans-serif;color:#1F2A5C}.dv-l small{font-size:12px;color:#6B7392}
-.dv-track{position:relative;height:28px}.dv-zero{position:absolute;left:50%;top:-8px;bottom:-8px;border-left:1.5px solid #C9CEE0}
-.dv-bar{position:absolute;top:6px;height:16px;border-radius:4px}.dv-bar.neg{background:#E5484D;opacity:.8;border-radius:4px 0 0 4px}.dv-bar.pos{background:#2BB673;opacity:.85;border-radius:0 4px 4px 0}
-.dv-v{position:absolute;top:4px;font:700 13.5px Inter,sans-serif;font-style:normal}.dv-v.neg{color:#B3303F}.dv-v.pos{color:#17784A}
-.dv-note{margin:12px 0 0;font-size:12.5px;color:#6B7392}
-@media (max-width:900px){.dv-row{grid-template-columns:1fr}.dv-axis{padding-left:0}}
-.of-ops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:12px 0 4px}
-.of-ops-i{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid #E6E9F2;border-radius:12px;background:#FAFBFE}
-.of-ops-i span{font:600 12.5px Inter,sans-serif;color:#6B7392}.of-ops-i b{font:700 26px/1.15 Inter,sans-serif;color:#1F2A5C}.of-ops-i b small{font:600 13px Inter,sans-serif;color:#6B7392;margin-left:4px}.of-ops-i em{font-style:normal;font-size:12px;color:#6B7392}
-.tx2{margin:10px 0 6px;font-size:13px}.tx2-head,.tx2-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;align-items:center}
-.tx2-head{height:40px}.tx2-axis{position:relative;height:100%;border-bottom:1px solid #DCE1EE}.tx2-axis span{position:absolute;bottom:6px;transform:translateX(-50%);font:600 12px Inter,sans-serif;color:#7A84A6}
-.tx2-row{min-height:64px;border-bottom:1px solid #F0F2F8}.tx2-lane{position:relative;height:64px}
-.tx2-bar{position:absolute;top:8px;bottom:8px;display:flex;flex-direction:column;justify-content:center;padding:0 10px;border-radius:9px;overflow:hidden;white-space:nowrap;background:#E8ECFB;border-left:4px solid #2938A8}
-.tx2-bar b{font:700 13px Inter,sans-serif;color:#1F2A5C;overflow:hidden;text-overflow:ellipsis}.tx2-bar small{font-size:11.5px;color:#5A6385;overflow:hidden;text-overflow:ellipsis}.tx2-bar small a{color:#2938A8}
-.tx2-bar.e10{background:#E7F7EF;border-left-color:#2BB673;right:0;width:auto!important}
-.of-group{grid-column:1/-1;margin:18px 0 -4px;padding-top:14px;border-top:1px solid #E6E9F2}
-.of-group h3{margin:0;font:700 20px/1.3 Inter,system-ui,sans-serif;color:#1F2A5C}.of-group p{margin:4px 0 0;font-size:13.5px;color:#6B7392}
-.of-body>.kpis+.of-group{border-top:0;padding-top:0}
 /* Thang chữ thống nhất (theo Dầu khí) (26/11/2026): tiêu đề thẻ 16 · chữ thường 14 · chú thích 12.5; ba màu chữ */
 body[data-re-frame] .majorpane{--of-t1:#1F2A5C;--of-t2:#3B4256;--of-t3:#6B7392}
-body[data-re-frame] .majorpane :is(.chart-title,.card>h3,.card>h4,.card .research-detail>h3,.research-fold>summary,.business-model h3,.opec-drivers h3,.sectionhead h2.sec,.of-section h2){font:700 16px/1.35 Inter,system-ui,sans-serif!important;color:var(--of-t1)!important;letter-spacing:-.005em}
+body[data-re-frame] .majorpane :is(.chart-title,.card>h3,.card>h4,.card .research-detail>h3,.research-fold>summary,.business-model h3,.sectionhead h2.sec){font:700 16px/1.35 Inter,system-ui,sans-serif!important;color:var(--of-t1)!important;letter-spacing:-.005em}
 body[data-re-frame] .majorpane :is(.business-models>h2,.research-roadmap>h2,.section>h2,.sectionhead h2){font:700 20px/1.3 Inter,system-ui,sans-serif!important;color:var(--of-t1)!important}
-body[data-re-frame] .majorpane :is(.card p,.card li,.card td,.research-detail p,.business-model p,.tx-mech,.tx-who,.gt-lab b){font-size:14px!important;line-height:1.55!important;color:var(--of-t2)!important}
-body[data-re-frame] .majorpane :is(.card th,.chart-sub,.note,.source-note,.research-caption,.srcrow,.srcrow a,.pw-src,.card small,.gt-lab small,.gt-name small,.tx-k,.ct-period label,.cts-legend button){font-size:12.5px!important;line-height:1.5!important;color:var(--of-t3)!important}
+body[data-re-frame] .majorpane :is(.card p,.card li,.card td,.research-detail p,.business-model p){font-size:14px!important;line-height:1.55!important;color:var(--of-t2)!important}
+body[data-re-frame] .majorpane :is(.card th,.chart-sub,.note,.source-note,.research-caption,.srcrow,.srcrow a,.pw-src,.card small,.ct-period label,.cts-legend button){font-size:12.5px!important;line-height:1.5!important;color:var(--of-t3)!important}
 body[data-re-frame] .majorpane .card th{font-weight:600!important}
-body[data-re-frame] .majorpane :is(.card td b,.card p b,.tx-ch,.gt-name b){color:var(--of-t1)!important}
+body[data-re-frame] .majorpane :is(.card td b,.card p b){color:var(--of-t1)!important}
 body[data-re-frame] .majorpane .card [style*="font-size:12.5px"]{font-size:14px!important;color:var(--of-t2)!important}
+body[data-re-frame] .majorpane .card td b.neg{color:#B3303F!important}body[data-re-frame] .majorpane .card td b.pos{color:#17784A!important}
 body[data-re-frame] .re-cmp-old .company-trend,body[data-re-frame] .re-cmp-old .comparison-heading,body[data-re-frame] #pane-mt14 [data-block-id="bds-53"]{display:none!important}
 body[data-re-frame] .majorpane .comparison-heading h2{color:#fff!important;background:none!important;box-shadow:none!important}
 :root[data-theme=dark] body[data-re-frame] .majorpane{--of-t1:#E8EBFA;--of-t2:#C4C9E2;--of-t3:#9AA1BC}
-.gt{margin:12px 0 8px;font-size:13px}
-.gt-head,.gt-row{display:grid;grid-template-columns:200px minmax(0,1fr) 230px;gap:16px;align-items:center}
-.gt-head{height:46px}.gt-axis{position:relative;height:100%;border-bottom:1px solid #DCE1EE}
-.gt-axis span{position:absolute;bottom:6px;transform:translateX(-50%);font:600 12px Inter,sans-serif;color:#7A84A6}
-.gt-now{position:absolute;top:0;bottom:0;border-left:2px dashed #E5484D;opacity:.7;z-index:0;pointer-events:none}.gt-nowh{position:absolute;top:2px;transform:translateX(-50%);font:700 10.5px Inter,sans-serif;font-style:normal;color:#E5484D;background:#FDECEE;padding:1px 6px;border-radius:6px;white-space:nowrap}
-
-.gt{position:relative;overflow:hidden}
-.gt-tbd{font:600 12px Inter,sans-serif;color:#7A84A6}
-.gt-row{min-height:58px;border-bottom:1px solid #F0F2F8}
-.gt-name b{display:block;font:700 14px/1.3 Inter,sans-serif;color:#1F2A5C}.gt-name small{color:#7A84A6;font-size:12px}
-.gt-lane{position:relative;height:58px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/6 - 1px),#F0F2F8 calc(100%/6 - 1px) calc(100%/6))}
-.gt-pin{position:absolute;top:50%;display:flex;align-items:center;gap:8px;transform:translateY(-50%);z-index:1}
-.gt-pin .gt-dot{transform:translateX(-50%);flex:none}
-.gt-pin.left{flex-direction:row-reverse;transform:translate(calc(-100% + 0px),-50%)}.gt-pin.left .gt-dot{transform:translateX(50%)}.gt-pin.left .gt-lab{text-align:right}
-.gt-pin.tbd{position:static;transform:none}.gt-pin.tbd .gt-lab{white-space:normal}.gt-pin.tbd .gt-dot{transform:none}
-.gt-lab{display:flex;flex-direction:column;white-space:nowrap;line-height:1.3}.gt-lab b{font:600 13px Inter,sans-serif;color:#1F2A5C}.gt-lab small{font-size:11.5px;color:#6B7392}
-.gt-dot{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(31,42,92,.15),0 3px 8px -2px rgba(31,42,92,.35)}
-.gt-dot.on{background:#2BB673}.gt-dot.next{background:#2938A8}.gt-dot.tbd{background:#B4BAD0}
-.gt-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:12px;color:#5A6385}.gt-key span{display:inline-flex;align-items:center;gap:6px}.gt-key .gt-dot{width:10px;height:10px}
-@media (max-width:900px){.gt-head,.gt-row{grid-template-columns:110px minmax(0,1fr) 70px;gap:8px}.gt-lab small{display:none}}
-:root[data-theme=dark] .gt-name b,:root[data-theme=dark] .gt-lab b{color:#E8EBFA}:root[data-theme=dark] .gt-row{border-color:#2A2A2A}
-.tx-flow{display:grid;grid-template-columns:170px minmax(0,1fr);gap:0 26px;align-items:stretch;margin:10px 0 8px}
-.tx-src{position:relative;align-self:center;display:flex;flex-direction:column;gap:4px;padding:18px 16px;border-radius:16px;color:#fff;background:linear-gradient(150deg,#2938A8,#6C5CE7 60%,#59C5C8);box-shadow:0 10px 26px -10px rgba(41,56,168,.55)}
-.tx-src b{font:700 16px/1.25 Inter,sans-serif}.tx-src small{color:#EEF0FF!important;font-size:12px}.tx-src .tx-k{color:#DDE3FF}
-.tx-k{display:block;font:700 10px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#8A93B8;margin-bottom:3px}
-.tx-rows{position:relative;display:grid;gap:10px;padding-left:22px;border-left:2px dashed #C9C3F5}
-.tx-row{position:relative;display:grid;grid-template-columns:150px minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:center;padding:12px 14px;border:1px solid #E6E8F4;border-radius:12px;background:#fff;transition:box-shadow .2s,transform .2s}
-.tx-row:hover{box-shadow:0 6px 18px -8px rgba(41,56,168,.3);transform:translateX(2px)}
-.tx-row::before{content:'';position:absolute;left:-23px;top:50%;width:22px;border-top:2px dashed #C9C3F5}
-.tx-row::after{content:'';position:absolute;left:-28px;top:calc(50% - 4px);width:8px;height:8px;border-radius:50%;background:#A78BFA}
-.tx-ch{font:700 14px/1.3 Inter,sans-serif;color:#1F2A5C}.tx-ch b{font-weight:700}
-.tx-mech{font-size:13px;line-height:1.5;color:#3B4256}.tx-who{font-size:13px;line-height:1.45;color:#1F2A5C}
-.tx-dir{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;line-height:1.45;padding:8px 10px;border-radius:10px}
-.tx-dir i{font-style:normal;font-size:11px;line-height:1.6}
-.tx-row.neg{border-left:4px solid #E5484D}.tx-row.neg .tx-dir{background:#FDECEE;color:#A1252B}
-.tx-row.pos{border-left:4px solid #2BB673}.tx-row.pos .tx-dir{background:#E7F7EF;color:#17784A}
-.tx-row.mix{border-left:4px solid #A78BFA}.tx-row.mix .tx-dir{background:#F1EDFF;color:#5B4FD6}
-@media (max-width:900px){.tx-flow{grid-template-columns:1fr;gap:12px}.tx-row{grid-template-columns:1fr}.tx-rows{padding-left:14px}.tx-row::before{width:14px;left:-15px}.tx-row::after{left:-20px}}
-:root[data-theme=dark] .tx-row{background:var(--card);border-color:var(--line)}:root[data-theme=dark] .tx-ch,:root[data-theme=dark] .tx-who{color:#E8EBFA}:root[data-theme=dark] .tx-mech{color:#B8BEDA}
-.of-nav{position:sticky;top:var(--of-top,76px);z-index:30;display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 20px;padding:10px 0 12px;background:var(--fs-page,#F7F8FC);border-bottom:1px solid #E6E9F2}
-body .of-nav button.of-tab{display:flex;align-items:center;padding:10px 20px;border:1px solid #E2E5EE;border-radius:12px;background:#fff;font:600 15.5px/1.2 Inter,system-ui,sans-serif;color:#3D4566;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
-body .of-nav button.of-tab:hover{border-color:#B9C0DC;color:#1F2677}
-body .of-nav .of-n{display:none}
-body .of-nav b{font-weight:600}
-body .of-nav button.of-tab[aria-selected=true]{background:#1F2677!important;border-color:#1F2677!important;color:#fff!important;box-shadow:0 4px 12px -4px rgba(31,38,119,.45)!important}
-:root[data-theme=dark] .of-nav{background:#0A0A0A;border-color:#2A2A2A}:root[data-theme=dark] body .of-nav button.of-tab{background:#161616;border-color:#2A2A2A;color:#C8CCE0}:root[data-theme=dark] body .of-nav button.of-tab[aria-selected=true]{background:#2938A8!important;color:#fff!important}
-.of-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin:4px 0 12px;padding:10px 0;border-bottom:1px solid var(--line,#e3e7f0)}
-.of-head h2{margin:0;font-size:24px}.of-head .of-k{font:500 13px Inter,sans-serif;color:var(--muted,#7a8399);margin-right:8px}.of-head p{margin:4px 0 0;color:var(--ink2,#3b4256)}
+/* Lưới thẻ trong Tổng quan, Chính sách, Tài chính ngành */
 .of-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}.of-body>*{min-width:0;margin:0!important}
-.of-body>.of-wide,.of-body>.of-gap,.of-body>details,.of-body>.kpis,.of-body>.research-grid,.of-body>table,.of-body>.tablewrap{grid-column:1/-1}
-@media (max-width:900px){.of-body{grid-template-columns:minmax(0,1fr)}}
-.of-body>.of-span{grid-column:1/-1}
-.of-body .ct-switch{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;margin:6px 0 2px!important}
-.of-body .ct-switch .ct-main{margin:0 0 0 auto!important;order:2}.of-body .ct-switch .ct-period{order:1;margin:0!important}
-.of-body .ct-canvas{margin-top:4px}
-.of-body>.card{padding:18px 20px 12px!important}
-.of-body>.card .chart-title{margin-bottom:4px!important}
-.of-body .cts-legend{margin:6px 0 0!important}
+.of-body>.of-wide,.of-body>.of-gap,.of-body>details,.of-body>.kpis,.of-body>.research-grid,.of-body>table,.of-body>.tablewrap,.of-body>.of-span{grid-column:1/-1}
+.of-body .card,.of-body .card *{min-width:0}.of-body>.card{display:flex;flex-direction:column;align-self:stretch;padding:18px 20px 12px!important}
 .of-body .pw-src,.of-body .chart-source,.of-body .source-note,.of-body .srcrow{margin-top:6px!important;padding-top:6px!important}
-.of-body>.card::after{margin-top:2px!important}
-.of-body .card,.of-body .card *{min-width:0}.of-body canvas{max-width:100%!important}
-.of-body>.card{display:flex;flex-direction:column;align-self:stretch}
-.of-body>.card .chart{position:relative;width:100%;height:300px!important;min-height:0!important;flex:none}
+@media (max-width:900px){.of-body{grid-template-columns:minmax(0,1fr)}}
 .of-gap{padding:10px 12px;border:1px dashed var(--line,#d6dbe8);border-radius:10px;color:var(--muted,#6b7280);font-size:13px}
-.of-rest{display:none!important}.of-next{display:inline-flex;align-items:center;gap:6px;margin:24px 0 0;padding:9px 18px;border:1px solid #C9D0EC;border-radius:999px;background:#fff;color:#2938A8;font:600 13.5px Inter,sans-serif;cursor:pointer;box-shadow:0 1px 2px rgba(31,42,92,.06);transition:.2s}.of-next:hover{background:#2938A8;color:#fff;border-color:#2938A8;box-shadow:0 4px 12px rgba(41,56,168,.2)}.of-pane .research-roadmap>h2{display:none}.of-hidden-legacy{display:none!important}`;
+.of-rest{display:none!important}.of-hidden-legacy{display:none!important}.of-pane .research-roadmap>h2{display:none!important}
+.of-next{display:inline-flex;align-items:center;gap:6px;margin:8px 0 0;padding:9px 18px;border:1px solid #C9D0EC;border-radius:999px;background:#fff;color:#2938A8;font:600 13.5px Inter,sans-serif;cursor:pointer;box-shadow:0 1px 2px rgba(31,42,92,.06);transition:.2s}.of-next:hover{background:#2938A8;color:#fff;border-color:#2938A8}
+/* Câu hỏi: chart chính và chart phụ đứng cạnh nhau, "xem thêm" xuống hàng dưới (28/11/2026) */
+.pp-panel.re-q{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px;align-items:start}
+.pp-panel.re-q>*{min-width:0;grid-column:1/-1}.pp-panel.re-q>.re-half{grid-column:auto}
+.pp-panel.re-q .card{margin:0 0 12px!important;padding:16px 18px 10px!important}
+.re-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.re-grid2>*{min-width:0}.re-grid2>:only-child,.re-grid2>.of-wide{grid-column:1/-1}
+.re-q .of-gap{margin:0 0 12px}
+.re-pp-sec>.sectionhead{margin-bottom:8px}
+/* Thanh con Chính sách (như Điện › 06 Chính sách) */
+html body .pp-subnav{position:sticky;top:calc(var(--of-top,0px) + 54px);z-index:5;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:8px 2px;margin:4px 0 12px;background:var(--fs-page,#F7F8FC)}
+html body .pp-subnav button{flex:0 0 auto;font:600 12.5px/1.2 Inter,system-ui,sans-serif;padding:7px 12px;border-radius:999px;border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);color:var(--ink2,#3b4256);cursor:pointer;white-space:nowrap}
+html body .pp-subnav button span{color:var(--muted,#7a8399);margin-right:5px;font-weight:500}
+html body .pp-subnav button[aria-selected=true]{background:#E3F5F5;border-color:#2a9fa3;color:#11393b;font-weight:700}
+:root[data-theme=dark] .pp-subnav{background:#0A0A0A}:root[data-theme=dark] .pp-subnav button{background:#1F1F1F;color:#F5F5F5;border-color:#2A2A2A}
+@media (max-width:900px){.pp-panel.re-q>.re-half{grid-column:1/-1}.re-grid2{grid-template-columns:minmax(0,1fr)}}`;
   document.head.append(st);
 }
-
 
 function wideIfTable(n) {
   if (!n.matches?.('.card')) return;
   const charts = n.querySelectorAll('[id^="ch"]').length;
   if (charts > 1 || (!charts && !n.querySelector('canvas,svg') && n.querySelector('table'))) n.classList.add('of-wide');
 }
+const isWide = n => n.matches('.of-wide,.fsv-heat') || (!n.querySelector('[id^="ch"],canvas,svg') && !!n.querySelector('table'));
 
-// 27/11/2026: CSS chuyên đề Luật mới nằm trong <style> và chỉ áp dụng dưới .law-2026; khung mới dời thẻ ra khỏi khối đó
-// → đưa <style> của tab lên <head> trước khi dựng lại, gắn .law-2026 cho sub-tab Luật mới; mở sẵn các thẻ chữ bị gấp ở tab Chính sách.
+/* ---------- Dời thẻ ---------- */
+const used = new Set();
+function take(sel) {
+  const n = /^bds-/.test(sel) ? block(sel) : $(sel);
+  if (!n || used.has(n) || [...used].some(u => u.contains(n))) return null;
+  used.add(n); n.hidden = false; n.classList.remove('of-hidden-legacy', 'of-span'); n.style.marginTop = '';
+  return n;
+}
+// Phần còn lại của pane cũ (thẻ chưa dời, khối có chart/bảng): giữ trong DOM, ẩn trong details.of-rest — không xóa.
+function restOf(legacy, sec, host) {
+  const items = [];
+  legacy.forEach(n => {
+    if (sec.contains(n) || n.isConnected === false) return;
+    if (n.matches('.sectionhead,.pane-subtabs,.supply-tabs,.world-subtabs,[role=tablist]')) { n.classList.add('of-hidden-legacy'); return; }
+    if (n.matches('.of-hidden-legacy')) return;
+    if (n.matches('[data-block-id]') || n.querySelector('[data-block-id],canvas,table,svg')) items.push(n);
+  });
+  if (!items.length) return;
+  const d = el('details', 'research-fold of-rest of-wide'); d.append(el('summary', '', 'Nội dung khác của bố cục cũ'));
+  const box = el('div', 'research-detail'); items.forEach(n => { n.hidden = false; n.querySelectorAll('[hidden]').forEach(h => { if (h.matches('.supply-pane,.pane-subpane,[role=tabpanel]')) h.hidden = false; }); box.append(n); });
+  d.append(box); host.append(d);
+  box.querySelectorAll('.supply-pane,.pane-subpane').forEach(x => { if (!x.querySelector('[data-block-id],canvas,svg,table,.card')) x.classList.add('of-hidden-legacy'); });
+  if (!box.querySelector('[data-block-id],canvas,svg,table,.card')) d.remove();
+}
+// Thẻ lẻ đứng một mình trước khối rộng (hoặc cuối) thì trải hết hàng.
+function balance(body) {
+  let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
+  [...body.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,.kpis,.research-grid,table,.tablewrap')) flush(); else run.push(n); }); flush();
+}
+
+const TABS = {};
+const subBtn = (cls, num, label, small) => `<span>${num}</span>${esc(label)}${small != null ? `<small>${esc(small)}</small>` : ''}`;
+
+/* ---------- Tổng quan ngành ---------- */
+function buildOverview() {
+  const pane = $('.majorpane[data-tab="mt1"]'); if (!pane) return null;
+  const legacy = [...pane.children], sec = el('section', 'section of-section');
+  const brief = $('#dataBrief'); if (brief) sec.append(brief);
+  const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành'); sec.append(nav);
+  const subs = OV.map((s, i) => {
+    const num = String(i).padStart(2, '0');
+    const b = el('button', 'tabbtn ov-tab', subBtn('', num, s.t, s.s)); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt1-${s.k}-tab`;
+    const p = el('div', 'pane-subpane pp-pane of-pane'); p.id = `of-mt1-${s.k}`; p.dataset.sub = s.k; p.dataset.reSub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
+    p.append(el('header', 'pp-head', `<div><span class="pp-k">${num}</span><h2>${esc(s.t)}</h2><p>${esc(s.d)}</p></div>`));
+    const body = el('div', 'of-body'); p.append(body);
+    const put = n => { if (n) { body.append(n); wideIfTable(n); } };
+    (s.sel || []).forEach(q => $$(q).forEach(n => { const t = used.has(n) ? null : (used.add(n), n); if (t) { put(t); t.classList.add('of-wide'); } }));
+    s.ids.forEach(id => put(take(id)));
+    nav.append(b); sec.append(p);
+    b.addEventListener('click', () => open('mt1', s.k, true));
+    b.addEventListener('keydown', e => arrows(e, nav, i));
+    return {s, b, p, body};
+  });
+  TABS.mt1 = subs;
+  return {pane, sec, legacy, rest: (subs.find(x => x.s.rest) || subs[0]).body};
+}
+function arrows(e, nav, i) { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; e.preventDefault(); const bs = [...nav.children], j = (i + d + bs.length) % bs.length; bs[j].click(); bs[j].focus(); }
+// Tab Nguồn dữ liệu cũ (#mt8, research-layout dựng) → khối mở rộng cuối Bản đồ ngành (như Chăn nuôi); link cũ #mt8 mở thẳng khối này.
+function sources(body) {
+  const p = $('.majorpane[data-tab="mt8"]'); if (!p || !body) return;
+  const d = el('details', 'research-fold re-sources of-wide'); d.id = 're-sources'; d.dataset.keepFolded = '';  // chart-unfold.js không mở sẵn d.append(el('summary', '', 'Nguồn dữ liệu, kỳ quan sát và độ tin cậy'));
+  const box = el('div', 'research-detail');
+  [...p.children].forEach(n => { if (n.matches('h2,.research-caption')) return; if (n.matches('.pane-subtabs,.supply-tabs')) { n.classList.add('of-hidden-legacy'); box.append(n); return; }
+    n.querySelectorAll('[hidden]').forEach(h => { if (h.matches('.pane-subpane')) h.hidden = false; }); if (n.matches('.pane-subpane')) n.hidden = false; box.append(n); });
+  if (!box.children.length) return;
+  d.append(box); body.append(d);
+}
+
+/* ---------- Bức tranh ngành ---------- */
+function question(it, num) {
+  const p = el('section', 'pp-panel pp-q re-q'); p.id = it.id;
+  p.innerHTML = `<header class="pp-ph"><span class="pp-num">${num}</span><div><h3>${esc(it.q)}</h3></div></header>`;
+  const main = (it.main || []).map(take).filter(Boolean), sup = (it.sup || []).map(take).filter(Boolean), more = (it.more || []).map(take).filter(Boolean);
+  if (!main.length) { const m = sup.shift() || more.shift(); if (m) main.push(m); }
+  if (!main.length) return null;
+  // Như Dien/app/power-picture.js qpanel (28/11/2026): đúng 1 chart chính (.pp-main), 1 chart phụ (.pp-sup1), còn lại "xem thêm" (.pp-more).
+  more.unshift(...main.splice(1), ...sup.splice(1));
+  const mw = el('div', 'pp-main'); mw.append(main[0]); p.append(mw);
+  if (sup.length) { const sw = el('div', 'pp-sup1'); sw.append(sup[0]); p.append(sw); if (!isWide(main[0]) && !isWide(sup[0])) { mw.classList.add('re-half'); sw.classList.add('re-half'); } }
+  if (more.length) { const g = el('div', more.length > 1 ? 'grid two g2 pp-sup pp-more re-grid2' : 'pp-sup1 pp-more'); more.forEach(c => g.append(c)); p.append(g); }
+  if (it.gap) p.insertAdjacentHTML('beforeend', GAP(esc(it.gap)));
+  return p;
+}
+function buildPicture(polBox) {
+  const pane = $('.majorpane[data-tab="mt2"]'); if (!pane) return null;
+  const legacy = [...pane.children], sec = el('section', 'section of-section re-pp-sec');
+  sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Bức tranh ngành</h2><p>Toàn thị trường → đầu vào (đất, vốn, chi phí) → nguồn cung, mở bán → giao dịch, giá, tồn kho → chính sách. Toàn cảnh chuỗi giá trị: <a href="#of-mt1-map">← Tổng quan ngành</a>.</p></div>'));
+  const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Bức tranh ngành'); sec.append(nav);
+  const tiles = newTiles(), kpiTile = id => tiles[id] || document.getElementById(id)?.closest('.kpi');
+  const subs = PICT.map((s, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    const b = el('button', 'tabbtn pp-tab', subBtn('', num, s.t)); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt2-${s.k}-tab`;
+    const p = el('div', 'pane-subpane pp-pane of-pane'); p.id = `of-mt2-${s.k}`; p.dataset.sub = s.k; p.dataset.reSub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
+    const ao = s.pol ? null : asOf(s.k);
+    p.append(el('header', 'pp-head', `<div><span class="pp-k">${num}</span><h2>${esc(s.t)}</h2><p>${esc(s.d)}</p></div><span class="pp-asof"${ao ? ` title="${esc(ao.title)}"` : ''}>${ao ? 'Dữ liệu mới nhất: ' + esc(ao.label) : ''}</span>`));
+    if (s.pol) { p.append(polBox); }
+    else {
+      const g = el('section', 'grid kpis pp-kpis'); (s.kpis || []).forEach(id => { const t = kpiTile(id); if (t) { used.add(t); g.append(t); } }); if (g.children.length) p.append(g);
+      if (s.flow) {
+        const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + s.t.toLowerCase());
+        bar.innerHTML = s.flow.map(([id, k, t], j) => `${j ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#re-st-${s.k}-${id}" class="pp-flow-s"><small>${esc(k)}</small><b>${esc(t)}</b></a>`).join('');
+        p.append(bar);
+      }
+      let qn = 0;
+      s.items.forEach(it => {
+        if (it.grp) { p.append(el('h3', 'pp-grp', esc(it.grp))); return; }
+        if (it.stage) { const f = s.flow.find(x => x[0] === it.stage); const h = el('div', 'pp-stage', `<span>${esc(f[1])}</span><h3>${esc(f[2])}</h3>`); h.id = `re-st-${s.k}-${f[0]}`; p.append(h); return; }
+        if (it.link) { const [href, k, t, sub] = it.link; const a = el('a', 'th-link', `<small>Xem chart ở ${esc(k)}</small><b>${esc(t)} →</b><span>${esc(sub)}</span>`); a.href = href; p.append(a); return; }
+        const q = question(it, `${i + 1}.${qn + 1}`); if (q) { qn++; p.append(q); }
+      });
+      // Nhóm không còn câu hỏi nào thì bỏ tiêu đề nhóm.
+      p.querySelectorAll('.pp-grp').forEach(h => { let n = h.nextElementSibling; if (!n || n.matches('.pp-grp')) h.remove(); });
+    }
+    const nx = PICT[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${esc(nx.t)} →`); go.type = 'button'; go.addEventListener('click', () => { open('mt2', nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
+    nav.append(b); sec.append(p);
+    b.addEventListener('click', () => open('mt2', s.k, true));
+    b.addEventListener('keydown', e => arrows(e, nav, i));
+    return {s, b, p};
+  });
+  TABS.mt2 = subs;
+  return {pane, sec, legacy, rest: sec};
+}
+// Chính sách: thẻ con theo văn bản, nội dung lấy từ pane #mt4 cũ (style của chuyên đề Luật mới chuyển lên <head> trước khi dời).
+function buildPolicy() {
+  const pane = $('.majorpane[data-tab="mt4"]');
+  if (pane) pane.querySelectorAll('style').forEach(st => document.head.append(st));
+  const legacy = pane ? [...pane.children] : [], box = el('div', 're-pol');
+  const nav = el('div', 'pp-subnav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Chính sách theo văn bản'); box.append(nav);
+  const subs = POL.map((s, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    const b = el('button', '', subBtn('', num, s.t)); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.pol = s.k; b.id = `of-mt4-${s.k}-tab`;
+    const p = el('div', 'pane-subpane re-pol-pane'); p.id = `of-mt4-${s.k}`; p.dataset.pol = s.k; p.dataset.rePol = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
+    const body = el('div', 'of-body'); p.append(body);
+    s.ids.forEach(id => { const n = take(id); if (n) { body.append(n); wideIfTable(n); } });
+    if (!body.children.length) body.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu cho mục này.'));  // re-legal.js thay bằng tóm tắt
+    nav.append(b); box.append(p);
+    b.addEventListener('click', () => openPol(s.k, true));
+    b.addEventListener('keydown', e => arrows(e, nav, i));
+    return {s, b, p, body};
+  });
+  TABS.pol = subs;
+  return {pane, box, legacy, rest: (subs.find(x => x.s.rest) || subs[0]).body};
+}
 function policyFix() {
   $('#of-mt4-law')?.classList.add('law-2026');
   ['bds-44', 'bds-60', 'bds-57', 'bds-58', 'bds-59', 'bds-19', 'bds-20', 'bds-21'].forEach(id => { const n = block(id); if (n) { n.classList.add('of-wide'); n.classList.remove('of-span'); } });  // thẻ chữ/sơ đồ cần cả hàng
-  const unfold = () => $$('#pane-mt4 details:not(.note-icon)').forEach(d => { if (!d.closest('.tablewrap,.source-note')) d.open = true; });
+  const unfold = () => $$('.re-pol details:not(.note-icon):not(.of-rest)').forEach(d => { if (!d.closest('.tablewrap,.source-note,.of-rest')) d.open = true; });
   [0, 400, 1500].forEach(t => setTimeout(unfold, t));
 }
-function buildTab(key) {
-  const def = TREE[key], pane = $(`.majorpane[data-tab="${key}"]`);
-  if (!pane) return;
-  pane.querySelectorAll('style').forEach(st => document.head.append(st));
-  const legacy = [...pane.children];
-  HIDE.forEach(id => $$(`[data-block-id="${id}"]`).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
-  const sec = el('section', 'section of-section');
-  const brief = key === 'mt1' && $('#dataBrief'); if (brief) sec.append(brief);
-  const nav = el('div', 'of-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
-  const used = new Set();
-  const subs = def.subs.map((s, i) => {
-    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
-    const p = el('div', 'pane-subpane of-pane'); p.id = `of-${key}-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
-        const body = el('div', 'of-body'); p.append(body);
-    if (s.kpis) { const k = $('.majorpane .kpis'); if (k) { body.append(k); used.add(k); } }
-    const put = n => { if (!n || used.has(n) || [...used].some(u => u.contains?.(n))) return; body.append(n); used.add(n); wideIfTable(n); };
-    (s.canv || []).forEach(c => put(byCanvas(c)));
-    (s.sel || []).forEach(q => $$(q).forEach(n => { put(n); n.classList.add('of-wide'); }));
-    s.ids.forEach(id => put(block(id)));
-    if (s.gap) body.insertAdjacentHTML('beforeend', GAP(s.gap));
-    if (!body.children.length) body.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu cho mục này.'));
-    const nx = def.subs[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${nx.t} →`); go.type = 'button'; go.addEventListener('click', () => { open(key, nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
-    nav.append(b); sec.append(p);
-    b.addEventListener('click', () => open(key, s.k, true));
-    return {s, b, p, body};
-  });
-  // Phần còn lại của tab cũ: thẻ có data-block-id chưa dời + khối nội dung khác. Không xóa: gom vào "Nội dung khác".
-  const restHost = subs.find(x => x.s.rest) || subs[0];
-  const restItems = [];
-  legacy.forEach(n => {
-    if (sec.contains(n)) return;
-    if (n.matches('.sectionhead')) { n.classList.add('of-hidden-legacy'); return; }
-    if (n.matches('.pane-subtabs,.supply-tabs,.world-subtabs,[role=tablist]')) { n.classList.add('of-hidden-legacy'); return; }
-    // Chỉ giữ khối có dữ liệu (thẻ, chart, bảng); câu dẫn/đường dẫn của bố cục cũ bỏ.
-    if (n.matches?.('.of-hidden-legacy')) return;
-    if (n.matches?.('[data-block-id]') || n.querySelector?.('[data-block-id],canvas,table,svg')) restItems.push(n);
-  });
-  if (restItems.length) {
-    const d = el('details', 'research-fold of-rest of-wide'); d.append(el('summary', '', 'Nội dung khác của tab cũ'));
-    const box = el('div', 'research-detail'); restItems.forEach(n => { n.hidden = false; n.querySelectorAll('[hidden]').forEach(h => { if (h.matches('.supply-pane,.pane-subpane,[role=tabpanel]')) h.hidden = false; }); box.append(n); });
-    d.append(box); restHost.body.append(d);
-    // Tab con cũ rỗng (khung sub-tab không còn card nào) thì ẩn.
-    box.querySelectorAll('.supply-pane,.pane-subpane').forEach(x => { if (!x.querySelector('[data-block-id],canvas,svg,table,.card')) x.classList.add('of-hidden-legacy'); });
-    if (!box.querySelector('[data-block-id],canvas,svg,table,.card')) d.remove();
-  }
-  pane.replaceChildren(sec);
-  // Thẻ lẻ đứng một mình trước khối rộng (hoặc cuối) thì trải hết hàng, tránh nửa trang trống.
-  subs.forEach(({body}) => { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
-    [...body.children].forEach(n => { const wide = n.matches('.of-wide,.of-gap,details,.kpis,.research-grid,table,.tablewrap') || getComputedStyle(n).gridColumnEnd === '-1'; if (wide) flush(); else run.push(n); }); flush(); });
-  TABS[key] = subs;
-  [100, 600, 1500].forEach(t => setTimeout(() => { window.dispatchEvent(new Event('resize')); $$('.of-body canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
-}
-const TABS = {};
-function open(key, sub, push) {
-  const subs = TABS[key]; if (!subs) return;
-  const hit = subs.find(x => x.s.k === sub) || subs[0];
-  subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
-  if (push) { const u = new URL(location.href); u.searchParams.set('sub', hit.s.k); u.hash = key; history.replaceState(null, '', u.pathname + u.search + u.hash); }
-  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+// Ngày dữ liệu của Chính sách = văn bản mới nhất đã thông qua (bảng "Mới duyệt" do re-legal.js dựng), không lấy ngày hiệu lực tương lai.
+function policyAsOf() {
+  const s = $('#of-mt2-policy .pp-asof'); if (!s) return;
+  const today = new Date().toISOString().slice(0, 10);
+  const ds = $$('.re-recent tbody td:first-child, #of-mt4-docs td').map(td => /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(td.textContent.trim())).filter(Boolean).map(m => `${m[3]}-${m[2]}-${m[1]}`).filter(d => d <= today).sort();
+  if (ds.length) { s.textContent = 'Dữ liệu mới nhất: ' + dmy(ds.at(-1)); s.title = 'Văn bản mới thông qua gần nhất'; }
 }
 
+/* ---------- Tài chính ngành ---------- */
 function financePane() {
   let p = $('.majorpane[data-tab="mt14"]');
   if (!p) { p = el('section', 'majorpane'); p.dataset.tab = 'mt14'; p.id = 'pane-mt14'; p.hidden = true; ($('.majorpane[data-tab="mt7"]') || $('.majorpane:last-of-type')).before(p); }
   const sec = el('section', 'section');
   sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 13 doanh nghiệp BĐS dân cư niêm yết, tổng hợp theo nhóm, từ BCTC hợp nhất quý.</p></div>'));
-  const host = el('div', 'of-fin'); host.id = 're-fin-root';
-  // 27/11/2026 (người dùng chốt): Tài chính ngành có 2 sub-tab. 01 Tổng quan ngành = chỉ số cộng gộp (tổng tử số ÷ tổng mẫu số);
-  // 02 So sánh doanh nghiệp = từng mã (xu hướng tài chính, P/E, kế hoạch – kết quả, số vận hành riêng). Tổng quan ngành (mt1) chỉ giữ mô hình kinh doanh.
-  const CMP_IDS = ['bds-53'], CMP_SEL = [];
-  const fnav = el('div', 'of-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
-  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}, {k: 'valuation', t: 'Định giá'}].map((s, i) => {
-    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
-    const sp = el('div', 'pane-subpane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
+  const host = el('div', 'of-fin of-wide'); host.id = 're-fin-root';
+  const fnav = el('div', 'pp-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
+  const subs = FIN.map(([k, t, d], i) => {
+    const num = String(i + 1).padStart(2, '0');
+    const b = el('button', 'tabbtn pp-tab', subBtn('', num, t)); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = k; b.id = `of-mt14-${k}-tab`;
+    const sp = el('div', 'pane-subpane pp-pane of-pane'); sp.id = `of-mt14-${k}`; sp.dataset.sub = k; sp.dataset.reSub = k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
+    sp.append(el('header', 'pp-head', `<div><span class="pp-k">${num}</span><h2>${esc(t)}</h2><p>${esc(d)}</p></div>`));
     const body = el('div', 'of-body'); sp.append(body); fnav.append(b); sec.append(sp);
-    b.addEventListener('click', () => open('mt14', s.k, true));
-    return {s, b, p: sp, body};
+    b.addEventListener('click', () => open('mt14', k, true));
+    b.addEventListener('keydown', e => arrows(e, fnav, i));
+    return {s: {k, t}, b, p: sp, body};
   });
-  subs[0].body.append(host); host.classList.add('of-wide');
-  const cb = subs[1].body, moved = new Set();
-  const take = n => { if (!n || moved.has(n) || [...moved].some(m => m.contains(n))) return; const was = n.closest('.of-rest'); n.hidden = false; cb.append(n); moved.add(n);
-    if (n.matches('.financial-comparison') || n.querySelector('table')) n.classList.add('of-wide');
-    if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); };
-  take($('.financial-comparison'));
-  { const cr = el('div', 'of-wide re-cmp-root'); cr.id = 're-cmp-root'; cb.prepend(cr); }
-  { const vr = el('div', 'of-wide re-val-root'); vr.id = 're-val-root'; subs[2].body.append(vr); }  // 27/11/2026: Định giá thành sub-tab riêng  // 7 mục so sánh từng mã (ReFinance.buildCompare)
-  CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
-  // 27/11/2026: khối so sánh cũ (bảng + chart xu hướng) và thẻ backlog cover cũ trùng mục 2.1–2.5 → gấp vào "Bảng tổng hợp".
-  // Chart cũ trùng mục mới thì ẩn (chart xu hướng cũ ↔ 2.1–2.2; backlog cover cũ ↔ 2.5, nợ NH/tiền ↔ 2.6); chỉ bảng được gấp
-  // (quy tắc trang Điện: không giấu chart trong mục thu gọn — chart-unfold.js sẽ tự mở mục nào có chart).
-  { const bl = block('bds-53'); if (bl) { bl.hidden = true; bl.classList.add('of-hidden-legacy'); } }
+  subs[0].body.append(host);
+  // 02 Doanh nghiệp niêm yết: mô hình và biến quyết định từng mã (bds-03, dời từ Tổng quan) → 7 mục so sánh từng mã (ReFinance.buildCompare)
+  // → bảng tổng hợp cũ (gấp) → P/B rổ mã cuối cùng (bds-17, như P/E rổ th-03 của Thép).
+  const cb = subs[1].body;
+  { const n = take('bds-03'); if (n) { n.classList.add('of-wide'); cb.append(n); } }
+  { const cr = el('div', 'of-wide re-cmp-root'); cr.id = 're-cmp-root'; cb.append(cr); }
+  { const vr = el('div', 'of-wide re-val-root'); vr.id = 're-val-root'; subs[2].body.append(vr); }
+  // bds-53 (backlog cover cũ) trùng mục 2.5 mới: ẩn, không xóa.
+  { const bl = take('bds-53'); if (bl) { bl.hidden = true; bl.classList.add('of-hidden-legacy'); cb.append(bl); } }
   { const d = el('details', 'research-fold of-wide re-cmp-old su-open'); d.hidden = true; d.append(el('summary', '', 'Bảng tổng hợp: chỉ số tài chính và định giá từng mã'));
     const box = el('div', 'research-detail'); d.append(box); cb.append(d);
     d.addEventListener('toggle', () => { if (d.open) [50, 300].forEach(t => setTimeout(() => window.dispatchEvent(new Event('resize')), t)); });
     // Khối cũ (financial-comparison.js) dựng muộn hơn khung này: gấp vào khi nó xuất hiện.
     const fold = () => { const fc = $('.financial-comparison'); if (fc && !box.contains(fc)) { fc.classList.remove('of-span'); box.append(fc); d.hidden = false; } return !!fc; };
     if (!fold()) { const mo = new MutationObserver(() => { if (fold()) mo.disconnect(); }); mo.observe(document.body, {childList: true, subtree: true}); setTimeout(() => mo.disconnect(), 20000); } }
-  if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
-  { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
-    [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }
+  { const n = take('bds-17'); if (n) { n.classList.add('of-wide'); cb.append(n); } }
   p.replaceChildren(sec);
-  TABS.mt14 = subs; open('mt14', new URL(location.href).searchParams.get('sub'));
+  TABS.mt14 = subs;
   return host;
 }
 
-function nav(finHost) {
-  const bar = $('.majortabbtn')?.parentElement; if (!bar) return;
+/* ---------- Điều hướng ---------- */
+let bar, finHost, finBuilt = false;
+function setUrl(key, sub, pol, push) {
+  const u = new URL(location.href);
+  if (sub) u.searchParams.set('sub', sub); else u.searchParams.delete('sub');
+  if (pol) u.searchParams.set('pol', pol); else u.searchParams.delete('pol');
+  u.hash = key;
+  const next = u.pathname + u.search + u.hash; if (next === location.pathname + location.search + location.hash) return;
+  history[push ? 'pushState' : 'replaceState']({re: 1}, '', next);
+}
+function showMajor(key) {
+  $$('.majorpane').forEach(p => { const on = p.dataset.tab === key; p.hidden = !on; p.classList.toggle('active', on); });
+  [...bar.children].forEach(b => { const on = b.dataset.tab === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+  if (key === 'mt14' && !finBuilt && window.ReFinance) { finBuilt = true; setTimeout(() => window.ReFinance.build(finHost), 30); }  // dựng khi tab hiện để đo đúng chiều rộng chart
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+}
+function open(key, sub, push) {
+  const subs = TABS[key]; if (!subs) return;
+  const hit = subs.find(x => x.s.k === sub) || subs[0];
+  subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.classList.toggle('active', on); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
+  const nb = hit.b.parentElement; if (nb && nb.scrollWidth > nb.clientWidth) nb.scrollLeft = Math.max(0, hit.b.offsetLeft - 12);
+  const pol = key === 'mt2' && hit.s.k === 'policy' ? (TABS.pol?.find(x => !x.p.hidden) || TABS.pol?.[0])?.s.k : null;
+  if (push != null) setUrl(key, hit.s.k, pol, push);
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+}
+function openPol(k, push) {
+  const subs = TABS.pol; if (!subs) return;
+  const hit = subs.find(x => x.s.k === k) || subs[0];
+  subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
+  if (push != null) setUrl('mt2', 'policy', hit.s.k, push);
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+}
+// Mở tới một phần tử (thẻ, câu hỏi, khâu) ở bất kỳ tab nào: tab lớn → sub-tab → thẻ con Chính sách → mở details → cuộn.
+function goTo(t, push = true, smooth = false) {
+  const pane = t?.closest('.majorpane'); if (!pane) return false;
+  const key = pane.dataset.tab; showMajor(key);
+  const sub = t.closest('[data-re-sub]'), pol = t.closest('[data-re-pol]');
+  if (sub) open(key, sub.dataset.reSub, null);
+  if (pol) openPol(pol.dataset.rePol, null);
+  setUrl(key, sub?.dataset.reSub, pol?.dataset.rePol || (sub?.dataset.reSub === 'policy' ? TABS.pol?.find(x => !x.p.hidden)?.s.k : null), push);
+  for (let d = t.closest('details'); d; d = d.parentElement?.closest('details')) if (!d.matches('.of-rest')) d.open = true;
+  if (!t.matches('.pp-pane,.re-pol-pane')) setTimeout(() => t.scrollIntoView({behavior: smooth ? 'smooth' : 'instant', block: 'start'}), 80);
+  return true;
+}
+// Đọc URL (vào trang, Back/Forward, đổi hash): #mtN (+ ?sub=, ?pol=) → link cũ (ALIAS, SUBALIAS) → #<id> phần tử đã dời.
+function route() {
+  const u = new URL(location.href), h = location.hash.slice(1) || 'mt1';
+  if (!/^mt\d+$/.test(h)) { const t = document.getElementById(h); if (t && goTo(t, false)) return; }
+  let key = /^mt\d+$/.test(h) ? h : 'mt1', sub = u.searchParams.get('sub'), pol = u.searchParams.get('pol'), target = null, moved = false;
+  if (ALIAS[key]) { const [k, s, t, p] = ALIAS[key]; if (key === 'mt4' && sub && POL.some(x => x.k === sub)) pol = sub; key = k; sub = s || null; target = t || null; pol = p || pol; moved = true; }
+  const sa = SUBALIAS[key]?.[sub]; if (sa) { const [k, s, t, p] = sa; key = k; sub = s; target = target || t || null; pol = p || pol; moved = true; }
+  if (!ROUTES.some(r => r[0] === key)) { key = 'mt1'; sub = null; }
+  showMajor(key);
+  if (TABS[key]) { open(key, sub, null); if (key === 'mt2' && (TABS.mt2.find(x => !x.p.hidden)?.s.k === 'policy')) openPol(pol, null); }
+  const cur = TABS[key]?.find(x => !x.p.hidden)?.s.k || null;
+  setUrl(key, cur, cur === 'policy' ? TABS.pol?.find(x => !x.p.hidden)?.s.k : null, false);
+  if (target) { const t = document.getElementById(target); if (t) { if (t.matches('details')) t.open = true; setTimeout(() => t.scrollIntoView({behavior: 'instant', block: 'start'}), 120); } }
+  return moved;
+}
+function nav() {
+  bar = $('nav.majortabs') || $('.majortabbtn')?.parentElement; if (!bar) return;
   bar.replaceChildren();
-  let built = false;
-  const select = (key, hash) => {
-    let aliasSub = null; if (ALIAS[key]) { [key, aliasSub] = ALIAS[key].split(':'); } if (!ROUTES.some(r => r[0] === key)) key = 'mt1';
-    $$('.majorpane').forEach(p => { const on = p.dataset.tab === key; p.hidden = !on; p.classList.toggle('active', on); });
-    [...bar.children].forEach(b => { const on = b.dataset.tab === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
-    if (key === 'mt14' && !built && window.ReFinance) { built = true; window.ReFinance.build(finHost); }
-    if (hash) { const u = new URL(location.href); if (!TABS[key]) u.searchParams.delete('sub'); u.hash = key; history.replaceState(null, '', u.pathname + u.search + u.hash); }
-    if (aliasSub && TABS[key]) open(key, aliasSub, true);
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
-    return key;
-  };
   ROUTES.forEach(([key, label], i) => {
     const b = el('button', 'majortabbtn', label); b.type = 'button'; b.dataset.tab = key; b.id = 'research-tab-' + key; b.setAttribute('role', 'tab');
     const p = $(`.majorpane[data-tab="${key}"]`); if (p) { p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id); }
-    b.addEventListener('click', () => { select(key, true); window.scrollTo({top: 0, behavior: 'instant'}); });
+    b.addEventListener('click', () => {
+      showMajor(key);
+      if (TABS[key]) { const cur = TABS[key].find(x => !x.p.hidden) || TABS[key][0]; open(key, cur.s.k, true); } else setUrl(key, null, null, true);
+      window.scrollTo({top: 0, behavior: 'instant'});
+    });
     b.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return; e.preventDefault();
       const j = e.key === 'Home' ? 0 : e.key === 'End' ? ROUTES.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : ROUTES.length - 1)) % ROUTES.length; bar.children[j].click(); bar.children[j].focus(); });
     bar.append(b);
   });
-  window.showMajorTab = k => select(k, true);
-  window.addEventListener('hashchange', () => select(location.hash.slice(1)));
-  const h0 = location.hash.slice(1) || 'mt1', key = select(h0);
-  if (TABS[key] && !(ALIAS[h0] || '').includes(':')) open(key, new URL(location.href).searchParams.get('sub'));
-  // Link trỏ vào thẻ đã dời: mở đúng tab lớn + sub-tab rồi cuộn tới.
+  bar.setAttribute('role', 'tablist');
+  window.showMajorTab = k => { location.hash = k; };
+  window.addEventListener('popstate', () => route());
+  window.addEventListener('hashchange', () => route());
+  route();
+  // Link "#<id>" tới thẻ/câu hỏi/khâu đã dời: mở đúng tab lớn + sub-tab rồi cuộn tới; thanh luồng cùng sub-tab chỉ cuộn.
   document.addEventListener('click', e => {
-    const a = e.target.closest('a[href^="#"]'); if (!a) return;
-    const t = document.getElementById(a.getAttribute('href').slice(1)); if (!t || t.matches('.majorpane')) return;
-    const pane = t.closest('.majorpane'), sub = t.closest('.of-pane');
-    if (!pane) return; e.preventDefault();
-    select(pane.dataset.tab, true); if (sub) open(pane.dataset.tab, sub.dataset.sub, true);
-    setTimeout(() => t.scrollIntoView({behavior: 'smooth', block: 'start'}), 120);
+    const a = e.target.closest('a[href^="#"]'); if (!a || a.matches('.re-lg-go')) return;
+    const id = a.getAttribute('href').slice(1); if (!id || /^mt\d+$/.test(id)) return;
+    const t = document.getElementById(id); if (!t || !t.closest('.majorpane') || t.matches('.majorpane')) return;
+    e.preventDefault(); goTo(t, true, !!a.closest('.pp-flow'));
   });
 }
-
+window.ReFrame = {open: (key, sub) => { showMajor(key); open(key, sub, true); }, policy: k => { showMajor('mt2'); open('mt2', 'policy', null); openPol(k, true); $('#of-mt2-policy')?.scrollIntoView({behavior: 'smooth', block: 'start'}); }, goTo: id => goTo(document.getElementById(id))};
 
 // Thanh sub-tab dính ngay dưới thanh tab chính khi cuộn.
 function stickySub() {
-  const set = () => { const m = $('nav.majortabs'); if (!m) return; const cs = getComputedStyle(m); const top = (parseFloat(cs.top) || 0) + m.offsetHeight + 4; document.documentElement.style.setProperty('--of-top', top + 'px'); };
+  const set = () => { const m = $('nav.majortabs'); if (!m) return; const cs = getComputedStyle(m); const top = cs.position === 'sticky' ? (parseFloat(cs.top) || 0) + m.offsetHeight + 4 : 0; document.documentElement.style.setProperty('--of-top', top + 'px'); };
   set(); window.addEventListener('resize', set); setTimeout(set, 1500);
 }
 
@@ -322,10 +523,6 @@ function unfoldCards(ids) {
   const go = () => ids.forEach(id => { const card = block(id); if (!card) return; card.querySelectorAll(':scope > details.research-fold').forEach(f => { const body = f.querySelector(':scope > .research-detail') || f; f.replaceWith(...[...body.childNodes].filter(n => n.tagName !== 'SUMMARY')); }); card.querySelectorAll('.research-repeated-heading').forEach(h => h.classList.remove('research-repeated-heading')); });
   go(); [800, 3000].forEach(t => setTimeout(go, t));
 }
-
-// Sub-tab đã có chart bổ sung thì ẩn ô "Chưa có dữ liệu cho mục này".
-function hideEmptyGaps() { $$('.of-body').forEach(b => { if (b.querySelector('[data-of-added], #of-tax')) b.querySelectorAll(':scope > .of-gap').forEach(g => { if (/Chưa có dữ liệu cho mục này/.test(g.textContent)) g.hidden = true; }); }); }
-
 
 // ===== Tổng quan › 01 Mô hình kinh doanh (26/11/2026, người dùng chọn phương án A + C) =====
 // A. Vòng đời tiền của một dự án: sơ đồ 5 bước + chart thật từ BCTC (người mua trả trước dẫn trước doanh thu).
@@ -415,21 +612,25 @@ function run() {
   if (document.body.dataset.reFrame) return; document.body.dataset.reFrame = '1';
   style();
   stickySub();
-  ['mt1', 'mt2', 'mt4'].forEach(buildTab);
+  HIDE.forEach(id => $$(`[data-block-id="${id}"]`).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
+  HIDE_SEL.forEach(q => $$(q).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
+  // Dựng hết các tab (dời thẻ) rồi mới thay nội dung pane: tab sau còn lấy thẻ nằm trong pane cũ của tab khác.
+  const pol = buildPolicy(), pic = buildPicture(pol.box), ov = buildOverview();
+  if (pol.pane) { restOf(pol.legacy, pol.box, pol.rest); pol.pane.replaceChildren(); }
+  if (pic) { restOf(pic.legacy, pic.sec, pic.rest); pic.pane.replaceChildren(pic.sec); }
+  if (ov) { restOf(ov.legacy, ov.sec, ov.rest); ov.pane.replaceChildren(ov.sec); TABS.mt1.forEach(x => balance(x.body)); sources(TABS.mt1[0].body); }
+  TABS.pol?.forEach(x => balance(x.body));
+  finHost = financePane();
+  nav();
   policyFix();
   unfoldCards(['bds-02']);
   { const c = block('bds-02')?.querySelector('.research-caption'); if (c) c.textContent = 'Cập nhật 26/11/2026 · số đến Q3/2026'; }
-  { const st = el('style'); st.textContent = 'body[data-re-frame] .majorpane .card td b.neg{color:#B3303F!important}body[data-re-frame] .majorpane .card td b.pos{color:#17784A!important}'; document.head.append(st); }
-  // 05 Tín dụng & trái phiếu: hai nhóm tiêu đề như Dầu khí › Dầu thô toàn cầu.
-  const grp = (before, t, d) => { const n = block(before); if (n && n.parentElement?.classList.contains('of-body')) n.before(el('div', 'of-group of-wide', `<h3>${t}</h3><p>${d}</p>`)); };
-  grp('bds-16', 'Lãi suất & tín dụng', 'Chi phí vốn của người mua nhà và chủ đầu tư.');
-  grp('bds-28', 'Trái phiếu doanh nghiệp BĐS', 'Phát hành, dư nợ, chậm trả và lịch đáo hạn (HNX).');
-  HIDE_SEL.forEach(q => $$(q).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
   modelTab();
-  hideEmptyGaps();
-  const finHost = financePane();
-  nav(finHost);
+  { const mb = $('#of-mt1-model .of-body'); if (mb && !mb.querySelector('.card')) mb.insertAdjacentHTML('afterbegin', GAP('Chưa có số BCTC (data/re-financials.js) để dựng mô hình kinh doanh.')); }
+  sparkNew(); setTimeout(sparkNew, 800);
   window.dispatchEvent(new Event('re:frame'));
+  policyAsOf();
+  [100, 600, 1500].forEach(t => setTimeout(() => window.dispatchEvent(new Event('resize')), t));
 }
 // Dựng khung trong lượt SectorBoot (mốc 1600, sau mọi module ≤ 1500) để trang chỉ hiện khi khung đã xong.
 if (window.SectorBoot) SectorBoot.add(1600, run);

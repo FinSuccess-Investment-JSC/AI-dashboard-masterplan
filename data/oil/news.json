@@ -1,0 +1,312 @@
+{
+ "updated_at": "2026-11-28",
+ "articles": [
+  {"id": "a1", "source_name": "Bộ Công Thương", "title": "Thông tin về việc điều hành giá xăng dầu ngày 26/11/2026", "url": "https://moit.gov.vn/tin-tuc/thong-tin-ve-viec-dieu-hanh-gia-xang-dau-ngay-26-11-2026.html", "published_at": "2026-11-26"},
+  {"id": "a2", "source_name": "Bộ Công Thương", "title": "Thông tin về việc điều hành giá xăng dầu ngày 19/11/2026", "url": "https://moit.gov.vn/tin-tuc/thong-tin-ve-viec-dieu-hang-gia-xang-dau-ngay-19-11-2026.html", "published_at": "2026-11-19"},
+  {"id": "a3", "source_name": "CafeF", "title": "Giá xăng giảm gần 1.000 đồng, về sát mốc 19.000 đồng/lít", "url": "https://cafef.vn/gia-xang-giam-gan-1000-dong-ve-sat-moc-19000-dong-lit-188261119145328822.chn", "published_at": "2026-11-19"},
+  {"id": "a4", "source_name": "Bộ Công Thương", "title": "Thông tin về việc điều hành giá xăng dầu ngày 29/10/2026", "url": "https://moit.gov.vn/tin-tuc/thong-tin-ve-viec-dieu-hanh-gia-xang-dau-ngay-29-10-2026.html", "published_at": "2026-10-29"},
+  {"id": "a5", "source_name": "Luật sư Việt Nam", "title": "Chính thức áp thuế tiêu thụ đặc biệt 0% với xăng", "url": "https://lsvn.vn/chinh-thuc-ap-thue-tieu-thu-dac-biet-0-voi-xang-a181901.html", "published_at": "2026-11-02"},
+  {"id": "a6", "source_name": "CafeF", "title": "Tiếp tục giảm thuế xăng dầu đến hết năm 2026", "url": "https://cafef.vn/tiep-tuc-giam-thue-xang-dau-den-het-nam-2026-188261001055515781.chn", "published_at": "2026-10-01"},
+  {"id": "a7", "source_name": "Vietnam+", "title": "OPEC+ nhất trí giữ nguyên mục tiêu sản lượng dầu trong tháng 12 năm 2026", "url": "https://www.vietnamplus.vn/opec-nhat-tri-giu-nguyen-muc-tieu-san-luong-dau-trong-thang-12-nam-2026-post1145445.vnp", "published_at": "2026-11-01"},
+  {"id": "a8", "source_name": "OPEC", "title": "Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria, and Oman reaffirm commitment to market stability", "url": "https://www.opec.org/pr-detail/2033620-1-november-2026.html", "published_at": "2026-11-01"},
+  {"id": "a9", "source_name": "Interfax", "title": "OPEC+ alliance completes assessment of maximum production capacities of member countries", "url": "https://interfax.com/newsroom/top-stories/119928/", "published_at": "2026-11-17"},
+  {"id": "a10", "source_name": "Vietnam+", "title": "Giá dầu thế giới lên mức cao nhất 6 tháng do lo ngại tình hình Mỹ-Iran", "url": "https://www.vietnamplus.vn/gia-dau-the-gioi-len-muc-cao-nhat-6-thang-do-lo-ngai-tinh-hinh-my-iran-post1145330.amp", "published_at": "2026-10-31"},
+  {"id": "a11", "source_name": "Bloomberg Businessweek Việt Nam", "title": "Giá dầu tiếp tục giảm sau tuần mất giá mạnh nhất kể từ năm 2020", "url": "https://bbw.vn/gia-dau-tiep-tuc-giam-sau-tuan-mat-gia-manh-nhat-ke-tu-nam-2020-61407.html", "published_at": "2026-11-09"},
+  {"id": "a12", "source_name": "The Nation (Thái Lan)", "title": "Brent losses top US$7 a barrel after November 9 settlement", "url": "https://www.nationthailand.com/news/world/40073309", "published_at": "2026-11-10"},
+  {"id": "a13", "source_name": "gCaptain (Reuters)", "title": "Iran Says Tanker Carrying LNG Hit Mine, Suffered Explosion in Hormuz", "url": "https://gcaptain.com/iran-says-tanker-carrying-lng-hit-mine-suffered-explosion-in-hormuz/", "published_at": "2026-11-13"},
+  {"id": "a14", "source_name": "Bloomberg Businessweek Việt Nam", "title": "Mỹ tuyên bố, dầu qua Hormuz cao nhất 6 tháng, Iran xuất khẩu bằng 0", "url": "https://bbw.vn/my-tuyen-bo-dau-qua-hormuz-cao-nhat-6-thang-iran-xuat-khau-bang-0-60403.html", "published_at": "2026-09-20"},
+  {"id": "a15", "source_name": "Tiền Phong", "title": "Chưa thể hết lo với thị trường xăng dầu cuối năm", "url": "https://tienphong.vn/chua-the-het-lo-voi-thi-truong-xang-dau-cuoi-nam-post1882126.tpo", "published_at": "2026-10-04"},
+  {"id": "a16", "source_name": "Tiền Phong", "title": "NSRP: Từ ứng phó biến động đến chủ động chiến lược", "url": "https://tienphong.vn/nsrp-tu-ung-pho-bien-dong-den-chu-dong-chien-luoc-post1885042.tpo", "published_at": "2026-10-17"},
+  {"id": "a17", "source_name": "Bộ Công Thương", "title": "5 điểm mới cốt lõi trong Luật Dầu khí (sửa đổi)", "url": "https://moit.gov.vn/tin-tuc/hoat-dong/hoat-dong-cua-lanh-dao-bo/thu-truong-bo-cong-thuong-nguyen-viet-son-neu-5-diem-moi-cot-loi-trong-luat-dau-khi-sua-doi-.html", "published_at": "2026-09-10"},
+  {"id": "a18", "source_name": "Tạp chí Công Thương", "title": "Ban hành kế hoạch triển khai thi hành Luật Dầu khí", "url": "https://tapchicongthuong.vn/ban-hanh-ke-hoach-trien-khai-thi-hanh-luat-dau-khi-552835.htm", "published_at": "2026-09-25"},
+  {"id": "a19", "source_name": "VietTimes", "title": "Chủ nhà máy lọc dầu Dung Quất lãi gấp 10 lần cùng kỳ, nắm trong tay hơn 2,2 tỷ USD tiền mặt", "url": "https://viettimes.vn/chu-nha-may-loc-dau-dung-quat-lai-gap-10-lan-cung-ky-nam-trong-tay-hon-22-ty-usd-tien-mat-post207734.html", "published_at": "2026-10-30"},
+  {"id": "a20", "source_name": "Người Quan Sát", "title": "Ba doanh nghiệp thuộc Petrovietnam nâng kế hoạch lãi 2026 thêm hơn 18.000 tỷ", "url": "https://nguoiquansat.vn/ba-doanh-nghiep-thuoc-petrovietnam-nang-ke-hoach-lai-2026-them-hon-18-000-ty-327002.html", "published_at": "2026-11-09"},
+  {"id": "a21", "source_name": "Mekong ASEAN", "title": "BSR thu hơn 9.000 tỷ đồng từ kinh doanh xăng E10 trong 3 quý", "url": "https://mekongasean.vn/bsr-thu-hon-9000-ty-dong-tu-kinh-doanh-xang-e10-trong-3-quy-61365.html", "published_at": "2026-11-02"},
+  {"id": "a22", "source_name": "Vietnam+", "title": "Sau 5 tháng triển khai, nguồn cung xăng E10 ổn định, tiêu thụ tích cực", "url": "https://www.vietnamplus.vn/sau-5-thang-trien-khai-nguon-cung-xang-e10-on-dinh-tieu-thu-tich-cuc-post1146095.vnp", "published_at": "2026-11-04"},
+  {"id": "a23", "source_name": "VnEconomy", "title": "PLX báo lãi quý 3/2026 tăng 93%", "url": "https://vneconomy.vn/plx-bao-lai-quy-32026-tang-93.htm", "published_at": "2026-11-04"},
+  {"id": "a24", "source_name": "Báo Pháp Luật Việt Nam", "title": "PVGAS (GAS): Lãi ròng quý 3 tăng vọt 80%, nắm giữ khối tiền mặt khổng lồ hơn 50.800 tỷ đồng", "url": "https://doanhnhan.baophapluat.vn/pvgas-gas-lai-rong-quy-3-tang-vot-80-nam-giu-khoi-tien-mat-khong-lo-hon-50-800-ty-dong.html", "published_at": "2026-11-04"},
+  {"id": "a25", "source_name": "Báo Pháp Luật Việt Nam", "title": "PV Drilling (PVD): Lợi nhuận quý III lao dốc 70% vì gánh nặng lãi vay", "url": "https://doanhnhan.baophapluat.vn/pv-drilling-pvd-loi-nhuan-quy-iii-lao-doc-70-vi-ganh-nang-lai-vay.html", "published_at": "2026-11-03"},
+  {"id": "a26", "source_name": "Báo Pháp Luật Việt Nam", "title": "Dịch vụ Kỹ thuật Dầu khí (PVS): Biên lợi nhuận gộp cải thiện, khối nợ vay tăng phi mã", "url": "https://doanhnhan.baophapluat.vn/dich-vu-ky-thuat-dau-khi-pvs-bien-loi-nhuan-gop-cai-thien-khoi-no-vay-tang-phi-ma.html", "published_at": "2026-11-03"},
+  {"id": "a27", "source_name": "Tiền Phong", "title": "18 dự án điện LNG trọng điểm, chỉ Hiệp Phước có thể đáp ứng tiến độ", "url": "https://tienphong.vn/18-du-an-dien-lng-trong-diem-chi-hiep-phuoc-co-the-dap-ung-tien-do-post1881384.tpo", "published_at": "2026-10-01"},
+  {"id": "a28", "source_name": "Luật sư Việt Nam", "title": "Phê duyệt khung giá phát điện LNG năm 2026, tối đa 3.453,72 đồng/kWh", "url": "https://lsvn.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-3-453-72-dong-kwh-a182580.html", "published_at": "2026-11-13"},
+  {"id": "a29", "source_name": "VCCI", "title": "Dự thảo Thông tư mới về khí LNG: Khơi thông dòng vốn cho điện khí", "url": "https://vcci.com.vn/tin-tuc/du-thao-thong-tu-moi-ve-khi-lng-khoi-thong-dong-von-cho-dien-khi", "published_at": "2026-11-13"}
+ ],
+ "events": [
+  {
+   "id": "e1", "title": "Kỳ 26/11: diesel giảm 1.382 đồng/lít, xăng giảm nhẹ",
+   "summary": "Giá thế giới bình quân giữa hai kỳ giảm 8–9%; giá trần diesel giảm mạnh nhất, xăng E10 chỉ giảm 44 đồng/lít.",
+   "new_information": "Giá thế giới bình quân kỳ 19/11–26/11: RON95 94,314 USD/thùng (−8,62%), diesel 136,638 USD/thùng (−8,13%), madút 532,640 USD/tấn (−8,87%). Giá trần mới: E5RON92 18.391 đồng/lít (−185), E10RON95-III 19.056 đồng/lít (−44), diesel 24.965 đồng/lít (−1.382), madút 17.570 đồng/kg (−1.101).",
+   "key_figures": ["E10RON95-III 19.056 đồng/lít (−44)", "Diesel 24.965 đồng/lít (−1.382)", "RON95 thế giới 94,314 USD/thùng (−8,62%)"],
+   "companies": [], "segments": ["Phân phối"], "category": "retail", "topic_ids": ["retail"], "importance": 2,
+   "event_date": "2026-11-26", "article_ids": ["a1"],
+   "impact": "Giá thế giới giảm nhanh hơn giá bán lẻ trong nước: khâu phân phối nhập hàng giá thấp hơn trong khi giá trần đi trễ."
+  },
+  {
+   "id": "e2", "title": "Giá xăng giảm kỳ thứ năm liên tiếp, E10 về 19.100 đồng/lít",
+   "summary": "Kỳ 19/11 E10 giảm 745 đồng/lít; so với cuối tháng 10, mỗi lít E10 đã rẻ hơn 6.630 đồng.",
+   "new_information": "Từ 15h ngày 19/11: E5RON92 không cao hơn 18.576 đồng/lít (−823), E10RON95-III 19.100 đồng/lít (−745), diesel 26.347 đồng/lít (−475), madút 18.671 đồng/kg (−1.071). Quỹ bình ổn trích lập 200 đồng/lít xăng sinh học, không chi. Đây là kỳ giảm thứ năm liên tiếp của xăng từ đầu tháng 11.",
+   "key_figures": ["E10RON95-III 19.100 đồng/lít (−745)", "E10 thấp hơn 6.630 đồng/lít so với cuối tháng 10", "Trích lập quỹ bình ổn 200 đồng/lít xăng"],
+   "companies": [], "segments": ["Phân phối"], "category": "retail", "topic_ids": ["retail"], "importance": 2,
+   "event_date": "2026-11-19", "article_ids": ["a2", "a3"],
+   "impact": "Mức giảm gộp cả thuế tiêu thụ đặc biệt về 0% từ 01/11 và giá thế giới đi xuống."
+  },
+  {
+   "id": "e3", "title": "Cuối tháng 10: giá E10 lên 25.734 đồng/lít, diesel 30.246 đồng/lít",
+   "summary": "Kỳ 29/10 giá bán lẻ tăng theo giá thế giới: RON95 bình quân 139,118 USD/thùng (+4,22%).",
+   "new_information": "Từ 15h ngày 29/10: E5RON92 26.027 đồng/lít (+666), E10RON95-III 25.734 đồng/lít (+521), diesel 30.246 đồng/lít (+696), madút 23.596 đồng/kg (+223). Giá thế giới bình quân diesel 172,570 USD/thùng (+2,71%).",
+   "key_figures": ["E10RON95-III 25.734 đồng/lít (+521)", "Diesel 30.246 đồng/lít (+696)", "RON95 thế giới 139,118 USD/thùng (+4,22%)"],
+   "companies": [], "segments": ["Phân phối"], "category": "retail", "topic_ids": ["retail"], "importance": 1,
+   "event_date": "2026-10-29", "article_ids": ["a4"], "impact": ""
+  },
+  {
+   "id": "e4", "title": "Thuế tiêu thụ đặc biệt với xăng về 0% đến hết 31/3/2027",
+   "summary": "Nghị quyết 45/2026/NQ-CP đưa thuế TTĐB mọi loại xăng về 0% từ 01/11/2026, thay mức 10% (xăng khoáng), 8% (E5), 7% (E10).",
+   "new_information": "Nghị quyết 45/2026/NQ-CP do Phó Thủ tướng Nguyễn Văn Thắng ký, hiệu lực 01/11/2026–31/3/2027. Bộ Công Thương có thể đề xuất điều chỉnh thời hạn qua Bộ Tài chính nếu cần vì lý do kinh tế hoặc an ninh năng lượng.",
+   "key_figures": ["Thuế TTĐB xăng 0% (trước: 10% / 8% / 7%)", "Hiệu lực 01/11/2026–31/3/2027"],
+   "companies": [], "segments": ["Phân phối"], "category": "policy", "topic_ids": ["retail"], "importance": 3,
+   "event_date": "2026-11-01", "article_ids": ["a5", "a2"],
+   "impact": "Giảm trực tiếp giá trần xăng; khi hết hạn 31/3/2027 giá sẽ bật lại nếu không gia hạn."
+  },
+  {
+   "id": "e5", "title": "Gia hạn giảm thuế nhập khẩu, bảo vệ môi trường và VAT xăng dầu đến hết 2026",
+   "summary": "Nghị quyết 43/2026 kéo dài ưu đãi thêm 3 tháng, từ 30/9 đến 31/12/2026; thuế TTĐB xăng lúc đó chưa giảm.",
+   "new_information": "Ưu đãi gồm thuế nhập khẩu xăng dầu và nguyên liệu, thuế bảo vệ môi trường và VAT (kể cả nhiên liệu bay). Sau kỳ 24/9, giá trần E10RON95-III là 27.087 đồng/lít (+1.451), diesel 30.497 đồng/lít (+552). CPI bình quân 8 tháng tăng 4,45%.",
+   "key_figures": ["Gia hạn đến 31/12/2026", "E10RON95-III 27.087 đồng/lít sau kỳ 24/9", "CPI 8 tháng +4,45%"],
+   "companies": [], "segments": ["Phân phối"], "category": "policy", "topic_ids": ["retail"], "importance": 2,
+   "event_date": "", "article_ids": ["a6"], "impact": ""
+  },
+  {
+   "id": "e6", "title": "OPEC+ giữ nguyên sản lượng tháng 12, họp tiếp 29/11",
+   "summary": "Bảy nước chủ chốt giữ mức sản lượng yêu cầu của tháng 9/2026 cho tháng 12; phần lớn vẫn khai thác dưới hạn ngạch vì gián đoạn do xung đột Iran.",
+   "new_information": "Cuộc họp trực tuyến 1/11 gồm Ả Rập Xê Út, Nga, Iraq, Kuwait, Algeria, Kazakhstan, Oman. Tháng 9/2026 nhóm đã gỡ xong lớp cắt giảm 1,65 triệu thùng/ngày; lớp khoảng 2 triệu thùng/ngày còn hiệu lực đến hết 2026. OPEC công bố cuộc họp kế tiếp ngày 29/11/2026.",
+   "key_figures": ["Lớp cắt giảm ~2 triệu thùng/ngày còn đến hết 2026", "Đã gỡ xong 1,65 triệu thùng/ngày (tháng 9/2026)", "Họp tiếp 29/11/2026"],
+   "companies": [], "segments": ["Dầu thô"], "category": "crude", "topic_ids": ["opec"], "importance": 2,
+   "event_date": "2026-11-01", "article_ids": ["a7", "a8"], "impact": ""
+  },
+  {
+   "id": "e7", "title": "OPEC+ chấm xong công suất tối đa, làm cơ sở hạn ngạch 2027",
+   "summary": "Lần đầu công suất khai thác bền vững tối đa của các nước OPEC+ được đánh giá độc lập; kết quả đưa ra cuộc họp 29/11.",
+   "new_information": "Cuộc họp bế mạc cơ chế đánh giá công suất do Tổng thư ký OPEC Haitham Al Ghais chủ trì. Hai đơn vị độc lập DeGolyer and MacNaughton và Shri Chandra Energy & Data Processing thực hiện. OPEC+ đặt hàng đánh giá sau khi một số nước phản đối mức hạn ngạch.",
+   "key_figures": ["Cơ sở hạn ngạch 2027", "Bàn tại cuộc họp 29/11/2026"],
+   "companies": [], "segments": ["Dầu thô"], "category": "crude", "topic_ids": ["opec"], "importance": 2,
+   "event_date": "2026-11-17", "article_ids": ["a9"], "impact": ""
+  },
+  {
+   "id": "e8", "title": "Brent lên 117,64 USD/thùng, cao nhất 6 tháng",
+   "summary": "Phiên 30/10 Brent tăng 2,4%; tháng 10 Brent tăng 13,6%, tháng tăng thứ tư liên tiếp, vì lo xung đột Mỹ–Iran leo thang sau bầu cử giữa kỳ.",
+   "new_information": "Brent kỳ hạn tháng 12 đóng cửa 117,64 USD/thùng (+2,76 USD), có lúc chạm 118 USD; WTI 104,12 USD/thùng (+2,08%). Các vụ tấn công tàu ở Hormuz và hạ tầng Ả Rập Xê Út giữ thị trường trong trạng thái cảnh giác.",
+   "key_figures": ["Brent 117,64 USD/thùng", "WTI 104,12 USD/thùng", "Brent tháng 10 +13,6%"],
+   "companies": [], "segments": ["Dầu thô"], "category": "crude", "topic_ids": ["hormuz"], "importance": 2,
+   "event_date": "2026-10-30", "article_ids": ["a10"], "impact": ""
+  },
+  {
+   "id": "e9", "title": "Brent mất hơn 16% trong một tuần, về vùng 92 USD/thùng",
+   "summary": "Tuần giảm mạnh nhất từ năm 2020 khi thị trường đặt cược vào đàm phán chấm dứt xung đột Mỹ–Iran; dầu thô vùng Vịnh xuất khẩu gần về mức trước chiến tranh.",
+   "new_information": "Brent chốt 92,57 USD/thùng ngày 9/11 (−5,85%), WTI 86,85 USD/thùng; sau đó mức giảm vượt 7 USD, thấp nhất từ cuối tháng 8. Ông Trump nói khó có tấn công mới vào Iran nếu đàm phán tiến triển; Iraq đạt thỏa thuận với Mỹ cho dầu Iraq đi qua tuyến gần Oman.",
+   "key_figures": ["Brent 92,57 USD/thùng (9/11, −5,85%)", "Tuần trước đó −16%", "WTI 86,85 USD/thùng"],
+   "companies": [], "segments": ["Dầu thô", "Vận tải"], "category": "crude", "topic_ids": ["hormuz"], "importance": 3,
+   "event_date": "2026-11-09", "article_ids": ["a11", "a12"],
+   "impact": "Giá dầu giảm nhanh kéo giá thế giới trong công thức điều hành giảm theo, dẫn tới chuỗi giảm giá bán lẻ tháng 11."
+  },
+  {
+   "id": "e10", "title": "Tấn công tàu ở Hormuz chưa dứt dù lưu lượng hồi phục",
+   "summary": "Ít nhất 10 tàu bị tấn công trong 10 ngày đầu tháng 11, sau 37 vụ trong tháng 10 — mức cao nhất từ khi xung đột bắt đầu cuối tháng 2.",
+   "new_information": "Hải quân IRGC nói một tàu chở LNG trúng thủy lôi và phát nổ ở eo Hormuz ngày 13/11 khi đi 'tuyến không được phép'; truyền thông Iran nói bốn tàu dầu khác trúng nổ một ngày trước đó. Lưu lượng tàu đã hồi phục và kỳ vọng giảm căng thẳng đã kéo giá dầu xuống.",
+   "key_figures": ["≥10 tàu bị tấn công trong 10 ngày đầu tháng 11", "37 vụ tấn công trong tháng 10"],
+   "companies": [], "segments": ["Vận tải", "Khí & LNG"], "category": "flows", "topic_ids": ["hormuz"], "importance": 2,
+   "event_date": "2026-11-13", "article_ids": ["a13"],
+   "impact": "Rủi ro bảo hiểm và cước tàu dầu chưa trở lại bình thường dù số tàu qua eo tăng."
+  },
+  {
+   "id": "e11", "title": "Dầu và LNG qua Hormuz cao nhất 6 tháng, Iran xuất khẩu bằng 0",
+   "summary": "Theo CENTCOM, lượng dầu thô và LNG qua eo trong hai tuần đạt đỉnh 6 tháng; Mỹ phong tỏa nên Iran không xuất được thùng nào.",
+   "new_information": "Bộ trưởng Năng lượng Mỹ Chris Wright ước khoảng 10 triệu thùng dầu thô và sản phẩm mỗi ngày đi qua Hormuz; các nước vùng Vịnh đã chở hơn 1 tỷ thùng qua eo trong vài tháng.",
+   "key_figures": ["~10 triệu thùng/ngày qua Hormuz", ">1 tỷ thùng trong vài tháng", "Iran xuất khẩu 0 thùng"],
+   "companies": [], "segments": ["Vận tải", "Dầu thô"], "category": "flows", "topic_ids": ["hormuz"], "importance": 2,
+   "event_date": "", "article_ids": ["a14"], "impact": ""
+  },
+  {
+   "id": "e12", "title": "Nghi Sơn nối lại dầu Kuwait, chạy khoảng 125% công suất đến hết tháng 11",
+   "summary": "Từ cuối tháng 3 đến cuối tháng 8 chạy gần như toàn bộ dầu ngoài Kuwait; NSRP nhận lại dầu Kuwait từ tháng 9 và đã có nguồn cho tháng 10–11.",
+   "new_information": "Tháng 9 có 3 tàu chở khoảng 6 triệu thùng dầu Kuwait; nguồn tháng 12 đang thu xếp. Lúc khó nhất nhà máy chạy 75–80% công suất gần một tháng; bình quân 8 tháng 110,9%. Đã chế biến 10 loại dầu thô mới. 8 tháng LNST gần 14.000 tỷ đồng — năm đầu có lãi từ khi vận hành thương mại. Nhà máy cung khoảng 35–40% nhu cầu xăng dầu trong nước.",
+   "key_figures": ["~6 triệu thùng dầu Kuwait tháng 9", "Công suất bình quân 8 tháng 110,9%", "LNST 8 tháng gần 14.000 tỷ đồng"],
+   "companies": ["NSRP"], "segments": ["Lọc dầu"], "category": "refining", "topic_ids": ["refining", "hormuz"], "importance": 3,
+   "event_date": "", "article_ids": ["a16", "a15"],
+   "impact": "Kênh 'nguyên liệu đầu vào' của Hormuz đã dịu; hợp đồng dài hạn Kuwait vẫn đáp ứng tới 85% công suất nên rủi ro quay lại nếu eo đóng."
+  },
+  {
+   "id": "e13", "title": "Bộ Công Thương yêu cầu đầu mối giữ nguồn cung tối thiểu quý 4",
+   "summary": "Đến 15/9 Việt Nam nhập gần 8,1 triệu tấn xăng dầu, lượng +12,3% nhưng giá trị +80%; Barclays nâng dự báo Brent quý 4 lên 115 USD/thùng.",
+   "new_information": "Diesel chiếm khoảng 57% lượng nhập (hơn 4,62 triệu tấn), nhiên liệu bay 1,61 triệu tấn, xăng 1,52 triệu tấn; kim ngạch khoảng 8,88 tỷ USD. Bộ yêu cầu đầu mối hoàn thành tổng nguồn tối thiểu 2026, hai nhà máy lọc dầu chạy an toàn, đúng tiến độ, và tuyệt đối không găm hàng chờ tăng giá.",
+   "key_figures": ["Nhập 8,1 triệu tấn đến 15/9 (+12,3%)", "Kim ngạch ~8,88 tỷ USD (+~80%)", "Barclays: Brent quý 4 115 USD/thùng"],
+   "companies": ["BSR", "NSRP"], "segments": ["Phân phối", "Lọc dầu"], "category": "retail", "topic_ids": ["retail", "hormuz"], "importance": 2,
+   "event_date": "", "article_ids": ["a15"], "impact": ""
+  },
+  {
+   "id": "e14", "title": "Dung Quất nhắm 8,3 triệu tấn năm 2026, ký khung mua dầu với ExxonMobil",
+   "summary": "BSR mở rộng giỏ dầu lên 40 loại (12 trong nước, 28 nhập khẩu) và ưu tiên diesel, Jet A1 cho thị trường cuối năm.",
+   "new_information": "Sản lượng mục tiêu khoảng 8,3 triệu tấn, cao hơn công suất thiết kế 6,5 triệu tấn khoảng 28% và cao nhất từ khi vận hành; cần thêm khoảng 2,1 triệu tấn trong 3 tháng cuối năm. Cuối tháng 9 BSR ký thỏa thuận khung mua dầu thô với đơn vị châu Á – Thái Bình Dương của ExxonMobil.",
+   "key_figures": ["Mục tiêu 8,3 triệu tấn (~128% thiết kế)", "Giỏ dầu 40 loại"],
+   "companies": ["BSR"], "segments": ["Lọc dầu"], "category": "refining", "topic_ids": ["refining"], "importance": 1,
+   "event_date": "", "article_ids": ["a15"], "impact": ""
+  },
+  {
+   "id": "e15", "title": "BSR lãi quý 3 gần 9.000 tỷ đồng, gấp gần 10 lần cùng kỳ",
+   "summary": "Biên gộp tăng từ 2,8% lên 16,1% khi chênh lệch giá sản phẩm và dầu thô nới rộng; Brent bình quân quý 3 là 97 USD/thùng.",
+   "new_information": "Doanh thu quý 3 đạt 59.581 tỷ đồng (+~69%). 9 tháng LNST hợp nhất 24.902 tỷ đồng (~11,6 lần cùng kỳ), dòng tiền kinh doanh 14.483 tỷ. Tiền và tiền gửi cuối kỳ 58.500 tỷ đồng, khoảng một nửa tổng tài sản; nợ vay 13.525 tỷ.",
+   "key_figures": ["LNST quý 3 gần 9.000 tỷ đồng (~9,9 lần)", "Biên gộp 16,1% (cùng kỳ 2,8%)", "LNST 9 tháng 24.902 tỷ đồng"],
+   "companies": ["BSR"], "segments": ["Lọc dầu"], "category": "companies", "topic_ids": ["refining", "earnings"], "importance": 3,
+   "event_date": "", "article_ids": ["a19"],
+   "impact": "Kênh 'crack spread' của Hormuz đã vào lợi nhuận: lọc dầu là khâu hưởng lợi rõ nhất quý 3."
+  },
+  {
+   "id": "e16", "title": "BSR nâng kế hoạch lãi 2026 lên 18.579 tỷ đồng, gấp khoảng 8,6 lần",
+   "summary": "Cùng DPM, DCM, ba doanh nghiệp thuộc Petrovietnam nâng tổng kế hoạch LNST thêm hơn 18.000 tỷ đồng.",
+   "new_information": "Kế hoạch lợi nhuận trước thuế 2026 của BSR tăng từ 2.405 tỷ lên 20.646 tỷ đồng. Tổng kế hoạch LNST ba doanh nghiệp từ 4.024 tỷ lên 22.192 tỷ đồng; tổng doanh thu kế hoạch từ 189.355 tỷ lên 228.757 tỷ.",
+   "key_figures": ["BSR LNST kế hoạch 18.579 tỷ đồng", "LNTT kế hoạch 20.646 tỷ (trước: 2.405 tỷ)"],
+   "companies": ["BSR"], "segments": ["Lọc dầu"], "category": "companies", "topic_ids": ["refining", "earnings"], "importance": 2,
+   "event_date": "", "article_ids": ["a20"], "impact": ""
+  },
+  {
+   "id": "e17", "title": "BSR thu 9.076 tỷ đồng từ xăng E10 trong 9 tháng",
+   "summary": "Doanh thu E10 RON95 tăng từ 4,7 tỷ đồng cùng kỳ 2025 nhờ lộ trình E10 toàn quốc từ 01/6/2026.",
+   "new_information": "Doanh thu xăng E10 RON95 của BSR 9 tháng 2026 đạt 9.076 tỷ đồng, gấp hơn 1.900 lần cùng kỳ.",
+   "key_figures": ["Doanh thu E10 9 tháng 9.076 tỷ đồng", "Cùng kỳ 2025: 4,7 tỷ đồng"],
+   "companies": ["BSR"], "segments": ["Lọc dầu", "Phân phối"], "category": "companies", "topic_ids": ["e10"], "importance": 1,
+   "event_date": "", "article_ids": ["a21"], "impact": ""
+  },
+  {
+   "id": "e18", "title": "Sau 5 tháng, E10 chiếm 92% lượng xăng sinh học bán ra",
+   "summary": "Bộ Công Thương: nguồn ethanol, xăng nền và E5/E10 cơ bản đủ; chưa thiếu hụt diện rộng, khiếu nại gần như chỉ dồn vào tháng 6–7.",
+   "new_information": "Từ 01/6 đến 27/10, tiêu thụ E5 và E10 khoảng 4,930 triệu m³, E10 chiếm 92,09%. 11 doanh nghiệp được cấp phép có năng lực phối trộn 1,410 triệu m³/tháng so với nhu cầu khoảng 1 triệu m³/tháng; 3 nhà máy E100 đang chạy. 315 khiếu nại, 314 trong tháng 6–7. Theo Bộ, 5 tháng dữ liệu chưa đủ để đánh giá tác động môi trường.",
+   "key_figures": ["E10 92,09% lượng xăng sinh học", "Phối trộn 1,410 triệu m³/tháng", "315 khiếu nại (314 trong tháng 6–7)"],
+   "companies": [], "segments": ["Phân phối"], "category": "policy", "topic_ids": ["e10"], "importance": 2,
+   "event_date": "2026-11-04", "article_ids": ["a22"], "impact": ""
+  },
+  {
+   "id": "e19", "title": "Luật Dầu khí 2026: năm điểm mới, hiệu lực 01/3/2027",
+   "summary": "Luật 10/2026/QH16 (12 chương, 62 điều) tăng phân quyền cho Petrovietnam, thêm ưu đãi mỏ nhỏ, cận biên, nước sâu và hợp đồng linh hoạt hơn.",
+   "new_information": "Năm điểm mới: phân cấp cho cơ quan quản lý và Petrovietnam; ưu đãi đầu tư mỏ nhỏ, cận biên, nước sâu, xa bờ, tận thu; quy định thu giữ và lưu trữ carbon, hạ tầng dùng chung, năng lượng ngoài khơi; hợp đồng dầu khí cho phép gia hạn và điều chỉnh cam kết công việc; kế toán, kiểm toán, quyết toán chi phí theo thông lệ quốc tế. Luật thay Luật Dầu khí 12/2022/QH15.",
+   "key_figures": ["Luật 10/2026/QH16, 12 chương 62 điều", "Hiệu lực 01/3/2027"],
+   "companies": [], "segments": ["Thượng nguồn"], "category": "policy", "topic_ids": ["law"], "importance": 2,
+   "event_date": "2026-09-10", "article_ids": ["a17"],
+   "impact": "Tác động ở đầu chu kỳ đầu tư thượng nguồn: dịch vụ khoan, EPCI (PVD, PVS) hưởng lợi khi dự án được phê duyệt nhanh hơn."
+  },
+  {
+   "id": "e20", "title": "Kế hoạch thi hành Luật Dầu khí: nghị định chính trình tháng 12/2026",
+   "summary": "Quyết định 1852/QĐ-TTg giao Bộ Công Thương soạn nghị định thay Nghị định 45/2023/NĐ-CP, trình Chính phủ tháng 12/2026.",
+   "new_information": "Nghị định về an toàn công trình dầu khí trên đất liền (thay Nghị định 13/2011 và 25/2019) trình quý 1/2027. Các bộ rà soát văn bản bị ảnh hưởng trong quý 4/2026; phổ biến, tập huấn trong quý 4/2026 và năm 2027.",
+   "key_figures": ["QĐ 1852/QĐ-TTg ngày 25/9/2026", "Nghị định thay NĐ 45/2023 trình 12/2026"],
+   "companies": [], "segments": ["Thượng nguồn"], "category": "policy", "topic_ids": ["law"], "importance": 2,
+   "event_date": "2026-09-25", "article_ids": ["a18"], "impact": ""
+  },
+  {
+   "id": "e21", "title": "Petrolimex lãi quý 3 tăng 93% nhờ biên gộp cải thiện",
+   "summary": "LNST hợp nhất quý 3 đạt 1.363 tỷ đồng; doanh thu 138,5 nghìn tỷ đồng, tăng 66% so cùng kỳ.",
+   "new_information": "LNST công ty mẹ quý 3 đạt 1.315 tỷ đồng (+149%). 9 tháng doanh thu 373,2 nghìn tỷ đồng (+64%), LNST sau lợi ích thiểu số 3,3 nghìn tỷ (+55%). Biên lợi nhuận hoạt động quý 3 là 1,2% (cùng kỳ 0,6%), theo Vietcap.",
+   "key_figures": ["LNST hợp nhất quý 3 1.363 tỷ đồng (+93%)", "Doanh thu quý 3 138,5 nghìn tỷ (+66%)", "Biên hoạt động 1,2% (cùng kỳ 0,6%)"],
+   "companies": ["PLX"], "segments": ["Phân phối"], "category": "companies", "topic_ids": ["earnings", "retail"], "importance": 2,
+   "event_date": "", "article_ids": ["a23"], "impact": ""
+  },
+  {
+   "id": "e22", "title": "PV GAS lãi quý 3 tăng 80%, sản lượng khí khô và LNG tăng 24%",
+   "summary": "Biên gộp lên 15,7% từ 11,5%; LNST quý 3 gần 4.580 tỷ đồng, tiền và tiền gửi hơn 50.800 tỷ.",
+   "new_information": "Doanh thu quý 3 hơn 39.700 tỷ đồng (+11%). 9 tháng doanh thu khí khô và LNG hơn 68.800 tỷ (+87%); doanh thu từ PV Power hơn 27.800 tỷ (gấp 4,1 lần). PV Power nợ GAS 8.870 tỷ đồng, gấp đôi đầu năm. Đã giải ngân 5.190 tỷ cho đường ống Lô B – Ô Môn.",
+   "key_figures": ["LNST quý 3 ~4.580 tỷ đồng (+80%)", "Sản lượng khí khô + LNG +24%", "Phải thu PV Power 8.870 tỷ đồng"],
+   "companies": ["GAS", "POW"], "segments": ["Khí & LNG"], "category": "companies", "topic_ids": ["earnings", "lng"], "importance": 2,
+   "event_date": "", "article_ids": ["a24"],
+   "impact": "LNG bán cho điện khí đẩy doanh thu, nhưng phải thu từ PV Power tăng nhanh."
+  },
+  {
+   "id": "e23", "title": "PV Drilling lãi quý 3 giảm 70% vì lãi vay và giàn chạy dưới kế hoạch",
+   "summary": "Doanh thu tăng 25% lên 3.213,5 tỷ đồng nhưng LNST chỉ 81,7 tỷ; hiệu suất giàn 91%.",
+   "new_information": "Giá vốn tăng 42,9%; chi phí lãi vay 83 tỷ đồng (+~79%) cho các giàn PV DRILLING VIII và IX; thời gian hoạt động thực tế của PV DRILLING V, VI, IX thấp hơn kế hoạch. 9 tháng LNST 560,1 tỷ (−~17%), đạt khoảng 70% kế hoạch 800 tỷ. Tổng nợ vay 6.231,5 tỷ (+41,3%).",
+   "key_figures": ["LNST quý 3 81,7 tỷ đồng (−70,5%)", "Hiệu suất giàn 91% (cùng kỳ 87%)", "Nợ vay 6.231,5 tỷ đồng"],
+   "companies": ["PVD"], "segments": ["Dịch vụ dầu khí", "Thượng nguồn"], "category": "companies", "topic_ids": ["earnings"], "importance": 2,
+   "event_date": "", "article_ids": ["a25"], "impact": ""
+  },
+  {
+   "id": "e24", "title": "PVS: biên gộp quý 3 lên 9,6%, lợi nhuận đi ngang",
+   "summary": "Doanh thu quý 3 10.579,1 tỷ đồng (+gần 10%); LNST cổ đông mẹ 315,2 tỷ (−2,7%) vì chi phí tài chính và lãi liên doanh giảm.",
+   "new_information": "Lợi nhuận gộp 1.018,3 tỷ đồng (+64,1%); chi phí tài chính 86,5 tỷ (+190,6%); lãi từ liên doanh 98 tỷ (−54,2%). 9 tháng doanh thu 27.852,3 tỷ (+21,1%), LNST 1.343,6 tỷ (+42%).",
+   "key_figures": ["Biên gộp ~9,6% (cùng kỳ 6,4%)", "LNST cổ đông mẹ quý 3 315,2 tỷ đồng", "Doanh thu 9 tháng 27.852,3 tỷ (+21,1%)"],
+   "companies": ["PVS"], "segments": ["Dịch vụ dầu khí"], "category": "companies", "topic_ids": ["earnings"], "importance": 1,
+   "event_date": "", "article_ids": ["a26"], "impact": ""
+  },
+  {
+   "id": "e25", "title": "18 dự án điện LNG: chỉ Hiệp Phước có thể kịp tiến độ",
+   "summary": "Bộ trưởng Công Thương nêu vướng mắc ở chuẩn bị đầu tư, đất đai, thu xếp vốn và hợp đồng mua bán điện; yêu cầu rà soát thực chất từng dự án.",
+   "new_information": "Tại phiên họp thứ nhất của Ban chỉ đạo các dự án công nghiệp, xây dựng trọng điểm ngày 1/10, Bộ trưởng Lê Mạnh Hùng cho biết trong 18 dự án điện LNG được theo dõi, chỉ LNG Hiệp Phước được đánh giá có khả năng đáp ứng tiến độ.",
+   "key_figures": ["1/18 dự án điện LNG kịp tiến độ"],
+   "companies": [], "segments": ["Khí & LNG"], "category": "gas", "topic_ids": ["lng"], "importance": 2,
+   "event_date": "2026-10-01", "article_ids": ["a27"],
+   "impact": "Nhu cầu LNG cho điện đến 2030 có thể thấp hơn quy hoạch, ảnh hưởng sản lượng kho cảng của PV GAS."
+  },
+  {
+   "id": "e26", "title": "Khung giá phát điện LNG 2026 tối đa 3.453,72 đồng/kWh",
+   "summary": "Quyết định 2972 của Bộ Công Thương; mức trần cao hơn năm 2025 trên 126 đồng/kWh.",
+   "new_information": "Khung giá từ 0 đến 3.453,72 đồng/kWh (chưa VAT), tính với giá LNG nhập khẩu 13,4099 USD/triệu BTU (gồm thuế nhập khẩu) và tỷ giá 26.378 đồng/USD.",
+   "key_figures": ["Trần 3.453,72 đồng/kWh", "LNG 13,4099 USD/triệu BTU", "Cao hơn năm 2025 trên 126 đồng/kWh"],
+   "companies": [], "segments": ["Khí & LNG"], "category": "gas", "topic_ids": ["lng"], "importance": 2,
+   "event_date": "", "article_ids": ["a28", "a29"], "impact": ""
+  },
+  {
+   "id": "e27", "title": "Dự thảo thông tư định giá dịch vụ khí, LNG cho phát điện",
+   "summary": "Dự thảo lấy ý kiến đến 20/11/2026, quy định chỉ tiêu kinh tế – kỹ thuật cho vận chuyển khí, tồn trữ và tái hóa LNG; kho LNG Thị Vải 1 triệu tấn đang chạy dưới 40% công suất.",
+   "new_information": "Khí trong nước giảm khoảng 1 tỷ m³/năm. 10 tháng 2026 điện khí đạt 23,28 tỷ kWh (7,8% toàn hệ thống). PV GAS ước cung khí 2026 khoảng 6,4 tỷ m³ (3,3 tỷ trong nước, 3,1 tỷ LNG). Quy hoạch điện VIII điều chỉnh đặt 22.524 MW điện LNG đến 2030.",
+   "key_figures": ["Kho LNG Thị Vải <40% công suất", "Điện khí 10 tháng 23,28 tỷ kWh (7,8%)", "Cung khí 2026 ~6,4 tỷ m³ (LNG 3,1 tỷ)"],
+   "companies": ["GAS"], "segments": ["Khí & LNG"], "category": "gas", "topic_ids": ["lng"], "importance": 2,
+   "event_date": "", "article_ids": ["a29"], "impact": ""
+  }
+ ],
+ "topics": [
+  {
+   "id": "hormuz", "title": "Hormuz · dòng chảy & tác động",
+   "background": "Xung đột Mỹ – Israel với Iran từ cuối tháng 2/2026 làm gián đoạn eo Hormuz. Theo phân tích ngày 28/10/2026, tác động tới doanh nghiệp Việt Nam đi qua năm kênh: nguyên liệu đầu vào (Nghi Sơn phụ thuộc dầu Kuwait), crack spread (lọc dầu hưởng lợi), giá bán lẻ trong nước (giá vốn đi nhanh hơn kỳ điều hành), cước vận tải (chưa rõ dấu) và nhu cầu toàn cầu (tiêu cực dài hạn). Năm kênh ở Tổng quan › 01 Chuỗi giá trị.",
+   "next_check": "Kiểm tra hằng tuần theo IMF PortWatch. Chủ đề kết thúc khi lưu lượng tàu dầu qua Hormuz phục hồi bền về vùng 30–50 lượt/ngày như trước gián đoạn và tấn công tàu chấm dứt; ngược lại, nếu leo thang làm mất dòng chảy vật chất thì kịch bản Brent trên 110 USD/thùng mở lại.",
+   "related_data": ["Bức tranh ngành › 06 Vận tải & dòng chảy", "?sub=flows#mt2"]
+  },
+  {
+   "id": "opec", "title": "OPEC+ · hạn ngạch 2027",
+   "background": "OPEC+ giữ sản lượng theo mức tháng 9/2026 suốt quý 4; phần lớn thành viên vùng Vịnh vẫn khai thác dưới hạn ngạch vì gián đoạn. Lớp cắt giảm khoảng 2 triệu thùng/ngày hết hạn cuối 2026; hạn ngạch 2027 dựa trên kết quả đánh giá công suất độc lập.",
+   "next_check": "Cuộc họp OPEC+ ngày 29/11/2026 quyết khung sản lượng 2027.",
+   "related_data": ["Bức tranh ngành › 01 Dầu thô toàn cầu", "?sub=crude#mt2"]
+  },
+  {
+   "id": "retail", "title": "Giá xăng dầu trong nước & thuế",
+   "background": "Giá bán lẻ đổi theo từng kỳ điều hành của liên Bộ Công Thương – Tài chính, đi trễ giá thế giới. Cuối tháng 10 E10 ở 25.734 đồng/lít; từ 01/11 thuế tiêu thụ đặc biệt xăng về 0% và giá thế giới giảm làm giá xăng giảm liên tiếp xuống quanh 19.000 đồng/lít.",
+   "next_check": "Các kỳ điều hành tiếp theo; mốc 31/12/2026 hết ưu đãi thuế nhập khẩu, bảo vệ môi trường, VAT (NQ 43/2026) và 31/3/2027 hết thuế TTĐB 0% (NQ 45/2026).",
+   "related_data": ["Bức tranh ngành › 05 Phân phối xăng dầu", "?sub=retail#mt2"]
+  },
+  {
+   "id": "refining", "title": "Lọc dầu · BSR & Nghi Sơn",
+   "background": "Hai nhà máy lọc dầu chạy trên công suất thiết kế, hướng tới sản lượng kỷ lục năm 2026, trong khi crack spread giãn rộng vì mất dòng sản phẩm từ vùng Vịnh. Nghi Sơn phụ thuộc dầu Kuwait đi qua Hormuz; Dung Quất đa dạng giỏ dầu.",
+   "next_check": "Nguồn dầu tháng 12 của Nghi Sơn; crack spread Singapore; BCTC quý 4/2026 của BSR (cuối tháng 1/2027).",
+   "related_data": ["Bức tranh ngành › 04 Lọc dầu", "?sub=refining#mt2"]
+  },
+  {
+   "id": "lng", "title": "LNG & điện khí",
+   "background": "Khí trong nước suy giảm nên LNG nhập khẩu phải bù; Quy hoạch điện VIII điều chỉnh đặt 22.524 MW điện LNG đến 2030 nhưng phần lớn dự án chậm vì hợp đồng mua bán điện, vốn và đất đai.",
+   "next_check": "Thông tư định giá dịch vụ khí/LNG (hết góp ý 20/11/2026); tiến độ 18 dự án điện LNG; công suất kho LNG Thị Vải.",
+   "related_data": ["Bức tranh ngành › 03 Khí & LNG", "?sub=gas#mt2"]
+  },
+  {
+   "id": "law", "title": "Luật Dầu khí 2026",
+   "background": "Luật Dầu khí 10/2026/QH16 thông qua 23/8/2026, hiệu lực 01/3/2027, thay Luật 12/2022/QH15: phân quyền cho Petrovietnam, ưu đãi mỏ nhỏ – cận biên – nước sâu, hợp đồng linh hoạt hơn.",
+   "next_check": "Nghị định thay Nghị định 45/2023/NĐ-CP trình Chính phủ tháng 12/2026; luật có hiệu lực 01/3/2027.",
+   "related_data": ["Bức tranh ngành › 07 Chính sách › Luật Dầu khí 2026", "?sub=policy&pol=law#mt2"]
+  },
+  {
+   "id": "e10", "title": "Xăng sinh học E10",
+   "background": "E10 bán đại trà toàn quốc từ 01/6/2026 thay xăng khoáng. Ba nhà máy ethanol E100 đang chạy, cơ quan quản lý rà soát khôi phục nhà máy đang dừng; Nghi Sơn sản xuất xăng nền RON92 để pha E10 từ tháng 7/2026, khoảng 250.000 tấn/tháng.",
+   "next_check": "Báo cáo đánh giá tác động môi trường của Bộ Công Thương (cần thêm dữ liệu so cùng kỳ); nguồn ethanol E100.",
+   "related_data": ["Bức tranh ngành › 07 Chính sách › Xăng sinh học E10", "?sub=policy&pol=e10#mt2"]
+  },
+  {
+   "id": "earnings", "title": "Kết quả quý 3 · doanh nghiệp dầu khí",
+   "background": "Brent bình quân quý 3/2026 khoảng 97 USD/thùng. Lọc dầu (BSR) và khí (GAS) hưởng lợi rõ; phân phối (PLX) cải thiện biên; dịch vụ (PVD, PVS) bị lãi vay và chi phí ăn mòn lợi nhuận.",
+   "next_check": "BCTC quý 4/2026 công bố cuối tháng 1/2027.",
+   "related_data": ["Tài chính ngành › 01 Tài chính ngành", "?sub=fin#mt14"]
+  }
+ ]
+}

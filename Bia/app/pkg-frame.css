@@ -174,3 +174,5 @@ a.rf-chain-s{text-decoration:none;color:inherit}
 @media (max-width:760px){.bm-pack,.bm-thesis,.bm-sens{grid-template-columns:1fr}.bm-in label{grid-template-columns:1fr}}
 .bm-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}.bm-step{display:flex;flex-direction:column;gap:2px;min-width:110px;flex:1 1 110px;padding:8px 10px;border:1px solid var(--line,#e3e7f0);border-radius:9px;background:var(--card,#fff);text-decoration:none;color:inherit}
 .bm-step:hover{border-color:#2938A8}.bm-step small{color:#2938A8;font-weight:700;font-size:11px}.bm-step b{font-size:13px;color:var(--ink,#1D2678)}.bm-step span{font-size:11.5px;color:var(--muted,#7a8399)}.bm-ar{align-self:center;color:#9AA3BD;font-weight:700}
+/* Khung chuẩn Điện (28/11/2026): ngày dữ liệu .pp-asof và nút Link mục cùng một cụm bên phải đầu sub-tab. */
+.rf-hside{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}

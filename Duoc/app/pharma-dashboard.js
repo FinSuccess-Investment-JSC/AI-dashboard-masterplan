@@ -142,6 +142,29 @@ kpi('spk-iip',pL?signed(pL.value,1)+'%':'—',pL?'IIP sản xuất thuốc · '+
 kpi('spk-cpi',cL?signed(cpiY,1)+'%':'—',cL?'CPI thuốc & y tế YoY · '+mon(cL.date):'—','',cpi.slice(-12).map(r=>r.value),C.plum);
 kpi('spk-fx',fL?nf(fL.value,0):'—',fL?'VND/USD trung tâm · '+mon(fL.date):'—',fL?signed(fxY,1)+'% so cùng kỳ':'',fx.slice(-12).map(r=>r.value),C.red);
 kpi('spk-pe',vL?nf(vL[1],1)+'x':'—',vL?'P/E ngành dược · '+short(vL[0]):'—',vL?'P/B '+nf(vL[2],2)+'x':'',v222.slice(-30).map(r=>r[1]),C.grey);
+// 28/11/2026 (khung chuẩn Điện: mỗi sub-tab Bức tranh ngành 2–4 ô số): ô từ dữ liệu đã nạp và đã vẽ ở chart cùng sub-tab, không số mới.
+// Kênh bệnh viện: kết quả trúng thầu Cục QLD (PHARMA_EXTRA.dav_tenders, cùng cách chọn quý như chart duoc-14, duoc-15; ghi rõ mức tải chưa đủ).
+{const T=(window.PHARMA_EXTRA||{}).dav_tenders;
+ if(T&&T.quarters){
+  const qs=Object.keys(T.quarters).filter(q=>T.quarters[q].n>=1000),last=qs.at(-1),prev=qs.at(-2),ql=q=>'Q'+q.slice(6)+'/'+q.slice(0,4);
+  const TK=['DVN','DBD','DHG','IMP','DMC','TRA'],co=q=>TK.reduce((a,t)=>a+Object.values(T.by_ticker?.[t]?.[q]||{}).reduce((x,c)=>x+c.value,0),0);
+  const cov=T.coverage||{},covTxt=cov.complete===false&&cov.total_count?'tải '+nf(cov.fetched/cov.total_count*100,0)+'% bản ghi Cục QLD':'';
+  if(last){
+   kpi('spk-tender',nf(T.quarters[last].value/1e9,0),'tỷ đồng · trúng thầu toàn quốc '+ql(last),covTxt,qs.map(q=>T.quarters[q].value/1e9),C.navy);
+   kpi('spk-tender-co',nf(co(last)/1e9,0),'tỷ đồng · 6 mã niêm yết '+ql(last),nf(co(last)/T.quarters[last].value*100,1)+'% toàn quốc',qs.map(q=>co(q)/1e9),C.teal);
+   const gq=prev&&T.quarters[last].n<T.quarters[prev].n*0.6?prev:last,g=T.by_group_origin?.[gq]||{};
+   const f12=['Nhóm 1','Nhóm 2'].reduce((a,k)=>a+(g[k]?.foreign.value||0),0),t12=['Nhóm 1','Nhóm 2'].reduce((a,k)=>a+(g[k]?g[k].vn.value+g[k].foreign.value:0),0);
+   if(t12)kpi('spk-tender-fx',nf(f12/t12*100,0)+'%','thuốc ngoại, nhóm 1–2 · '+ql(gq),'giá trị trúng thầu',[],C.gold);
+  }
+ }}
+// Nhà thuốc & bệnh viện: GDP y tế (chart duoc-21), mạng lưới Long Châu (PHARMA_DOCS chStores, duoc-20), dân số 65+ (World Bank qua FRED).
+{const g9=gdp.filter(r=>r.date.slice(5,7)==='09'),gl=g9.at(-1),gp=g9.at(-2);
+ if(gl)kpi('spk-gdp',nf(gl.value/1000,0),'nghìn tỷ đồng · 9T/'+gl.date.slice(0,4),gp?signed((gl.value/gp.value-1)*100,0)+'% so cùng kỳ':'',g9.map(r=>r.value/1000),C.teal);
+ const st=(D.charts||[]).find(c=>c.id==='chStores'),sv=st?.series?.[0]?.[1]||[],si=sv.length-1;
+ if(si>=0&&sv[si]!=null)kpi('spk-lc',nf(sv[si],0),'nhà thuốc · '+st.categories[si],si>0&&sv[si-1]!=null?signed(sv[si]-sv[si-1],0)+' so '+st.categories[si-1]:'',sv.filter(v=>v!=null),C.navy);
+ const P65=(window.PHARMA_EXTRA||{}).pop65?.records||[],pl=P65.at(-1),p10=pl&&P65.find(r=>r.date.slice(0,4)==String(+pl.date.slice(0,4)-10));
+ if(pl)kpi('spk-pop65',nf(pl.value,1)+'%','dân số từ 65 tuổi · '+pl.date.slice(0,4),p10?'10 năm trước '+nf(p10.value,1)+'%':'',P65.slice(-12).map(r=>r.value),C.plum);
+}
 const quick=document.querySelector('.hero .insight');
 if(quick&&iL){
  quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`Thuốc nhập ${mon(iL.date)} ${nf(iL.value,0)} triệu USD (lũy kế ${signed(impY,0)}%); nguyên liệu dược lũy kế ${signed(apiY,0)}%. IIP sản xuất thuốc ${signed(pL?.value,0)}%. Tỷ giá ${signed(fxY,1)}% YoY, CPI y tế ${signed(cpiY,1)}%. P/E ngành dược ${vL?nf(vL[1],1):'—'}x.`);

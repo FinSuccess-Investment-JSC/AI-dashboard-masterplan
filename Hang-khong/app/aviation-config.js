@@ -30,6 +30,29 @@ const scsQ = (() => {
   return {cats: per.map(([k]) => k), yld: per.map(([k, x]) => { const r = rev(k); return Number.isFinite(r) ? Math.round(r * 1e6 / x.v) : null; })};
 })();
 
+// 28/11/2026 (khung chuẩn Điện): ô số và "Dữ liệu mới nhất" của từng sub-tab Bức tranh ngành, tính từ AVIATION_DATA / AVIATION_FIN trên trang.
+// Ngày quan sát: chuỗi tháng, số lũy kế, số quý → tháng cuối kỳ (yyyy-mm); số dư tại ngày → ngày; lịch bay theo mùa → ngày Cục HK công bố
+// (kỳ mùa kéo dài tới tương lai nên không lấy ngày cuối mùa); giá theo ngày → ngày.
+const MS = k => W.blocks?.macro?.series?.[k]?.records || [];
+const mLast = k => MS(k).at(-1)?.date?.slice(0, 7);
+const oDate = o => !o ? null : o.frequency === 'point' ? o.period_end : o.frequency === 'season' ? o.published_at : o.period_end.slice(0, 7);
+const lastObs = m => obs(m).map(oDate).filter(Boolean).sort().at(-1);
+const latest = a => a.filter(Boolean).sort().at(-1) || null;
+const finQ = t => { const ps = F.periods || [], r = F.data?.[t]?.revenue || []; for (let i = ps.length - 1; i >= 0; i--) if (Number.isFinite(r[i])) return ps[i].slice(0, 4) + '-' + String(Number(ps[i].slice(-1)) * 3).padStart(2, '0'); return null; };
+const dmy = d => d ? d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4) : '';
+const ltDate = () => { const m = String((EX.longthanh_progress || [])[0]?.[2] || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); return m ? `${m[3]}-${m[2]}-${m[1]}` : null; };
+const ASOF = {
+  demand: () => latest([mLast('air_pax'), mLast('visitors_air'), lastObs('caa_pax_carried_vn'), lastObs('caa_pax_carried_mkt'), lastObs('caa_pax_airport')]),
+  supply: () => latest([mLast('air_paxkm'), lastObs('caa_sched_intl'), lastObs('caa_sched_dom'), lastObs('caa_aircraft_registered'), lastObs('caa_fleet_airline'), lastObs('caa_otp'), lastObs('dom_share')]),
+  cost: () => latest([W.fuel?.daily?.at(-1)?.[0], W.fuel?.monthly?.at(-1)?.[0], W.fx?.daily?.at(-1)?.[0], W.fx?.monthly?.at(-1)?.[0]]),
+  airport: () => latest([ltDate(), lastObs('acv_pax'), lastObs('acv_cargo'), finQ('ACV')]),
+  cargo: () => latest([mLast('air_freight'), lastObs('caa_cargo_airport'), lastObs('scs_tonnage'), ...['SCS', 'NCT', 'SGN', 'AST', 'SAS'].map(finQ)]),
+};
+// Ô số theo số lũy kế Cục HK / ACV: kỳ mới nhất của dòng tổng, % so cùng kỳ đúng số nguồn công bố, kèm % quốc tế cùng kỳ.
+const cumKpi = (m, unit, note, color) => () => { const o = last(m, 'total'); if (!o) return null; const i = obs(m, {segment: 'intl'}).find(x => x.period_start === o.period_start && x.period_end === o.period_end);
+  return {value: nf(o.value, 1), unit: unit || o.unit, sub: o.period_label + ' · ' + note, delta: [Number.isFinite(o.yoy) ? sg(o.yoy) + '% so cùng kỳ' : '', i && Number.isFinite(i.yoy) ? 'quốc tế ' + sg(i.yoy) + '%' : ''].filter(Boolean).join(' · '), color}; };
+const scsTot = () => { const by = {}; obs('scs_tonnage').forEach(o => { const k = o.period_label; by[k] = by[k] || {pe: o.period_end, v: 0, n: 0}; by[k].v += o.value; by[k].n++; }); return Object.entries(by).filter(([, x]) => x.n === 2).sort((a, b) => a[1].pe < b[1].pe ? -1 : 1); };
+
 window.PKG = {
   key: 'aviation', prefix: 'hk', label: 'Hàng không', dataVar: 'AVIATION_DATA',
   ticker: {commodity: [], ratio: []},
@@ -38,6 +61,28 @@ window.PKG = {
     {spark: 'spk-pax', series: 'air_pax', unit: 'nghìn lượt', digits: 0, note: 'NSO', color: C.navy},
     {spark: 'spk-visair', series: 'visitors_air', unit: 'nghìn lượt', div: 1000, digits: 0, note: 'NSO', color: C.teal},
     {spark: 'spk-cargo', series: 'air_freight', unit: 'nghìn tấn', digits: 1, note: 'NSO', color: C.plum},
+    // 28/11/2026: ô số mới cho các sub-tab còn thiếu (cùng số với chart trong sub-tab đó; không có số thì ô giữ "—").
+    {spark: 'spk-carried', calc: cumKpi('caa_pax_carried_vn', 'triệu lượt', 'Cục Hàng không', C.navy)},
+    {spark: 'spk-sched', calc: () => { const o = obs('caa_sched_intl', {segment: 'total'}).sort((a, b) => a.period_start < b.period_start ? -1 : 1).at(-1); if (!o) return null;
+      return {value: nf(o.value, 0), unit: 'chuyến khứ hồi/tuần', sub: o.period_label + ' · lịch bay Cục HK duyệt, công bố ' + dmy(o.published_at), delta: Number.isFinite(o.yoy) ? sg(o.yoy) + '% so cùng mùa năm trước' : ''}; }},
+    {spark: 'spk-rpk', series: 'air_paxkm', unit: 'triệu HK.km', digits: 0, note: 'NSO', color: C.plum},
+    {spark: 'spk-fleet', calc: () => { const rs = obs('caa_aircraft_registered').sort((a, b) => a.period_end < b.period_end ? -1 : 1), l = rs.at(-1); if (!l) return null;
+      const p = rs.filter(o => o.period_end.slice(0, 4) < l.period_end.slice(0, 4)).at(-1);
+      return {value: nf(l.value, 0), unit: 'tàu', sub: l.period_label + ' · Cục Hàng không, số dư tại ngày', delta: p ? (l.value - p.value >= 0 ? '+' : '−') + nf(Math.abs(l.value - p.value), 0) + ' tàu so ' + p.period_label : '', spark: rs.map(o => o.value), color: C.navy}; }},
+    {spark: 'spk-fuel', calc: () => { const d = W.fuel?.daily?.at(-1), mo = W.fuel?.monthly || [], ml = mo.at(-1); if (!d) return null;
+      const mp = ml && mo.find(x => x[0] === (Number(ml[0].slice(0, 4)) - 1) + ml[0].slice(4));
+      return {value: nf(d[1], 2), unit: 'USD/gallon', sub: dmy(d[0]) + ' · EIA vùng Vịnh Mỹ', delta: ml ? 'BQ T' + Number(ml[0].slice(5)) + '/' + ml[0].slice(2, 4) + ': ' + nf(ml[1], 2) + (mp ? ' · ' + sg((ml[1] / mp[1] - 1) * 100, 0) + '% so cùng kỳ' : '') : '', spark: mo.slice(-12).map(x => x[1]), color: C.red}; }},
+    {spark: 'spk-iata', calc: () => { const x = EX.iata; if (!x || !Number.isFinite(x.global)) return null;
+      return {value: nf(x.global, 2), unit: 'USD/thùng', sub: 'tuần đến ' + dmy(x.week_ending) + ' · IATA bình quân toàn cầu', delta: [Number.isFinite(x.global_wow) ? sg(x.global_wow) + '% so tuần trước' : '', Number.isFinite(x.global_yoy) ? sg(x.global_yoy) + '% so cùng kỳ' : ''].filter(Boolean).join(' · ')}; }},
+    {spark: 'spk-fx', calc: () => { const mo = W.fx?.monthly || [], l = mo.at(-1); if (!l) return null; const p = mo.find(x => x[0] === (Number(l[0].slice(0, 4)) - 1) + l[0].slice(4));
+      return {value: nf(l[1], 0), unit: 'đồng/USD', sub: 'T' + Number(l[0].slice(5)) + '/' + l[0].slice(0, 4) + ' · NHNN, bình quân tháng', delta: p ? sg((l[1] / p[1] - 1) * 100, 1) + '% so cùng kỳ' : '', spark: mo.slice(-12).map(x => x[1]), color: C.gold}; }},
+    {spark: 'spk-apax', calc: cumKpi('caa_pax_airport', 'triệu lượt', 'Cục Hàng không, mọi cảng', C.teal)},
+    {spark: 'spk-acv', calc: cumKpi('acv_pax', 'triệu lượt', 'ACV công bố', C.gold)},
+    {spark: 'spk-lt', calc: () => { const [a, b] = EX.longthanh_progress || []; if (!a) return null;
+      return {value: nf(a[1], 2) + '%', sub: 'giá trị hợp đồng theo khối lượng' + (ltDate() ? ' · đến ' + dmy(ltDate()) : ''), delta: b ? 'giải ngân ' + nf(b[1], 0) + '%' : ''}; }},
+    {spark: 'spk-cargoport', calc: cumKpi('caa_cargo_airport', 'nghìn tấn', 'Cục Hàng không, gồm hãng nước ngoài', C.plum)},
+    {spark: 'spk-scs', calc: () => { const q = scsTot(), l = q.at(-1); if (!l) return null; const [lab, x] = l, prev = q.find(([k]) => k === lab.split('/')[0] + '/' + (Number(lab.split('/')[1]) - 1));
+      return {value: nf(x.v, 0), unit: 'tấn', sub: lab + ' · SCSC, quốc tế + nội địa', delta: prev ? sg((x.v / prev[1].v - 1) * 100, 1) + '% so ' + prev[0] : '', spark: q.map(([, y]) => y.v), color: C.plum}; }},
   ],
   charts: [
     {id: 'hkChain', type: 'html',
@@ -253,42 +298,71 @@ window.PKG = {
   topics: {
     'hk-t1': ['Chi phí nhiên liệu trên ghế, biên gộp HVN, VJC', 'EIA theo ngày; chi phí nhiên liệu trong thuyết minh BCTC quý 4/2026; mức phụ thu nhiên liệu và giá vé', [['#rf-q-fuel', 'Nhiên liệu, tỷ giá'], ['#rf-mt14-sector', 'Biên HVN, VJC']]],
     'hk-t2': ['Sản lượng và yield quốc tế của HVN, VJC; lượt khách quốc tế qua ACV', 'Số 11 tháng của Cục HK (khách quốc tế toàn thị trường và hãng Việt); lịch bay mùa Hè 2027; số chuyến theo hãng trong báo cáo đúng giờ', [['#rf-q-share', 'Thị phần quốc tế'], ['#rf-q-sched', 'Lịch bay'], ['#rf-q-otp', 'Chuyến theo hãng']]],
-    'hk-t3': ['Capex, XDCB dở dang, thời điểm bắt đầu khấu hao của ACV; phân chia lưu lượng Tân Sơn Nhất – Long Thành', 'Mốc chạy thử, cấp phép khai thác của Bộ Xây dựng, Cục HK; BCTC quý 4/2026 của ACV', [['#rf-q-lt', 'Tiến độ Long Thành'], ['#rf-q-acv', 'Capex ACV']]],
+    'hk-t3': ['Capex, XDCB dở dang, thời điểm bắt đầu khấu hao của ACV; phân chia lưu lượng Tân Sơn Nhất – Long Thành', 'Mốc chạy thử, cấp phép khai thác của Bộ Xây dựng, Cục HK; BCTC quý 4/2026 của ACV', [['#rf-q-lt', 'Tiến độ Long Thành'], ['#rf-q-capex', 'Capex ACV']]],
   },
   section: {demand: ['mt2', 'demand'], supply: ['mt2', 'supply'], cost: ['mt2', 'cost'], airport: ['mt2', 'airport'], cargo: ['mt2', 'cargo']},
   tree: {
+    // 28/11/2026 (khung chuẩn Điện): Tổng quan dùng thanh .ov-nav (dòng phụ = sub). Bức tranh ngành: ô số, "Dữ liệu mới nhất",
+    // luồng Đầu vào → Sản xuất → Đầu ra ở các sub-tab phân khúc; câu hỏi tách lại để mỗi khâu có chart trả lời (thẻ dời, không nhân bản).
     mt1: {title: 'Tổng quan ngành', subs: [
-      {k: 'map', t: 'Bản đồ ngành', d: 'Cách từng doanh nghiệp thu tiền từ một chuyến bay.', items: [
+      {k: 'map', t: 'Bản đồ ngành', sub: 'Ai thu tiền từ một chuyến bay', d: 'Cách từng doanh nghiệp thu tiền từ một chuyến bay.', items: [
         {q: 'Một chuyến bay tạo doanh thu cho những ai?', id: 'rf-q-map', take: ['hk-01']}]},
-      {k: 'model', t: 'Mô hình kiếm tiền', d: 'Sáu sơ đồ: ai trả tiền, tính tiền theo đơn vị nào, biến nào làm doanh thu tăng, chi phí nào quyết định biên.', items: [
+      {k: 'model', t: 'Mô hình kiếm tiền', sub: '6 mô hình: hãng bay, cảng, nhà ga, dịch vụ', d: 'Sáu sơ đồ: ai trả tiền, tính tiền theo đơn vị nào, biến nào làm doanh thu tăng, chi phí nào quyết định biên.', items: [
         {q: 'Mỗi doanh nghiệp kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['hk-05']}]},
     ]},
     mt2: {title: 'Bức tranh ngành', subs: [
-      {k: 'demand', t: 'Nhu cầu vận tải', d: 'Khách vận chuyển, lượt khách qua cảng, khách quốc tế đến: ba phép đo khác nhau.', kpis: ['spk-pax', 'spk-visair'], items: [
+      {k: 'demand', t: 'Nhu cầu vận tải', d: 'Khách vận chuyển, lượt khách qua cảng, khách quốc tế đến: ba phép đo khác nhau.', asof: ASOF.demand, kpis: ['spk-pax', 'spk-visair', 'spk-carried'], items: [
+        {grp: 'Khách vận chuyển'},
         {q: 'Cầu tăng nhờ nội địa hay quốc tế?', id: 'rf-q-carried', meta: 'triệu lượt khách · Cục Hàng không, năm và lũy kế · nghìn lượt/tháng · NSO', take: ['hk-10', 'hk-11']},
+        {grp: 'Thị phần quốc tế'},
         {q: 'Hãng Việt có tăng cùng tốc độ với thị trường quốc tế?', id: 'rf-q-share', meta: 'thị phần = khách QT hãng Việt ÷ khách QT vận chuyển toàn thị trường', take: ['hk-15', 'hk-12']},
+        {grp: 'Thị trường nguồn'},
         {q: 'Khách quốc tế đến Việt Nam tập trung ở thị trường nào?', id: 'rf-q-vis', meta: 'nghìn lượt · NSO theo quốc tịch', take: ['hk-13', 'hk-14']}]},
-      {k: 'supply', t: 'Cung ghế, đội bay & cạnh tranh', d: 'Lịch bay theo mùa, luân chuyển hành khách, đội tàu bay, thị phần và đúng giờ.', items: [
-        {q: 'Cung ghế quốc tế mùa này tăng bao nhiêu, ai tăng?', id: 'rf-q-sched', meta: 'chuyến khứ hồi/tuần · lịch bay được duyệt; HK.km · NSO', take: ['hk-20', 'hk-21']},
-        {q: 'Đội bay và thị phần nội địa thay đổi thế nào?', id: 'rf-q-fleet', meta: 'tàu bay · Cục Hàng không; thị phần, đúng giờ · SHS', take: ['hk-24', 'hk-22', 'hk-25']},
-        {q: 'Hãng nào bay đúng giờ, khai thác bao nhiêu chuyến?', id: 'rf-q-otp', meta: '% chuyến cất cánh đúng giờ · theo tháng (Cục Hàng không)', take: ['hk-26']}]},
-      {k: 'cost', t: 'Nhiên liệu & tỷ giá', d: 'Jet fuel và USD/VND cùng trục thời gian.', items: [
-        {q: 'Giá nhiên liệu bay và tỷ giá đang ở đâu?', id: 'rf-q-fuel', meta: 'USD/gallon (EIA), đồng/USD (NHNN) · bình quân tháng; bảng bình quân quý', take: ['hk-30']}]},
-      {k: 'airport', t: 'Sân bay, công suất & capex ACV', d: 'Bản đồ cảng, tiến độ Long Thành, lưu lượng và đầu tư của ACV.', items: [
-        {q: 'Các cảng nằm đâu, ai khai thác?', id: 'rf-q-airmap', take: ['hk-40']},
+      {k: 'supply', t: 'Cung ghế, đội bay & cạnh tranh', d: 'Đội tàu bay → lịch bay, chuyến bay → khách-km, thị phần và đúng giờ.', asof: ASOF.supply, kpis: ['spk-sched', 'spk-rpk', 'spk-fleet'],
+        flow: [['in', 'Đầu vào', 'Đội tàu bay'], ['prod', 'Sản xuất', 'Lịch bay và chuyến bay'], ['out', 'Đầu ra', 'Khách-km và thị phần']], items: [
+        {stage: 'in'},
+        {q: 'Đội tàu bay đang tăng hay giảm?', id: 'rf-q-fleet', meta: 'tàu bay · số dư tại ngày, Cục Hàng không', take: ['hk-24']},
+        {stage: 'prod'},
+        {q: 'Cung ghế quốc tế mùa này tăng bao nhiêu, ai tăng?', id: 'rf-q-sched', meta: 'chuyến khứ hồi/tuần · lịch bay được duyệt', take: ['hk-20']},
+        {q: 'Hãng nào khai thác nhiều chuyến, bay đúng giờ?', id: 'rf-q-otp', meta: '% chuyến cất cánh đúng giờ · theo tháng (Cục Hàng không), năm 2024 (SHS)', take: ['hk-26', 'hk-25']},
+        {stage: 'out'},
+        {q: 'Khách-km có tăng nhanh hơn số khách?', id: 'rf-q-rpk', meta: 'triệu HK.km, nghìn lượt · NSO', take: ['hk-21']},
+        {q: 'Thị phần nội địa dịch chuyển về hãng nào?', id: 'rf-q-domshare', meta: '% thị phần nội địa · SHS tổng hợp', take: ['hk-22']}]},
+      {k: 'cost', t: 'Nhiên liệu & tỷ giá', d: 'Jet fuel và USD/VND → chi phí trên mỗi chuyến bay → biên và nợ vay của hãng bay.', asof: ASOF.cost, kpis: ['spk-fuel', 'spk-iata', 'spk-fx'],
+        flow: [['in', 'Đầu vào', 'Jet fuel và USD/VND'], ['prod', 'Sản xuất', 'Chi phí khai thác chuyến bay'], ['out', 'Đầu ra', 'Biên và nợ vay hãng bay']], items: [
+        {stage: 'in'},
+        {q: 'Giá nhiên liệu bay và tỷ giá đang ở đâu?', id: 'rf-q-fuel', meta: 'USD/gallon (EIA), đồng/USD (NHNN) · bình quân tháng; bảng bình quân quý', take: ['hk-30']},
+        {stage: 'prod'},
+        {link: ['#rf-q-model', 'Tổng quan ngành › Mô hình kiếm tiền', 'Nhiên liệu, thuê tàu, bảo dưỡng trong biên khai thác', 'Khoản chi nào tính bằng USD, khoản nào theo chuyến']},
+        {link: ['#rf-q-sched', 'Cung ghế, đội bay › 2.2', 'Số chuyến theo lịch bay mùa', 'Khối lượng bay quyết định lượng nhiên liệu tiêu thụ']},
+        {stage: 'out'},
+        // Câu rf-q-fin, rf-q-debt bị aviation-finance.js dời vào cụm 1 và 5 khi dựng → dẫn tới sub-tab, không tới id câu.
+        {link: ['#rf-mt14-sector', 'Tài chính ngành › 01', 'Biên lợi nhuận và nợ vay của hãng bay', 'Biên gộp, biên ròng, nợ vay ròng cộng gộp và từng mã (HVN, VJC)']}]},
+      {k: 'airport', t: 'Sân bay, công suất & capex ACV', d: 'Vốn đầu tư (Long Thành, capex ACV) → mạng cảng, công suất → lưu lượng qua ACV.', asof: ASOF.airport, kpis: ['spk-apax', 'spk-acv', 'spk-lt'],
+        flow: [['in', 'Đầu vào', 'Long Thành và capex ACV'], ['prod', 'Sản xuất', 'Mạng cảng và công suất'], ['out', 'Đầu ra', 'Lượt khách, hàng qua ACV']], items: [
+        {stage: 'in'},
         {q: 'Long Thành đã làm được bao nhiêu?', id: 'rf-q-lt', meta: '% giá trị hợp đồng theo khối lượng và % giải ngân · dự án thành phần 3', take: ['hk-42']},
-        {q: 'Lưu lượng qua ACV và đầu tư của ACV đi thế nào?', id: 'rf-q-acv', meta: 'triệu lượt, nghìn tấn · tỷ đồng', take: ['hk-43', 'hk-44']}]},
-      {k: 'cargo', t: 'Hàng hóa & dịch vụ sân bay', d: 'Ba lớp: hãng vận chuyển, cảng tiếp nhận, nhà ga xử lý; doanh nghiệp dịch vụ.', kpis: ['spk-cargo'], items: [
+        {q: 'ACV đang chi đầu tư bao nhiêu, dòng tiền có đủ bù?', id: 'rf-q-capex', meta: 'tỷ đồng · XDCB dở dang, chi đầu tư TSCĐ, CFO theo quý', take: ['hk-44']},
+        {stage: 'prod'},
+        {q: 'Các cảng nằm đâu, ai khai thác?', id: 'rf-q-airmap', take: ['hk-40']},
+        {stage: 'out'},
+        {q: 'Lưu lượng qua ACV tăng bao nhiêu, quốc tế hay nội địa?', id: 'rf-q-acv', meta: 'triệu lượt, nghìn tấn · năm và lũy kế', take: ['hk-43']},
+        {link: ['#rf-q-share', 'Nhu cầu vận tải › 1.2', 'Lượt khách qua mọi cảng (Cục Hàng không)', 'Nội địa, quốc tế; gồm cảng không do ACV quản lý']}]},
+      {k: 'cargo', t: 'Hàng hóa & dịch vụ sân bay', d: 'Hàng hãng chở, hàng qua cảng → nhà ga xử lý → doanh thu doanh nghiệp dịch vụ.', asof: ASOF.cargo, kpis: ['spk-cargo', 'spk-cargoport', 'spk-scs'],
+        flow: [['in', 'Đầu vào', 'Hàng hãng chở, hàng qua cảng'], ['prod', 'Sản xuất', 'Nhà ga hàng hóa xử lý'], ['out', 'Đầu ra', 'Doanh thu dịch vụ sân bay']], items: [
+        {stage: 'in'},
         {q: 'Hàng hóa hàng không tăng ở lớp nào?', id: 'rf-q-cargo', meta: 'triệu tấn qua cảng · nghìn tấn hãng Việt chở', take: ['hk-50', 'hk-51']},
-        {q: 'Hàng qua nhà ga SCSC và doanh thu trên tấn?', id: 'rf-q-scs', meta: 'tấn · nghìn đ/tấn', take: ['hk-52', 'hk-53']},
+        {stage: 'prod'},
+        {q: 'Nhà ga SCSC xử lý bao nhiêu, thu bao nhiêu trên mỗi tấn?', id: 'rf-q-scs', meta: 'tấn · nghìn đ/tấn', take: ['hk-52', 'hk-53']},
+        {stage: 'out'},
         {q: 'Doanh nghiệp dịch vụ sân bay tăng trưởng ra sao?', id: 'rf-q-svc', meta: 'tỷ đồng, % · BCTC hợp nhất quý', take: ['hk-54']}]},
     ]},
     mt14: {title: 'Tài chính ngành', subs: [
       {k: 'sector', t: 'Tài chính ngành', d: 'Rổ doanh nghiệp theo dõi (mặc định HVN, VJC, ACV): nhóm nào kéo lợi nhuận, chuyển lợi nhuận thành tiền, đầu tư và cần thêm vốn; bấm xuống từng mã.', items: [
-        {q: 'Chi tiết theo mã', id: 'rf-q-fin', take: ['hk-60']},
-        {q: 'Nợ vay theo mã', id: 'rf-q-debt', take: ['hk-61']}]},
+        {q: 'Doanh thu, lợi nhuận từng mã đi thế nào?', id: 'rf-q-fin', take: ['hk-60']},
+        {q: 'Nợ vay ròng của từng mã tăng hay giảm?', id: 'rf-q-debt', take: ['hk-61']}]},
       {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Định giá, hiệu quả và lợi nhuận của 8 doanh nghiệp hàng không; so sánh chi tiết theo quý; số vận hành doanh nghiệp công bố.', items: [
-        {q: 'Số vận hành doanh nghiệp công bố', id: 'rf-q-ops', take: ['hk-62']}]},
+        {q: 'Doanh nghiệp công bố vận hành 9T/2026 ra sao?', id: 'rf-q-ops', take: ['hk-62']}]},
     ]},
   },
 };

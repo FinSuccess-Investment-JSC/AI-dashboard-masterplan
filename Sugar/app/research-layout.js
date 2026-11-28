@@ -49,7 +49,7 @@ const cycleCards=box=>{const ps=[...box.querySelectorAll(':scope p')].filter(p=>
  const kpis=overview.querySelector('.kpis');if(kpis)market.prepend(kpis);
  // All source/player detail stays available in Overview.
  [...pane(6).children].forEach(n=>overview.append(n));
- if(sector==='sugar'){['sugar-14','sugar-15','sugar-16'].forEach(id=>pricesVN.append(block(id)));[...hot.children].forEach(n=>overview.append(n));}
+ if(sector==='sugar'){['sugar-14','sugar-15','sugar-16'].forEach(id=>pricesVN.append(block(id)));[...hot.children].filter(n=>!n.matches('[data-sector-news]')).forEach(n=>overview.append(n));}// 28/11/2026: khối tin #sg-news ở lại Chủ đề nóng
 }
 // Old panels can have multiple nodes (Sugar mt3); remove only after moving data.
 $$('.majorpane[data-tab="mt3"],.majorpane[data-tab="mt6"]').forEach(n=>n.remove());

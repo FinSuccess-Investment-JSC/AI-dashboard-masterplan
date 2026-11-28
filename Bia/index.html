@@ -17,8 +17,8 @@
 <script src="../data/retail-public-data.js?v=bd7f2d8df440" defer></script>
 <script src="app/sector-visuals.js?v=527a0e663b30" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
-<script src="app/beer-config.js?v=f82dcc315051" defer></script>
-<script src="app/pkg-dashboard.js?v=8cf928a21f40" defer></script>
+<script src="app/beer-config.js?v=e3d0204154d8" defer></script>
+<script src="app/pkg-dashboard.js?v=524e8aba9266" defer></script>
 <script src="../data/beer-market.js?v=20ba94cfd104" defer></script>
 <script src="app/beer-market.js?v=26f915a2558c" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
@@ -26,8 +26,12 @@
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=ea2d589497cb" defer></script>
-<script src="../data/company-valuation.js?v=a38a9fa54044" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
 <script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
+<script src="../data/beer-financials.js?v=da10d3358379" defer></script>
+<script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
+<script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
+<script src="app/beer-finance.js?v=e03e67b641f2" defer></script>
 <script src="app/pkg-shim.js?v=d953110f5aa0" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
@@ -46,9 +50,12 @@
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
-<script src="app/pkg-frame.js?v=9f3ff233c4ce" defer></script>
-<link rel="stylesheet" href="app/pkg-frame.css?v=43926e777354">
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/pkg-frame.js?v=9b1839df1b43" defer></script>
+<link rel="stylesheet" href="app/pkg-frame.css?v=5e4ca7cf6297">
+<script src="../data/beer-news.js?v=3c3b9d8d8a2a" defer></script>
+<script src="app/beer-news.js?v=94f3c843ecf5" defer></script>
+<link rel="stylesheet" href="app/beer-news.css?v=05342ac81635">
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
@@ -57,6 +64,7 @@
 <link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
 </head>
 <body data-sector="retail" data-pkg="beer">
 <nav data-site-navigation="beer" aria-label="Điều hướng dashboard ngành"></nav>
@@ -92,6 +100,9 @@
       <div class="kpi"><div class="label">Thị phần 4 hãng lớn nhất</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-cr4"></div></div>
       <div class="kpi"><div class="label">Chênh Heineken − Sabeco</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-gap"></div></div>
       <div class="kpi"><div class="label">Sabeco ở kênh mang về</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-offsab"></div></div>
+      <div class="kpi"><div class="label">Biên gộp SAB</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-gm-sab"></div></div>
+      <div class="kpi"><div class="label">Biên gộp BHN</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-gm-bhn"></div></div>
+      <div class="kpi"><div class="label">Biên ròng SAB</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-nm-sab"></div></div>
     </section>
     <!-- research-layout.js dựng lưới giá vào #supply-world / #supply-vietnam (khung chung của gói); để rỗng -->
     <div class="supply-pane" id="supply-world"></div><div class="supply-pane" id="supply-vietnam"></div>

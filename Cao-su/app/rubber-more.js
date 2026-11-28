@@ -1,6 +1,8 @@
 /* Cao su · Bức tranh ngành 03 Cầu Trung Quốc, 04 Cung & tồn kho, 05 Doanh nghiệp: giá bán & biên (26/11/2026).
    Dựng từ khối nhập tay có nguồn từng dòng trong window.RUBBER_DATA (data/rubber/*.json qua scripts/build_rubber.py) và BCTC.
-   Sub-tab không có dữ liệu thì không đăng ký (rubber.js ẩn nút). Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
+   Sub-tab không có dữ liệu thì không đăng ký (rubber.js ẩn nút). Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart.
+   28/11/2026 khung chuẩn Điện (§42): 05 Doanh nghiệp là số doanh nghiệp nên dời sang Tài chính ngành › 02 (window.RubberCompany(host), rubber.js gọi);
+   03 Cầu Trung Quốc theo luồng Đầu vào (TQ nhập cao su) → Sản xuất (lốp) → Đầu ra (xuất khẩu lốp, xe); 04 Cung & tồn kho theo Vườn cây → Sản lượng → Tồn kho. */
 (() => {
 'use strict';
 const K = window.RubberKit;
@@ -12,8 +14,7 @@ const a = (href, t) => `<a href="${href}" target="_blank" rel="noopener">${esc(t
 /* ======================= 05 DOANH NGHIỆP ======================= */
 const DPR = D.dpr_monthly;
 const dprSrc = r => a(r?.source_url || 'https://doruco.com.vn/danh-muc/bao-cao-san-xuat-kinh-doanh/', 'Cao su Đồng Phú · báo cáo SXKD tháng');
-function company() {
-  const p = $('#cs-pp-company');
+function company(p) {
   const M = DPR ? [...DPR.months].sort((x, y) => x.period < y.period ? -1 : 1) : [];
   const at = per => M.find(r => r.period === per);
   const lr = M.at(-1);
@@ -50,7 +51,7 @@ function company() {
   opsVolumes(p);
   stage(p, 'company', 'px', 'Giá', 'Giá bán so benchmark');
   if (M.length) {
-    const q2 = panel('·', 'Giá bán của DPR đi theo giá SVR 10 thế nào?');
+    const q2 = panel('·', 'Giá bán của DPR có đi theo giá SVR 10 không?');
     const c2 = card('cs-51', 'DPR giá bán xuất khẩu so với SVR 10 Việt Nam', {sub: 'USD/tấn · theo tháng', source: dprSrc(lr) + '; ' + K.SRC.arbc + '; tự tính',
       info: 'Giá xuất khẩu DPR công bố (USD/tấn) theo tháng ghi nhận bán; SVR 10 là bình quân tháng giá ngày VRA báo ARBC (US cent/kg × 10). Hợp đồng thường ký trước giao hàng, nên chênh theo tháng gồm cả độ trễ.'});
     const c3 = card('cs-52', 'DPR giá bán bình quân (triệu đồng/tấn)', {sub: 'số công bố · số tự tính (doanh thu mủ ÷ tấn tiêu thụ)', source: dprSrc(lr) + '; tự tính',
@@ -71,7 +72,6 @@ function company() {
   p.querySelectorAll(':scope>.pp-stage').forEach(h => { let n = h.nextElementSibling; if (!n || n.classList.contains('pp-stage')) { p.querySelector(`.pp-flow [data-pp-stage="${h.id}"]`)?.remove(); h.remove(); } });
   p.querySelectorAll('.pp-flow').forEach(f => f.querySelectorAll('.pp-flow-ar').forEach(ar => { if (!ar.nextElementSibling || ar.nextElementSibling.classList.contains('pp-flow-ar')) ar.remove(); }));
   p.querySelectorAll('.pp-flow').forEach(f => { const x = f.firstElementChild; if (x?.classList.contains('pp-flow-ar')) x.remove(); });
-  renum(p, 5);
 }
 // Cầu nối doanh thu mủ DPR: cùng tháng năm trước → lượng → cơ cấu kênh (xuất khẩu/nội địa) → giá → chênh chưa phân bổ.
 function bridge(p, M, at, lr) {
@@ -112,7 +112,7 @@ function opsYears() { return [...new Set(opsTk().flatMap(t => OPS[t].annual.map(
 const TKC = {GVR: C.navy, PHR: C.teal, DPR: C.gold, TRC: C.plum, DRI: C.grey};
 function opsVolumes(p) {
   const T = opsTk(), Y = opsYears(); if (!T.length || !Y.length) return;
-  const q = panel('·', 'Sản lượng khai thác, tiêu thụ và năng suất của từng doanh nghiệp theo năm');
+  const q = panel('·', 'Sản lượng và năng suất vườn cây của từng doanh nghiệp tăng hay giảm?');
   const c = card('cs-54', 'Sản lượng và năng suất theo năm', {sub: 'chọn chỉ tiêu · phạm vi theo công bố của từng doanh nghiệp', cadence: 'annual', kind: 'manual', source: opsSrc(),
     info: 'Số công bố trong BCTN, báo cáo HĐQT, tài liệu ĐHĐCĐ. Phạm vi (công ty mẹ hay hợp nhất, VN/Lào/Campuchia) ghi trong data/rubber/ops.json; GVR là toàn tập đoàn nên không so trực tiếp với các công ty con. Năm không công bố để trống.'});
   q.append(c.el); p.append(q);
@@ -126,7 +126,7 @@ function opsVolumes(p) {
 function opsAsp(p) {
   const T = opsTk(), Y = opsYears(); if (!T.length) return;
   if (!T.some(t => Y.some(y => fin(annualSeries(t, 'asp_mvnd_per_t')(y))))) return;
-  const q = panel('·', 'Giá bán bình quân mủ của từng doanh nghiệp so với giá thế giới theo năm');
+  const q = panel('·', 'Giá bán mủ của từng doanh nghiệp có đi cùng giá thế giới không?');
   const c = card('cs-55', 'Giá bán bình quân mủ theo năm', {sub: 'triệu đồng/tấn · nhãn công bố hoặc tự tính ghi trong bảng', cadence: 'annual', kind: 'manual', source: opsSrc() + '; ' + K.SRC.wb,
     info: 'Giá bán bình quân doanh nghiệp công bố; năm nào chỉ có doanh thu mủ và tấn tiêu thụ cùng phạm vi thì tự tính và ghi "tự tính" trong data/rubber/ops.json. TSR 20 World Bank bình quân năm (USD/kg) để so xu hướng, khác đồng tiền nên vẽ thành chỉ số 100 = năm đầu khi chọn "Chỉ số".'});
   q.append(c.el); p.append(q);
@@ -179,11 +179,11 @@ function landEvents(p) {
 function cashPanel(p) {
   if (!E) return;
   const T = ['GVR', 'PHR', 'DPR', 'TRC', 'DRI', 'TNC', 'HRC', 'BRR', 'DRG', 'RTB'].filter(t => F.data[t]);
-  const q = panel('·', 'Lợi nhuận có chuyển thành tiền không, và biên gộp từng doanh nghiệp ra sao?');
+  const q = panel('·', 'Biên gộp từng doanh nghiệp đang tăng hay giảm?'), q2 = panel('·', 'Lợi nhuận có chuyển thành tiền không?');
   const c1 = card('cs-59', 'Biên gộp theo quý', {sub: '% · lợi nhuận gộp ÷ doanh thu thuần · BCTC hợp nhất (gồm mảng ngoài mủ)', cadence: 'quarterly', source: K.SRC.vnd + '; tự tính'});
   const c2 = card('cs-60', 'CFO so với LNST theo năm', {sub: 'tỷ đồng · lưu chuyển tiền thuần từ HĐKD (báo cáo năm) và LNST', cadence: 'annual', source: K.SRC.vnd + '; tự tính',
     info: 'CFO lấy từ báo cáo lưu chuyển tiền tệ năm (VNDirect); LNST năm = cộng 4 quý. Tiền đền bù đất có thể nằm ở hoạt động đầu tư (thu thanh lý tài sản) thay vì CFO, xem thuyết minh từng doanh nghiệp.'});
-  q.append(two(c1, c2)); p.append(q);
+  q.append(c1.el); q2.append(c2.el); p.append(q, q2);  // 28/11/2026: tách hai câu hỏi
   let t1 = ['PHR', 'DPR', 'TRC', 'DRI'];
   const P = F.periods;
   const d1 = () => chart(c1.host, 'cs-59', P.map(qL), t1.map(t => ({name: t, color: TKC[t] || C.slate, values: P.map((_, i) => { const g = F.data[t].gross[i], r = F.data[t].revenue[i]; return fin(g) && fin(r) && r > 0 ? g / r * 100 : null; })})), {unit: '%', digits: 1, zeroBase: false});
@@ -194,7 +194,13 @@ function cashPanel(p) {
     chart(c2.host, 'cs-60-' + t2, Y, [{name: 'CFO', color: C.teal, kind: 'bar', values: cf}, {name: 'LNST', color: C.navy, kind: 'bar', values: np}], {unit: 'tỷ đồng', native: 'bar'}); };
   seg(c2, 'Doanh nghiệp', T.map(x => [x, x]), t2, k => { t2 = k; d2(); }); d2();
 }
-if (DPR || OPS || E) PIC.company = company;
+if (DPR || OPS || E) window.RubberCompany = company;  // Tài chính ngành › 02 (28/11/2026)
+
+// Khâu không có câu hỏi (dữ liệu chưa có) thì bỏ tiêu đề khâu và nút trên thanh luồng.
+function dropEmptyStages(p) {
+  p.querySelectorAll(':scope>.pp-stage').forEach(h => { const n = h.nextElementSibling; if (!n || n.classList.contains('pp-stage')) { p.querySelector(`.pp-flow [data-pp-stage="${h.id}"]`)?.remove(); h.remove(); } });
+  p.querySelectorAll('.pp-flow').forEach(f => { f.querySelectorAll('.pp-flow-ar').forEach(ar => { if (!ar.nextElementSibling || ar.nextElementSibling.classList.contains('pp-flow-ar')) ar.remove(); }); const x = f.firstElementChild; if (x?.classList.contains('pp-flow-ar')) x.remove(); });
+}
 
 /* ======================= 03 CẦU TRUNG QUỐC ======================= */
 const DM = D.demand && D.demand.series || {};
@@ -222,13 +228,13 @@ function demand() {
     if (R.some(r => fin(r.yoy_pub))) seg(c, 'Cách xem', [['lvl', 'Giá trị'], ['yoy', '% so cùng kỳ']], v, x => { v = x; draw(); });
     draw();
   };
-  mon('cs-30', 'cn_tire_output', 'Sản lượng lốp ô tô Trung Quốc', C.plum, 'Nhà máy lốp Trung Quốc sản xuất bao nhiêu mỗi tháng?');
-  mon('cs-31', 'cn_tire_export', 'Xuất khẩu lốp mới Trung Quốc', C.gold, 'Trung Quốc xuất khẩu bao nhiêu lốp?');
-  mon('cs-32', 'cn_cv_sales', 'Doanh số xe thương mại Trung Quốc', C.grey, 'Xe thương mại (xe tải, xe khách) bán bao nhiêu mỗi tháng?');
-  mon('cs-33', 'cn_nr_sr_import', 'Trung Quốc nhập khẩu cao su tự nhiên & tổng hợp', C.navy, 'Trung Quốc nhập bao nhiêu cao su mỗi tháng?');
+  // 28/11/2026: luồng Đầu vào → Sản xuất → Đầu ra (khung chuẩn Điện).
+  flow(p, 'demand', [['in', 'Đầu vào', 'Trung Quốc nhập cao su'], ['make', 'Sản xuất', 'Lốp ô tô'], ['out', 'Đầu ra', 'Xuất khẩu lốp, xe thương mại']]);
+  stage(p, 'demand', 'in', 'Đầu vào', 'Trung Quốc nhập cao su');
+  mon('cs-33', 'cn_nr_sr_import', 'Trung Quốc nhập khẩu cao su tự nhiên & tổng hợp', C.navy, 'Trung Quốc nhập nhiều hay ít cao su hơn năm trước?');
   if (CN && CN.by_hs && CN.by_hs['4001']) {
     const R = CN.by_hs['4001'], pal = [C.navy, C.teal, C.gold, C.plum, C.grey, C.sky];
-    const qq = panel('·', 'Trung Quốc nhập cao su tự nhiên (HS 4001) từ những nước nào?');
+    const qq = panel('·', 'Trung Quốc nhập cao su tự nhiên từ những nước nào?');
     const c = card('cs-34', 'Trung Quốc nhập HS 4001 theo nước xuất xứ', {sub: `nghìn tấn · theo tháng · đến ${mL(String(CN.latest).slice(0, 4) + '-' + String(CN.latest).slice(4))} (độ trễ của Comtrade)`, source: K.SRC.comtrade,
       info: 'Số Trung Quốc khai báo nhập (CIF, kỳ nhập), không cộng với số xuất khẩu Việt Nam (FOB, kỳ xuất). HS 4001 gồm latex 400110, RSS 400121, TSNR 400122, loại khác 400129. Hỗn hợp cao su tự nhiên và tổng hợp HS 400280 là chuỗi riêng (chọn ở nút). Khối lượng một số kỳ là ước tính của nguồn.'});
     qq.append(c.el); p.append(qq);
@@ -240,16 +246,22 @@ function demand() {
     };
     seg(c, 'Cách xem', [['p', 'Theo nước (HS 4001)'], ['h', 'HS 4001 và 400280']], v, x => { v = x; draw(); }); draw();
   }
-  renum(p, 3);
+  stage(p, 'demand', 'make', 'Sản xuất', 'Lốp ô tô');
+  mon('cs-30', 'cn_tire_output', 'Sản lượng lốp ô tô Trung Quốc', C.plum, 'Nhà máy lốp Trung Quốc sản xuất nhiều hơn hay ít hơn năm trước?');
+  stage(p, 'demand', 'out', 'Đầu ra', 'Xuất khẩu lốp, xe thương mại');
+  mon('cs-31', 'cn_tire_export', 'Xuất khẩu lốp mới Trung Quốc', C.gold, 'Xuất khẩu lốp của Trung Quốc đang tăng hay giảm?');
+  mon('cs-32', 'cn_cv_sales', 'Doanh số xe thương mại Trung Quốc', C.grey, 'Doanh số xe tải, xe khách Trung Quốc tăng hay giảm?');
+  dropEmptyStages(p);
+  K.finish(p, 3);
 }
 if (Object.keys(DM).some(k => /^cn_/.test(k)) || (D.cn_imports && D.cn_imports.by_hs)) PIC.demand = demand;
 
 /* ======================= 04 CUNG & TỒN KHO ======================= */
 function supply() {
   const p = $('#cs-pp-supply');
-  const st = (id, keys, title, q1) => {
+  const st = (id, keys, title, q1, into) => {
     const ok = keys.filter(([k]) => dser(k).length > 2); if (!ok.length) return;
-    const qq = panel('·', q1);
+    const qq = into || panel('·', q1);
     const c = card(id, title, {sub: `${esc(DM[ok[0][0]].unit || '')} · số dư tại mốc, không cộng các kỳ`, source: ok.map(([k]) => dsrc(k)).join('; '), kind: 'manual', cadence: DM[ok[0][0]].freq || 'weekly',
       info: ok.map(([k]) => esc(DM[k].note || DM[k].name || '')).join(' ')});
     qq.append(c.el); p.append(qq);
@@ -257,16 +269,41 @@ function supply() {
     const ix = Object.fromEntries(ok.map(([k]) => [k, Object.fromEntries(dser(k).map(r => [r.date, r.value]))]));
     chart(c.host, id, dates.map(d => d.length > 7 ? dL(d) : mL(d)), ok.map(([k, n, col]) => ({name: n, color: col, values: dates.map(d => ix[k][d] ?? null)})), {unit: DM[ok[0][0]].unit || '', digits: 0, zeroBase: false, flatTicks: dates.length > 60});
   };
-  if (dser('shfe_ru_stock').length > 2 || dser('ine_nr_stock').length > 2) {
-    const qq = panel('·', 'Tồn kho cao su ở kho sàn Trung Quốc tăng hay giảm?');
-    const c = card('cs-40', 'Tồn kho cao su trên sàn Trung Quốc', {sub: 'tấn · cuối tuần · số dư tại mốc, không cộng các kỳ', cadence: 'weekly', kind: 'manual', source: dsrc('shfe_ru_stock') || dsrc('ine_nr_stock'),
-      info: 'Báo cáo tồn kho tuần SHFE (gồm INE): "tổng kho" là tổng hàng trong kho được chỉ định đã báo cáo; "phiếu kho" là phần đã đăng ký thành phiếu kho giao nhận được (warrant). Phiếu kho RU thường giảm mạnh quanh kỳ hết hạn phiếu cũ (tháng 11) theo quy định sàn. Không gồm kho Thanh Đảo ngoài sàn.'});
+  // Ô số (28/11/2026): tồn kho sàn TQ, tồn kho Malaysia, cân đối cung cầu thế giới (ANRPC) — số lấy từ chính các chuỗi bên dưới.
+  const ks = [], wk = (k, n) => dser(k).slice(-n).map(r => r.value);
+  const ru = dser('shfe_ru_stock').at(-1), nr = dser('ine_nr_stock').at(-1), ms = dser('my_stock').at(-1), aw0 = dser('anrpc_world').at(-1);
+  const yAgo = k => { const R = dser(k), r = R.at(-1); if (!r) return null; const t = new Date(r.date); t.setFullYear(t.getFullYear() - 1); const b = R.filter(x => Math.abs(new Date(x.date) - t) < 10 * 864e5).at(-1); return b && b.value ? (r.value / b.value - 1) * 100 : null; };
+  if (ru) ks.push(kpi('Phiếu kho SHFE RU · ' + dL(ru.date), nf(ru.value), 'tấn', fin(yAgo('shfe_ru_stock')) ? `${sg(yAgo('shfe_ru_stock'))}% so cùng kỳ` : '', fin(ru.total_stock) ? `tổng kho báo cáo ${nf(ru.total_stock)} tấn` : 'SHFE', wk('shfe_ru_stock', 52), C.navy));
+  if (nr) ks.push(kpi('Phiếu kho INE NR · ' + dL(nr.date), nf(nr.value), 'tấn', fin(yAgo('ine_nr_stock')) ? `${sg(yAgo('ine_nr_stock'))}% so cùng kỳ` : '', fin(nr.total_stock) ? `tổng kho báo cáo ${nf(nr.total_stock)} tấn` : 'INE', wk('ine_nr_stock', 52), C.blue));
+  if (ms) ks.push(kpi('Tồn kho Malaysia · ' + mL(ms.date), nf(ms.value), 'tấn', ms.note ? esc(ms.note) : '', 'cuối tháng · DOSM', wk('my_stock', 12), C.gold));
+  if (aw0 && fin(aw0.production) && fin(aw0.consumption)) ks.push(kpi(`Sản lượng − tiêu thụ thế giới ${aw0.date}`, sg(aw0.production - aw0.consumption, 2), DM.anrpc_world.unit || 'triệu tấn', `sản lượng ${nf(aw0.production, 2)} · tiêu thụ ${nf(aw0.consumption, 2)}`, `ANRPC ${esc(aw0.status || '')}${aw0.vintage ? ', kỳ ' + mL(aw0.vintage) : ''}`, null));
+  if (ks.length) p.append(kpiRow(ks));
+  flow(p, 'supply', [['area', 'Vườn cây', 'Diện tích, năng suất các nước'], ['prod', 'Sản lượng', 'Cung cầu thế giới, Malaysia'], ['stock', 'Tồn kho', 'Kho sàn Trung Quốc, Malaysia']]);
+  let stockQ = null;
+  stage(p, 'supply', 'area', 'Vườn cây', 'Diện tích, năng suất các nước');
+  const FA = DM.fao && DM.fao.records || [];
+  if (FA.length) {
+    const qq = panel('·', 'Sản lượng cao su các nước trồng chính đang tăng hay giảm?');
+    const c = card('cs-44', 'Sản lượng, diện tích thu hoạch, năng suất theo nước', {sub: 'theo năm · FAOSTAT · chọn chỉ tiêu', source: dsrc('fao') || a('https://www.fao.org/faostat/en/#data/QCL', 'FAOSTAT QCL'), kind: 'manual', cadence: 'annual'});
     qq.append(c.el); p.append(qq);
-    let k = 'shfe_ru_stock';
-    const draw = () => { const R = dser(k); chart(c.host, 'cs-40-' + k, R.map(r => dL(r.date)), [{name: 'Tổng kho báo cáo', color: C.sky, kind: 'bar', values: R.map(r => r.total_stock ?? null)}, {name: 'Phiếu kho', color: C.navy, kind: 'line', values: R.map(r => r.value)}], {unit: 'tấn', native: 'bar'}); };
-    seg(c, 'Sàn', [['shfe_ru_stock', 'SHFE RU'], ['ine_nr_stock', 'INE NR (TSR 20)']].filter(([x]) => dser(x).length), k, x => { k = x; draw(); }); draw();
+    const cs = [...new Set(FA.map(r => r.country))], ys = [...new Set(FA.map(r => r.year))].sort(), pal = [C.navy, C.teal, C.gold, C.plum, C.grey, C.sky, C.bronze, C.green, C.slate];
+    let m = 'production_t', sel = cs.filter(x => /Viet|Thai|Indo|Malay|Ivoire|C.te/.test(x)).slice(0, 5);
+    const U = {production_t: ['nghìn tấn', 1e3], area_ha: ['nghìn ha', 1e3], yield_kg_ha: ['kg/ha', 1]};
+    const draw = () => chart(c.host, 'cs-44-' + m, ys.map(String), sel.map(x => ({name: x === 'Viet Nam' ? 'Việt Nam' : x, color: pal[cs.indexOf(x) % pal.length], values: ys.map(y => { const r = FA.find(z => z.country === x && z.year === y); return r && fin(r[m]) ? r[m] / U[m][1] : null; })})), {unit: U[m][0], digits: m === 'yield_kg_ha' ? 0 : 1, zeroBase: false});
+    seg(c, 'Chỉ tiêu', [['production_t', 'Sản lượng'], ['area_ha', 'Diện tích thu hoạch'], ['yield_kg_ha', 'Năng suất']], m, x => { m = x; draw(); });
+    seg(c, 'Nước', cs.map(x => [x, x === 'Viet Nam' ? 'Việt Nam' : x]), sel, x => { sel = x; draw(); }); draw();
   }
-  st('cs-41', [['my_stock', 'Malaysia', C.gold]], 'Tồn kho cao su tự nhiên Malaysia', 'Tồn kho cao su Malaysia cuối tháng');
+  stage(p, 'supply', 'prod', 'Sản lượng', 'Cung cầu thế giới, Malaysia');
+  const AW = dser('anrpc_world');
+  if (AW.length) {
+    const qq = panel('·', 'Thế giới đang thừa hay thiếu cao su tự nhiên?');
+    const c = card('cs-43', 'Cung cầu cao su tự nhiên thế giới', {sub: `${esc(DM.anrpc_world.unit || 'nghìn tấn')} · theo năm · nhãn công bố / ước tính / dự báo theo kỳ phát hành`, source: dsrc('anrpc_world'), kind: 'manual', cadence: 'monthly',
+      info: 'ANRPC báo cáo tháng; số năm hiện tại và năm sau là ước tính/dự báo, ghi kỳ phát hành (vintage). Cột chênh = sản lượng − tiêu thụ, chỉ khi hai vế cùng nguồn, cùng phạm vi.'});
+    qq.append(c.el); p.append(qq);
+    const lab = AW.map(r => `${r.date}${r.status && r.status !== 'công bố' ? ' (' + r.status + ')' : ''}`);
+    chart(c.host, 'cs-43', lab, [{name: 'Sản lượng', color: C.green, kind: 'bar', values: AW.map(r => r.production)}, {name: 'Tiêu thụ', color: C.plum, kind: 'bar', values: AW.map(r => r.consumption)},
+      {name: 'Sản lượng − tiêu thụ', color: C.navy, kind: 'line', values: AW.map(r => fin(r.production) && fin(r.consumption) ? r.production - r.consumption : null)}], {unit: DM.anrpc_world.unit || 'nghìn tấn', digits: /triệu/.test(DM.anrpc_world.unit || '') ? 2 : 0, native: 'bar'});
+  }
   const mon2 = (id, keys, title, q1) => {
     const ok = keys.filter(([k]) => dser(k).length > 2); if (!ok.length) return;
     const qq = panel('·', q1);
@@ -277,29 +314,19 @@ function supply() {
     chart(c.host, id, dates.map(mL), ok.map(([k, n, col]) => ({name: n, color: col, kind: 'bar', values: dates.map(d => ix[k][d] ?? null)})), {unit: DM[ok[0][0]].unit || '', digits: 1, native: 'bar'});
   };
   mon2('cs-42', [['my_production', 'Sản lượng', C.green], ['my_consumption', 'Tiêu thụ nội địa', C.plum], ['my_export', 'Xuất khẩu', C.gold]], 'Malaysia: sản lượng, tiêu thụ, xuất khẩu cao su tự nhiên', 'Malaysia sản xuất, dùng và xuất bao nhiêu cao su?');
-  const AW = dser('anrpc_world');
-  if (AW.length) {
-    const qq = panel('·', 'Sản lượng và tiêu thụ cao su tự nhiên thế giới (ANRPC)');
-    const c = card('cs-43', 'Cung cầu cao su tự nhiên thế giới', {sub: `${esc(DM.anrpc_world.unit || 'nghìn tấn')} · theo năm · nhãn công bố / ước tính / dự báo theo kỳ phát hành`, source: dsrc('anrpc_world'), kind: 'manual', cadence: 'monthly',
-      info: 'ANRPC báo cáo tháng; số năm hiện tại và năm sau là ước tính/dự báo, ghi kỳ phát hành (vintage). Cột chênh = sản lượng − tiêu thụ, chỉ khi hai vế cùng nguồn, cùng phạm vi.'});
+  stage(p, 'supply', 'stock', 'Tồn kho', 'Kho sàn Trung Quốc, Malaysia');
+  if (dser('shfe_ru_stock').length > 2 || dser('ine_nr_stock').length > 2) {
+    const qq = panel('·', 'Tồn kho cao su ở kho sàn Trung Quốc và Malaysia tăng hay giảm?'); stockQ = qq;
+    const c = card('cs-40', 'Tồn kho cao su trên sàn Trung Quốc', {sub: 'tấn · cuối tuần · số dư tại mốc, không cộng các kỳ', cadence: 'weekly', kind: 'manual', source: dsrc('shfe_ru_stock') || dsrc('ine_nr_stock'),
+      info: 'Báo cáo tồn kho tuần SHFE (gồm INE): "tổng kho" là tổng hàng trong kho được chỉ định đã báo cáo; "phiếu kho" là phần đã đăng ký thành phiếu kho giao nhận được (warrant). Phiếu kho RU thường giảm mạnh quanh kỳ hết hạn phiếu cũ (tháng 11) theo quy định sàn. Không gồm kho Thanh Đảo ngoài sàn.'});
     qq.append(c.el); p.append(qq);
-    const lab = AW.map(r => `${r.date}${r.status && r.status !== 'công bố' ? ' (' + r.status + ')' : ''}`);
-    chart(c.host, 'cs-43', lab, [{name: 'Sản lượng', color: C.green, kind: 'bar', values: AW.map(r => r.production)}, {name: 'Tiêu thụ', color: C.plum, kind: 'bar', values: AW.map(r => r.consumption)},
-      {name: 'Sản lượng − tiêu thụ', color: C.navy, kind: 'line', values: AW.map(r => fin(r.production) && fin(r.consumption) ? r.production - r.consumption : null)}], {unit: DM.anrpc_world.unit || 'nghìn tấn', digits: /triệu/.test(DM.anrpc_world.unit || '') ? 2 : 0, native: 'bar'});
+    let k = 'shfe_ru_stock';
+    const draw = () => { const R = dser(k); chart(c.host, 'cs-40-' + k, R.map(r => dL(r.date)), [{name: 'Tổng kho báo cáo', color: C.sky, kind: 'bar', values: R.map(r => r.total_stock ?? null)}, {name: 'Phiếu kho', color: C.navy, kind: 'line', values: R.map(r => r.value)}], {unit: 'tấn', native: 'bar'}); };
+    seg(c, 'Sàn', [['shfe_ru_stock', 'SHFE RU'], ['ine_nr_stock', 'INE NR (TSR 20)']].filter(([x]) => dser(x).length), k, x => { k = x; draw(); }); draw();
   }
-  const FA = DM.fao && DM.fao.records || [];
-  if (FA.length) {
-    const qq = panel('·', 'Diện tích, sản lượng và năng suất cao su của các nước trồng chính');
-    const c = card('cs-44', 'Sản lượng, diện tích thu hoạch, năng suất theo nước', {sub: 'theo năm · FAOSTAT · chọn chỉ tiêu', source: dsrc('fao') || a('https://www.fao.org/faostat/en/#data/QCL', 'FAOSTAT QCL'), kind: 'manual', cadence: 'annual'});
-    qq.append(c.el); p.append(qq);
-    const cs = [...new Set(FA.map(r => r.country))], ys = [...new Set(FA.map(r => r.year))].sort(), pal = [C.navy, C.teal, C.gold, C.plum, C.grey, C.sky, C.bronze, C.green, C.slate];
-    let m = 'production_t', sel = cs.filter(x => /Viet|Thai|Indo|Malay|Ivoire|C.te/.test(x)).slice(0, 5);
-    const U = {production_t: ['nghìn tấn', 1e3], area_ha: ['nghìn ha', 1e3], yield_kg_ha: ['kg/ha', 1]};
-    const draw = () => chart(c.host, 'cs-44-' + m, ys.map(String), sel.map(x => ({name: x === 'Viet Nam' ? 'Việt Nam' : x, color: pal[cs.indexOf(x) % pal.length], values: ys.map(y => { const r = FA.find(z => z.country === x && z.year === y); return r && fin(r[m]) ? r[m] / U[m][1] : null; })})), {unit: U[m][0], digits: m === 'yield_kg_ha' ? 0 : 1, zeroBase: false});
-    seg(c, 'Chỉ tiêu', [['production_t', 'Sản lượng'], ['area_ha', 'Diện tích thu hoạch'], ['yield_kg_ha', 'Năng suất']], m, x => { m = x; draw(); });
-    seg(c, 'Nước', cs.map(x => [x, x === 'Viet Nam' ? 'Việt Nam' : x]), sel, x => { sel = x; draw(); }); draw();
-  }
-  renum(p, 4);
+  st('cs-41', [['my_stock', 'Malaysia', C.gold]], 'Tồn kho cao su tự nhiên Malaysia', 'Tồn kho cao su Malaysia tăng hay giảm?', stockQ);
+  dropEmptyStages(p);
+  K.finish(p, 4);
 }
 if (['shfe_ru_stock', 'ine_nr_stock', 'my_stock', 'my_production', 'anrpc_world', 'fao'].some(k => DM[k] && (DM[k].records || []).length)) PIC.supply = supply;
 })();

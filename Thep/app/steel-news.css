@@ -1,0 +1,68 @@
+/* Chủ đề nóng · 28/11/2026, chép Cao-su/app/rubber-news.css (đổi #cs-news → #th-news). */
+#th-news {
+  --pn-navy: #1d2678;
+  --pn-border: #dfe4f0;
+  --pn-muted: #55627a;
+  color: #303540;
+}
+#th-news [hidden] { display: none !important; }
+#th-news h2, #th-news h3, #th-news h4 { color: var(--pn-navy); margin: 0 0 .55rem; }
+#th-news h2 { font-size: 1.55rem; }
+#th-news h3 { font-size: 1.13rem; }
+#th-news h4 { font-size: .94rem; margin-top: 1rem; }
+#th-news p { margin: .35rem 0; line-height: 1.45; }
+#th-news .pn-meta { color: var(--pn-muted); font-size: .79rem; overflow-wrap: anywhere; }
+#th-news .pn-header { padding: .55rem 0 .8rem; }
+#th-news .pn-featured, #th-news .pn-feed, #th-news .pn-sidebar-section {
+  background: #fff; border: 1px solid var(--pn-border); border-radius: 10px; padding: 1rem;
+}
+#th-news .pn-feature-grid, #th-news .pn-desk { display: grid; gap: 1rem; align-items: start; }
+#th-news .pn-feature-grid { grid-template-columns: minmax(0, 57fr) minmax(0, 43fr); }
+#th-news .pn-desk { grid-template-columns: minmax(0, 73fr) minmax(0, 27fr); margin-top: 1rem; }
+#th-news .pn-lead {
+  align-self: stretch; display: grid; align-content: center; padding: clamp(1rem, 3vw, 2rem);
+  background: #eef1fa; border-left: 3px solid var(--pn-navy); border-radius: 6px;
+}
+#th-news button { cursor: pointer; font: inherit; }
+#th-news button:focus-visible, #th-news summary:focus-visible, #th-news a:focus-visible {
+  outline: 2px solid #2938a8; outline-offset: 3px;
+}
+#th-news .pn-lead button, #th-news .pn-short button, #th-news .pn-topic button {
+  border: 0; padding: 0; text-align: left; background: transparent; color: var(--pn-navy); font-weight: 700;
+}
+#th-news .pn-lead button { font-size: clamp(1.2rem, 2.1vw, 1.85rem); line-height: 1.2; }
+#th-news button:hover, #th-news a:hover { text-decoration: underline; }
+#th-news .pn-short, #th-news .pn-topic { padding: .65rem 0; }
+#th-news .pn-short + .pn-short, #th-news .pn-topic + .pn-topic { border-top: 1px solid var(--pn-border); }
+#th-news .pn-topic p { font-size: .84rem; }
+#th-news .pn-sidebar-section + .pn-sidebar-section { margin-top: .8rem; }
+#th-news .pn-controls, #th-news .pn-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin: .65rem 0; }
+#th-news .pn-controls label { display: grid; flex: 1 1 125px; min-width: 0; gap: .25rem; font-size: .77rem; }
+#th-news .pn-controls input, #th-news .pn-controls select, #th-news button {
+  border: 1px solid var(--pn-border); border-radius: 5px; background: #fff; color: var(--pn-navy);
+  padding: .42rem .58rem; min-width: 0;
+}
+#th-news .pn-pills button { font-size: .79rem; }
+#th-news .pn-pills button[aria-pressed="true"] { color: white; background: var(--pn-navy); }
+#th-news .pn-row { border-top: 1px solid var(--pn-border); padding: .65rem .05rem; }
+#th-news .pn-row summary { cursor: pointer; }
+#th-news .pn-row summary strong { color: var(--pn-navy); font-size: .99rem; }
+#th-news .pn-summary { display: block; line-height: 1.45; }
+#th-news .pn-detail { padding: .55rem .7rem; margin: .45rem 0 0; background: #f6f8fc; }
+#th-news .pn-sources { padding-left: 1.15rem; margin: .45rem 0; overflow-wrap: anywhere; }
+#th-news .pn-dialog {
+  max-width: 720px; width: calc(100% - 2rem); max-height: 88vh; padding: 1.2rem;
+  border: 1px solid var(--pn-border); border-radius: 10px; color: #303540;
+}
+#th-news .pn-dialog > button { float: right; margin: 0 0 .5rem .5rem; }
+#th-news .pn-dialog::backdrop { background: rgb(29 38 120 / 35%); }
+#th-news .pn-timeline { padding-left: 1.2rem; }
+#th-news .pn-timeline > li { margin-bottom: .85rem; }
+@media (max-width: 760px) {
+  #th-news .pn-feature-grid, #th-news .pn-desk { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 440px) {
+  #th-news .pn-featured, #th-news .pn-feed, #th-news .pn-sidebar-section { padding: .72rem; }
+}
+#th-news .pn-impact { color: var(--pn-navy); font-size: .85rem; font-weight: 600; }
+#th-news .pn-widen { margin: .3rem 0 .6rem; border: 1px solid var(--pn-navy); background: #fff; color: var(--pn-navy); border-radius: 999px; padding: .35rem .9rem; font-weight: 700; }

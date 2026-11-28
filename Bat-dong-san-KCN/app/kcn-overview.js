@@ -202,7 +202,8 @@ function build() {
   oldPanes.forEach(w => w.remove()); oldBar?.remove();
   const mp = document.querySelector('#pane-mt2 .sectionhead p'); if (mp) mp.textContent = 'Toàn thị trường → nhu cầu → nguồn cung → giá thuê → quỹ đất doanh nghiệp.';
   // Ô số đầu tab Bức tranh ngành (research-layout dời .kpis sang #mt2) không dùng: ô số nằm ở Bản tin dữ liệu.
-  document.querySelectorAll('#pane-mt2 .kpis').forEach(k => { k.hidden = true; k.style.display = 'none'; });
+  // 28/11/2026: trừ hàng ô số của từng sub-tab (kcn-workspace.js, .pp-kpis trong .pp-pane) theo khung chuẩn Điện.
+  document.querySelectorAll('#pane-mt2 .kpis').forEach(k => { if (k.classList.contains('pp-kpis') && k.closest('.pp-pane')) return; k.hidden = true; k.style.display = 'none'; });
 
   const keys = SECTIONS.map(s => s[0]), btns = [...nav.children];
   const select = (key, push) => {

@@ -22,14 +22,14 @@
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=ea2d589497cb" defer></script>
-<script src="../data/company-valuation.js?v=a38a9fa54044" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
 <script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
 <script src="app/research-layout.js?v=c8b5ec7c66c9" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/research-editorial.js?v=8cb5c80fa3b9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
@@ -46,18 +46,22 @@
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
 <script src="app/port-finance.js?v=efba0c01b291" defer></script>
-<script src="app/port-frame.js?v=dcf44e64165e" defer></script>
-<script src="app/legal-config.js?v=f1f2cc3a5bbb" defer></script>
+<script src="app/port-frame.js?v=c6c63b1f2ab6" defer></script>
+<script src="../data/port-news.js?v=1307a7e94003" defer></script>
+<script src="app/port-news.js?v=f38964551577" defer></script>
+<script src="app/legal-config.js?v=b719a9176103" defer></script>
 <script src="app/sector-legal.js?v=795ef091e74a" defer></script>
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
+<link rel="stylesheet" href="app/port-news.css?v=87fc41205d1e">
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
 </head>
 <body data-sector="port">
 <nav data-site-navigation="port"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="./" aria-current="page">Cảng &amp; kho bãi</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
@@ -304,7 +308,10 @@
   </section>
   </div>
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Bốn câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <!-- 28/11/2026: luồng tin theo bố cục trang Điện (app/port-news.js, data/port/news.json → scripts/build_port_news.py → data/port-news.js).
+         Các thẻ chủ đề cũ thành "Chủ đề đang theo dõi" (giữ ý, ngày phân tích, mã chịu tác động, điều kiện kết thúc); thẻ gốc giữ trong details.of-rest ẩn. -->
+    <section class="section"><div id="cb-news" aria-label="Tin ngành Cảng &amp; kho bãi"><p role="status">Đang tải tin ngành Cảng &amp; kho bãi…</p></div></section>
+    <details class="research-fold of-rest"><summary>Thẻ chủ đề cũ</summary><div class="research-detail">
     <div data-topic-key="haiphong_oversupply" data-topic-segment="Cảng" data-topic-title="Dư cung Hải Phòng">
       <div class="card" data-block-id="cg-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
         <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Lạch Huyện 3–4 (1,1 triệu TEU) khai thác từ 4/2025, Lạch Huyện 5–6 đã vận hành; Nam Đình Vũ 3 (0,65 triệu TEU). Tổng thêm 2,5–3 triệu TEU từ 2025</li><li>Sản lượng Hải Phòng 2025: 8,35 triệu TEU (+13%), KH 2026 9,1 triệu</li><li>Cảng hạ lưu (VSC, DVP) mất hàng tàu lớn sang Lạch Huyện</li></ul>
@@ -333,6 +340,7 @@
         <div class="source-note">Nguồn: <a href="https://theleader.vn/scsc-thu-lai-ky-luc-va-khuc-cua-tu-san-bay-long-thanh-d43973.html" target="_blank" rel="noopener">The Leader</a> · <a href="https://mekongasean.vn/acv-cong-bo-thoi-diem-du-kien-khai-thac-san-bay-long-thanh-61304.html" target="_blank" rel="noopener">MekongAsean 31/10/2026 – ACV</a></div>
       </div>
     </div>
+    </div></details>
   </div>
   <div class="majorpane" data-tab="mt10" id="pane-mt10">
     <div class="sectionhead"><div><h2>Dự án cảng mới</h2><p>Công suất mới quyết định giá và thị phần 2027–2030: Hải Phòng nhận cung trước, Cái Mép – Cần Giờ sau.</p></div></div>

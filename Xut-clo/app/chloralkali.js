@@ -2,7 +2,10 @@
    - Tổng quan ngành: Bản tin dữ liệu; 00 Chuỗi giá trị (đầu vào → điện phân → sản phẩm gốc clo → ngành dùng); 01 Doanh nghiệp niêm yết.
    - Bức tranh ngành theo câu hỏi đầu tư: 01 Nhập khẩu & giá → 02 Công suất nội địa → 03 Nghi Sơn & đầu ra gốc clo → 04 Chi phí đầu vào → 05 Giá P4 (27/11/2026, ngành đổi tên P4 – Xút – Clo).
    - Tài chính ngành: app/chloralkali-finance.js (BCTC hợp nhất CSV, HVT, DGC). Chủ đề nóng: app/chloralkali-news.js.
-   Dữ liệu: window.XC_DATA (scripts/build_chloralkali.py). Chỉ mô tả dữ liệu; số chưa xác minh để trống. */
+   Dữ liệu: window.XC_DATA (scripts/build_chloralkali.py). Chỉ mô tả dữ liệu; số chưa xác minh để trống.
+   28/11/2026 khung chuẩn Điện (DASHBOARD_WORKFLOW.md §42): Tổng quan 00 Bản đồ ngành (bản đồ nhà máy xc-02, app/vn-geo.js) · 01 Chuỗi giá trị (xc-01);
+   Bức tranh: 02–05 có thanh luồng và tiêu đề khâu, mỗi câu hỏi có .pp-main → .pp-sup1 → .pp-more (mainify); xc-90 chỉ còn một thẻ (03, câu cuối), 01 có thẻ dẫn;
+   Tài chính ngành #mt14 (link cũ #mt3): 01 Tài chính ngành · 02 Doanh nghiệp niêm yết (xc-04 dời từ Tổng quan + app/listed-compare.js) · 03 Định giá (app/peer-valuation.js). */
 (() => {
 'use strict';
 const D = window.XC_DATA;
@@ -99,12 +102,38 @@ function chain(host) {
   host.append(c);
 }
 function overview() {
-  const pane = $('#xc-ov-map'); if (!pane) return;
-  const s1 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.1</span><div><h3>Xút và clo đi từ đâu, tới ngành nào?</h3></div></header>`);
-  pane.append(s1); chain(s1);
+  const pane = $('#xc-ov-map'), cp = $('#xc-ov-chain');
+  if (pane) { const s0 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.1</span><div><h3>Nhà máy xút – clo nằm ở đâu, của ai, bán ra hay dùng nội bộ?</h3></div></header>`); pane.append(s0); plantMap(s0); }
+  if (cp) { const s1 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">1.1</span><div><h3>Xút và clo đi từ đâu, tới ngành nào?</h3></div></header>`); cp.append(s1); chain(s1); }
 }
+// Bản đồ nhà máy xút – clo (28/11/2026): vị trí ước lượng theo địa danh (data/chloralkali/plants.json), kích thước = công suất NaOH, màu = phân loại bán ra / nội bộ / dự án.
+// Đường viền Việt Nam: app/vn-geo.js (Natural Earth, chép từ gói Phân bón). Nhà máy chưa có số công suất vẽ chấm nhỏ, ghi "chưa có số".
+function plantMap(host) {
+  const G = window.VN_GEO, plants = (PL.plants || []).filter(x => x.location && fin(x.location.lat) && fin(x.location.lon));
+  const c = el('div', 'card xc-map-card'); c.dataset.blockId = 'xc-02'; c.dataset.updateKind = 'document'; c.dataset.cadence = 'event';
+  const klass = x => { const k = x.classification || ''; return /dự kiến/.test(k) ? 'project' : /^captive/.test(k) ? 'captive' : /^merchant/.test(k) ? 'merchant' : 'unknown'; };
+  const CL = {merchant: ['Bán ra thị trường', '#2938A8'], captive: ['Chủ yếu dùng nội bộ', '#9aa1b2'], project: ['Dự án (chưa vận hành)', '#c98a00'], unknown: ['Chưa rõ', '#b9c0dc']};
+  const asOf = plants.map(x => String(x.as_of || '')).filter(Boolean).sort().at(-1) || '';
+  if (!G || !plants.length) { c.innerHTML = '<div class="chart-title">Bản đồ nhà máy xút – clo</div><p class="xc-na">Chưa có dữ liệu: chưa nạp được đường viền bản đồ (app/vn-geo.js) hoặc tọa độ nhà máy trong data/chloralkali/plants.json.</p>'; host.append(c); return; }
+  const proj = G.proj, xy = (lon, lat) => [(lon - proj.lon0) * proj.k * proj.scale, (proj.lat1 - lat) * proj.scale], [vw, vh] = G.viewBox.split(' ').slice(2).map(Number);
+  const cmax = Math.max(...plants.map(x => x.capacity_naoh_tpy || 0), 1), r = x => fin(x.capacity_naoh_tpy) ? 5 + 15 * Math.sqrt(x.capacity_naoh_tpy / cmax) : 4;
+  const short = x => (x.ticker ? x.ticker.split(' ')[0] : x.company.replace(/^(Công ty|CTCP|Tổng Công ty)( Cổ phần| CP)?( Hữu hạn)?\s*/i, '').split(/[–(-]/)[0].trim()).slice(0, 22);
+  const placed = [], marks = [...plants].sort((a, b) => r(b) - r(a)).map(x => {
+    const [px, py] = xy(x.location.lon, x.location.lat), col = CL[klass(x)][1], t = short(x);
+    const near = placed.filter(q => Math.hypot(q[0] - px, q[1] - py) < 16).length; placed.push([px, py]);
+    return `<g class="xc-pt"><circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r(x).toFixed(1)}" fill="${col}" fill-opacity=".8" stroke="#fff" stroke-width="1.2"/><text x="${(px + r(x) + 3).toFixed(1)}" y="${(py + 4 + near * 12).toFixed(1)}" class="xc-pt-l">${esc(t)}</text><title>${esc(x.plant)} · ${esc(x.location.province || '')} · ${fin(x.capacity_naoh_tpy) ? nf(x.capacity_naoh_tpy / 1000) + ' nghìn tấn NaOH/năm' : 'chưa có số công suất'} · ${esc(CL[klass(x)][0])}</title></g>`; }).join('');
+  const isl = [[112.0, 16.5, 'Quần đảo Hoàng Sa'], [114.2, 9.8, 'Quần đảo Trường Sa']].map(([lo, la, t]) => { const [x, y] = xy(lo, la); return `<g class="fb-isl"><circle cx="${x}" cy="${y}" r="2"/><circle cx="${x + 9}" cy="${y + 5}" r="1.6"/><circle cx="${x - 7}" cy="${y + 7}" r="1.4"/><text x="${x}" y="${y + 20}" text-anchor="middle">${t}</text></g>`; }).join('');
+  const rows = [...plants].sort((a, b) => (b.capacity_naoh_tpy || 0) - (a.capacity_naoh_tpy || 0));
+  c.innerHTML = `<div class="chart-title">Bản đồ nhà máy xút – clo Việt Nam</div><div class="chart-sub">kích thước = công suất thiết kế NaOH (tấn/năm, cơ sở nồng độ theo từng nguồn) · màu = phân loại · vị trí ước lượng theo địa danh, cập nhật đến ${esc(asOf.length >= 10 ? dL(asOf) : asOf)}</div>
+    <div class="xc-map"><div class="xc-map-svg"><svg viewBox="${G.viewBox}" role="img" aria-label="Bản đồ nhà máy xút – clo Việt Nam"><rect width="${vw}" height="${vh}" class="fb-sea"/>${Object.values(G.nb).map(d => `<path d="${d}" class="fb-nb"/>`).join('')}<path d="${G.vn}" class="fb-vn"/>${isl}${marks}</svg></div>
+    <div class="xc-map-side"><table class="compare-table xc-map-t"><thead><tr><th>Nhà máy</th><th>Tỉnh</th><th class="n">Nghìn tấn/năm</th></tr></thead><tbody>${rows.map(x => `<tr><td><i class="xc-sw" style="background:${CL[klass(x)][1]}"></i>${esc(short(x))}<small>${esc(x.status || '')}</small></td><td>${esc(x.location.province || '')}</td><td class="n">${fin(x.capacity_naoh_tpy) ? nf(x.capacity_naoh_tpy / 1000) : '<em>chưa có số</em>'}</td></tr>`).join('')}</tbody></table></div></div>
+    <div class="fb-gm-legend">${Object.values(CL).map(([t, col]) => `<span><i class="xc-sw" style="background:${col}"></i>${t}</span>`).join('')}</div>
+    <div class="pw-src">Nguồn: tài liệu doanh nghiệp, FPTS, báo chí (nguồn từng nhà máy ở 02 Công suất nội địa, rê chuột vào thanh); tọa độ ước lượng thủ công theo địa danh; đường viền: ${esc(G.source || 'Natural Earth')}</div>`;
+  host.append(c);
+}
+// Doanh nghiệp niêm yết (xc-04): 28/11/2026 dời từ Tổng quan › 01 sang Tài chính ngành › 02, câu 2.1.
 function listed() {
-  const pane = $('#xc-ov-listed'); if (!pane || !E) return;
+  const pane = $('#xc-fin-listed'); if (!pane || !E) return;
   const i = F.periods.length - 1, TT = m => E.total(m, E.tickers, 'ttm').per;
   const rev = TT('revenue'), np = TT('npat_parent'), gr = TT('gross'), nd = E.total('net_debt', E.tickers, 'q').per;
   const box = el('div', 'card fb-co-wrap'); box.dataset.blockId = 'xc-04'; box.dataset.updateKind = 'public'; box.dataset.cadence = 'quarterly';
@@ -116,7 +145,7 @@ function listed() {
         <dl><div><dt>Doanh thu</dt><dd>${nf(c.r)}</dd></div><div><dt>LNST cổ đông mẹ</dt><dd>${nf(c.p)}</dd></div><div><dt>Biên gộp</dt><dd>${nf(c.m, 1)}%</dd></div><div><dt>Nợ vay ròng</dt><dd>${nf(c.d)}</dd></div></dl><div class="fb-spark"></div>`);
       grid.append(t); if (window.ChartTypes) requestAnimationFrame(() => ChartTypes.spark(t.querySelector('.fb-spark'), F.data[c.ticker].revenue.slice(-12), g.color));
     });
-  pane.append(box);
+  const q = panel('·', 'Doanh nghiệp nào lớn nhất, lãi nhất, vay nhiều nhất?'); q.append(box); pane.append(q);
 }
 
 /* =========================== BỨC TRANH NGÀNH =========================== */
@@ -131,7 +160,7 @@ const PIC = {
       kpi(`Xút rắn ${my} · số liệu đối tác`, nf(k('mirror_annual', 'solid', my).t / 1000, 1), 'nghìn tấn', `đơn giá ${nf(k('mirror_annual', 'solid', my).price)} USD/tấn (FOB)`, 'nước xuất khẩu báo cáo; không có Đài Loan', years('mirror_annual').map(x => k('mirror_annual', 'solid', x)?.t), C.navy),
       kpi(`Xút dung dịch ${my} · số liệu đối tác`, nf(k('mirror_annual', 'liquid', my).t / 1000, 1), 'nghìn tấn', `đơn giá ${nf(k('mirror_annual', 'liquid', my).price)} USD/tấn (FOB)`, 'nước xuất khẩu báo cáo; không có Đài Loan', years('mirror_annual').map(x => k('mirror_annual', 'liquid', x)?.t), C.sky)]));
     // 1.1 lượng theo thị trường cung ứng + đơn giá nhập khẩu bình quân
-    const q1 = panel('1.1', 'Việt Nam nhập bao nhiêu xút, từ đâu, đơn giá nhập khẩu đi theo hướng nào?');
+    const q1 = panel('·', 'Việt Nam nhập bao nhiêu xút, từ nước nào, giá bao nhiêu?');
     const ctl = el('div', 'fb-gm-ctl', seg('form', [['solid', 'Xút rắn'], ['liquid', 'Xút dung dịch']], 'solid') + seg('freq', [['A', 'Năm'], ['M', `Tháng (T1/2018–${ymL(mo.at(-1) || '')})`]], 'A') + seg('view', [['abs', 'Lượng'], ['yoy', 'So cùng kỳ'], ['share', 'Thị phần']], 'abs'));
     const a = card('xc-11', 'Lượng nhập khẩu theo thị trường cung ứng', {sub: 'tấn sản phẩm', source: SRC_TR, info: 'Việt Nam là bên báo cáo, luồng nhập khẩu. Cơ cấu đối tác: cộng các nước, không cộng dòng World hay dòng khu vực; "Đài Loan" là mã "Other Asia, nes" của Comtrade. Khối lượng là khối lượng tịnh của sản phẩm (Comtrade đánh dấu là số ước tính), chưa quy về NaOH 100%.'});
     const b = card('xc-12', 'Đơn giá nhập khẩu bình quân', {sub: 'USD/tấn sản phẩm · trị giá ÷ khối lượng tịnh, tính lại từ tổng', source: SRC_TR, info: 'Đơn giá nhập khẩu bình quân = tổng trị giá USD ÷ tổng khối lượng tịnh (tấn). Không phải giá giao ngay hay giá bán của doanh nghiệp. Xút rắn và dung dịch là hai chuỗi riêng vì nồng độ khác nhau.'});
@@ -153,7 +182,7 @@ const PIC = {
     ctl.addEventListener('click', e => { const bt = e.target.closest('button'); if (!bt) return; const g = bt.parentElement; S[g.dataset.k] = bt.dataset.v; g.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === bt))); draw(); });
     draw();
     // 1.2 Việt Nam báo cáo và số liệu đối tác
-    const q2 = panel('1.2', 'Số liệu đối tác cho thấy gì ở các năm Việt Nam chưa báo cáo?');
+    const q2 = panel('·', 'Nhập khẩu các năm gần đây tăng hay giảm theo số liệu đối tác?');
     const c = card('xc-13', 'Lượng nhập khẩu: Việt Nam báo cáo và số liệu đối tác', {sub: 'nghìn tấn sản phẩm · theo năm', source: SRC_MR, info: 'Số liệu đối tác = các nước xuất khẩu báo cáo lượng xuất sang Việt Nam (giá FOB, theo kỳ xuất), giữ là chuỗi riêng. Đài Loan không báo cáo cho UN Comtrade nên không có trong số liệu đối tác (theo Việt Nam báo cáo, Đài Loan cung ~15 nghìn tấn xút rắn năm 2022).'});
     q2.append(c.el); p.append(q2);
     const YY = [...new Set([...ya, ...years('mirror_annual')])].sort();
@@ -161,13 +190,15 @@ const PIC = {
       {name: `${n} · Việt Nam báo cáo`, color: c1, kind: 'bar', values: YY.map(x => k('vn_annual', f, x)?.t / 1000 || null)},
       {name: `${n} · số liệu đối tác`, color: c2, kind: 'line', values: YY.map(x => k('mirror_annual', f, x)?.t / 1000 || null)}]), {unit: 'nghìn tấn', digits: 1, native: 'bar'});
     // 1.3 chuỗi lịch sử FPTS
-    const q3 = panel('1.3', 'Chuỗi nhập khẩu theo FPTS 2018–2022 so với số Comtrade');
+    const q3 = panel('·', 'Chuỗi FPTS 2018–2022 có khớp số Comtrade không?');
     const d = card('xc-14', 'Tổng nhập khẩu xút: chuỗi FPTS và chuỗi Comtrade', {sub: 'nghìn tấn · hai chuỗi riêng, không nối', source: SRC_FPTS + ' (nguồn ITC); ' + SRC_TR, info: 'Chuỗi FPTS: cơ sở quy đổi nồng độ chưa xác minh. Chuỗi Comtrade: xút rắn + xút dung dịch theo khối lượng sản phẩm. Hai định nghĩa chưa đối chiếu được nên để riêng.'});
     q3.append(d.el); p.append(q3);
     const fy = (FP.imports_total?.rows || []).map(r => String(r[0])), Y3 = [...new Set([...fy, ...ya])].sort(), fv = Object.fromEntries((FP.imports_total?.rows || []).map(r => [String(r[0]), r[1]]));
     chart(d.host, 'xc-14', Y3, [{name: 'FPTS (ITC) · cơ sở nồng độ chưa xác minh', color: C.grey, kind: 'bar', values: Y3.map(x => fv[x] ?? null)},
       {name: 'Comtrade · rắn + dung dịch (khối lượng sản phẩm)', color: C.blue, kind: 'bar', values: Y3.map(x => { const s = k('vn_annual', 'solid', x), l = k('vn_annual', 'liquid', x); return s?.t && l?.t ? (s.t + l.t) / 1000 : null; })}], {unit: 'nghìn tấn', digits: 1, native: 'bar'});
-    p.append(readings());
+    // xc-90 (ba cách đọc tác động của Nghi Sơn) chỉ còn một thẻ ở 03, câu cuối (28/11/2026: trước nhân bản ở cả 01 và 03).
+    xlink(p, 'nghison', '03 Nghi Sơn & gốc clo', 'Nghi Sơn tăng sản lượng: ba cách đọc và chỉ tiêu theo dõi', 'Thay thế hàng nhập, cạnh tranh giá nội địa, nguồn cung tăng chậm', 'xc-90');
+    finish(p, 1);
   },
   capacity() {
     const p = $('#xc-pp-capacity'), plants = PL.plants || [], snap = FP.capacity_snapshot || {rows: []};
@@ -182,8 +213,12 @@ const PIC = {
       kpi('Trong đó cơ sở bán ra thị trường', nf(sum(merch) / 1000), 'nghìn tấn/năm', merch.map(x => x.ticker ? x.ticker.split(' ')[0] : x.company.split(' ').slice(-1)[0]).join(' · '), 'phân loại theo FPTS và tài liệu doanh nghiệp', null),
       kpi('Nhu cầu xút (ước tính FPTS)', nf(FP.demand?.value), 'nghìn tấn/năm', FP.demand?.label || '', 'không phải tiêu thụ biểu kiến', null),
       hv.length ? kpi(`HVT sản xuất xút ${hv.at(-1).year_or_period}`, nf(hv.at(-1).value / 1000, 1), 'nghìn tấn (100%)', `${sg((hv.at(-1).value / hv.at(-2).value - 1) * 100)}% so năm trước`, 'BCTN HVT', hv.map(x => x.value), C.blue) : null].filter(Boolean)));
+    flow(p, 'capacity', [['in', 'Đầu vào', 'Điện, muối'], ['make', 'Sản xuất', 'Công suất theo nhà máy'], ['out', 'Đầu ra', 'Sản lượng, phần bán ra']]);
+    stage(p, 'capacity', 'in', 'Đầu vào', 'Điện, muối');
+    xlink(p, 'cost', '04 Chi phí đầu vào', 'Giá điện sản xuất và hạn ngạch nhập khẩu muối', 'Điện phân muối: điện và muối là hai đầu vào chính của xút – clo', 'xc-41');
+    stage(p, 'capacity', 'make', 'Sản xuất', 'Công suất theo nhà máy');
     // 2.1 công suất theo nhà máy
-    const q1 = panel('2.1', 'Nhà máy nào có xút để bán?');
+    const q1 = panel('·', 'Nhà máy nào có xút để bán?');
     const CL = {merchant: ['Bán ra thị trường', '#2938A8'], captive: ['Chủ yếu dùng nội bộ', '#9aa1b2'], project: ['Dự án (chưa vận hành)', '#c98a00'], unknown: ['Chưa rõ', '#d6dbe8']};
     const ctl = el('div', 'fb-gm-ctl', seg('snap', [['upd', 'Cập nhật 11/2026'], ['fpts', 'Ảnh chụp FPTS 2024']], 'upd'));
     const c = el('div', 'card'); c.dataset.blockId = 'xc-21'; c.dataset.updateKind = 'document'; c.dataset.cadence = 'event';
@@ -204,13 +239,15 @@ const PIC = {
     ctl.addEventListener('click', e => { const bt = e.target.closest('button'); if (!bt) return; ctl.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === bt))); drawCap(bt.dataset.v); });
     drawCap('upd');
     // 2.2 HVT: sản lượng xút, phần bán ra thị trường
+    stage(p, 'capacity', 'out', 'Đầu ra', 'Sản lượng, phần bán ra');
     if (hv.length) {
-      const q2 = panel('2.2', 'Bao nhiêu công suất đã thành sản lượng và sản lượng bán ra?', 'Chỉ HVT công bố sản lượng xút theo tấn; CSV chỉ công bố doanh thu và tăng trưởng.');
+      const q2 = panel('·', 'Công suất đã thành bao nhiêu sản lượng, bao nhiêu bán ra?');
       const sold = Object.fromEntries((PL.production || []).filter(x => x.company === 'HVT' && x.product === 'Xút thương phẩm').map(x => [x.year_or_period, x.value]));
       const d = card('xc-22', 'HVT: sản lượng xút sản xuất và phần thương phẩm', {sub: 'tấn, quy 100% (HVT ghi "Xút 100%")', kind: 'document', cadence: 'annual', source: srcList([...new Map(hv.flatMap(x => x.sources).map(s => [s.url, s])).values()].slice(0, 3)), info: 'Phần thương phẩm (bán ra thị trường) chỉ có trong BCTN 2019–2021. Không tính tỷ lệ sử dụng công suất vì chưa có công suất cùng cơ sở nồng độ theo từng năm.'});
       q2.append(d.el); p.append(q2);
       chart(d.host, 'xc-22', hv.map(x => x.year_or_period), [{name: 'Sản xuất (tổng)', color: C.blue, kind: 'bar', values: hv.map(x => x.value)}, {name: 'Thương phẩm (bán ra)', color: C.gold, kind: 'bar', values: hv.map(x => sold[x.year_or_period] ?? null)}], {unit: 'tấn', native: 'bar'});
     }
+    dropEmptyStages(p); finish(p, 2);
   },
   nghison() {
     const p = $('#xc-pp-nghison'), tl = (PL.nghison_timeline || []).filter(e => e.date_published), pr = PL.nghison_products || {};
@@ -223,8 +260,10 @@ const PIC = {
       kpi('Tổng công suất thiết kế', '151', 'nghìn tấn/năm', 'xút + 8 nhóm sản phẩm gốc clo, phốt pho', 'chưa gồm phụ phẩm HCl 75 nghìn tấn', null),
       cip ? kpi('XDCB dở dang Nghi Sơn', nf(cip.value), cip.unit, `tại ${dL(cip.as_of)}`, 'số dư theo kỳ', xd.filter(x => /dở dang/i.test(x.metric)).map(x => x.value), C.gold) : null,
       kpi('Mốc vận hành theo công bố gần nhất', esc(lastE.planned_date || 'N/A'), '', `công bố ${lastE.date_published ? dL(String(lastE.date_published)) : ''}`, 'mốc dự kiến; chưa có công bố chạy thử thực tế', null)].filter(Boolean)));
+    flow(p, 'nghison', [['inv', 'Đầu tư', 'Tiến độ, vốn đã vào'], ['make', 'Sản xuất', 'Công suất theo sản phẩm'], ['out', 'Đầu ra', 'Bán gốc clo, tác động thị trường']]);
+    stage(p, 'nghison', 'inv', 'Đầu tư', 'Tiến độ, vốn đã vào');
     // 3.1 timeline có phiên bản
-    const q1 = panel('3.1', 'Tiến độ dự án qua các lần công bố');
+    const q1 = panel('·', 'Tiến độ dự án thay đổi thế nào qua các lần công bố?');
     const c = el('div', 'card'); c.dataset.blockId = 'xc-31'; c.dataset.updateKind = 'event'; c.dataset.cadence = 'event';
     const ST = {'đầu tư/xây dựng': '#8997D6', 'chạy thử': '#c98a00', 'vận hành thương mại dây chuyền': '#2a9fa3', 'vận hành toàn dự án': '#1D2678', 'sản lượng bán': '#861C52'};
     c.innerHTML = `<div class="chart-title">Mốc dự án theo ngày công bố</div><div class="chart-sub">Mỗi dòng là một lần công bố: giai đoạn mục tiêu và mốc dự kiến tại thời điểm đó, mốc thực tế nếu có; mốc cũ giữ trong lịch sử điều chỉnh. Sản lượng bán ra: chưa có số công bố.</div>
@@ -233,15 +272,16 @@ const PIC = {
     q1.append(c); p.append(q1);
     // 3.2 XDCB dở dang và giải ngân
     if (xd.length) {
-      const q2 = panel('3.2', 'Vốn đã vào dự án đến đâu?', 'Số dư XDCB dở dang và giải ngân lũy kế là hai chỉ tiêu khác nhau, để riêng.');
+      const q2 = panel('·', 'Vốn đã vào dự án đến đâu?');
       const d = card('xc-32', 'Nghi Sơn: XDCB dở dang và giải ngân lũy kế', {sub: 'tỷ đồng', kind: 'document', cadence: 'quarterly', source: srcList([...new Map(xd.flatMap(x => x.sources || []).map(s => [s.url, s])).values()].slice(0, 3))});
       q2.append(d.el); p.append(q2);
       const dates = [...new Set(xd.map(x => x.as_of))].sort();
       chart(d.host, 'xc-32', dates.map(dL), [{name: 'XDCB dở dang (số dư)', color: C.gold, kind: 'bar', values: dates.map(t => xd.find(x => x.as_of === t && /dở dang/i.test(x.metric))?.value ?? null)},
         {name: 'Giải ngân lũy kế', color: C.blue, kind: 'bar', values: dates.map(t => xd.find(x => x.as_of === t && /giải ngân/i.test(x.metric))?.value ?? null)}], {unit: 'tỷ đồng', native: 'bar'});
     }
+    stage(p, 'nghison', 'make', 'Sản xuất', 'Công suất theo sản phẩm');
     // 3.3 sản phẩm gốc clo: công suất thiết kế theo sản phẩm, hai phiên bản
-    const q3 = panel('3.3', 'Đầu ra gốc clo của Nghi Sơn gồm những gì, quy mô bao nhiêu?', 'Công suất thiết kế theo sản phẩm; chưa có số bán ra công bố. Tổng tấn chỉ mô tả quy mô danh mục.');
+    const q3 = panel('·', 'Nghi Sơn sẽ làm những sản phẩm gốc clo nào, quy mô bao nhiêu?');
     const ctl = el('div', 'fb-gm-ctl', seg('ver', [['latest', 'Cập nhật (Yuanta 10/2026)'], ['fpts', 'FPTS 2024']], 'latest'));
     const e2 = card('xc-33', 'Công suất thiết kế theo sản phẩm', {sub: 'tấn/năm', kind: 'document', cadence: 'event', source: srcList([pr.latest_source]) || SRC_FPTS, info: 'Phụ phẩm HCl 31% (~75.000 tấn/năm, sinh ra khi sản xuất H3PO3) không cộng vào tổng 151.000 tấn. Nhóm gốc phốt pho (H3PO3, H3PO4, PCl3, PCl5) dùng chung trần 10.000 tấn quy H3PO3.'});
     q3.append(ctl, e2.el); p.append(q3);
@@ -252,17 +292,19 @@ const PIC = {
     };
     ctl.addEventListener('click', e => { const bt = e.target.closest('button'); if (!bt) return; ctl.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === bt))); drawP(bt.dataset.v); });
     drawP('latest');
+    stage(p, 'nghison', 'out', 'Đầu ra', 'Bán gốc clo, tác động thị trường');
     // 3.4 bằng chứng đầu ra gốc clo trên thị trường: sản lượng sản phẩm gốc clo của HVT
     const prod = (PL.production || []).filter(x => x.company === 'HVT' && x.metric === 'Sản lượng sản xuất' && !/Xút/.test(x.product) && /^\d{4}$/.test(x.year_or_period));
     if (prod.length) {
-      const q4 = panel('3.4', 'Nhà sản xuất hiện hữu đang bán được bao nhiêu sản phẩm gốc clo?', 'HVT là nhà sản xuất duy nhất công bố sản lượng từng sản phẩm gốc clo theo tấn.');
+      const q4 = panel('·', 'Nhà sản xuất hiện hữu làm được bao nhiêu sản phẩm gốc clo?');
       const f = card('xc-34', 'HVT: sản lượng sản phẩm gốc clo theo năm', {sub: 'tấn sản phẩm (nồng độ không ghi)', kind: 'document', cadence: 'annual', source: srcList([...new Map(prod.flatMap(x => x.sources).map(s => [s.url, s])).values()].slice(0, 2)), info: 'Mỗi sản phẩm một chuỗi; các sản phẩm khác nồng độ nên không cộng thành tổng.'});
       q4.append(f.el); p.append(q4);
       const YS = [...new Set(prod.map(x => x.year_or_period))].sort(), PS = [...new Set(prod.map(x => x.product))];
       const cols = [C.blue, C.teal, C.gold, C.plum, C.grey, C.sky, C.bronze, C.navy];
       chart(f.host, 'xc-34', YS, PS.map((n, j) => ({name: n, color: cols[j % cols.length], values: YS.map(y => prod.find(x => x.product === n && x.year_or_period === y)?.value ?? null)})), {unit: 'tấn', zeroBase: true});
     }
-    p.append(readings());
+    const q5 = panel('·', 'Nghi Sơn chạy sẽ tác động tới thị trường xút theo hướng nào?'); q5.append(readings()); p.append(q5);
+    finish(p, 3);
   },
   p4() {
     const p = $('#xc-pp-p4'), P4 = D.p4 || {}, M = P4.monthly || [], W = P4.weekly || [];
@@ -285,16 +327,21 @@ const PIC = {
       dec ? kpi('So với cuối năm trước', sg((lastM.value / dec.value - 1) * 100), '%', `cuối 12/${dec.date.slice(0, 4)}: ${nf(dec.value)} CNY/tấn`, 'giá ngày cuối kỳ', null) : null,
       v1 ? kpi(`Xuất khẩu P4 ${vy.at(-1)} · Việt Nam báo cáo`, nf(v1.t / 1000, 1), 'nghìn tấn', `đơn giá ${nf(v1.price)} USD/tấn`, 'HS 280470, UN Comtrade', vy.map(y => rp('p4_vn_annual', y).t), C.gold) : null,
       m1 ? kpi(`Xuất khẩu P4 ${my.at(-1)} · số liệu đối tác`, nf(m1.t / 1000, 1), 'nghìn tấn', `đơn giá ${nf(m1.price)} USD/tấn (CIF)`, 'nước nhập khẩu báo cáo', my.map(y => rp('p4_mirror_annual', y).t), C.navy) : null].filter(Boolean)));
-    const q1 = panel('5.1', 'Giá phốt pho vàng (P4) tại Trung Quốc qua các năm');
+    flow(p, 'p4', [['in', 'Đầu vào', 'Giá điện sản xuất'], ['px', 'Giá', 'Giá P4 Trung Quốc'], ['out', 'Đầu ra', 'Xuất khẩu P4 Việt Nam']]);
+    stage(p, 'p4', 'in', 'Đầu vào', 'Giá điện sản xuất');
+    xlink(p, 'cost', '04 Chi phí đầu vào', 'Biểu giá điện bán lẻ cho sản xuất', 'Giá điện theo cấp điện áp và khung giờ qua các quyết định của Bộ Công Thương', 'xc-41');
+    stage(p, 'p4', 'px', 'Giá', 'Giá P4 Trung Quốc');
+    const q1 = panel('·', 'Giá P4 Trung Quốc đang ở đâu so với các năm trước?');
     const a = card('xc-51', 'Giá P4 giao ngay Trung Quốc, cuối mỗi quý', {sub: 'CNY/tấn · giá ngày cuối quý (quý hiện tại: ngày mới nhất)', cadence: 'daily', kind: 'document', source: SRC_P4, info: 'Nguồn Sunsirs qua WiData trả giá trị ngày cuối kỳ, không phải bình quân. Trước 03/2024 nguồn chỉ còn số theo quý (một số quý có ngày quan sát cuối không trùng cuối quý, vd 01/11/2021); từ 03/2024 lấy giá cuối tháng 3, 6, 9, 12.'});
     q1.append(a.el); p.append(q1);
     chart(a.host, 'xc-51', QK, [{name: 'Giá P4 Trung Quốc', color: C.plum, values: QK.map(k => QS.get(k).value)}], {unit: 'CNY/tấn', zeroBase: false});
-    const q2 = panel('5.2', 'Giá P4 biến động thế nào trong năm nay?');
+    const q2 = panel('·', 'Giá P4 tăng hay giảm trong năm nay?');
     const b = card('xc-52', 'Giá P4 giao ngay Trung Quốc theo tuần', {sub: 'CNY/tấn · giá ngày cuối tuần', cadence: 'daily', kind: 'document', source: SRC_P4});
     q2.append(b.el); p.append(q2);
     chart(b.host, 'xc-52', W.map(r => dL(r.date)), [{name: 'Giá P4 Trung Quốc', color: C.plum, values: W.map(r => r.value)}], {unit: 'CNY/tấn', zeroBase: false});
+    stage(p, 'p4', 'out', 'Đầu ra', 'Xuất khẩu P4 Việt Nam');
     if (vy.length || my.length) {
-      const q3 = panel('5.3', 'Việt Nam xuất khẩu bao nhiêu P4, sang đâu, đơn giá bao nhiêu?');
+      const q3 = panel('·', 'Việt Nam xuất khẩu bao nhiêu P4, sang đâu, giá bao nhiêu?');
       const c = card('xc-53', 'Xuất khẩu P4 (HS 280470) của Việt Nam theo thị trường', {sub: 'tấn · số liệu đối tác: nước nhập khẩu báo cáo nhập từ Việt Nam', cadence: 'annual', source: '<a href="https://comtradeplus.un.org/" target="_blank" rel="noopener">UN Comtrade</a> (số liệu đối tác)', info: 'Dùng số liệu đối tác vì chuỗi Việt Nam báo cáo thiếu và lệch (năm 2019, 2020 khối lượng bất thường, năm 2022 không có khối lượng, chưa có 2024–2025). HS 280470 là phốt pho nói chung.'});
       const d = card('xc-54', 'Lượng xuất khẩu P4: Việt Nam báo cáo và số liệu đối tác', {sub: 'nghìn tấn', cadence: 'annual', source: '<a href="https://comtradeplus.un.org/" target="_blank" rel="noopener">UN Comtrade</a> (Việt Nam báo cáo, giá FOB; nước nhập khẩu báo cáo, giá CIF)', info: 'Số liệu đối tác = các nước nhập khẩu báo cáo nhập từ Việt Nam; giữ là chuỗi riêng, không cộng với số Việt Nam báo cáo. Năm Việt Nam báo cáo khối lượng bất thường (đơn giá suy ra trên 20.000 USD/tấn) hoặc không có khối lượng thì để trống.'});
       const e = card('xc-55', 'Đơn giá xuất khẩu P4 bình quân', {sub: 'USD/tấn · trị giá ÷ khối lượng tịnh', cadence: 'annual', source: '<a href="https://comtradeplus.un.org/" target="_blank" rel="noopener">UN Comtrade</a>; tự tính', info: 'Số liệu đối tác theo giá CIF tại nước nhập khẩu; Việt Nam báo cáo theo giá FOB. Hai chuỗi riêng.'});
@@ -307,6 +354,7 @@ const PIC = {
       chart(e.host, 'xc-55', YY, [{name: 'Số liệu đối tác (CIF)', color: C.navy, values: YY.map(y => rp('p4_mirror_annual', y)?.price ?? null)},
         {name: 'Việt Nam báo cáo (FOB)', color: C.plum, values: YY.map(y => rp('p4_vn_annual', y)?.price ?? null)}], {unit: 'USD/tấn', zeroBase: false});
     }
+    dropEmptyStages(p); finish(p, 5);
   },
   cost() {
     const p = $('#xc-pp-cost'), TA = IN.tariffs || [], last2 = TA.at(-1), SQ = (IN.salt_quota || []).filter(x => fin(x.quota_tonnes)), sq = SQ.at(-1);
@@ -315,8 +363,10 @@ const PIC = {
       last2 ? kpi('Sản xuất, cấp điện áp cao nhất, giờ bình thường', nf(last2.table[0].binh_thuong), 'đ/kWh', esc(last2.table[0].voltage), 'chưa gồm VAT', null) : null,
       kpi('Tỷ trọng điện trong giá thành xút', nf(FP.power_cost_share?.value), '%', 'Ước tính FPTS 2024', 'không phải số doanh nghiệp công bố', null),
       sq ? kpi(`Hạn ngạch nhập khẩu muối ${sq.year}`, nf(sq.quota_tonnes), 'tấn', 'toàn nhóm HS 2501', 'không riêng muối công nghiệp', SQ.map(x => x.quota_tonnes), C.teal) : null].filter(Boolean)));
+    flow(p, 'cost', [['power', 'Điện', 'Biểu giá điện sản xuất'], ['intl', 'So sánh', 'Giá điện các nước'], ['salt', 'Muối', 'Hạn ngạch nhập khẩu'], ['unit', 'Kịch bản', 'Chi phí điện trên tấn xút']]);
+    stage(p, 'cost', 'power', 'Điện', 'Biểu giá điện sản xuất');
     // 4.1 bậc thang giá điện sản xuất theo ngày hiệu lực
-    const q1 = panel('4.1', 'Giá điện sản xuất thay đổi thế nào qua các quyết định?', 'Từ 01/11/2026 cấp điện áp và khung giờ đổi theo QĐ 14/2025/QĐ-TTg và QĐ 963/QĐ-BCT: cấp cũ và cấp mới không tương ứng 1–1.');
+    const q1 = panel('·', 'Giá điện sản xuất tăng bao nhiêu qua các lần điều chỉnh?');
     const ctl = el('div', 'fb-gm-ctl', seg('tier', [['0', 'Cấp cao nhất'], ['1', 'Cấp 2'], ['2', 'Cấp 3'], ['3', 'Cấp thấp nhất']], '0') + seg('band', [['binh_thuong', 'Giờ bình thường'], ['thap_diem', 'Thấp điểm'], ['cao_diem', 'Cao điểm']], 'binh_thuong'));
     const c = card('xc-41', 'Biểu giá bán lẻ điện cho các ngành sản xuất', {sub: 'đ/kWh, chưa gồm VAT · bậc thang theo ngày hiệu lực', kind: 'document', cadence: 'event', source: 'Quyết định của Bộ Công Thương (văn bản từng mốc ở bảng 4.2)', info: 'Cấp 1–4 trước 01/11/2026: ≥110 kV; 22–<110 kV; 6–<22 kV; <6 kV. Từ 01/11/2026: ≥220 kV; >35–<220 kV; trung áp >1–35 kV; hạ áp ≤1 kV. Khung giờ cao điểm, thấp điểm cũng đổi (QĐ 963/QĐ-BCT). Đường đứt là ranh giới đổi cách phân cấp.'});
     q1.append(ctl, c.el); p.append(q1);
@@ -333,27 +383,30 @@ const PIC = {
     ctl.addEventListener('click', e => { const bt = e.target.closest('button'); if (!bt) return; const g = bt.parentElement; S[g.dataset.k] = bt.dataset.v; g.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === bt))); drawT(); });
     drawT();
     // 4.2 bảng biểu giá (dữ liệu thô)
-    const q2 = panel('4.2', 'Biểu giá từng quyết định (dữ liệu gốc)');
+    const q2 = panel('·', 'Mỗi quyết định đặt giá điện từng cấp điện áp bao nhiêu?');
     const tb = el('div', 'card'); tb.dataset.blockId = 'xc-42'; tb.dataset.updateKind = 'document'; tb.dataset.cadence = 'event';
     tb.innerHTML = `<div class="chart-title">Biểu giá bán lẻ điện cho các ngành sản xuất theo quyết định</div><div class="tbl-wrap"><table class="compare-table"><thead><tr><th>Quyết định</th><th>Hiệu lực</th><th>Cấp điện áp</th><th class="n">Bình thường</th><th class="n">Thấp điểm</th><th class="n">Cao điểm</th><th>Nguồn</th></tr></thead><tbody>
       ${TA.slice().reverse().map(t => t.table.map((r, i) => `<tr><td>${i ? '' : `<b>${esc(t.decision)}</b>`}</td><td>${i ? '' : dL(t.effective)}</td><td>${esc(r.voltage)}</td><td class="n">${nf(r.binh_thuong)}</td><td class="n">${nf(r.thap_diem)}</td><td class="n">${nf(r.cao_diem)}</td><td>${i ? '' : `<a href="${esc(t.source_url)}" target="_blank" rel="noopener">[1]</a>`}</td></tr>`).join('')).join('')}</tbody></table></div>
       <div class="pw-src">Nguồn: Bộ Công Thương (văn bản từng dòng); đ/kWh, chưa gồm VAT</div>`;
     q2.append(tb); p.append(q2);
     // 4.3 so sánh giá điện công nghiệp (FPTS) và 4.4 hạn ngạch muối
-    const q3 = panel('4.3', 'Giá điện công nghiệp Việt Nam so với các nước xuất khẩu xút sang Việt Nam');
+    stage(p, 'cost', 'intl', 'So sánh', 'Giá điện các nước');
+    const q3 = panel('·', 'Giá điện Việt Nam rẻ hay đắt hơn các nước xuất khẩu xút sang Việt Nam?');
     const d = card('xc-43', 'Giá điện công nghiệp theo quốc gia', {sub: 'US cent/kWh · số liệu FPTS tổng hợp từ Global Petrol Prices, công bố 05/2024', kind: 'document', cadence: 'event', source: SRC_FPTS + ' (tr. 21), Global Petrol Prices'});
     q3.append(d.el); p.append(q3);
     const pc = FP.power_price_compare?.rows || [];
     chart(d.host, 'xc-43', pc.map(r => r[0]), [{name: 'Giá điện công nghiệp', color: C.grey, kind: 'bar', values: pc.map(r => r[1])}], {unit: 'US cent/kWh', digits: 1, native: 'bar'});
-    const q4 = panel('4.4', 'Hạn ngạch thuế quan nhập khẩu muối theo năm');
+    stage(p, 'cost', 'salt', 'Muối', 'Hạn ngạch nhập khẩu');
+    const q4 = panel('·', 'Hạn ngạch nhập khẩu muối tăng hay giảm?');
     const f = card('xc-44', 'Hạn ngạch nhập khẩu muối (toàn nhóm HS 2501)', {sub: 'tấn · không riêng muối công nghiệp; ngoài hạn ngạch chịu thuế cao (khoảng 50%)', kind: 'document', cadence: 'annual', source: srcList((IN.salt_quota || []).filter(x => x.source_url).slice(-3).map(x => ({title: x.document, url: x.source_url}))), info: 'Hạn ngạch áp cho toàn nhóm HS 2501 (muối ăn, muối biến tính, NaCl tinh khiết, nước biển). Năm 2018–2020 chưa xác minh được số. Chưa có chuỗi giá muối công nghiệp nhập khẩu đủ hẹp để vẽ.'});
     q4.append(f.el); p.append(q4);
     const ALL = (IN.salt_quota || []).slice().sort((a, b) => a.year - b.year);
     chart(f.host, 'xc-44', ALL.map(x => String(x.year)), [{name: 'Hạn ngạch', color: C.teal, kind: 'bar', values: ALL.map(x => x.quota_tonnes ?? null)}], {unit: 'tấn', native: 'bar'});
     // 4.5 kịch bản chi phí điện trên tấn xút (người xem chọn định mức; vận hành liên tục 24h)
     const N = (IN.power_norm || []).filter(x => x.value_per_t_naoh_100 && fin(x.value_per_t_naoh_100.median ?? x.value_per_t_naoh_100.min));
+    stage(p, 'cost', 'unit', 'Kịch bản', 'Chi phí điện trên tấn xút');
     if (N.length && last2) {
-      const q5 = panel('4.5', 'Kịch bản: chi phí điện trên một tấn xút theo biểu giá hiện hành', 'Kịch bản tính, không phải chi phí của doanh nghiệp: định mức điện lấy từ tài liệu kỹ thuật, giả định vận hành liên tục 24 giờ.');
+      const q5 = panel('·', 'Theo biểu giá hiện hành, tiền điện trên một tấn xút khoảng bao nhiêu (kịch bản)?');
       const g = el('div', 'card'); g.dataset.blockId = 'xc-45'; g.dataset.updateKind = 'document'; g.dataset.cadence = 'event';
       const H = {binh_thuong: 13, thap_diem: 6, cao_diem: 5};
       g.innerHTML = `<div class="chart-title">Chi phí điện ước tính theo kịch bản</div><div class="fb-gm-ctl">${seg('norm', N.map((x, i) => [String(i), x.source.split(',')[0].split('(')[0].trim() + ' · ' + nf(x.value_per_t_naoh_100.median ?? x.value_per_t_naoh_100.min) + ' kWh/t']), '0')}${seg('tier', last2.table.map((r, i) => [String(i), r.voltage]), '1')}</div><div class="xc-scn"></div>
@@ -366,6 +419,7 @@ const PIC = {
       g.addEventListener('click', e => { const bt = e.target.closest('.fb-gm-seg button'); if (!bt) return; const gg = bt.parentElement; SS[gg.dataset.k] = bt.dataset.v; gg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === bt))); calc(); });
       calc();
     }
+    dropEmptyStages(p); finish(p, 4);
   }
 };
 // Ba cách đọc tác động của Nghi Sơn: chỉ tiêu, số hiện có, trạng thái dữ liệu (không kết luận khi chưa đủ dữ liệu phân biệt).
@@ -383,13 +437,51 @@ function readings() {
     <div class="pw-src">Kỳ quan sát: nhập khẩu theo năm (Việt Nam báo cáo đến ${y}, số liệu đối tác đến ${m1}); Nghi Sơn theo công bố đến 11/2026. Nguồn: UN Comtrade, BCTN HVT, DGC, Yuanta</div>`;
   return c;
 }
+// Thanh luồng và tiêu đề khâu (cùng .pp-flow/.pp-stage của Điện), 28/11/2026.
+function flow(p, key, steps) {
+  const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Các khâu trong sub-tab');
+  bar.innerHTML = steps.map(([id, k, t], i) => `${i ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#mt2-pp-${key}-${id}" class="pp-flow-s" data-pp-stage="mt2-pp-${key}-${id}"><small>${k}</small><b>${esc(t)}</b></a>`).join('');
+  bar.addEventListener('click', e => { const x = e.target.closest('[data-pp-stage]'); if (x) { e.preventDefault(); document.getElementById(x.dataset.ppStage)?.scrollIntoView({behavior: 'smooth', block: 'start'}); } });
+  p.append(bar);
+}
+function stage(p, key, id, k, t) { const h = el('div', 'pp-stage', `<span>${k}</span><h3>${esc(t)}</h3>`); h.id = `mt2-pp-${key}-${id}`; p.append(h); }
+// Khâu không có câu hỏi hay thẻ dẫn (dữ liệu chưa có) thì bỏ tiêu đề khâu và nút trên thanh luồng.
+function dropEmptyStages(p) {
+  p.querySelectorAll(':scope>.pp-stage').forEach(h => { const n = h.nextElementSibling; if (!n || n.classList.contains('pp-stage')) { p.querySelector(`.pp-flow [data-pp-stage="${h.id}"]`)?.remove(); h.remove(); } });
+  p.querySelectorAll('.pp-flow').forEach(f => { f.querySelectorAll('.pp-flow-ar').forEach(ar => { if (!ar.nextElementSibling || ar.nextElementSibling.classList.contains('pp-flow-ar')) ar.remove(); }); const x = f.firstElementChild; if (x?.classList.contains('pp-flow-ar')) x.remove(); });
+}
+function renum(p, n) { p.querySelectorAll(':scope>.pp-panel .pp-num').forEach((x, i) => { x.textContent = `${n}.${i + 1}`; }); }
+// Chuẩn §42: mỗi câu hỏi có chart chính .pp-main (thẻ đầu), chart phụ .pp-sup1, phần còn lại .pp-more; điều khiển đặt trước thẻ đầu giữ nguyên chỗ.
+function mainify(root) {
+  root.querySelectorAll('.pp-panel').forEach(q => {
+    const hasMain = !!q.querySelector(':scope > .pp-main'), cards = [], after = []; let seen = hasMain;
+    [...q.children].filter(n => !n.matches('header.pp-ph, .pp-main, .pp-sup1, .pp-more')).forEach(n => {
+      if (n.matches('.card')) { cards.push(n); seen = true; }
+      else if (n.matches('.grid') && n.querySelector(':scope > .card')) { cards.push(...n.children); n.remove(); seen = true; }
+      else if (seen) after.push(n);
+    });
+    if (!cards.length) return;
+    const out = [], rest = hasMain ? cards : cards.slice(1);
+    if (!hasMain) { const m = el('div', 'pp-main'); m.append(cards[0]); out.push(m); }
+    if (rest.length === 1) { const w = el('div', 'pp-sup1'); w.append(rest[0]); out.push(w); }
+    else if (rest.length === 2) { const w = el('div', 'grid two g2 pp-sup pp-more'); w.append(...rest); out.push(w); }
+    else if (rest.length > 2) { const w = el('div', 'pp-sup1'); w.append(rest[0]); const g = el('div', 'grid two g2 pp-sup pp-more'); g.append(...rest.slice(1)); out.push(w, g); }
+    q.append(...out, ...after);
+  });
+}
+// Thẻ dẫn sang chart ở sub-tab khác (dời, không nhân bản): bấm thì mở sub-tab và cuộn tới thẻ.
+function xlink(p, sub, where, title, desc, block) {
+  const a = el('a', 'th-link', `<small>Xem chart ở ${esc(where)}</small><b>${esc(title)} →</b><span>${esc(desc)}</span>`);
+  a.href = `?sub=${sub}#mt2`; a.dataset.goSub = sub; if (block) a.dataset.goBlock = block; p.append(a);
+}
+function finish(p, n) { mainify(p); renum(p, n); }
 const BUILT = new Set();
-function showPic(key) {
+function showPic(key, write = true) {
   if (!PIC[key]) key = 'import';
   $$('#pane-mt2 .pp-pane').forEach(p => { p.hidden = p.dataset.sub !== key; });
   $$('#pane-mt2 .pp-tab').forEach(b => { const on = b.dataset.sub === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
   if (!BUILT.has(key)) { BUILT.add(key); try { PIC[key](); } catch (e) { console.error(e); } }
-  const u = new URL(location.href); u.searchParams.set('sub', key); history.replaceState(null, '', u.pathname + u.search + u.hash);
+  if (write) { const u = new URL(location.href); u.searchParams.set('sub', key); history.replaceState(null, '', u.pathname + u.search + u.hash); }
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
 function showOv(key) {
@@ -397,29 +489,63 @@ function showOv(key) {
   $$('#pane-mt1 .ov-tab').forEach(b => { const on = b.dataset.ov === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
+// Tài chính ngành › 01 Tài chính ngành · 02 Doanh nghiệp niêm yết (03 Định giá do app/peer-valuation.js tự thêm, khóa valuation).
+const FIN_SUBS = ['sector', 'listed'];
+let LISTED_DONE = false;
+function showFin(key, write = true) {
+  if (!FIN_SUBS.includes(key)) key = 'sector';
+  const sec = $('#pane-mt14 .pp-nav')?.parentElement; if (!sec) return;
+  sec.querySelectorAll(':scope > .pp-pane').forEach(p => { p.hidden = p.dataset.fin !== key; if (!p.dataset.fin) p.style.display = 'none'; });
+  sec.querySelectorAll('.pp-nav .pp-tab').forEach(b => { const on = b.dataset.fin === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); });
+  if (key === 'sector' && window.XcFinance && !$('#xc-fin-root').childElementCount) { XcFinance.build($('#xc-fin-root')); mainify($('#xc-fin-root')); }
+  if (key === 'listed' && !LISTED_DONE) { LISTED_DONE = true; const pane = $('#xc-fin-listed'); if (pane && window.ListedCompare && F) ListedCompare.mount(F, {prefix: 'xc-fin-dn', src: SRC.vnd}).forEach(q => pane.append(q)); if (pane) { mainify(pane); renum(pane, 2); } }
+  if (write) { const u = new URL(location.href); u.searchParams.set('sub', key); history.replaceState(null, '', u.pathname + u.search + u.hash); }
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+}
+// Link cũ: #mt3 (Tài chính ngành trước 28/11/2026) → #mt14.
+const TAB_ALIAS = {mt3: 'mt14'};
 function showTab(key) {
+  key = TAB_ALIAS[key] || key;
   if (!$(`.majorpane[data-tab="${key}"]`)) key = 'mt1';
   $$('.majorpane').forEach(p => p.classList.toggle('active', p.dataset.tab === key));
   $$('.majortabbtn').forEach(b => { const on = b.dataset.tab === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); });
   if (location.hash !== '#' + key) history.replaceState(null, '', location.pathname + location.search + '#' + key);
-  if (key === 'mt3' && window.XcFinance && !$('#xc-fin-root').childElementCount) XcFinance.build($('#xc-fin-root'));
+  if (key === 'mt14') { const cur = $('#pane-mt14 .pp-nav .pp-tab[aria-selected="true"]')?.dataset.fin; if (cur) showFin(cur, false); }
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
 function asof() {
-  const t = {trade: () => `Việt Nam báo cáo đến ${years('vn_annual').at(-1)} (tháng đến ${ymL((T.vn_months_available || []).at(-1) || '')}) · số liệu đối tác đến ${years('mirror_annual').at(-1)} · tải ${dL(T.captured)}`,
-    plants: () => 'tài liệu doanh nghiệp đến 11/2026', p4: () => { const x = (D.p4?.monthly || []).at(-1); return x ? `giá P4 ${dL(x.date)} (Sunsirs) · xuất khẩu theo năm (UN Comtrade)` : ''; }, power: () => { const x = (IN.tariffs || []).at(-1); return x ? `${x.decision}, hiệu lực ${dL(x.effective)}` : ''; },
-    fin: () => F ? `BCTC đến ${qL(F.periods.at(-1))} · tải ${dL(F.captured)}` : ''};
-  $$('[data-asof]').forEach(n => { try { n.textContent = 'Kỳ dữ liệu gần nhất: ' + t[n.dataset.asof](); } catch (e) { n.textContent = ''; } });
+  const pl = () => { const d = (PL.plants || []).map(x => String(x.as_of || '').slice(0, 10)).filter(Boolean).sort().at(-1) || ''; return d.length === 10 ? dL(d) : d.length === 7 ? ymL(d.replace('-', '')) : d; };
+  const ng = () => { const d = (PL.nghison_timeline || []).map(e => String(e.date_published || '').slice(0, 10)).filter(x => x.length === 10).sort().at(-1); return d ? dL(d) : pl(); };
+  const t = {trade: () => `Comtrade: Việt Nam báo cáo ${years('vn_annual').at(-1)}, đối tác ${years('mirror_annual').at(-1)}`,
+    plants: () => `tài liệu doanh nghiệp ${pl()}`, nghison: () => `công bố ${ng()}`, p4: () => { const x = (D.p4?.monthly || []).at(-1); return x ? `giá P4 ${dL(x.date)} (Sunsirs)` : ''; },
+    power: () => { const x = (IN.tariffs || []).at(-1); return x ? `biểu giá điện hiệu lực ${dL(x.effective)}` : ''; },
+    fin: () => F ? `BCTC đến ${qL(F.periods.at(-1))} · tải ${dL(F.captured)}` : '',
+    listed: () => { const v = window.COMPANY_VALUATION?.companies?.DGC?.date; return `BCTC ${F ? qL(F.periods.at(-1)) : ''}${v ? ' · P/E phiên ' + dL(v) : ''}`; }};
+  $$('[data-asof]').forEach(n => { try { n.textContent = 'Dữ liệu mới nhất: ' + t[n.dataset.asof](); } catch (e) { n.textContent = ''; } });
 }
 function init() {
   brief(); overview(); listed(); asof();
   $$('#pane-mt1 .ov-tab').forEach(b => b.addEventListener('click', () => showOv(b.dataset.ov)));
   $$('#pane-mt2 .pp-tab').forEach(b => b.addEventListener('click', () => showPic(b.dataset.sub)));
+  $$('#pane-mt14 .pp-tab[data-fin]').forEach(b => b.addEventListener('click', () => showFin(b.dataset.fin)));
   $$('.majortabbtn').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
   addEventListener('hashchange', () => showTab(location.hash.slice(1)));
+  // Thẻ dẫn sang sub-tab khác của Bức tranh ngành.
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a.th-link[data-go-sub]'); if (!a) return;
+    e.preventDefault(); showTab('mt2'); showPic(a.dataset.goSub);
+    const t = a.dataset.goBlock && $(`#pane-mt2 [data-block-id="${a.dataset.goBlock}"]`);
+    setTimeout(() => (t || $('#pane-mt2 .pp-nav'))?.scrollIntoView({behavior: 'smooth', block: 'start'}), 60);
+  });
   showOv('map');
-  showPic(new URLSearchParams(location.search).get('sub') || 'import');
-  showTab(location.hash.slice(1) || 'mt1');
+  const sub = new URLSearchParams(location.search).get('sub') || '', hash = TAB_ALIAS[location.hash.slice(1)] || location.hash.slice(1);
+  const finSub = ['sector', 'listed', 'valuation'].includes(sub);
+  showPic(finSub ? 'import' : sub || 'import', !finSub);
+  if (finSub && sub !== 'valuation') showFin(sub);
+  // 03 Định giá (app/peer-valuation.js): gắn ngay khi dựng trang thay vì chờ sự kiện load; chart dựng lúc sub-tab ẩn nên vẽ lại kích thước khi mở sub-tab.
+  try { window.PeerValuation?.auto?.(); } catch (e) { console.error(e); }
+  $('#pane-mt14 .pp-nav')?.addEventListener('click', e => { if (e.target.closest('[data-sub="valuation"]')) setTimeout(() => $$('#of-mt14-valuation canvas').forEach(c => window.Chart?.getChart?.(c)?.resize()), 80); });
+  showTab(finSub && !hash ? 'mt14' : hash || 'mt1');
 }
 if (window.SectorBoot) SectorBoot.add(10, init); else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

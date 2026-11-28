@@ -1,0 +1,67 @@
+#sua-news {
+  --pn-navy: #1d2678;
+  --pn-border: #dfe4f0;
+  --pn-muted: #55627a;
+  color: #303540;
+}
+#sua-news [hidden] { display: none !important; }
+#sua-news h2, #sua-news h3, #sua-news h4 { color: var(--pn-navy); margin: 0 0 .55rem; }
+#sua-news h2 { font-size: 1.55rem; }
+#sua-news h3 { font-size: 1.13rem; }
+#sua-news h4 { font-size: .94rem; margin-top: 1rem; }
+#sua-news p { margin: .35rem 0; line-height: 1.45; }
+#sua-news .pn-meta { color: var(--pn-muted); font-size: .79rem; overflow-wrap: anywhere; }
+#sua-news .pn-header { padding: .55rem 0 .8rem; }
+#sua-news .pn-featured, #sua-news .pn-feed, #sua-news .pn-sidebar-section {
+  background: #fff; border: 1px solid var(--pn-border); border-radius: 10px; padding: 1rem;
+}
+#sua-news .pn-feature-grid, #sua-news .pn-desk { display: grid; gap: 1rem; align-items: start; }
+#sua-news .pn-feature-grid { grid-template-columns: minmax(0, 57fr) minmax(0, 43fr); }
+#sua-news .pn-desk { grid-template-columns: minmax(0, 73fr) minmax(0, 27fr); margin-top: 1rem; }
+#sua-news .pn-lead {
+  align-self: stretch; display: grid; align-content: center; padding: clamp(1rem, 3vw, 2rem);
+  background: #eef1fa; border-left: 3px solid var(--pn-navy); border-radius: 6px;
+}
+#sua-news button { cursor: pointer; font: inherit; }
+#sua-news button:focus-visible, #sua-news summary:focus-visible, #sua-news a:focus-visible {
+  outline: 2px solid #2938a8; outline-offset: 3px;
+}
+#sua-news .pn-lead button, #sua-news .pn-short button, #sua-news .pn-topic button {
+  border: 0; padding: 0; text-align: left; background: transparent; color: var(--pn-navy); font-weight: 700;
+}
+#sua-news .pn-lead button { font-size: clamp(1.2rem, 2.1vw, 1.85rem); line-height: 1.2; }
+#sua-news button:hover, #sua-news a:hover { text-decoration: underline; }
+#sua-news .pn-short, #sua-news .pn-topic { padding: .65rem 0; }
+#sua-news .pn-short + .pn-short, #sua-news .pn-topic + .pn-topic { border-top: 1px solid var(--pn-border); }
+#sua-news .pn-topic p { font-size: .84rem; }
+#sua-news .pn-sidebar-section + .pn-sidebar-section { margin-top: .8rem; }
+#sua-news .pn-controls, #sua-news .pn-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin: .65rem 0; }
+#sua-news .pn-controls label { display: grid; flex: 1 1 125px; min-width: 0; gap: .25rem; font-size: .77rem; }
+#sua-news .pn-controls input, #sua-news .pn-controls select, #sua-news button {
+  border: 1px solid var(--pn-border); border-radius: 5px; background: #fff; color: var(--pn-navy);
+  padding: .42rem .58rem; min-width: 0;
+}
+#sua-news .pn-pills button { font-size: .79rem; }
+#sua-news .pn-pills button[aria-pressed="true"] { color: white; background: var(--pn-navy); }
+#sua-news .pn-row { border-top: 1px solid var(--pn-border); padding: .65rem .05rem; }
+#sua-news .pn-row summary { cursor: pointer; }
+#sua-news .pn-row summary strong { color: var(--pn-navy); font-size: .99rem; }
+#sua-news .pn-summary { display: block; line-height: 1.45; }
+#sua-news .pn-detail { padding: .55rem .7rem; margin: .45rem 0 0; background: #f6f8fc; }
+#sua-news .pn-sources { padding-left: 1.15rem; margin: .45rem 0; overflow-wrap: anywhere; }
+#sua-news .pn-dialog {
+  max-width: 720px; width: calc(100% - 2rem); max-height: 88vh; padding: 1.2rem;
+  border: 1px solid var(--pn-border); border-radius: 10px; color: #303540;
+}
+#sua-news .pn-dialog > button { float: right; margin: 0 0 .5rem .5rem; }
+#sua-news .pn-dialog::backdrop { background: rgb(29 38 120 / 35%); }
+#sua-news .pn-timeline { padding-left: 1.2rem; }
+#sua-news .pn-timeline > li { margin-bottom: .85rem; }
+@media (max-width: 760px) {
+  #sua-news .pn-feature-grid, #sua-news .pn-desk { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 440px) {
+  #sua-news .pn-featured, #sua-news .pn-feed, #sua-news .pn-sidebar-section { padding: .72rem; }
+}
+#sua-news .pn-impact { color: var(--pn-navy); font-size: .85rem; font-weight: 600; }
+#sua-news .pn-widen { margin: .3rem 0 .6rem; border: 1px solid var(--pn-navy); background: #fff; color: var(--pn-navy); border-radius: 999px; padding: .35rem .9rem; font-weight: 700; }

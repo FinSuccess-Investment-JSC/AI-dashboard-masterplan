@@ -31,3 +31,27 @@ ITEMS = [
 ]
 
 TICKERS = ['VEA', 'HAX', 'SVC', 'CTF', 'TMT']
+
+# Tài chính ngành › 01 (28/11/2026): số cộng gộp BCTC quý (scripts/build_auto_financials.py → data/auto-financials.js).
+# Khoản mục đầy đủ dùng chung Dệt may / Thép / Dược / Chăn nuôi (textile_fin_items.ITEMS); fetch_auto_financials.py tải
+# hợp của ITEMS (Mô hình kiếm tiền) và FIN_ITEMS, nên data/auto-model.js không đổi. Nhóm theo 4 mô hình ở Tổng quan:
+# Sản xuất & lắp ráp (TMT) · Đại lý ô tô (HAX, SVC, CTF; gồm dịch vụ hậu mãi) · Sở hữu vốn liên doanh (VEA).
+# VEA lãi chủ yếu từ phần lãi liên doanh Honda, Toyota, Ford (không vào doanh thu) nên mặc định không bật trong tổng.
+# Không có quan hệ mẹ – con giữa 5 mã nên không loại trùng.
+from textile_fin_items import ITEMS as FIN_ITEMS  # noqa: E402
+
+GROUPS = [
+    {'id': 'dealer', 'label': 'Đại lý ô tô', 'color': '#2938A8', 'default': True},
+    {'id': 'maker', 'label': 'Sản xuất & lắp ráp', 'color': '#2a9fa3', 'default': True},
+    {'id': 'owner', 'label': 'Sở hữu vốn liên doanh (VEA)', 'color': '#c98a00', 'default': False},
+]
+COMPANIES = [
+    {'ticker': 'HAX', 'group': 'dealer', 'note': 'Haxaco: đại lý Mercedes-Benz, MG, VinFast; hợp nhất đại lý VinFast (Tương Lai Việt) từ cuối Q1/2026'},
+    {'ticker': 'SVC', 'group': 'dealer', 'note': 'Savico: đại lý nhiều hãng ô tô, phụ tùng, dịch vụ; cho thuê bất động sản đầu tư (~1% doanh thu 2025)'},
+    {'ticker': 'CTF', 'group': 'dealer', 'note': 'City Auto: đại lý ô tô và dịch vụ hậu mãi'},
+    {'ticker': 'TMT', 'group': 'maker', 'note': 'TMT Motors: sản xuất, lắp ráp ô tô'},
+    {'ticker': 'VEA', 'group': 'owner', 'note': 'VEAM: lãi chủ yếu từ phần sở hữu liên doanh Honda Việt Nam, Toyota Việt Nam, Ford Việt Nam (hạch toán vốn chủ)'},
+]
+FIN_TICKERS = [c['ticker'] for c in COMPANIES]
+CONSOLIDATION = []
+ASSOCIATES = []

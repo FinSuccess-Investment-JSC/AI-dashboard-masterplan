@@ -228,3 +228,12 @@
 .xc-scn-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
 .xc-scn-row>div{border:1px solid var(--line,#d6dbe8);border-radius:10px;padding:10px 12px}.xc-scn-row small{display:block;color:#5a6682;font-size:11px}.xc-scn-row b{font-size:20px;color:#1D2678;margin-right:4px}
 @media (max-width:760px){.xc-chain{flex-direction:column}.xc-arr{transform:rotate(90deg)}.xc-hb{grid-template-columns:1fr}.xc-hb small{grid-column:1}.xc-tl li{grid-template-columns:1fr}.xc-read-grid,.xc-scn-row{grid-template-columns:1fr}}
+/* Bản đồ nhà máy xút – clo, Tổng quan › 00 Bản đồ ngành (28/11/2026) */
+.xc-map{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,380px);gap:14px;align-items:start;margin-top:8px}
+.xc-map-svg svg{display:block;width:100%;max-height:640px;height:auto}
+.xc-pt-l{font:600 10.5px Inter,sans-serif;fill:#1D2678;paint-order:stroke;stroke:#fff;stroke-width:3px}
+.xc-map-t{width:100%;font-size:12.5px;border-collapse:collapse}.xc-map-t td,.xc-map-t th{padding:6px 8px;border-bottom:1px solid var(--line,#eef0f6);text-align:left;vertical-align:top}
+.xc-map-t .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.xc-map-t small{display:block;color:var(--muted,#7a8399);font-size:11px;margin-top:2px}
+.xc-map-t .xc-sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}.xc-na{color:var(--muted,#7a8399);font-size:13px}
+@media (max-width:900px){.xc-map{grid-template-columns:1fr}}
+:root[data-theme=dark] .xc-pt-l{fill:#cfd5f5;stroke:#141a33}

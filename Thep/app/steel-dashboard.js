@@ -228,6 +228,12 @@ kpi('spk-ton',tL?nf(tL.value,1):'—',tL?'nghìn đ/m² · '+short(tL.date):'—
 kpi('spk-ore',oL?nf(oL.value,0):'—',oL?'CNY/tấn · '+short(oL.date):'—',oL?signed(oY,0)+'% so cùng kỳ':'',ore.slice(-12).map(r=>r.value),C.gold);
 kpi('spk-bar',bar.at(-1)?nf(bar.at(-1).value,0):'—',bar.at(-1)?'nghìn tấn · '+mon(bar.at(-1).date):'—',barY!=null?'lũy kế '+signed(barY,0)+'%':'',bar.slice(-12).map(r=>r.value),C.navy);
 kpi('spk-pe',peL?nf(peL[1],1)+'x':'—',peL?'P/E thép XD & HRC · '+short(peL[0]):'—',peL?'P/B '+nf(peL[2],2)+'x':'',pe.slice(-30).map(r=>r[1]),C.grey);
+// 28/11/2026 (khung chuẩn Điện: mỗi sub-tab Bức tranh ngành 2–4 ô số): thêm ô từ chuỗi và chỉ số dẫn xuất đã vẽ ở chart cùng sub-tab, không số mới.
+kpi('spk-exp',eL?nf(eL.value,0):'—',eL?'triệu USD · '+mon(eL.date):'—',expY!=null?'lũy kế '+signed(expY,0)+'%':'',exp.slice(-12).map(r=>r.value),C.teal);
+kpi('spk-spread',spUsd!=null?nf(spUsd,0):'—',spL&&spUsd!=null?'USD/tấn · '+short(spL.date):'—',spL?nf(spL.cny,0)+' CNY/t'+(sp3?', 3 tháng trước '+nf(sp3.cny,0):''):'',spread.slice(-12).map(r=>r.usd),C.navy);
+kpi('spk-hrc3',hrc3!=null?signed(hrc3,1)+'%':'—',hrc.length>3?'HRC SHFE · '+short(hrc.at(-4).date)+' → '+short(hrc.at(-1).date):'—',hrc1!=null?'1 tháng '+signed(hrc1,1)+'%':'',hrc.slice(-12).map(r=>r.value),C.teal);
+kpi('spk-coat',cL?nf(cL.spread,1):'—',cL?'triệu đ/tấn · '+short(cL.date):'—',cL&&c3?(cL.spread>=c3.spread?'nới':'hẹp')+' so 3 tháng trước ('+nf(c3.spread,1)+')':'',coat.slice(-12).map(r=>r.spread),C.gold);
+{const uL=us7210.at(-1),uY=uL?yoyAt(us7210,uL):null;kpi('spk-us7210',uL?nf(uL.value/1e6,uL.value<1e6?2:1):'—',uL?'triệu USD · '+mon(uL.date):'—',uY!=null?signed(uY,0)+'% so cùng kỳ':'',us7210.slice(-12).map(r=>r.value/1e6),C.plum)}
 const quick=document.querySelector('.hero .insight');
 if(quick&&rL){
  quick.innerHTML='';quick.append(make('b','','Đọc nhanh: '),`CB300 ${nf(rL.value,2)} nghìn đ/kg (${signed(rY,0)}%), HRC SHFE ${signed(hY,0)}%, quặng ${signed(oY,0)}%, than cốc ${signed(kY,0)}%. Thép thanh, góc lũy kế ${signed(barY,0)}%.`);

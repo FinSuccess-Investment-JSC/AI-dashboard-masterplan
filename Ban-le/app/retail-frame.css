@@ -1,23 +1,13 @@
-/* Bán lẻ & tiêu dùng · khung 4 tab theo mẫu Điện (26/11/2026, chép từ Thuy-san/app/seafood-frame.css). Lớp pp-* chép từ Dien/app/power-picture.js (CSS, CSS2) để
-   thanh sub-tab, tiêu đề câu hỏi, luồng Đầu vào → Sản xuất → Đầu ra trông giống trang Điện; rf-* là phần riêng của ngành. */
-.pp-nav{position:sticky;top:0;z-index:6;display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;margin:6px 0 14px;padding:6px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);box-shadow:0 2px 10px rgba(29,38,120,.06)}
-.pp-nav .pp-tab{flex:0 0 auto;white-space:nowrap;border:0;border-radius:8px;padding:7px 12px;background:transparent;color:var(--ink2,#3b4256);font:600 13px/1.2 Inter,system-ui,sans-serif;cursor:pointer}
-.pp-nav .pp-tab span{font-variant-numeric:tabular-nums;color:var(--muted,#7a8399);margin-right:6px;font-weight:500}
-.pp-nav .pp-tab[aria-selected=true]{background:#2938A8;color:#fff}.pp-nav .pp-tab[aria-selected=true] span{color:#cfd5f5}
-.pp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:2px 0 12px;flex-wrap:wrap}
-.pp-head h2{margin:0;font-size:19px}.pp-head p{margin:4px 0 0;color:var(--ink2,#3b4256);font-size:13.5px}.pp-k{font:600 12px Inter,sans-serif;color:var(--muted,#7a8399);letter-spacing:.04em}
-.pp-pane>.pp-kpis{margin-bottom:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
-.pp-panel{margin:0 0 22px;padding:14px 14px 10px;border:1px solid var(--line,#e3e7f0);border-radius:14px;background:color-mix(in srgb,var(--card,#fff) 92%,#2938A8 3%);scroll-margin-top:120px}
-.pp-ph{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}.pp-num{flex:0 0 auto;font:700 12px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:3px 7px;margin-top:2px}
-.pp-ph h3{margin:0 0 4px;font-size:15.5px;line-height:1.35}
-.pp-grp{margin:22px 0 10px;font:700 12px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}
-.pp-flow{display:flex;align-items:stretch;gap:6px;margin:0 0 16px;flex-wrap:wrap}.pp-flow-s{flex:1 1 170px;display:flex;flex-direction:column;gap:3px;padding:10px 14px;border:1px solid var(--line,#d6dbe8);border-radius:12px;background:var(--card,#fff);color:var(--ink,#1d2333);text-decoration:none}
-.pp-flow-s small{font:700 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}.pp-flow-s b{font-size:14px;line-height:1.3}.pp-flow-s:hover,.pp-flow-s:focus-visible{border-color:#2938A8}
-.pp-flow-ar{align-self:center;color:#2938A8;font-weight:700}
-.pp-stage{display:flex;align-items:center;gap:10px;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid #1D2678;scroll-margin-top:120px}.pp-stage span{font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D2678;border-radius:6px;padding:3px 9px}.pp-stage h3{margin:0;font-size:16px}
-:root[data-theme=dark] .pp-panel{background:color-mix(in srgb,var(--card,#141a33) 94%,#6171C5 6%)}
-:root[data-theme=dark] .pp-stage{border-color:#8997D6}:root[data-theme=dark] .pp-stage span{background:#2938A8}
-@media (max-width:760px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}.pp-panel{padding:12px 10px}.pp-pane>.pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Bán lẻ & tiêu dùng · khung 4 tab theo mẫu Điện (26/11/2026, chép từ Thuy-san/app/seafood-frame.css). Lớp pp-* (giao diện Điện) nằm ở app/sector-frame.css;
+   rf-* là phần riêng của ngành. */
+/* 28/11/2026: giao diện .ov-nav/.pp-* lấy từ app/sector-frame.css (một bản chung, khung chuẩn Điện); bỏ bản chép cũ ở đây để thanh không lệch Điện. */
+.pp-panel,.pp-stage{scroll-margin-top:120px}
+.pp-head>.rf-hr{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pp-panel>.pp-main>*,.pp-panel>.pp-sup1>*{min-width:0}.pp-panel>.pp-sup1>.card{margin-bottom:12px}
+.pp-more.rf-grid{margin-bottom:12px}
+@media (max-width:760px){.pp-head>.rf-hr .pp-asof{white-space:normal}}
+.pp-panel>.rf-note{margin-bottom:8px}
+.rf-kpi .value .unit{font-size:12px;font-weight:600;color:var(--muted,#6b7a90);margin-left:4px;letter-spacing:0}
 
 /* Lưới trong câu hỏi: chart 2 cột một hàng; bảng, sơ đồ, thẻ nhiều chart chiếm cả hàng. */
 .rf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}

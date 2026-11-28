@@ -22,14 +22,14 @@
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=ea2d589497cb" defer></script>
 <script src="app/sector-ticker.js?v=24097f7668e0" defer></script>
-<script src="../data/company-valuation.js?v=a38a9fa54044" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
 <script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
 <script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/research-editorial.js?v=6a6bfd7dbf6a" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
@@ -46,9 +46,11 @@
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
 <script src="app/oil-finance.js?v=6b2f48fe8a24" defer></script>
-<script src="app/oil-frame.js?v=15cb53162577" defer></script>
-<script src="app/oil-legal.js?v=e8933e3b4dfd" defer></script>
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/oil-frame.js?v=314b91cbbd94" defer></script>
+<script src="app/oil-legal.js?v=71a43a79a26b" defer></script>
+<script src="../data/oil-news.js?v=799770a628af" defer></script>
+<script src="app/oil-news.js?v=957cac387916" defer></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
@@ -57,6 +59,8 @@
 <link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
+<link rel="stylesheet" href="app/oil-news.css?v=4731d6701418">
 </head>
 <body>
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="oil"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a><a href="../Dien/">Điện</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -655,6 +659,11 @@
   </div>
 
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
+    <!-- 28/11/2026: luồng tin theo bố cục trang Điện (app/oil-news.js, data/oil/news.json → data/oil-news.js qua scripts/build_oil_news.py).
+         Chủ đề cũ "Hormuz · dòng chảy & tác động" thành một mục trong "Chủ đề đang theo dõi" (link Bức tranh ngành › 06, ?sub=flows#mt2).
+         Thẻ dau-khi-37, dau-khi-41 (sang Bức tranh ngành › 06) và dau-khi-38 (sang Tổng quan › 01) vẫn do app/oil-frame.js dời như trước;
+         thẻ nguồn và khả năng tự động cập nhật giữ ở cuối tab. -->
+    <section class="section"><div id="dk-news" aria-label="Tin ngành Dầu khí"><p role="status">Đang tải tin ngành Dầu khí…</p></div></section>
   <section class="section">
 
     <div class="card" style="margin-top:14px" data-block-id="dau-khi-37" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">

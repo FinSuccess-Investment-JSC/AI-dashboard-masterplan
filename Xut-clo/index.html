@@ -13,12 +13,16 @@
 <script src="app/chloralkali-finance.js?v=783c52c8e016" defer></script>
 <script src="../data/chloralkali-news.js?v=19640364cd2b" defer></script>
 <script src="app/chloralkali-news.js?v=19840f2c3e60" defer></script>
-<script src="app/chloralkali.js?v=49d9b3772759" defer></script>
+<script src="app/vn-geo.js?v=07f6be6d571b" defer></script>
+<script src="app/chloralkali.js?v=184a9a36f9cf" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
+<script src="app/listed-compare.js?v=b0de580c385a" defer></script>
+<script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
 <script src="app/price-ticker.js?v=9869fca8a959" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <link rel="stylesheet" href="app/site-sidebar.css?v=4efb49eaf265">
 <link rel="stylesheet" href="app/site-tidy.css?v=876dba0fb886">
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
@@ -27,8 +31,9 @@
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
 <link rel="stylesheet" href="app/overview.css?v=eff54e08565b">
-<link rel="stylesheet" href="app/chloralkali.css?v=bb09bbba99a8">
+<link rel="stylesheet" href="app/chloralkali.css?v=7c38ffe19301">
 <link rel="stylesheet" href="app/chloralkali-news.css?v=f42fdaf91973">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
 </head>
 <!-- Trang Xút – Clo (26/11/2026) theo khung trang Điện, cùng cách dựng với Phan-bon/ (bố cục viết sẵn, không có "tab nền").
      app/chloralkali.js dựng Tổng quan + Bức tranh ngành; app/chloralkali-finance.js dựng Tài chính ngành; app/chloralkali-news.js dựng Chủ đề nóng.
@@ -39,7 +44,7 @@
 <nav class="majortabs tabs" role="tablist" aria-label="Các phần nghiên cứu">
   <button class="majortabbtn active" type="button" data-tab="mt1" role="tab" aria-selected="true">Tổng quan ngành</button>
   <button class="majortabbtn" type="button" data-tab="mt2" role="tab" aria-selected="false">Bức tranh ngành</button>
-  <button class="majortabbtn" type="button" data-tab="mt3" role="tab" aria-selected="false">Tài chính ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt14" role="tab" aria-selected="false">Tài chính ngành</button>
   <button class="majortabbtn" type="button" data-tab="mt7" role="tab" aria-selected="false">Chủ đề nóng</button>
 </nav>
 
@@ -49,23 +54,24 @@
   <section class="majorpane active" data-tab="mt1" id="pane-mt1">
     <section class="db card" id="dataBrief" data-block-id="xc-00" data-update-kind="public" data-cadence="annual"></section>
     <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Tổng quan ngành P4 – xút – clo</h2><p>Chuỗi giá trị và doanh nghiệp niêm yết.</p></div></div>
+      <div class="sectionhead"><div><h2 class="sec">Tổng quan ngành P4 – xút – clo</h2></div></div>
+      <!-- 28/11/2026 khung chuẩn Điện (§42): 00 Bản đồ ngành (bản đồ nhà máy) · 01 Chuỗi giá trị; Doanh nghiệp niêm yết dời sang Tài chính ngành › 02. -->
       <div class="ov-nav" role="tablist" aria-label="Tổng quan ngành">
-        <button class="tabbtn ov-tab active" type="button" id="xc-ov-map-tab" role="tab" data-ov="map" aria-controls="xc-ov-map" aria-selected="true"><span>00</span>Chuỗi giá trị<small>Muối, điện → xút, clo → ngành dùng</small></button>
-        <button class="tabbtn ov-tab" type="button" id="xc-ov-listed-tab" role="tab" data-ov="listed" aria-controls="xc-ov-listed" aria-selected="false"><span>01</span>Doanh nghiệp niêm yết<small>CSV · HVT · DGC</small></button>
+        <button class="tabbtn ov-tab active" type="button" id="xc-ov-map-tab" role="tab" data-ov="map" aria-controls="xc-ov-map" aria-selected="true"><span>00</span>Bản đồ ngành<small>Nhà máy xút – clo · công suất · bán ra hay nội bộ</small></button>
+        <button class="tabbtn ov-tab" type="button" id="xc-ov-chain-tab" role="tab" data-ov="chain" aria-controls="xc-ov-chain" aria-selected="false"><span>01</span>Chuỗi giá trị<small>Muối, điện → xút, clo → ngành dùng</small></button>
       </div>
       <div class="pane-subpane ov-pane" id="xc-ov-map" data-ov="map" role="tabpanel" aria-labelledby="xc-ov-map-tab">
-        <header class="ov-head"><div><span class="ov-k">00 · Toàn cảnh ngành</span><h2>Chuỗi giá trị</h2><p>Điện phân muối sinh ra xút và clo cùng lúc; clo phải có đầu ra thì xút mới chạy hết công suất.</p></div></header>
+        <header class="ov-head"><div><span class="ov-k">00 · Toàn cảnh ngành</span><h2>Bản đồ ngành</h2></div></header>
       </div>
-      <div class="pane-subpane ov-pane" id="xc-ov-listed" data-ov="listed" role="tabpanel" aria-labelledby="xc-ov-listed-tab" hidden>
-        <header class="ov-head"><div><span class="ov-k">01 · Doanh nghiệp</span><h2>Doanh nghiệp niêm yết</h2><p>Quy mô, lợi nhuận và nợ vay của từng mã (toàn doanh nghiệp).</p></div></header>
+      <div class="pane-subpane ov-pane" id="xc-ov-chain" data-ov="chain" role="tabpanel" aria-labelledby="xc-ov-chain-tab" hidden>
+        <header class="ov-head"><div><span class="ov-k">01 · Chuỗi giá trị</span><h2>Chuỗi giá trị</h2><p>Điện phân muối sinh ra xút và clo cùng lúc; clo phải có đầu ra thì xút mới chạy hết công suất.</p></div></header>
       </div>
     </section>
   </section>
 
   <section class="majorpane" data-tab="mt2" id="pane-mt2">
     <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2><p>Nhập khẩu và giá → công suất nội địa → Nghi Sơn và đầu ra gốc clo → chi phí đầu vào → giá P4.</p></div></div>
+      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2></div></div>
       <div class="pp-nav" role="tablist" aria-label="Bức tranh ngành xút – clo">
         <button class="tabbtn pp-tab active" type="button" role="tab" data-sub="import" aria-selected="true"><span>01</span>Nhập khẩu & giá</button>
         <button class="tabbtn pp-tab" type="button" role="tab" data-sub="capacity" aria-selected="false"><span>02</span>Công suất nội địa</button>
@@ -80,7 +86,7 @@
         <header class="pp-head"><div><span class="pp-k">02</span><h2>Công suất nội địa</h2><p>Công suất thiết kế theo nhà máy, phần bán ra thị trường và phần dùng nội bộ, sản lượng đã công bố.</p></div><span class="pp-asof" data-asof="plants"></span></header>
       </div>
       <div class="pane-subpane pp-pane" id="xc-pp-nghison" data-sub="nghison" hidden>
-        <header class="pp-head"><div><span class="pp-k">03</span><h2>Nghi Sơn & đầu ra gốc clo</h2><p>Tiến độ dự án xút – clo của DGC qua các lần công bố, vốn đã vào dự án, danh mục sản phẩm gốc clo.</p></div><span class="pp-asof" data-asof="plants"></span></header>
+        <header class="pp-head"><div><span class="pp-k">03</span><h2>Nghi Sơn & đầu ra gốc clo</h2><p>Tiến độ dự án xút – clo của DGC qua các lần công bố, vốn đã vào dự án, danh mục sản phẩm gốc clo.</p></div><span class="pp-asof" data-asof="nghison"></span></header>
       </div>
       <div class="pane-subpane pp-pane" id="xc-pp-cost" data-sub="cost" hidden>
         <header class="pp-head"><div><span class="pp-k">04</span><h2>Chi phí đầu vào</h2><p>Giá điện sản xuất theo cấp điện áp và khung giờ, hạn ngạch nhập khẩu muối.</p></div><span class="pp-asof" data-asof="power"></span></header>
@@ -91,12 +97,20 @@
     </section>
   </section>
 
-  <section class="majorpane" data-tab="mt3" id="pane-mt3">
+  <!-- Tài chính ngành (#mt14, link cũ #mt3), 28/11/2026 theo §42: 01 Tài chính ngành · 02 Doanh nghiệp niêm yết · 03 Định giá (app/peer-valuation.js tự thêm). -->
+  <section class="majorpane" data-tab="mt14" id="pane-mt14">
     <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Tài chính ngành</h2><p>BCTC hợp nhất quý của CSV, HVT, DGC (toàn doanh nghiệp, không phải riêng mảng xút).</p></div></div>
-      <div class="pane-subpane pp-pane fn-pane">
-        <header class="pp-head"><div><span class="pp-k">01</span><h2>Tài chính ngành</h2><p>Lợi nhuận, biên, dòng vốn đầu tư, công nợ, dòng tiền và hiệu quả vốn.</p></div><span class="pp-asof" data-asof="fin"></span></header>
+      <div class="sectionhead"><div><h2 class="sec">Tài chính ngành</h2></div></div>
+      <div class="pp-nav" role="tablist" aria-label="Tài chính ngành">
+        <button class="tabbtn pp-tab active" type="button" role="tab" data-fin="sector" aria-selected="true"><span>01</span>Tài chính ngành</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-fin="listed" aria-selected="false"><span>02</span>Doanh nghiệp niêm yết</button>
+      </div>
+      <div class="pane-subpane pp-pane fn-pane" data-fin="sector">
+        <header class="pp-head"><div><span class="pp-k">01</span><h2>Tài chính ngành</h2><p>BCTC hợp nhất quý của CSV, HVT, DGC (toàn doanh nghiệp, không phải riêng mảng xút).</p></div><span class="pp-asof" data-asof="fin"></span></header>
         <div id="xc-fin-root"></div>
+      </div>
+      <div class="pane-subpane pp-pane" id="xc-fin-listed" data-fin="listed" hidden>
+        <header class="pp-head"><div><span class="pp-k">02</span><h2>Doanh nghiệp niêm yết</h2><p>Quy mô, lợi nhuận, nợ vay và định giá của CSV, HVT, DGC (toàn doanh nghiệp).</p></div><span class="pp-asof" data-asof="listed"></span></header>
       </div>
     </section>
   </section>

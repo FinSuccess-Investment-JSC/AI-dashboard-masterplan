@@ -3,6 +3,16 @@
 const C = {navy: '#2938A8', teal: '#59C5C8', plum: '#861C52', gold: '#c29100', grey: '#6b7686', red: '#d1583f', green: '#27af95'};
 const TTDB = ['VnEconomy · Luật Thuế TTĐB 2025', 'https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm'];
 const SAB = ['Sabeco qua DN&PL', 'https://doanhnhan.baophapluat.vn/sabeco-sab-thu-hon-2-480-ty-dong-lai-sau-thue-nua-dau-nam-2026-hoan-thanh-50-ke-hoach.html'];
+// "Dữ liệu mới nhất" từng sub-tab (28/11/2026, khung chuẩn Điện): đọc kỳ cuối của chính dữ liệu đã nạp trên trang, không lấy ngày build.
+// Trả 'yyyy-mm' (tháng), 'yyyy-mm-dd' (ngày) hoặc chuỗi kỳ (Q3/2026, 6T/2026, năm 2025); pkg-frame.js định dạng.
+const RP = () => window.RETAIL_PUBLIC?.blocks || {};
+const lastMonth = keys => keys.map(k => (RP().macro?.series?.[k] || RP().commodity?.series?.[k])?.records?.at(-1)?.date).filter(Boolean).sort().at(-1)?.slice(0, 7);
+const bmLast = metrics => { const p = (window.BEER_MARKET?.observations || []).filter(o => metrics.includes(o.metric)).map(o => o.period).sort().at(-1); return !p ? '' : /H1$/.test(p) ? '6T/' + p.slice(0, 4) : 'năm ' + p; };
+const finLast = key => { const p = window[key]?.periods?.at(-1); return p ? 'Q' + p.slice(-1) + '/' + p.slice(0, 4) : ''; };
+const lastMilestone = id => { const d = (window.PKG.charts.find(c => c.id === id)?.items || []).map(x => x.d).sort().at(-1); return d ? 'mốc ' + d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4) : ''; };
+const valDate = () => { const V = window.COMPANY_VALUATION?.companies || {}; return (window.BEER_FIN?.companies || []).map(c => V[c.ticker]?.date).filter(Boolean).sort().at(-1) || ''; };
+// Tài chính ngành › 03 Định giá: app/peer-valuation.js (data-auto) tìm #of-mt14-valuation .of-body rồi vẽ 4 chart vào đó.
+const valHost = () => { const h = document.createElement('div'); h.id = 'of-mt14-valuation'; h.className = 'rf-wide'; h.innerHTML = '<div class="of-body"></div>'; return h; };
 window.PKG = {
   key: 'beer', prefix: 'bia', label: 'Bia',
   wide: ['bia-01', 'bia-05', 'bia-52', 'bia-53', 'bia-60', 'bia-02', 'bia-74', 'bia-82', 'bia-85', 'bia-86', 'bia-77'],
@@ -11,6 +21,10 @@ window.PKG = {
     {spark: 'spk-iipb', series: 'iip_bev', pct: true, signed: true, note: 'IIP đồ uống so cùng kỳ', color: '#c29100'},
     {spark: 'spk-cpib', series: 'cpi_bev_yoy', pct: true, signed: true, note: 'CPI đồ uống & thuốc lá', color: '#d1583f'},
     {spark: 'spk-pe', pe: '120', label: 'Bia'},
+    // 28/11/2026: ô số sub-tab Doanh nghiệp (BCTC hợp nhất quý, cùng nguồn chart biên gộp bia-20).
+    {spark: 'spk-gm-sab', cq: 'SAB', field: 'gross_margin', note: 'biên gộp SAB', color: '#c29100'},
+    {spark: 'spk-gm-bhn', cq: 'BHN', field: 'gross_margin', note: 'biên gộp BHN'},
+    {spark: 'spk-nm-sab', cq: 'SAB', field: 'net_margin', note: 'LNST ÷ doanh thu thuần SAB', color: '#59C5C8'},
   ],
   charts: [
     {id: 'chBeerChain', type: 'html', src: [['FinSuccess tự tổng hợp', '#rf-q-model']],
@@ -76,44 +90,69 @@ window.PKG = {
   ],
   sourceManual: [[/^Chuỗi giá trị ngành bia/, 'FinSuccess tổng hợp']],
   topics: {'bia-t1': ['Giá bán, sản lượng bia; biên gộp SAB, BHN', 'Giá bán lẻ bia tháng 1/2027, sản lượng tháng 1–2, IIP đồ uống', [['#rf-q-sintax', 'Lộ trình thuế suất'], ['#rf-q-output', 'Sản lượng bia'], ['#rf-q-gm', 'Biên gộp']]]},
-  section: {tax: ['mt2', 'policy'], demand: ['mt2', 'all']},
+  // 28/11/2026 (khung chuẩn Điện, DASHBOARD_WORKFLOW §42): link cũ của bố cục 6 sub-tab (Tác động tới doanh nghiệp, Biên lợi nhuận gộp thành 04 Doanh nghiệp).
+  alias: {mt6: ['mt14', 'listed'], mt9: ['mt14', 'sector']},
+  section: {tax: ['mt2', 'policy'], demand: ['mt2', 'all'], margin: ['mt2', 'firm', 'rf-q-gm'], impact: ['mt2', 'firm', 'rf-q-impact'], valuation: ['mt14', 'valuation'], pe: ['mt14', 'listed', 'rf-q-pe']},
+  subAlias: {'mt2/impact': ['mt2', 'firm'], 'mt2/margin': ['mt2', 'firm'], 'mt14/pe': ['mt14', 'listed']},
   tree: {
     mt1: {title: 'Tổng quan ngành', subs: [
-      {k: 'map', t: 'Bản đồ ngành', d: 'Malt, nhôm → nấu bia → kênh nhà hàng, siêu thị → biên sau thuế TTĐB.', items: [
+      {k: 'map', t: 'Bản đồ ngành', sub: 'Malt, gạo → nhà máy → kênh bán', d: 'Malt, nhôm → nấu bia → kênh nhà hàng, siêu thị → biên sau thuế TTĐB.', items: [
         {q: 'Bia đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['bia-01']}]},
-      {k: 'model', t: 'Mô hình kiếm tiền', d: 'Hãng bia lớn và nhà máy vùng kiếm tiền khác nhau thế nào.', items: [
+      {k: 'model', t: 'Mô hình kiếm tiền', sub: 'Hãng toàn quốc · nhà máy vùng', d: 'Hãng bia lớn và nhà máy vùng kiếm tiền khác nhau thế nào.', items: [
         {q: 'Mỗi nhóm kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['bia-05']}]},
-      {k: 'thesis', t: 'Luận điểm đầu tư', d: 'Kênh tiêu thụ, thị phần, cơ cấu sản phẩm và thuế đi vào sản lượng, biên lợi nhuận doanh nghiệp thế nào.', items: [
+      {k: 'thesis', t: 'Luận điểm đầu tư', sub: 'Kênh, thị phần, bao bì, thuế', d: 'Kênh tiêu thụ, thị phần, cơ cấu sản phẩm và thuế đi vào sản lượng, biên lợi nhuận doanh nghiệp thế nào.', items: [
         {q: 'Luận điểm chính về ngành bia là gì, cần kiểm gì tiếp?', id: 'rf-q-thesis', take: ['bia-02']}]},
     ]},
+    // Bức tranh ngành: 01 Toàn ngành → từng khâu (kênh & bao bì, thị phần, doanh nghiệp) → Chính sách cuối. Ngày dữ liệu đọc kỳ cuối của chính chuỗi trong sub-tab.
     mt2: {title: 'Bức tranh ngành', subs: [
-      {k: 'all', t: 'Sản lượng & cầu', d: 'Ngành bia đang sản xuất và bán nhiều hơn hay ít hơn? Sản lượng, chỉ số sản xuất, giá đồ uống và khách quốc tế.', kpis: ['spk-beer', 'spk-iipb', 'spk-cpib'], items: [
-        {q: 'Sản lượng bia đang tăng hay giảm?', id: 'rf-q-output', meta: '<b>sản lượng sản xuất</b> (NSO) và <b>chỉ số sản xuất</b> IIP, toàn ngành', take: ['bia-10', 'bia-11']},
-        {q: 'Giá bán và khách quốc tế đang hỗ trợ hay cản cầu?', id: 'rf-q-demand', meta: 'CPI % so cùng kỳ · khách quốc tế theo tháng', take: ['bia-12', 'bia-13']}]},
-      {k: 'channel', t: 'Kênh tiêu thụ & sản phẩm', d: 'Người tiêu dùng chuyển từ uống tại chỗ sang mua mang về tới đâu, và bia lon đang tăng nhanh hơn bia chai, bia hơi thế nào?', kpis: ['spk-off', 'spk-offchg', 'spk-offcagr', 'spk-oncagr'], items: [
-        {q: 'Người tiêu dùng chuyển từ uống tại chỗ sang mua mang về tới đâu?', id: 'rf-q-channel', meta: '% và triệu lít · sản lượng tiêu thụ theo kênh, Euromonitor', take: ['bia-70', 'bia-71']},
-        {q: 'Mua mang về tăng thật, hay do uống tại chỗ giảm?', id: 'rf-q-channel-why', meta: 'chỉ số 2019 = 100 · cầu nối sản lượng', take: ['bia-72', 'bia-73']},
-        {q: 'Bia lon đang tăng nhanh hơn bia chai và bia hơi bao nhiêu?', id: 'rf-q-pack', meta: '<b>sản lượng sản xuất</b> theo chủng loại, lũy kế 6 tháng · không phải tiêu thụ', take: ['bia-74', 'bia-75', 'bia-76']}]},
-      {k: 'share', t: 'Thị phần & cạnh tranh', d: 'Hãng nào đang giành, hãng nào đang mất thị phần, ở toàn thị trường và ở kênh mua mang về.', kpis: ['spk-cr2', 'spk-cr4', 'spk-gap', 'spk-offsab'], items: [
-        {q: 'Hãng bia nào đang giành hoặc mất thị phần?', id: 'rf-q-share', meta: '% sản lượng toàn thị trường, theo chủ sở hữu thương hiệu', take: ['bia-79', 'bia-78', 'bia-77']},
-        {q: 'Ở kênh mua mang về, Sabeco mất vị thế đến đâu?', id: 'rf-q-offshare', meta: 'chỉ hai mốc có số · không nội suy năm giữa', take: ['bia-80', 'bia-81']},
-        {q: 'Thương hiệu nào đang lên, thương hiệu nào đi xuống?', id: 'rf-q-brand', meta: '% sản lượng toàn thị trường theo thương hiệu', take: ['bia-82', 'bia-83', 'bia-84']}]},
-      {k: 'impact', t: 'Tác động tới doanh nghiệp', d: 'Thay đổi kênh và thị phần đi vào sản lượng, doanh thu, lợi nhuận SAB, BHN thế nào.', items: [
-        {q: 'Mất 1 điểm % thị phần thì sản lượng, lợi nhuận đổi bao nhiêu?', id: 'rf-q-impact', meta: 'phân tích kịch bản, không phải dự báo', take: ['bia-85', 'bia-86']}]},
-      {k: 'margin', t: 'Biên lợi nhuận', d: 'Biên gộp từng doanh nghiệp đi thế nào khi thuế và giá đầu vào đổi?', items: [
+      {k: 'all', t: 'Toàn ngành: sản lượng & cầu', d: 'Ngành bia đang sản xuất và bán nhiều hơn hay ít hơn? Sản lượng, chỉ số sản xuất, giá đồ uống và khách quốc tế.', kpis: ['spk-beer', 'spk-iipb', 'spk-cpib', 'spk-pe'],
+        asof: () => lastMonth(['beer_output', 'iip_bev', 'cpi_bev_yoy', 'tourists']), items: [
+        {q: 'Sản lượng bia đang tăng hay giảm?', id: 'rf-q-output', meta: '<b>sản lượng sản xuất</b> (NSO) toàn ngành · bảng nhiệt % so cùng kỳ · chỉ số sản xuất IIP', main: ['bia-10'], sup: ['bia-11'], more: ['.fsv-heat']},
+        {q: 'Giá đồ uống có tăng nhanh hơn giá chung?', id: 'rf-q-demand', meta: 'CPI % so cùng kỳ (NSO) · nhóm đồ uống & thuốc lá là chỉ báo gián tiếp của giá bia', take: ['bia-12']},
+        {q: 'Khách quốc tế đang kéo cầu kênh nhà hàng, quán lên hay xuống?', id: 'rf-q-tourist', meta: 'triệu lượt · theo tháng (NSO)', take: ['bia-13']}]},
+      {k: 'channel', t: 'Kênh tiêu thụ & bao bì', d: 'Bia lon tăng nhanh hơn bia chai, bia hơi bao nhiêu, và người tiêu dùng chuyển từ uống tại chỗ sang mua mang về tới đâu?', kpis: ['spk-off', 'spk-offchg', 'spk-offcagr', 'spk-oncagr'],
+        asof: () => bmLast(['production', 'volume']),
+        flow: [['prod', 'Sản xuất', 'Bia lon, bia chai, bia hơi'], ['out', 'Đầu ra', 'Uống tại chỗ hay mua mang về'], ['why', 'Kiểm cơ chế', 'Mang về tăng thật hay tại chỗ giảm']], items: [
+        {stage: 'prod'},
+        {q: 'Bia lon đang tăng nhanh hơn bia chai và bia hơi bao nhiêu?', id: 'rf-q-pack', meta: '<b>sản lượng sản xuất</b> theo chủng loại, lũy kế 6 tháng · không phải tiêu thụ', main: ['bia-74'], sup: ['bia-75'], more: ['bia-76']},
+        {stage: 'out'},
+        {q: 'Người tiêu dùng chuyển từ uống tại chỗ sang mua mang về tới đâu?', id: 'rf-q-channel', meta: '% và triệu lít · sản lượng tiêu thụ theo kênh, Euromonitor', main: ['bia-70'], sup: ['bia-71']},
+        {stage: 'why'},
+        {q: 'Mua mang về tăng thật, hay do uống tại chỗ giảm?', id: 'rf-q-channel-why', meta: 'chỉ số 2019 = 100 · cầu nối sản lượng', main: ['bia-72'], sup: ['bia-73']}]},
+      {k: 'share', t: 'Thị phần & cạnh tranh', d: 'Hãng nào đang giành, hãng nào đang mất thị phần, ở toàn thị trường, ở kênh mua mang về và theo thương hiệu.', kpis: ['spk-cr2', 'spk-cr4', 'spk-gap', 'spk-offsab'],
+        asof: () => bmLast(['company_share', 'brand_share']),
+        flow: [['all', 'Toàn thị trường', 'Thị phần theo chủ sở hữu thương hiệu'], ['off', 'Kênh mang về', 'Vị thế Sabeco ở siêu thị, tạp hóa'], ['brand', 'Thương hiệu', 'Nhãn đang lên, nhãn đi xuống']], items: [
+        {stage: 'all'},
+        {q: 'Hãng bia nào đang giành hoặc mất thị phần?', id: 'rf-q-share', meta: '% sản lượng toàn thị trường, theo chủ sở hữu thương hiệu', main: ['bia-78'], sup: ['bia-77'], more: ['bia-79']},
+        {stage: 'off'},
+        {q: 'Ở kênh mua mang về, Sabeco mất vị thế đến đâu?', id: 'rf-q-offshare', meta: 'chỉ hai mốc có số · không nội suy năm giữa', main: ['bia-80'], sup: ['bia-81']},
+        {stage: 'brand'},
+        {q: 'Thương hiệu nào đang lên, thương hiệu nào đi xuống?', id: 'rf-q-brand', meta: '% sản lượng toàn thị trường theo thương hiệu', main: ['bia-84'], sup: ['bia-82'], more: ['bia-83']}]},
+      // 28/11/2026: gộp hai sub-tab một câu hỏi (Tác động tới doanh nghiệp, Biên lợi nhuận) thành một khâu Doanh nghiệp; ô số biên đọc COMPANY_QUARTERLY như chart bia-20.
+      {k: 'firm', t: 'Doanh nghiệp: sản lượng → biên', d: 'Thị phần và kênh đi vào sản lượng, doanh thu của SAB, BHN thế nào, và biên gộp từng hãng đang mở rộng hay thu hẹp?', kpis: ['spk-gm-sab', 'spk-gm-bhn', 'spk-nm-sab'],
+        asof: () => window.COMPANY_QUARTERLY?.quarters?.at(-1),
+        flow: [['vol', 'Đầu vào', 'Thị phần, kênh → sản lượng doanh nghiệp'], ['margin', 'Đầu ra', 'Biên gộp, biên ròng từng hãng']], items: [
+        {stage: 'vol'},
+        {q: 'Mất 1 điểm % thị phần thì sản lượng, lợi nhuận đổi bao nhiêu?', id: 'rf-q-impact', meta: 'phân tích kịch bản, không phải dự báo · chuỗi tác động thị trường → lợi nhuận', main: ['bia-86'], sup: ['bia-85']},
+        {stage: 'margin'},
         {q: 'Biên gộp từng doanh nghiệp đang mở rộng hay thu hẹp?', id: 'rf-q-gm', meta: '% · BCTC hợp nhất quý từng mã', take: ['bia-20'],
           after: 'Chưa có chuỗi giá malt, lúa mạch, nhôm lon từ nguồn công khai nên chưa đặt giá đầu vào cạnh biên gộp. Chỉ báo cần kiểm: giá malt, nhôm LME, tỷ giá USD/VND, giá bán bình quân sau các đợt tăng giá.'}]},
-      {k: 'policy', t: 'Chính sách & thuế', d: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí? Lộ trình thuế TTĐB và các mốc hiệu lực.', items: [
+      {k: 'policy', t: 'Chính sách & thuế', d: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí? Lộ trình thuế TTĐB và các mốc hiệu lực.', asof: () => lastMilestone('beerTimeline'), items: [
         {q: 'Thuế suất tiêu thụ đặc biệt đi lên theo lộ trình nào?', id: 'rf-q-sintax', meta: '% thuế suất theo năm · thuế suất ≠ mức tăng giá bán', take: ['bia-53']},
         {q: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí?', id: 'rf-q-policy', meta: '● đã ban hành · ○ dự thảo · ngày hiệu lực', take: ['bia-52']}]},
     ]},
+    // 28/11/2026 (khung chuẩn Điện/Chăn nuôi): 01 Tài chính ngành = chỉ số cộng gộp BCTC quý (app/beer-finance.js, window.BEER_FIN từ scripts/build_beer_financials.py)
+    // · 02 Doanh nghiệp niêm yết = từng mã, P/E rổ cuối cùng · 03 Định giá = app/peer-valuation.js gắn vào #of-mt14-valuation.
     mt14: {title: 'Tài chính ngành', subs: [
-      {k: 'sector', t: 'Tài chính ngành', d: 'Định giá rổ bia, doanh thu và lợi nhuận theo quý từng mã.', kpis: ['spk-pe'], items: [
-        {q: 'Thị trường định giá cổ phiếu bia ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ "Bia" VNDirect (SAB)', take: ['bia-03']},
-        {q: 'Doanh thu và lợi nhuận từng doanh nghiệp đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã, không cộng', take: ['bia-06']}]},
-      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Bảng so sánh, bộ lọc mã và kỳ báo cáo; kế hoạch và kết quả 2026.', items: [
+      {k: 'sector', t: 'Tài chính ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của 12 mã bia niêm yết (loại trùng công ty mẹ – con).',
+        asof: () => finLast('BEER_FIN'), items: [{html: () => { const h = document.createElement('div'); h.id = 'bia-fin-root'; h.className = 'bia-fin-host rf-wide'; return h; }}]},
+      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Doanh thu, lợi nhuận từng mã; bảng so sánh, kế hoạch và kết quả 2026; định giá rổ bia.', asof: () => window.COMPANY_QUARTERLY?.quarters?.at(-1), items: [
+        {q: 'Doanh thu và lợi nhuận từng doanh nghiệp đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã, không cộng', take: ['bia-06']},
         {q: 'Doanh nghiệp nào sinh lời tốt hơn, định giá ra sao?', id: 'rf-q-compare', meta: 'số quý, lũy kế hoặc cả năm theo bộ chọn kỳ', take: ['.financial-comparison']},
-        {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['bia-60']}]},
+        {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['bia-60']},
+        {q: 'Thị trường định giá cổ phiếu bia ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ "Bia" VNDirect (SAB)', take: ['bia-03']}]},
+      {k: 'valuation', t: 'Định giá', d: 'P/B so với ROE, biên gộp so với ROE, lợi suất lợi nhuận và bội số dòng tiền giữa các mã bia.', asof: () => valDate(), items: [
+        {q: 'Mã bia nào đang rẻ hay đắt so với khả năng sinh lời?', id: 'rf-q-val', meta: 'P/E, P/B theo phiên (VNDirect) · số tài chính TTM từ BCTC hợp nhất quý', after: valHost}]},
     ]},
   },
 };

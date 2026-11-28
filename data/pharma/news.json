@@ -1,0 +1,1135 @@
+{
+ "updated_at": "2026-11-28",
+ "articles": [
+  {
+   "id": "a1",
+   "source_name": "Hệ Thống Pháp Luật",
+   "title": "Đấu thầu thuốc tại cơ sở y tế công lập: Những thay đổi 'nóng' từ 25/10/2025",
+   "url": "https://hethongphapluat.com/phap-luat/node/2259",
+   "published_at": "2025-10-25"
+  },
+  {
+   "id": "a2",
+   "source_name": "Doanh nghiệp Hội nhập",
+   "title": "Hơn 700 sản phẩm thuốc phục vụ đấu thầu, mua sắm được gia hạn đăng ký lưu hành",
+   "url": "https://doanhnghiephoinhap.vn/hon-700-san-pham-thuoc-phuc-vu-dau-thau-mua-sam-duoc-gia-han-dang-ky-luu-hanh-101211.html",
+   "published_at": "2025-04-14"
+  },
+  {
+   "id": "a3",
+   "source_name": "Tilleke & Gibbins",
+   "title": "Vietnam's New Drug Registration Regulations to Reduce Administrative Burden",
+   "url": "https://www.tilleke.com/insights/vietnams-new-drug-registration-regulations-to-reduce-administrative-burden/39/",
+   "published_at": "2026-08-10"
+  },
+  {
+   "id": "a4",
+   "source_name": "Cục Quản lý Dược",
+   "title": "Quyết định số 1003/QĐ-QLD về việc công bố Danh mục thuốc có chứng minh tương đương sinh học Đợt 4 - Năm 2026",
+   "url": "https://dav.gov.vn/quyet-dinh-so-1003qd-qld-ve-viec-cong-bo-danh-muc-thuoc-co-chung-minh-tuong-duong-sinh-hoc-dot-4---nam-2026-n5562.html",
+   "published_at": "2026-11-09"
+  },
+  {
+   "id": "a5",
+   "source_name": "Cục Quản lý Dược",
+   "title": "Quyết định số 1023/QĐ-QLD về việc ban hành danh mục 165 thuốc nhập khẩu được cấp, gia hạn giấy đăng ký lưu hành tại Việt Nam - Đợt 131",
+   "url": "https://dav.gov.vn/quyet-dinh-so-1023qd-qld-ve-viec-ban-hanh-danh-muc-165-thuoc-nhap-khau-duoc-cap-gia-han-giay-dang-ky-luu-hanh-tai-viet-nam---dot-131-n5579.html",
+   "published_at": "2026-11-23"
+  },
+  {
+   "id": "a6",
+   "source_name": "VCCI (nguồn: Tạp chí Đầu tư Tài chính)",
+   "title": "Lợi nhuận lớn và cổ tức cao: DN dược đầu tư nghìn tỷ cạnh tranh mở rộng thị phần",
+   "url": "https://www.vcci.com.vn/tin-tuc/loi-nhuan-lon-va-co-tuc-cao-dn-duoc-dau-tu-nghin-ty-canh-tranh-mo-rong-thi-phan",
+   "published_at": "2026-06-08"
+  },
+  {
+   "id": "a7",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Doanh thu FPT Retail (FRT) vượt 30.700 tỷ đồng bán niên 2026, chuỗi Long Châu tiếp tục dẫn dắt đà tăng trưởng",
+   "url": "https://doanhnhan.baophapluat.vn/doanh-thu-fpt-retail-frt-vuot-30-700-ty-dong-ban-nien-2026-chuoi-long-chau-tiep-tuc-dan-dat-da-tang-truong.html",
+   "published_at": "2026-07-29"
+  },
+  {
+   "id": "a8",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Chuỗi nhà thuốc Long Châu chiếm 20% thị phần, gánh 96% lợi nhuận FPT Retail",
+   "url": "https://doanhnhan.baophapluat.vn/chuoi-nha-thuoc-long-chau-chiem-20-thi-phan-ganh-96-loi-nhuan-fpt-retail.html",
+   "published_at": "2026-07-09"
+  },
+  {
+   "id": "a9",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "FPT Retail ghi nhận doanh thu 48.273 tỷ đồng sau 9 tháng, tăng 33% so với cùng kỳ",
+   "url": "https://doanhnhan.baophapluat.vn/fpt-retail-ghi-nhan-doanh-thu-48-273-ty-dong-sau-9-thang-tang-33-so-voi-cung-ky.html",
+   "published_at": "2026-10-29"
+  },
+  {
+   "id": "a10",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Long Châu được định giá gấp 18,3 lần FPT Shop, phần vốn của nhóm nhân viên gần 5.000 tỷ đồng",
+   "url": "https://doanhnhan.baophapluat.vn/long-chau-duoc-dinh-gia-gap-18-3-lan-fpt-shop-phan-von-cua-nhom-nhan-vien-gan-5-000-ty-dong.html",
+   "published_at": "2026-11-19"
+  },
+  {
+   "id": "a11",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Không phụ thuộc một nguồn tăng trưởng duy nhất, Chủ tịch FPT Retail chia sẻ chiến lược mở rộng hệ sinh thái Long Châu",
+   "url": "https://doanhnhan.baophapluat.vn/khong-phu-thuoc-mot-nguon-tang-truong-duy-nhat-chu-tich-fpt-retail-chia-se-chien-luoc-mo-rong-he-sinh-thai-long-chau.html",
+   "published_at": "2026-11-26"
+  },
+  {
+   "id": "a12",
+   "source_name": "VietnamFinance",
+   "title": "Bệnh viện duy nhất trên HoSE lên kế hoạch lỗ 51 tỷ đồng trong năm 2026",
+   "url": "https://vietnamfinance.vn/benh-vien-duy-nhat-tren-hose-len-ke-hoach-lo-51-ty-dong-trong-nam-2026-d144699.html",
+   "published_at": "2026-05-12"
+  },
+  {
+   "id": "a13",
+   "source_name": "Nhà Đầu tư",
+   "title": "Thêm bệnh viện mới đi vào vận hành, Tập đoàn TNH nối dài chuỗi lỗ sang quý thứ 7",
+   "url": "https://nhadautu.vn/them-benh-vien-moi-di-vao-van-hanh-tap-doan-tnh-noi-dai-chuoi-lo-sang-quy-thu-7-d106808.html",
+   "published_at": "2026-08-06"
+  },
+  {
+   "id": "a14",
+   "source_name": "VnEconomy",
+   "title": "Lãnh đạo Tập đoàn Bệnh viện TNH muốn bán hết 3,2% vốn",
+   "url": "https://vneconomy.vn/lanh-dao-tap-doan-benh-vien-tnh-muon-ban-het-32-von.htm",
+   "published_at": "2026-09-08"
+  },
+  {
+   "id": "a15",
+   "source_name": "Người Đưa Tin",
+   "title": "Tập đoàn Bệnh viện TNH \"ôm\" khoản lỗ 116 tỷ đồng sau cuộc đua mở rộng bệnh viện",
+   "url": "https://www.nguoiduatin.vn/tap-doan-benh-vien-tnh-om-khoan-lo-116-ty-dong-sau-cuoc-dua-mo-rong-benh-vien-204250613163849895.htm",
+   "published_at": "2026-11-05"
+  },
+  {
+   "id": "a16",
+   "source_name": "BHXH Việt Nam",
+   "title": "Thái Nguyên triển khai Đề án BHYT toàn dân, miễn phí khám, chữa bệnh",
+   "url": "https://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=27338",
+   "published_at": "2026-10-25"
+  },
+  {
+   "id": "a17",
+   "source_name": "CafeF",
+   "title": "Dược Hậu Giang (DHG) báo lãi quý III thấp nhất trong hơn 15 năm",
+   "url": "https://cafef.vn/duoc-hau-giang-dhg-bao-lai-quy-iii-thap-nhat-trong-hon-15-nam-188261028102416168.chn",
+   "published_at": "2026-10-28"
+  },
+  {
+   "id": "a18",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Dược Hậu Giang (DHG) tạm ứng cổ tức 60%, lợi nhuận quý 3 chạm đáy nhiều năm",
+   "url": "https://doanhnhan.baophapluat.vn/duoc-hau-giang-dhg-tam-ung-co-tuc-60-loi-nhuan-quy-3-cham-day-nhieu-nam.html",
+   "published_at": "2026-11-12"
+  },
+  {
+   "id": "a19",
+   "source_name": "Imexpharm (IR)",
+   "title": "IMP - Press release: Imexpharm Corporation announces 3Q2026 and 9M2026 business results",
+   "url": "https://www.imexpharm.com/en-US/investors/financial-information/business-results/imp-press-release-imexpharm-corporation-announces-3q2026-and-9m2026-business-results",
+   "published_at": "2026-10-20"
+  },
+  {
+   "id": "a20",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Imexpharm (IMP) lãi 260 tỷ đồng sau 9 tháng, đạt 65% mục tiêu lợi nhuận",
+   "url": "https://doanhnhan.baophapluat.vn/imexpharm-imp-lai-260-ty-dong-sau-9-thang-dat-65-muc-tieu-loi-nhuan.html",
+   "published_at": "2026-10-26"
+  },
+  {
+   "id": "a21",
+   "source_name": "Người Đưa Tin",
+   "title": "Bidiphar báo lãi quý III/2026 tăng 40%, khoản lãi từ công ty liên kết đảo chiều",
+   "url": "https://www.nguoiduatin.vn/bidiphar-bao-lai-quy-iii-2026-tang-40-khoan-lai-tu-cong-ty-lien-ket-dao-chieu-204250915145149482.htm",
+   "published_at": "2026-10-30"
+  },
+  {
+   "id": "a22",
+   "source_name": "VnBusiness",
+   "title": "Lợi nhuận doanh nghiệp dược quý III/2026 phân hóa mạnh",
+   "url": "https://vnbusiness.vn/loi-nhuan-doanh-nghiep-duoc-quy-iii2026-phan-hoa-manh.html",
+   "published_at": "2026-10-27"
+  },
+  {
+   "id": "a23",
+   "source_name": "Tin nhanh Chứng khoán",
+   "title": "Vinapharm (DVN) mở khóa nguồn lực cho tăng trưởng bền vững",
+   "url": "https://www.tinnhanhchungkhoan.vn/vinapharm-dvn-mo-khoa-nguon-luc-cho-tang-truong-ben-vung-post397898.html",
+   "published_at": "2026-09-21"
+  },
+  {
+   "id": "a24",
+   "source_name": "Cục Hải quan (Bộ Tài chính)",
+   "title": "Nhập khẩu hàng hóa theo tháng – Tháng 10 năm 2026 (sơ bộ, Biểu số 016.T/BCB-TC)",
+   "url": "https://files.customs.gov.vn/CustomsCMS/TONG_CUC/2026/11/5/2026-t10-2n(vn-sb).pdf",
+   "published_at": "2026-11-05"
+  },
+  {
+   "id": "a25",
+   "source_name": "Nhân Dân",
+   "title": "Bài toán giữ Quỹ bảo hiểm y tế bền vững",
+   "url": "https://nhandan.vn/bai-toan-giu-quy-bao-hiem-y-te-ben-vung-post987505.html",
+   "published_at": "2026-09-11"
+  },
+  {
+   "id": "a26",
+   "source_name": "BHXH Việt Nam",
+   "title": "Tăng cường giám định, kiểm soát chi phí khám, chữa bệnh BHYT, bảo đảm quyền lợi người bệnh",
+   "url": "https://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=27491",
+   "published_at": "2026-11-13"
+  },
+  {
+   "id": "a27",
+   "source_name": "BHXH Việt Nam",
+   "title": "Giải pháp có thể tiết kiệm hơn 300 tỷ đồng chi phí BHYT thuốc điều trị",
+   "url": "https://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=27514",
+   "published_at": "2026-11-18"
+  },
+  {
+   "id": "a28",
+   "source_name": "BHXH Việt Nam",
+   "title": "Bài toán mở rộng quyền lợi BHYT trong bối cảnh chi phí y tế gia tăng",
+   "url": "https://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=27502",
+   "published_at": "2026-11-17"
+  },
+  {
+   "id": "a29",
+   "source_name": "BHXH Việt Nam",
+   "title": "Đề xuất mở rộng quyền lợi BHYT, tăng cơ hội tiếp cận thuốc điều trị ung thư.",
+   "url": "https://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=27477",
+   "published_at": "2026-11-10"
+  },
+  {
+   "id": "a30",
+   "source_name": "BHXH Việt Nam",
+   "title": "Quốc hội thông qua Luật sửa đổi, bổ sung một số điều của Luật Trẻ em, Luật Người khuyết tật, Luật Khám bệnh, chữa bệnh, Luật Dược, Luật Người cao tuổi và Luật Bảo hiểm y tế",
+   "url": "https://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=27531",
+   "published_at": "2026-11-21"
+  }
+ ],
+ "events": [
+  {
+   "id": "ev1",
+   "title": "Thông tư 40/2025/TT-BYT về đấu thầu thuốc có hiệu lực 25/10/2025: thuốc generic chia 5 nhóm",
+   "summary": "Thông tư 40/2025/TT-BYT thay thế hoàn toàn Thông tư 07/2024/TT-BYT, có hiệu lực từ 25/10/2025. Thuốc generic chia 5 nhóm dựa trên tiêu chuẩn GMP, tương đương sinh học và xuất xứ; thuốc dược liệu, thuốc cổ truyền chia 4 nhóm; biệt dược gốc có gói thầu riêng. Cơ sở y tế công lập phải thực hiện tối thiểu 80% giá trị hợp đồng đã ký.",
+   "new_information": "Quy định tỷ lệ thực hiện hợp đồng tối thiểu 80% và nguyên tắc giá kế hoạch nhóm kỹ thuật thấp không vượt nhóm cao hơn.",
+   "key_figures": [
+    "Hiệu lực: 25/10/2025, thay Thông tư 07/2024/TT-BYT",
+    "Thuốc generic: 5 nhóm; thuốc dược liệu, cổ truyền: 4 nhóm; dược liệu, vị thuốc cổ truyền: 3 nhóm",
+    "Thực hiện tối thiểu 80% giá trị hợp đồng (có thể 50% với thuốc kiểm soát đặc biệt, dịch truyền)"
+   ],
+   "companies": [
+    "IMP",
+    "DHG"
+   ],
+   "segments": [
+    "Đấu thầu ETC",
+    "Dược phẩm"
+   ],
+   "category": "tender",
+   "topic_ids": [
+    "tender-gmp"
+   ],
+   "importance": 3,
+   "event_date": "2025-10-25",
+   "article_ids": [
+    "a1"
+   ],
+   "impact": "Biến số liên quan: tỷ trọng thuốc trúng thầu nhóm tiêu chuẩn cao (EU-GMP, có chứng minh tương đương sinh học) trong doanh thu ETC của IMP, DHG so với thuốc nhóm thấp."
+  },
+  {
+   "id": "ev2",
+   "title": "Cục Quản lý Dược gia hạn đăng ký lưu hành hơn 700 thuốc phục vụ đấu thầu, 603 thuốc trong nước",
+   "summary": "Cục Quản lý Dược gia hạn giấy đăng ký lưu hành cho hơn 700 sản phẩm thuốc để phục vụ đấu thầu, mua sắm, trong đó 603 thuốc sản xuất trong nước. Trong số thuốc trong nước, 395 thuốc được gia hạn 5 năm, 175 thuốc 3 năm và 33 thuốc đến hết 31/12/2025. Đợt này cũng bổ sung thông tin tương đương sinh học cho 109 sản phẩm.",
+   "new_information": "Gia hạn hàng loạt giúp các thuốc trong nước đủ điều kiện hồ sơ để tham gia các gói thầu.",
+   "key_figures": [
+    "Hơn 700 thuốc được gia hạn đăng ký lưu hành",
+    "603 thuốc sản xuất trong nước",
+    "395 thuốc gia hạn 5 năm; 175 thuốc 3 năm; 33 thuốc đến 31/12/2025",
+    "109 sản phẩm bổ sung thông tin tương đương sinh học"
+   ],
+   "companies": [],
+   "segments": [
+    "Đấu thầu ETC",
+    "Dược phẩm"
+   ],
+   "category": "tender",
+   "topic_ids": [
+    "tender-gmp"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a2"
+   ],
+   "impact": "Biến số liên quan: số thuốc trong nước có số đăng ký còn hiệu lực để dự thầu tại bệnh viện công."
+  },
+  {
+   "id": "ev3",
+   "title": "Thông tư 32/2026/TT-BYT về đăng ký lưu hành thuốc ký 29/7/2026, hiệu lực 01/10/2026, thay Thông tư 12/2025",
+   "summary": "Bộ Y tế ban hành Thông tư 32/2026/TT-BYT ngày 29/7/2026 quy định đăng ký lưu hành thuốc, nguyên liệu làm thuốc, có hiệu lực từ 01/10/2026 và thay Thông tư 12/2025/TT-BYT. Thuốc mới có dữ liệu thử lâm sàng nộp lần đầu được bảo hộ dữ liệu 5 năm; hồ sơ đăng ký tiếp theo phải được công khai 5 tháng trước khi cấp. Doanh nghiệp được hoãn nộp CPP đến lần bổ sung hồ sơ thứ hai và nộp bản sao công chứng điện tử.",
+   "new_information": "Bảo hộ dữ liệu 5 năm cho thuốc mới và thủ tục thay đổi nhỏ (MiV-N) có hiệu lực ngay khi thông báo hoặc chậm nhất 12 tháng sau công khai.",
+   "key_figures": [
+    "Ký 29/7/2026, hiệu lực 01/10/2026",
+    "Bảo hộ dữ liệu thuốc mới: 5 năm từ lần cấp phép đầu",
+    "Công khai hồ sơ đăng ký tiếp theo 5 tháng trước khi cấp",
+    "Đề nghị xem xét lại trong 1 tháng sau khi bị từ chối"
+   ],
+   "companies": [],
+   "segments": [
+    "Dược phẩm",
+    "Nguyên liệu dược"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "tender-gmp",
+    "pharma-law"
+   ],
+   "importance": 3,
+   "event_date": "2026-07-29",
+   "article_ids": [
+    "a3"
+   ],
+   "impact": "Biến số liên quan: thời gian cấp, gia hạn số đăng ký thuốc và số thuốc generic mới đủ điều kiện dự thầu."
+  },
+  {
+   "id": "ev4",
+   "title": "Cục Quản lý Dược công bố danh mục thuốc có chứng minh tương đương sinh học đợt 4 năm 2026",
+   "summary": "Ngày 09/11/2026, Cục Quản lý Dược ban hành Quyết định 1003/QĐ-QLD công bố danh mục thuốc có chứng minh tương đương sinh học đợt 4 năm 2026. Trang tin không nêu số thuốc; danh mục chi tiết nằm trong file quyết định đính kèm.",
+   "new_information": "Đợt công bố thuốc tương đương sinh học thứ 4 trong năm 2026.",
+   "key_figures": [
+    "Quyết định 1003/QĐ-QLD ngày 09/11/2026",
+    "Đợt 4 năm 2026"
+   ],
+   "companies": [],
+   "segments": [
+    "Đấu thầu ETC",
+    "Dược phẩm"
+   ],
+   "category": "tender",
+   "topic_ids": [
+    "tender-gmp",
+    "pharma-law"
+   ],
+   "importance": 2,
+   "event_date": "2026-11-09",
+   "article_ids": [
+    "a4"
+   ],
+   "impact": "Biến số liên quan: số thuốc generic đủ điều kiện dự thầu ở nhóm có chứng minh tương đương sinh học."
+  },
+  {
+   "id": "ev5",
+   "title": "Cục Quản lý Dược cấp, gia hạn đăng ký lưu hành cho 165 thuốc nhập khẩu (đợt 131)",
+   "summary": "Quyết định 1023/QĐ-QLD ký ngày 20/11/2026, đăng ngày 23/11/2026, ban hành danh mục 165 thuốc nhập khẩu được cấp mới hoặc gia hạn giấy đăng ký lưu hành tại Việt Nam, đợt 131. Trang tin không nêu thời hạn hiệu lực; danh mục chi tiết nằm trong file đính kèm.",
+   "new_information": "Thêm 165 thuốc nhập khẩu có số đăng ký còn hiệu lực.",
+   "key_figures": [
+    "165 thuốc nhập khẩu",
+    "Quyết định 1023/QĐ-QLD ký 20/11/2026",
+    "Đợt 131"
+   ],
+   "companies": [],
+   "segments": [
+    "Dược phẩm"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "api-import",
+    "tender-gmp"
+   ],
+   "importance": 1,
+   "event_date": "2026-11-20",
+   "article_ids": [
+    "a5"
+   ],
+   "impact": "Biến số liên quan: số thuốc nhập khẩu đủ điều kiện lưu hành và dự thầu, cạnh tranh với thuốc sản xuất trong nước."
+  },
+  {
+   "id": "ev6",
+   "title": "Nhà sản xuất dược niêm yết đầu tư nhà máy EU-GMP; DBD huy động khoảng 1.165 tỷ đồng cho hai dự án",
+   "summary": "DBD chào bán riêng lẻ 23,3 triệu cổ phiếu, thu khoảng 1.165 tỷ đồng cho hai dự án trọng điểm (nhà máy thuốc ung thư, nhà máy thuốc vô trùng thể tích nhỏ) theo chuẩn EU-GMP. IMP triển khai tổ hợp nhà máy Cát Khánh, TRA xây nhà máy tại Hưng Yên, đều theo chuẩn EU-GMP; DHG đầu tư khoảng 300–400 tỷ đồng mỗi năm.",
+   "new_information": "DBD đặt mốc hoàn thành đánh giá GMP-EU cho nhà máy thuốc ung thư trước 31/12/2026.",
+   "key_figures": [
+    "DBD: chào bán riêng lẻ 23,3 triệu cổ phiếu, thu khoảng 1.165 tỷ đồng",
+    "DBD: hoàn thành đánh giá GMP-EU nhà máy thuốc ung thư trước 31/12/2026",
+    "DHG: đầu tư khoảng 300–400 tỷ đồng mỗi năm",
+    "Kế hoạch LNTT 2026: DHG 1.007 tỷ đồng, IMP 502 tỷ đồng, DBD 375 tỷ đồng"
+   ],
+   "companies": [
+    "DBD",
+    "IMP",
+    "TRA",
+    "DHG"
+   ],
+   "segments": [
+    "Dược phẩm",
+    "Đấu thầu ETC"
+   ],
+   "category": "manufacturing",
+   "topic_ids": [
+    "tender-gmp"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a6"
+   ],
+   "impact": "Biến số liên quan: số dây chuyền đạt EU-GMP của DBD, IMP, TRA và khả năng vào nhóm thầu tiêu chuẩn cao."
+  },
+  {
+   "id": "ev7",
+   "title": "Long Châu 6 tháng 2026: doanh thu 21.448 tỷ đồng (+33%), 2.639 nhà thuốc, 236 trung tâm tiêm chủng",
+   "summary": "Nửa đầu năm 2026, chuỗi Long Châu đạt doanh thu 21.448 tỷ đồng, tăng 33% và bằng 52% kế hoạch năm. Bình quân mỗi nhà thuốc đạt 1,3 tỷ đồng/tháng; cuối tháng 6 chuỗi có 2.639 nhà thuốc và 236 trung tâm tiêm chủng. FRT hợp nhất đạt doanh thu 30.743 tỷ đồng (+33%) và LNTT 1.038 tỷ đồng.",
+   "new_information": "Mạng lưới vượt 2.600 nhà thuốc và doanh thu Long Châu giữ tốc độ tăng 33%.",
+   "key_figures": [
+    "Doanh thu Long Châu 6T/2026: 21.448 tỷ đồng, +33%, 52% kế hoạch năm",
+    "Bình quân 1,3 tỷ đồng/nhà thuốc/tháng",
+    "2.639 nhà thuốc, 236 trung tâm tiêm chủng (cuối T6/2026)",
+    "FRT 6T/2026: doanh thu 30.743 tỷ đồng (+33%), LNTT 1.038 tỷ đồng"
+   ],
+   "companies": [
+    "FRT"
+   ],
+   "segments": [
+    "Nhà thuốc"
+   ],
+   "category": "retail",
+   "topic_ids": [
+    "long-chau"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a7"
+   ],
+   "impact": "Biến số liên quan: số nhà thuốc mở mới, doanh thu bình quân/nhà thuốc, đóng góp tiêm chủng vào doanh thu FRT."
+  },
+  {
+   "id": "ev8",
+   "title": "Long Châu ước chiếm khoảng 20% thị phần bán lẻ dược, đóng góp 96% LNTT FRT quý I/2026",
+   "summary": "Hết quý I/2026, Long Châu có 2.517 nhà thuốc và 228 trung tâm tiêm chủng, doanh thu quý 10.302 tỷ đồng (+29%), LNTT 455 tỷ đồng (+56%). Chuỗi đóng góp hơn 68% doanh thu và 96% LNTT của FRT. Thị phần khoảng 20% doanh thu bán lẻ dược là ước tính của Long Châu và Chứng khoán VIX, trên quy mô thị trường khoảng 213.600 tỷ đồng (không gồm vaccine).",
+   "new_information": "Ước tính thị phần tăng từ 16% cuối 2025 lên khoảng 20%.",
+   "key_figures": [
+    "2.517 nhà thuốc, 228 trung tâm tiêm chủng (hết Q1/2026)",
+    "Doanh thu Q1/2026: 10.302 tỷ đồng, +29%; LNTT 455 tỷ đồng, +56%",
+    "96% LNTT của FRT",
+    "Thị phần ~20% (ước tính); cuối 2025: 16%",
+    "Thị trường bán lẻ dược ~213.600 tỷ đồng"
+   ],
+   "companies": [
+    "FRT"
+   ],
+   "segments": [
+    "Nhà thuốc"
+   ],
+   "category": "retail",
+   "topic_ids": [
+    "long-chau"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a8"
+   ],
+   "impact": "Biến số liên quan: thị phần chuỗi nhà thuốc hiện đại so với nhà thuốc lẻ, biên lợi nhuận gộp 22–23% của Long Châu."
+  },
+  {
+   "id": "ev9",
+   "title": "FRT 9 tháng 2026: doanh thu 48.273 tỷ đồng (+33%); Long Châu 33.408 tỷ đồng (+35%), 2.741 nhà thuốc",
+   "summary": "9 tháng 2026, FRT đạt doanh thu hợp nhất 48.273 tỷ đồng (+33%) và LNTT 1.724 tỷ đồng (+114%). Long Châu đạt 33.408 tỷ đồng (+35%), chiếm 69% doanh thu hợp nhất, bình quân 1,3 tỷ đồng/nhà thuốc/tháng. Cuối tháng 9 chuỗi có 2.741 nhà thuốc (thêm 324 từ đầu năm) và 244 trung tâm tiêm chủng (thêm 21).",
+   "new_information": "LNTT 9 tháng của FRT tăng 114%; Long Châu có thêm 324 nhà thuốc từ đầu năm.",
+   "key_figures": [
+    "FRT 9T/2026: doanh thu 48.273 tỷ đồng (+33%), LNTT 1.724 tỷ đồng (+114%)",
+    "Long Châu 9T: 33.408 tỷ đồng (+35%), 69% doanh thu hợp nhất",
+    "2.741 nhà thuốc (+324 từ đầu năm), 244 trung tâm tiêm chủng (+21)",
+    "Bình quân 1,3 tỷ đồng/nhà thuốc/tháng"
+   ],
+   "companies": [
+    "FRT"
+   ],
+   "segments": [
+    "Nhà thuốc"
+   ],
+   "category": "retail",
+   "topic_ids": [
+    "long-chau"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a9"
+   ],
+   "impact": "Biến số liên quan: tốc độ mở mới quý 4, doanh thu bình quân/nhà thuốc, LNTT cả năm 2026 của FRT."
+  },
+  {
+   "id": "ev10",
+   "title": "Vietcap định giá vốn chủ Long Châu 44.429 tỷ đồng, gấp 18,3 lần FPT Shop",
+   "summary": "Báo cáo Vietcap ngày 17/11/2026 định giá vốn chủ sở hữu Long Châu 44.429 tỷ đồng và FPT Shop 2.427 tỷ đồng. Theo ước tính cuối quý 3/2026, FRT sở hữu 75,97% Long Châu, Creador khoảng 13% và nhân viên khoảng 11,03%, tương ứng khoảng 4.901 tỷ đồng. Vietcap giả định ESOP tối đa 5% vốn điều lệ thực hiện 1%/năm giai đoạn 2026–2030.",
+   "new_information": "Vietcap nâng định giá Long Châu thêm 4% so với báo cáo tháng 9.",
+   "key_figures": [
+    "Long Châu: 44.429 tỷ đồng; FPT Shop: 2.427 tỷ đồng",
+    "FRT 75,97%; Creador ~13%; nhân viên ~11,03% (~4.901 tỷ đồng)",
+    "ESOP tối đa 5% vốn điều lệ; FRT có thể còn khoảng 72% vào 2030"
+   ],
+   "companies": [
+    "FRT"
+   ],
+   "segments": [
+    "Nhà thuốc"
+   ],
+   "category": "retail",
+   "topic_ids": [
+    "long-chau"
+   ],
+   "importance": 2,
+   "event_date": "2026-11-17",
+   "article_ids": [
+    "a10"
+   ],
+   "impact": "Biến số liên quan: tỷ lệ sở hữu của FRT tại Long Châu sau ESOP, định giá mảng dược trong giá trị FRT."
+  },
+  {
+   "id": "ev11",
+   "title": "Chủ tịch FRT: Long Châu mở rộng sang tiêm chủng, tầm soát, khám chữa bệnh, tìm vốn dài hạn từ cổ đông ngoại",
+   "summary": "Tại Vietnam Future Economy Summit 2026, Chủ tịch FRT Nguyễn Bạch Điệp cho biết khi bắt đầu gọi vốn mở rộng, Long Châu có khoảng 1.000 cửa hàng trên thị trường khoảng 40.000 nhà thuốc. Công ty xem tiêm chủng, tầm soát sớm, khám chữa bệnh và lâu dài là chăm sóc người cao tuổi là hướng mở rộng. Bài không nêu số nhà thuốc hiện tại hay mục tiêu cụ thể.",
+   "new_information": "FRT muốn thêm vốn dài hạn từ cổ đông nước ngoài để giảm phụ thuộc vay ngắn hạn.",
+   "key_figures": [
+    "Khoảng 1.000 cửa hàng khi bắt đầu gọi vốn; thị trường khoảng 40.000 nhà thuốc",
+    "Chuỗi phát triển khoảng 9 năm, có lãi hơn 3 năm"
+   ],
+   "companies": [
+    "FRT"
+   ],
+   "segments": [
+    "Nhà thuốc",
+    "Bệnh viện"
+   ],
+   "category": "retail",
+   "topic_ids": [
+    "long-chau"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a11"
+   ],
+   "impact": "Biến số liên quan: tỷ trọng doanh thu ngoài bán thuốc (tiêm chủng, xét nghiệm, khám bệnh) của Long Châu, cơ cấu vốn vay của FRT."
+  },
+  {
+   "id": "ev12",
+   "title": "TNH kế hoạch 2026: doanh thu 836 tỷ đồng (+64%), lỗ sau thuế 51 tỷ đồng",
+   "summary": "Tập đoàn Bệnh viện TNH đặt kế hoạch doanh thu 2026 là 836 tỷ đồng, tăng 64%, nhưng lỗ sau thuế hơn 51 tỷ đồng sau khoản lỗ 93 tỷ đồng năm 2025. Chi phí lãi vay dự kiến tăng từ 46 lên 97 tỷ đồng, khấu hao và phân bổ hơn 157 tỷ đồng (+31%). Bệnh viện TNH Việt Yên dự kiến doanh thu 135 tỷ đồng nhưng lỗ hơn 62 tỷ đồng.",
+   "new_information": "Năm thứ hai liên tiếp TNH đặt kế hoạch lỗ vì chi phí của các bệnh viện mới.",
+   "key_figures": [
+    "Doanh thu KH 2026: 836 tỷ đồng, +64%",
+    "Lỗ sau thuế KH: hơn 51 tỷ đồng (2025 lỗ 93 tỷ đồng)",
+    "Lãi vay: từ 46 lên 97 tỷ đồng; khấu hao hơn 157 tỷ đồng, +31%",
+    "BV TNH Việt Yên: doanh thu 135 tỷ đồng, lỗ hơn 62 tỷ đồng"
+   ],
+   "companies": [
+    "TNH"
+   ],
+   "segments": [
+    "Bệnh viện"
+   ],
+   "category": "hospital",
+   "topic_ids": [
+    "tnh-loss"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a12"
+   ],
+   "impact": "Biến số liên quan: công suất các bệnh viện mới (Việt Yên, Lạng Sơn, Quốc tế Thái Nguyên giai đoạn 3) và chi phí lãi vay của TNH."
+  },
+  {
+   "id": "ev13",
+   "title": "TNH quý 2/2026 lỗ 25,3 tỷ đồng, quý lỗ thứ 7 liên tiếp; doanh thu 159 tỷ đồng (+30%)",
+   "summary": "Quý 2/2026, TNH đạt doanh thu 159 tỷ đồng (+30%) nhưng biên lợi nhuận gộp giảm từ 9,8% xuống 7,7% và lỗ sau thuế 25,3 tỷ đồng, quý lỗ thứ 7 liên tiếp. Lũy kế 6 tháng lỗ 71,7 tỷ đồng, đã vượt kế hoạch lỗ cả năm. Bệnh viện TNH Lạng Sơn được cấp phép 01/7/2026 và vận hành từ 15/7/2026.",
+   "new_information": "Khoản lỗ 6 tháng đã vượt mức lỗ kế hoạch cả năm 51 tỷ đồng.",
+   "key_figures": [
+    "Doanh thu Q2/2026: 159 tỷ đồng, +30%",
+    "Lỗ sau thuế Q2: 25,3 tỷ đồng",
+    "6T/2026: doanh thu 276 tỷ đồng (+28%), lỗ 71,7 tỷ đồng (cùng kỳ lỗ 54 tỷ đồng)",
+    "Lãi vay Q2: từ 10,7 lên 15 tỷ đồng; nợ vay 1.255 tỷ đồng"
+   ],
+   "companies": [
+    "TNH"
+   ],
+   "segments": [
+    "Bệnh viện"
+   ],
+   "category": "hospital",
+   "topic_ids": [
+    "tnh-loss"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a13"
+   ],
+   "impact": "Biến số liên quan: biên lợi nhuận gộp, chi phí lãi vay và doanh thu của bệnh viện mới tại TNH."
+  },
+  {
+   "id": "ev14",
+   "title": "Thành viên HĐQT TNH Hoàng Tuyên đăng ký bán toàn bộ 3,2% vốn (khoảng 5,3 triệu cổ phiếu)",
+   "summary": "Ông Hoàng Tuyên, thành viên HĐQT TNH, đăng ký bán khoảng 5,3 triệu cổ phiếu, tức toàn bộ 3,2% vốn đang nắm. Giao dịch dự kiến từ 11/9 đến 9/10/2026 qua thỏa thuận và/hoặc khớp lệnh.",
+   "new_information": "Một lãnh đạo TNH đăng ký thoái toàn bộ cổ phần trong lúc công ty lỗ liên tiếp.",
+   "key_figures": [
+    "Khoảng 5,3 triệu cổ phiếu, 3,2% vốn",
+    "Thời gian giao dịch: 11/9–9/10/2026"
+   ],
+   "companies": [
+    "TNH"
+   ],
+   "segments": [
+    "Bệnh viện"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "tnh-loss"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a14"
+   ],
+   "impact": "Biến số liên quan: kết quả giao dịch cổ đông nội bộ và cơ cấu sở hữu TNH."
+  },
+  {
+   "id": "ev15",
+   "title": "TNH quý 3/2026 lỗ 45 tỷ đồng; lũy kế 9 tháng lỗ 116 tỷ đồng (+56%)",
+   "summary": "Quý 3/2026, doanh thu thuần TNH đạt 184 tỷ đồng (+24%) nhưng giá vốn tăng 30%, lợi nhuận gộp còn 9 tỷ đồng và chi phí tài chính tăng 141% lên 30 tỷ đồng. Công ty lỗ sau thuế 45 tỷ đồng (+122%); 9 tháng doanh thu 460 tỷ đồng, lỗ 116 tỷ đồng so với lỗ 74 tỷ đồng cùng kỳ. Nguyên nhân được nêu là chi phí vận hành, khấu hao và lãi vay của Việt Yên, Lạng Sơn và Bệnh viện Quốc tế Thái Nguyên giai đoạn 3.",
+   "new_information": "Lỗ 9 tháng lên 116 tỷ đồng, phần thuộc cổ đông công ty mẹ 110 tỷ đồng.",
+   "key_figures": [
+    "Doanh thu Q3/2026: 184 tỷ đồng, +24%",
+    "Lợi nhuận gộp Q3: 9 tỷ đồng, −33%",
+    "Chi phí tài chính Q3: 30 tỷ đồng, +141%",
+    "Lỗ sau thuế Q3: 45 tỷ đồng, +122%",
+    "9T/2026: doanh thu 460 tỷ đồng, lỗ 116 tỷ đồng (cùng kỳ lỗ 74 tỷ đồng)",
+    "Vay ngắn hạn 248 tỷ đồng, dài hạn 1.028 tỷ đồng (30/9/2026)"
+   ],
+   "companies": [
+    "TNH"
+   ],
+   "segments": [
+    "Bệnh viện"
+   ],
+   "category": "hospital",
+   "topic_ids": [
+    "tnh-loss"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a15"
+   ],
+   "impact": "Biến số liên quan: kết quả quý 4/2026 so với kế hoạch lỗ 51 tỷ đồng, lãi vay và dòng tiền của TNH."
+  },
+  {
+   "id": "ev16",
+   "title": "Thái Nguyên triển khai Đề án BHYT toàn dân từ 01/11/2026, hỗ trợ đồng chi trả cho hơn 1,34 triệu người",
+   "summary": "Thái Nguyên triển khai Đề án BHYT toàn dân, dự kiến từ 01/11/2026, hỗ trợ phần đồng chi trả cho hơn 1,34 triệu người (khoảng 77,3% dân số tỉnh) tại 11 bệnh viện và 43 trạm y tế. Đề án gồm hỗ trợ mua thẻ BHYT, hỗ trợ đồng chi trả và tăng nhân lực y tế cơ sở; bao phủ BHYT dự kiến tăng từ 96% lên 98,32%. Bài không nêu tổng kinh phí và danh sách 11 bệnh viện.",
+   "new_information": "Tỉnh đầu tiên thí điểm mô hình miễn phần đồng chi trả khám chữa bệnh BHYT (theo bài viết).",
+   "key_figures": [
+    "Hơn 1,34 triệu người, khoảng 77,3% dân số tỉnh",
+    "11 bệnh viện, 43 trạm y tế",
+    "Bao phủ BHYT: từ 96% lên 98,32%",
+    "Trao tượng trưng 6.076 thẻ BHYT"
+   ],
+   "companies": [],
+   "segments": [
+    "Bệnh viện"
+   ],
+   "category": "hospital",
+   "topic_ids": [
+    "tnh-loss",
+    "bhyt"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-25",
+   "article_ids": [
+    "a16"
+   ],
+   "impact": "Biến số liên quan: lượt khám BHYT tại Thái Nguyên, địa bàn có các bệnh viện của TNH; bài chưa nêu bệnh viện tư nhân có được áp dụng hay không."
+  },
+  {
+   "id": "ev17",
+   "title": "DHG quý 3/2026 lãi sau thuế 98,5 tỷ đồng (−53%), thấp nhất từ quý 1/2011",
+   "summary": "Quý 3/2026, doanh thu thuần DHG hơn 1.023 tỷ đồng (−11%), chi phí bán hàng tăng 23% lên 314 tỷ đồng, lãi sau thuế còn 98,5 tỷ đồng (cùng kỳ 210 tỷ đồng). Công ty nêu nguyên nhân doanh thu giảm, chi phí và thuế thu nhập tăng do quy định thuế tối thiểu toàn cầu. Lũy kế 9 tháng doanh thu 3.584 tỷ đồng (+gần 2%), LNTT 839 tỷ đồng (+gần 5%), LNST 713 tỷ đồng.",
+   "new_information": "Lợi nhuận quý thấp nhất của DHG kể từ quý 1/2011.",
+   "key_figures": [
+    "Doanh thu thuần Q3: hơn 1.023 tỷ đồng, −11%",
+    "LNST Q3: 98,5 tỷ đồng, −53% (cùng kỳ 210 tỷ đồng)",
+    "Chi phí bán hàng Q3: 314 tỷ đồng, +23%; biên gộp 50,9%",
+    "9T/2026: doanh thu 3.584 tỷ đồng, LNTT 839 tỷ đồng, LNST 713 tỷ đồng",
+    "Đạt 64,8% KH doanh thu (5.530 tỷ đồng), 83,3% KH LNTT (1.007 tỷ đồng)"
+   ],
+   "companies": [
+    "DHG"
+   ],
+   "segments": [
+    "Dược phẩm"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "results-q3"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a17"
+   ],
+   "impact": "Biến số liên quan: doanh thu kênh OTC, chi phí bán hàng và thuế suất hiệu dụng của DHG."
+  },
+  {
+   "id": "ev18",
+   "title": "DHG tạm ứng cổ tức 60% bằng tiền (6.000 đồng/cổ phiếu), tổng khoảng 784,5 tỷ đồng",
+   "summary": "DHG tạm ứng cổ tức đợt 1 năm 2026 bằng tiền mặt tỷ lệ 60%, tương ứng 6.000 đồng/cổ phiếu, tổng khoảng 784,5 tỷ đồng. Ngày đăng ký cuối cùng 25/12 và ngày thanh toán 14/4/2027. Năm 2025 công ty đã chi cổ tức tiền mặt 100%, tổng 1.307,5 tỷ đồng.",
+   "new_information": "DHG giữ mức tạm ứng cổ tức 60% dù lợi nhuận quý 3 giảm 53%.",
+   "key_figures": [
+    "Tỷ lệ 60%, 6.000 đồng/cổ phiếu, khoảng 784,5 tỷ đồng",
+    "Ngày đăng ký cuối cùng 25/12; thanh toán 14/4/2027",
+    "Cổ tức năm 2025: 100% tiền mặt, 1.307,5 tỷ đồng"
+   ],
+   "companies": [
+    "DHG"
+   ],
+   "segments": [
+    "Dược phẩm"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "results-q3"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a18"
+   ],
+   "impact": "Biến số liên quan: dòng tiền và số dư tiền mặt của DHG sau các đợt chi cổ tức."
+  },
+  {
+   "id": "ev19",
+   "title": "Imexpharm quý 3/2026: doanh thu thuần 544 tỷ đồng (−5%), kênh ETC tăng lại 10%",
+   "summary": "Quý 3/2026, doanh thu thuần IMP đạt 544 tỷ đồng (−5%), LNST 83,9 tỷ đồng (+9%). Kênh ETC tăng 10% so với cùng kỳ và 12% so với quý trước, chấm dứt hai quý giảm; doanh thu qua chuỗi nhà thuốc tăng 206% còn nhà thuốc lẻ giảm 25%. Ban lãnh đạo nêu nguyên nhân doanh thu giảm là quy định thuế hộ kinh doanh mới, quản lý thuốc kê đơn và cạnh tranh.",
+   "new_information": "ETC của IMP tăng trở lại sau hai quý giảm; chuỗi nhà thuốc chiếm 22% doanh thu OTC (2025: 14%).",
+   "key_figures": [
+    "Doanh thu thuần Q3: 544 tỷ đồng, −5%; LNST 83,9 tỷ đồng, +9%",
+    "ETC Q3: +10% so cùng kỳ, +12% so quý trước",
+    "Chuỗi nhà thuốc Q3: +206%; chiếm 22% doanh thu OTC",
+    "Nhà thuốc lẻ Q3: −25%",
+    "9T/2026: LNTT 326 tỷ đồng (+5%), 65% KH; biên gộp 41,5%"
+   ],
+   "companies": [
+    "IMP"
+   ],
+   "segments": [
+    "Dược phẩm",
+    "Đấu thầu ETC",
+    "Nhà thuốc"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "results-q3",
+    "tender-gmp"
+   ],
+   "importance": 3,
+   "event_date": "2026-10-20",
+   "article_ids": [
+    "a19",
+    "a20"
+   ],
+   "impact": "Biến số liên quan: doanh thu ETC của IMP quý 4, tỷ trọng chuỗi nhà thuốc trong kênh OTC, doanh thu nhà thuốc lẻ."
+  },
+  {
+   "id": "ev20",
+   "title": "DBD quý 3/2026 lãi sau thuế 84 tỷ đồng (+40%), doanh thu 460 tỷ đồng (+4,6%)",
+   "summary": "Quý 3/2026, doanh thu thuần Bidiphar đạt 460 tỷ đồng (+4,6%), lợi nhuận gộp 209 tỷ đồng (+11,5%) và lãi sau thuế 84 tỷ đồng (+40%). Lãi từ công ty liên kết đạt 10 tỷ đồng so với lỗ 8,4 tỷ đồng cùng kỳ. Lũy kế 9 tháng doanh thu 1.380 tỷ đồng (+1,8%), LNST 254 tỷ đồng (+9,8%).",
+   "new_information": "Sau 9 tháng DBD đạt 66% kế hoạch doanh thu và 81% kế hoạch LNTT.",
+   "key_figures": [
+    "Doanh thu thuần Q3: 460 tỷ đồng, +4,6%",
+    "LNST Q3: 84 tỷ đồng, +40%",
+    "Lãi công ty liên kết 10 tỷ đồng (cùng kỳ lỗ 8,4 tỷ đồng)",
+    "9T/2026: doanh thu 1.380 tỷ đồng (+1,8%), LNST 254 tỷ đồng (+9,8%)",
+    "KH 2026: doanh thu 2.090 tỷ đồng, LNTT 375 tỷ đồng"
+   ],
+   "companies": [
+    "DBD"
+   ],
+   "segments": [
+    "Dược phẩm",
+    "Đấu thầu ETC"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "results-q3"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a21"
+   ],
+   "impact": "Biến số liên quan: biên gộp, chi phí bán hàng và lãi công ty liên kết của DBD."
+  },
+  {
+   "id": "ev21",
+   "title": "DBD: chi phí xây dựng dở dang 634 tỷ đồng (~22% tổng tài sản), tiền mặt còn 28,9 tỷ đồng",
+   "summary": "Tại 30/9/2026, chi phí xây dựng cơ bản dở dang dài hạn của Bidiphar là 634 tỷ đồng, khoảng 22% tổng tài sản 2.815 tỷ đồng. Tiền và tương đương tiền giảm từ 203 tỷ đồng đầu năm xuống 28,9 tỷ đồng, hàng tồn kho 485 tỷ đồng (+32%). Theo bài VCCI tháng 6/2026, DBD đang đầu tư nhà máy thuốc ung thư và nhà máy thuốc vô trùng thể tích nhỏ chuẩn EU-GMP.",
+   "new_information": "Tiền mặt của DBD giảm từ 203 tỷ đồng xuống 28,9 tỷ đồng trong khi chi phí xây dựng dở dang lên 634 tỷ đồng.",
+   "key_figures": [
+    "Chi phí XDCB dở dang dài hạn: 634 tỷ đồng, ~22% tổng tài sản",
+    "Tiền và tương đương tiền: 28,9 tỷ đồng (đầu năm 203 tỷ đồng)",
+    "Hàng tồn kho: 485 tỷ đồng, +32% so với đầu năm",
+    "Nợ phải trả: 997 tỷ đồng, +15%"
+   ],
+   "companies": [
+    "DBD"
+   ],
+   "segments": [
+    "Dược phẩm"
+   ],
+   "category": "manufacturing",
+   "topic_ids": [
+    "results-q3",
+    "tender-gmp"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a21",
+    "a6"
+   ],
+   "impact": "Biến số liên quan: thời điểm nhà máy EU-GMP của DBD đi vào vận hành và chi phí khấu hao, lãi vay đi kèm."
+  },
+  {
+   "id": "ev22",
+   "title": "Lợi nhuận quý 3 phân hóa: DMC tăng khoảng 40%, DTP giảm 24%, DP1 giảm 11%",
+   "summary": "Domesco (DMC) đạt doanh thu quý 3 576 tỷ đồng và LNST 38,8 tỷ đồng, tăng khoảng 40%. CPC1 Hà Nội (DTP) doanh thu 476 tỷ đồng (+14%) nhưng LNST khoảng 75 tỷ đồng (−24%); Dược phẩm Trung ương CPC1 (DP1) doanh thu khoảng 679 tỷ đồng (+32%), LNST 40 tỷ đồng (−11%) do thu nhập khác chuyển từ lãi 34,7 tỷ đồng sang lỗ 2,7 tỷ đồng. Vidipha (VDP) đạt LNTT 9 tháng 58,9 tỷ đồng, bằng 65,5% kế hoạch.",
+   "new_information": "Bài tổng hợp xác nhận lợi nhuận quý 3/2026 của nhóm dược niêm yết phân hóa giữa các doanh nghiệp.",
+   "key_figures": [
+    "DMC Q3: doanh thu 576 tỷ đồng, LNST 38,8 tỷ đồng",
+    "DMC 9T: LNST hơn 148 tỷ đồng, +39%",
+    "DTP Q3: doanh thu 476 tỷ đồng (+14%), LNST ~75 tỷ đồng (−24%)",
+    "DP1 Q3: doanh thu ~679 tỷ đồng (+32%), LNST 40 tỷ đồng (−11%)",
+    "VDP 9T: LNTT 58,9 tỷ đồng, 65,5% KH 90 tỷ đồng"
+   ],
+   "companies": [
+    "DMC",
+    "DTP",
+    "DP1",
+    "VDP"
+   ],
+   "segments": [
+    "Dược phẩm"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "results-q3"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a22"
+   ],
+   "impact": "Biến số liên quan: biên gộp và chi phí bán hàng của nhóm sản xuất, phân phối dược niêm yết."
+  },
+  {
+   "id": "ev23",
+   "title": "Vinapharm ký hợp tác với Dr. Reddy's, Hetero (Ấn Độ); LNTT 6 tháng 2026 đạt 335 tỷ đồng (+32%)",
+   "summary": "Tháng 5/2026, Vinapharm (DVN) ký biên bản ghi nhớ với Dr. Reddy's Laboratories và Hetero Labs về phân phối, thương mại hóa, chuyển giao công nghệ và sản xuất tại Việt Nam. Qua công ty con CPC1, DVN bắt đầu cung ứng kháng thể đơn dòng của Celltrion cho cơ sở điều trị. Nửa đầu 2026, doanh thu thuần hợp nhất khoảng 2.673 tỷ đồng, LNTT 335 tỷ đồng (+32%), bằng 66% kế hoạch năm.",
+   "new_information": "DVN mở rộng nguồn thuốc nhập khẩu và chuyển giao công nghệ từ đối tác Ấn Độ, Hàn Quốc.",
+   "key_figures": [
+    "LNTT hợp nhất 6T/2026: 335 tỷ đồng, +32%, 66% kế hoạch năm",
+    "Doanh thu thuần 6T/2026: khoảng 2.673 tỷ đồng",
+    "LNTT hợp nhất 2025: gần 825 tỷ đồng, +62%"
+   ],
+   "companies": [
+    "DVN"
+   ],
+   "segments": [
+    "Dược phẩm",
+    "Nguyên liệu dược"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "api-import"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a23"
+   ],
+   "impact": "Biến số liên quan: doanh thu phân phối thuốc nhập khẩu và tiến độ chuyển giao công nghệ, sản xuất tại Việt Nam của DVN."
+  },
+  {
+   "id": "ev24",
+   "title": "Nhập khẩu dược phẩm 10 tháng 2026 đạt 3,37 tỷ USD, giảm 5,4% so với cùng kỳ",
+   "summary": "Theo số liệu sơ bộ của Cục Hải quan, nhập khẩu dược phẩm tháng 10/2026 đạt 352.886.647 USD, giảm 7,3% so với tháng trước. Lũy kế 10 tháng đạt 3.371.889.806 USD, giảm 5,4% so với cùng kỳ năm 2025.",
+   "new_information": "Nhập khẩu dược phẩm 10 tháng thấp hơn cùng kỳ năm trước.",
+   "key_figures": [
+    "Tháng 10/2026: 352.886.647 USD, −7,3% so với tháng trước",
+    "10T/2026: 3.371.889.806 USD, −5,4% so với cùng kỳ"
+   ],
+   "companies": [],
+   "segments": [
+    "Dược phẩm"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "api-import"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a24"
+   ],
+   "impact": "Biến số liên quan: kim ngạch nhập khẩu thuốc thành phẩm, cạnh tranh giữa thuốc ngoại và thuốc sản xuất trong nước."
+  },
+  {
+   "id": "ev25",
+   "title": "Nhập khẩu nguyên phụ liệu dược phẩm 10 tháng 2026 đạt 388,9 triệu USD, giảm 3,7%",
+   "summary": "Theo số liệu sơ bộ của Cục Hải quan, nhập khẩu nguyên phụ liệu dược phẩm tháng 10/2026 đạt 33.850.543 USD, tăng 1,7% so với tháng trước. Lũy kế 10 tháng đạt 388.901.617 USD, giảm 3,7% so với cùng kỳ.",
+   "new_information": "Nhập khẩu nguyên phụ liệu dược 10 tháng giảm nhẹ so với cùng kỳ.",
+   "key_figures": [
+    "Tháng 10/2026: 33.850.543 USD, +1,7% so với tháng trước",
+    "10T/2026: 388.901.617 USD, −3,7% so với cùng kỳ"
+   ],
+   "companies": [],
+   "segments": [
+    "Nguyên liệu dược"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "api-import"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a24"
+   ],
+   "impact": "Biến số liên quan: nhu cầu nguyên liệu của nhà sản xuất trong nước và giá vốn của nhóm sản xuất dược."
+  },
+  {
+   "id": "ev26",
+   "title": "Chi khám chữa bệnh BHYT 6 tháng 2026 khoảng 84.765,8 tỷ đồng (+11,1%), bằng 54,42% dự toán",
+   "summary": "Hết tháng 6/2026, chi phí khám chữa bệnh BHYT đề nghị thanh toán khoảng 84.765,8 tỷ đồng, tăng 11,1% và bằng 54,42% dự toán năm. Bao phủ BHYT đạt 96,91% dân số, khoảng 99 triệu người. Sau khi giám sát bằng dữ liệu, số địa phương vượt mức sử dụng dự toán bình quân giảm từ 28 xuống 13.",
+   "new_information": "Chi KCB BHYT nửa đầu năm đã vượt một nửa dự toán năm.",
+   "key_figures": [
+    "Chi KCB BHYT 6T/2026: khoảng 84.765,8 tỷ đồng, +11,1%",
+    "54,42% dự toán năm",
+    "Bao phủ 96,91% dân số (~99 triệu người)",
+    "Năm 2025: 195,1 triệu lượt khám, chi hơn 166 nghìn tỷ đồng"
+   ],
+   "companies": [],
+   "segments": [
+    "Bệnh viện",
+    "Đấu thầu ETC"
+   ],
+   "category": "tender",
+   "topic_ids": [
+    "bhyt"
+   ],
+   "importance": 2,
+   "event_date": "2026-07-30",
+   "article_ids": [
+    "a25"
+   ],
+   "impact": "Biến số liên quan: tốc độ chi quỹ BHYT so với dự toán, áp lực giá thuốc trúng thầu và kiểm soát chi tại bệnh viện."
+  },
+  {
+   "id": "ev27",
+   "title": "10 tháng 2026 chi KCB BHYT 150.600 tỷ đồng, đã dùng 96,6% dự toán",
+   "summary": "Đến hết tháng 10/2026 có 168,1 triệu lượt khám chữa bệnh BHYT (+3,7%), chi phí đề nghị thanh toán 150.600 tỷ đồng, tăng 15.982 tỷ đồng so với cùng kỳ. Toàn quốc đã dùng 96,6% dự toán, còn khoảng 5.291 tỷ đồng cho hai tháng cuối năm. Cà Mau (106,814%), Quảng Ninh (101,638%) và Thanh Hóa (100,436%) đã vượt dự toán.",
+   "new_information": "Ba tỉnh đã vượt dự toán chi KCB BHYT trước khi hết năm.",
+   "key_figures": [
+    "168,1 triệu lượt KCB BHYT, +3,7%",
+    "Chi phí đề nghị thanh toán 150.600 tỷ đồng, tăng 15.982 tỷ đồng",
+    "Đã dùng 96,6% dự toán, còn khoảng 5.291 tỷ đồng",
+    "Cà Mau 106,814%; Quảng Ninh 101,638%; Thanh Hóa 100,436%"
+   ],
+   "companies": [],
+   "segments": [
+    "Bệnh viện",
+    "Đấu thầu ETC"
+   ],
+   "category": "tender",
+   "topic_ids": [
+    "bhyt"
+   ],
+   "importance": 3,
+   "event_date": "2026-11-13",
+   "article_ids": [
+    "a26"
+   ],
+   "impact": "Biến số liên quan: dư địa dự toán chi KCB BHYT cuối năm, khả năng chậm thanh toán cho bệnh viện và nhà thầu thuốc."
+  },
+  {
+   "id": "ev28",
+   "title": "710 thuốc được điều chỉnh giảm giá, tiết kiệm khoảng 302,1 tỷ đồng chi BHYT",
+   "summary": "BHXH Việt Nam cho biết 710 mặt hàng thuốc đã được điều chỉnh giảm giá, tổng khoảng 302,1 tỷ đồng, trong đó Hà Nội 172,8 tỷ đồng và TP.HCM 47,5 tỷ đồng. BHXH Hà Nội đề xuất pha chế, chia liều thuốc ung thư và điều hòa miễn dịch, ước tiết kiệm khoảng 100 tỷ đồng/năm. Chi thuốc ngoại trú 9 tháng tại Hà Nội khoảng 9.876 tỷ đồng, trong đó nhóm này khoảng 3.452 tỷ đồng (35%).",
+   "new_information": "Cơ quan BHXH đẩy giải pháp giảm chi thuốc: giảm giá, chọn thuốc rẻ hơn cùng hoạt chất và chia liều.",
+   "key_figures": [
+    "710 mặt hàng thuốc giảm giá, khoảng 302,1 tỷ đồng",
+    "Hà Nội 172,8 tỷ đồng; TP.HCM 47,5 tỷ đồng",
+    "Hà Nội: chi thuốc ngoại trú 9T khoảng 9.876 tỷ đồng; thuốc ung thư, điều hòa miễn dịch khoảng 3.452 tỷ đồng (35%)",
+    "Chia liều có thể tiết kiệm khoảng 100 tỷ đồng/năm tại Hà Nội"
+   ],
+   "companies": [],
+   "segments": [
+    "Đấu thầu ETC",
+    "Bệnh viện"
+   ],
+   "category": "tender",
+   "topic_ids": [
+    "bhyt"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a27"
+   ],
+   "impact": "Biến số liên quan: giá thuốc trúng thầu và lựa chọn thuốc cùng hoạt chất giá thấp tại bệnh viện."
+  },
+  {
+   "id": "ev29",
+   "title": "Chi thuốc BHYT năm 2025 gần 56.000 tỷ đồng, chiếm 29,18% tổng chi khám chữa bệnh",
+   "summary": "Năm 2025 có 194,6 triệu lượt khám chữa bệnh BHYT với tổng chi 164.900 tỷ đồng. Chi thuốc gần 56.000 tỷ đồng (2024 khoảng 50.785 tỷ đồng), tỷ trọng giảm từ 31,22% xuống 29,18%; nửa đầu 2026 thuốc chiếm 30% chi phí. Cơ quan quản lý nhận hơn 100 hồ sơ đề xuất thuốc mới vào danh mục BHYT trong khi chỉ có khoảng 20–25 chuyên gia đánh giá công nghệ y tế.",
+   "new_information": "Thuốc vẫn là khoản chi lớn nhất của quỹ BHYT, khoảng 30% chi phí nửa đầu 2026.",
+   "key_figures": [
+    "2025: 194,6 triệu lượt KCB, tổng chi 164.900 tỷ đồng",
+    "Chi thuốc 2025 gần 56.000 tỷ đồng; tỷ trọng từ 31,22% xuống 29,18%",
+    "6T/2026: thuốc 30%, xét nghiệm và chẩn đoán hình ảnh 20% chi phí",
+    "Hơn 100 hồ sơ đề xuất thuốc mới vào danh mục BHYT"
+   ],
+   "companies": [],
+   "segments": [
+    "Đấu thầu ETC",
+    "Bệnh viện"
+   ],
+   "category": "tender",
+   "topic_ids": [
+    "bhyt"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a28"
+   ],
+   "impact": "Biến số liên quan: tỷ trọng chi thuốc trong chi quỹ BHYT, tốc độ đưa thuốc mới vào danh mục chi trả."
+  },
+  {
+   "id": "ev30",
+   "title": "Bộ Y tế dự thảo danh mục thuốc BHYT mới: thêm 84 thuốc, trong đó 30 thuốc ung thư",
+   "summary": "Dự thảo thông tư cập nhật danh mục thuốc BHYT, thay thông tư đã áp dụng gần 10 năm, đề xuất bổ sung 84 thuốc, trong đó 30 thuốc điều trị ung thư (thuốc đích, kháng thể đơn dòng, miễn dịch). Quỹ BHYT dự kiến chi trả 30%–70% với một số thuốc ung thư mới có chi phí khoảng 30–100 triệu đồng/tháng. Nội dung được nêu tại Hội nghị Ung thư quốc gia ngày 5–6/11/2026.",
+   "new_information": "Dự thảo đề xuất bổ sung 84 thuốc, thay thông tư danh mục đã áp dụng gần 10 năm.",
+   "key_figures": [
+    "84 thuốc mới đề xuất bổ sung",
+    "30 thuốc điều trị ung thư",
+    "Quỹ BHYT chi trả 30%–70% với một số thuốc ung thư mới",
+    "Chi phí một số thuốc ung thư mới khoảng 30–100 triệu đồng/tháng"
+   ],
+   "companies": [],
+   "segments": [
+    "Dược phẩm",
+    "Đấu thầu ETC",
+    "Bệnh viện"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "bhyt",
+    "pharma-law"
+   ],
+   "importance": 3,
+   "event_date": "2026-11-05",
+   "article_ids": [
+    "a29"
+   ],
+   "impact": "Biến số liên quan: danh mục thuốc BHYT chính thức, nhu cầu thuốc ung thư thế hệ mới (chủ yếu nhập khẩu) tại bệnh viện."
+  },
+  {
+   "id": "ev31",
+   "title": "Quốc hội thông qua luật sửa Luật Dược, Luật BHYT: điều chỉnh công bố giá thuốc, hiệu lực 01/03/2027",
+   "summary": "Sáng 21/11/2026, Quốc hội thông qua luật sửa đổi, bổ sung một số điều của 6 luật, trong đó có Luật Dược, Luật Khám bệnh, chữa bệnh và Luật BHYT, với 473/481 đại biểu tán thành. Phần Luật Dược điều chỉnh thời điểm công bố giá thuốc, bổ sung phương pháp xác định giá thuốc, tạo cơ sở pháp lý thanh tra, xử lý vi phạm về giá và liên thông dữ liệu dược. Luật có hiệu lực từ 01/03/2027.",
+   "new_information": "Luật Dược bổ sung phương pháp xác định giá thuốc và cơ sở xử lý vi phạm về giá thuốc.",
+   "key_figures": [
+    "473/481 đại biểu tán thành (94,79%)",
+    "Thông qua sáng 21/11/2026",
+    "Hiệu lực 01/03/2027; khoản 12 Điều 4 từ 01/07/2027"
+   ],
+   "companies": [],
+   "segments": [
+    "Dược phẩm",
+    "Nhà thuốc"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "pharma-law"
+   ],
+   "importance": 3,
+   "event_date": "2026-11-21",
+   "article_ids": [
+    "a30"
+   ],
+   "impact": "Biến số liên quan: văn bản hướng dẫn về kê khai, công bố giá thuốc và trách nhiệm cơ sở kinh doanh dược."
+  }
+ ],
+ "topics": [
+  {
+   "id": "tender-gmp",
+   "title": "Đấu thầu theo 5 nhóm GMP",
+   "background": "Thông tư 40/2025/TT-BYT (hiệu lực 25/10/2025, thay Thông tư 07/2024) chia thuốc generic thành 5 nhóm theo GMP, tương đương sinh học và xuất xứ, và buộc cơ sở y tế công lập thực hiện tối thiểu 80% giá trị hợp đồng. Hơn 700 thuốc (603 thuốc trong nước) được gia hạn số đăng ký để kịp dự thầu; Thông tư 32/2026/TT-BYT về đăng ký lưu hành (ký 29/7/2026, hiệu lực 01/10/2026) thay Thông tư 12/2025. Tháng 11/2026 Cục Quản lý Dược công bố danh mục thuốc tương đương sinh học đợt 4 và cấp, gia hạn 165 thuốc nhập khẩu. Kênh ETC của IMP tăng 10% trong quý 3 sau hai quý giảm; DBD có 634 tỷ đồng chi phí xây dựng dở dang cho nhà máy chuẩn EU-GMP.",
+   "next_check": "Theo dõi: số thuốc trong các đợt công bố tương đương sinh học tiếp theo, kết quả trúng thầu theo nhóm GMP, mốc đánh giá EU-GMP nhà máy thuốc ung thư của DBD (trước 31/12/2026), doanh thu ETC quý 4 của IMP. Phân tích 28/11/2026.",
+   "related_data": [
+    "Bức tranh ngành › Kênh bệnh viện & đấu thầu",
+    "?sub=etc#mt2"
+   ]
+  },
+  {
+   "id": "long-chau",
+   "title": "Long Châu mở rộng",
+   "background": "Long Châu có 2.639 nhà thuốc và 236 trung tâm tiêm chủng cuối tháng 6/2026, lên 2.741 nhà thuốc và 244 trung tâm cuối tháng 9 (thêm 324 nhà thuốc từ đầu năm). Doanh thu chuỗi 6 tháng 21.448 tỷ đồng (+33%), 9 tháng 33.408 tỷ đồng (+35%), bình quân 1,3 tỷ đồng/nhà thuốc/tháng; quý I chuỗi đóng góp 96% LNTT của FRT và ước chiếm khoảng 20% thị phần bán lẻ dược. Vietcap (17/11/2026) định giá vốn chủ Long Châu 44.429 tỷ đồng, gấp 18,3 lần FPT Shop. Chủ tịch FRT nói sẽ mở rộng sang tiêm chủng, tầm soát, khám chữa bệnh và tìm vốn dài hạn từ cổ đông nước ngoài.",
+   "next_check": "Theo dõi: số nhà thuốc và trung tâm tiêm chủng cuối năm 2026, doanh thu bình quân/nhà thuốc so với mức 1,3 tỷ đồng/tháng, tiến độ ESOP tại Long Châu, kết quả quý 4/2026 của FRT. Phân tích 28/11/2026.",
+   "related_data": [
+    "Bức tranh ngành › Nhà thuốc & bệnh viện",
+    "?sub=care#mt2"
+   ]
+  },
+  {
+   "id": "tnh-loss",
+   "title": "TNH: lỗ khi mở bệnh viện mới",
+   "background": "TNH đặt kế hoạch 2026 doanh thu 836 tỷ đồng (+64%) và lỗ sau thuế 51 tỷ đồng. Quý 2 lỗ 25,3 tỷ đồng (quý lỗ thứ 7 liên tiếp) trên doanh thu 159 tỷ đồng (+30%); quý 3 lỗ 45 tỷ đồng trên doanh thu 184 tỷ đồng (+24%) khi chi phí tài chính tăng 141% lên 30 tỷ đồng. Lũy kế 9 tháng lỗ 116 tỷ đồng, đã vượt mức lỗ kế hoạch cả năm; vay ngắn và dài hạn hơn 1.277 tỷ đồng cuối tháng 9. Bệnh viện TNH Lạng Sơn vận hành từ 15/7/2026; một thành viên HĐQT đăng ký bán toàn bộ 3,2% vốn trong tháng 9–10.",
+   "next_check": "Theo dõi: kết quả quý 4/2026 và mức lỗ cả năm so với kế hoạch 51 tỷ đồng, chi phí lãi vay và tiền mặt (28 tỷ đồng ngày 30/9/2026), doanh thu BV Việt Yên và Lạng Sơn, tác động Đề án BHYT toàn dân của Thái Nguyên từ 01/11/2026. Phân tích 28/11/2026.",
+   "related_data": [
+    "Bức tranh ngành › Nhà thuốc & bệnh viện",
+    "?sub=care#mt2"
+   ]
+  },
+  {
+   "id": "results-q3",
+   "title": "Kết quả quý 3 nhà sản xuất dược",
+   "background": "Lợi nhuận quý 3/2026 phân hóa: DHG lãi 98,5 tỷ đồng (−53%), thấp nhất từ quý 1/2011, khi doanh thu giảm 11% và thuế tối thiểu toàn cầu làm tăng chi phí thuế. DBD lãi 84 tỷ đồng (+40%), DMC lãi 38,8 tỷ đồng (khoảng +40%), IMP lãi 83,9 tỷ đồng (+9%) dù doanh thu giảm 5%; DTP (−24%) và DP1 (−11%) giảm lãi. Sau 9 tháng DHG đạt 83,3% kế hoạch LNTT, DBD 81%, IMP 65%. DHG vẫn tạm ứng cổ tức tiền mặt 60%, thanh toán 14/4/2027.",
+   "next_check": "Theo dõi: kết quả quý 4/2026 của DHG, IMP, DBD so với phần kế hoạch còn lại, chi phí bán hàng và thuế suất hiệu dụng của DHG, doanh thu nhà thuốc lẻ của IMP (−25% trong quý 3). Phân tích 28/11/2026.",
+   "related_data": [
+    "Bức tranh ngành › Sản xuất dược",
+    "?sub=mfg#mt2"
+   ]
+  },
+  {
+   "id": "bhyt",
+   "title": "Quỹ BHYT & chi khám chữa bệnh",
+   "background": "6 tháng 2026 chi khám chữa bệnh BHYT khoảng 84.765,8 tỷ đồng (+11,1%), bằng 54,42% dự toán; hết tháng 10 đã lên 150.600 tỷ đồng với 168,1 triệu lượt khám, dùng 96,6% dự toán và còn khoảng 5.291 tỷ đồng. Chi thuốc năm 2025 gần 56.000 tỷ đồng (29,18% tổng chi); 710 thuốc được điều chỉnh giảm giá, tiết kiệm khoảng 302,1 tỷ đồng. Bộ Y tế dự thảo thêm 84 thuốc vào danh mục BHYT, trong đó 30 thuốc ung thư được chi trả 30%–70%. Thái Nguyên hỗ trợ đồng chi trả cho hơn 1,34 triệu người từ 01/11/2026.",
+   "next_check": "Theo dõi: tỷ lệ sử dụng dự toán chi KCB BHYT cả năm 2026 và điều chỉnh dự toán giữa các tỉnh, việc ban hành thông tư danh mục thuốc BHYT mới, số địa phương vượt dự toán. Phân tích 28/11/2026.",
+   "related_data": [
+    "Bức tranh ngành › Kênh bệnh viện & đấu thầu",
+    "?sub=etc#mt2"
+   ]
+  },
+  {
+   "id": "pharma-law",
+   "title": "Luật Dược, đăng ký thuốc & giá thuốc",
+   "background": "Ngày 21/11/2026 Quốc hội thông qua luật sửa đổi 6 luật, trong đó Luật Dược điều chỉnh thời điểm công bố giá thuốc, bổ sung phương pháp xác định giá và cơ sở xử lý vi phạm về giá; luật có hiệu lực 01/03/2027 với 473/481 đại biểu tán thành. Thông tư 32/2026/TT-BYT về đăng ký lưu hành có hiệu lực 01/10/2026, bảo hộ dữ liệu thuốc mới 5 năm. Cục Quản lý Dược công bố danh mục thuốc tương đương sinh học đợt 4/2026 ngày 09/11; Bộ Y tế dự thảo danh mục thuốc BHYT mới thêm 84 thuốc.",
+   "next_check": "Theo dõi: nghị định, thông tư hướng dẫn phần giá thuốc của Luật Dược sửa đổi trước 01/03/2027, thông tư danh mục thuốc BHYT chính thức, các đợt công bố thuốc tương đương sinh học tiếp theo. Phân tích 28/11/2026.",
+   "related_data": [
+    "Bức tranh ngành › Chính sách",
+    "?sub=policy#mt2"
+   ]
+  },
+  {
+   "id": "api-import",
+   "title": "Nhập khẩu thuốc & nguyên liệu",
+   "background": "Theo số liệu sơ bộ của Cục Hải quan, nhập khẩu dược phẩm 10 tháng 2026 đạt 3.371.889.806 USD, giảm 5,4% so với cùng kỳ; riêng tháng 10 đạt 352.886.647 USD (−7,3% so với tháng 9). Nguyên phụ liệu dược phẩm 10 tháng đạt 388.901.617 USD (−3,7%). Cục Quản lý Dược cấp, gia hạn đăng ký cho 165 thuốc nhập khẩu đợt 131 (20/11/2026). Vinapharm ký hợp tác với Dr. Reddy's và Hetero về phân phối, chuyển giao công nghệ và sản xuất tại Việt Nam.",
+   "next_check": "Theo dõi: số liệu nhập khẩu dược phẩm, nguyên phụ liệu dược tháng 11 và cả năm 2026 của Cục Hải quan, các đợt cấp số đăng ký thuốc nhập khẩu tiếp theo, tiến độ hợp tác sản xuất của Vinapharm. Phân tích 28/11/2026.",
+   "related_data": [
+    "Bức tranh ngành › Toàn ngành",
+    "?sub=all#mt2"
+   ]
+  }
+ ]
+}

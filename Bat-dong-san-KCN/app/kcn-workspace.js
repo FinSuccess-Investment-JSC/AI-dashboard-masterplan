@@ -312,7 +312,11 @@
   }
   function paint(root) { $$('.kc-card', root).forEach(c => { if (c._draw && !c._drawn) { const h = c.querySelector('.kc-plot'); if (h) { c._drawn = true; try { c._draw(h, c); } catch (e) { h.innerHTML = '<p class="kc-gap">Không vẽ được chart này.</p>'; console.error(e); } } } }); }
   const kpi = o => `<div class="kc-kpi"><span class="kc-kl">${esc(o.label)}</span><b>${o.value}</b>${o.delta ? `<em class="${o.dcls || ''}">${o.delta}</em>` : ''}<small>${o.sub || ''}</small></div>`;
-  const kpis = arr => ''; // 27/11/2026 (người dùng): không trình bày hàng ô số đầu tab con trên trang; số nằm trong chart và nút Bảng
+  // 27/11/2026 (người dùng): tắt hàng ô số đầu tab con. 28/11/2026 (người dùng: "lấy DB ngành điện làm tiêu chuẩn", DASHBOARD_WORKFLOW §42):
+  // dựng lại hàng 2–4 ô số theo mẫu Điện (.pp-kpis > .kpi), chỉ ở sub-tab Bức tranh ngành; Tổng quan (chu kỳ) và tab Dữ liệu vẫn không hiện.
+  let kpiOn = false;
+  const kpis = arr => { if (!kpiOn) return ''; const t = arr.filter(Boolean).slice(0, 4); if (t.length < 2) return '';
+    return `<section class="grid kpis pp-kpis">${t.map(o => `<div class="kpi pp-kpi"><div class="label l">${esc(o.label)}</div><div class="value v">${o.value}</div><div class="delta ${o.dcls || ''}">${o.delta || ''}</div><div class="sub s">${o.sub || ''}</div></div>`).join('')}</section>`; };
   const section = (num, title, q) => el('div', 'kc-sec-h', `<span class="kc-num">${esc(num)}</span><div><h3>${esc(title)}</h3>${q ? `<p>${q}</p>` : ''}</div>`);
   function insightCard(f) {
     return `<article class="kc-ins kc-ins-${esc(f.id)}"><header><span class="kc-rule">${esc(f.id)}</span><span class="kc-scope">${esc(f.scope)}</span></header><h4>${esc(f.headline)}</h4>` +
@@ -414,6 +418,12 @@
     const r = st.mkR === 'South' ? 'South' : 'North', q = st.mkQ, rows = K.marketRows(D, r).filter(m => K.qk(m.period) <= K.qk(q));
     const row = rows.find(m => m.period === q), yq = K.kOf(K.qk(q) - 4), pq = K.kOf(K.qk(q) - 1);
     const scope = m => m ? (m.cohort === 'PRE' ? 'phạm vi C&W trước sáp nhập tỉnh' : 'phạm vi C&W sau sáp nhập tỉnh') : '';
+    // 28/11/2026: hàng ô số toàn thị trường (hai vùng, kỳ mới nhất), không theo nút chọn vùng/kỳ của ba khối bên dưới.
+    const c9 = D.absorption.find(a => a.period === '2026M9' && a.region === 'Vietnam'), y9 = c9 && /([+-]?\d+)%\s*YoY/.exec(c9.note || '');
+    box.append(el('div', '', kpis([
+      c9 && {label: 'Hấp thụ đất 9T/2026 · CBRE Tier-1', value: `${nf(c9.value)} ha`, delta: y9 ? `${sg(y9[1])}% so cùng kỳ` : '', dcls: 'up', sub: `${chip('REPORTED', 'Nguồn công bố')} ${srcA(c9.src)} · xấp xỉ`},
+      ...['North', 'South'].map(x => { const l = latestBy(x, 'occ'), c = l && K.change(D, x, 'occ', K.kOf(K.qk(l.period) - 4), l.period); return l && {label: `Lấp đầy miền ${REG[x]} ${QL(l.period)}`, value: pf(l.occ, 1, false), delta: c && c.ok ? `${ppf(c.abs)} so ${QL(c.from.period)}` : '', dcls: c && c.ok ? (c.abs < 0 ? 'dn' : 'up') : '', sub: `cùng phạm vi · ${srcA(l.src)}`}; })
+    ])));
     box.append(el('div', 'kc-mk-ctl', `<div role="group" aria-label="Vùng">${['North', 'South'].map(x => `<button type="button" data-kc-mkr="${x}" aria-pressed="${r === x}">Miền ${REG[x]}</button>`).join('')}</div>` +
       `<label>Kỳ <select data-kc-mkq aria-label="Kỳ">${qs.slice().reverse().map(x => `<option value="${x}" ${x === q ? 'selected' : ''}>${QL(x)}</option>`).join('')}</select></label>` +
 ''));
@@ -578,7 +588,11 @@
     const rs = regionsOn(), pipe = K.pipelineRatios(D).filter(p => regOn(p.region));
     const ys = rs.map(r => ({r, y: K.yearsOfSupply(D, r)}));
     const dl = rs.map(r => { const l = latestBy(r, 'stock_ha'); return l && {r, l, c: K.change(D, r, 'stock_ha', K.kOf(K.qk(l.period) - 4), l.period)}; }).filter(Boolean);
-    // Hàng ô số đầu tab Nguồn cung bỏ 27/11/2026 theo yêu cầu người dùng.
+    // Hàng ô số đầu tab Nguồn cung bỏ 27/11/2026 theo yêu cầu người dùng; 28/11/2026 dựng lại theo khung Điện (đất KCN, kỳ mới nhất).
+    if (st.seg === 'land') box.append(el('div', '', kpis([
+      ...dl.map(x => ({label: `Nguồn cung đất KCN miền ${REG[x.r]} ${QL(x.l.period)}`, value: `${nf(x.l.stock_ha)} ha`, delta: x.c && x.c.ok ? `${pf(x.c.rel)} so ${QL(x.c.from.period)}` : '', dcls: x.c && x.c.ok && x.c.rel < 0 ? 'dn' : 'up', sub: `${x.l.cohort === 'PRE' ? 'phạm vi C&W trước sáp nhập' : 'phạm vi C&W sau sáp nhập'} · ${srcA(x.l.src)}`})),
+      pipe.length && {label: 'Cung dự kiến 2026–2028', value: pipe.map(x => `${REG[x.region]} ${nf(x.pipeline)}`).join(' · ') + ' ha', sub: `${chip('FORECAST')} C&W · bằng ${pipe.map(x => `${REG[x.region]} ${pf(x.ratio, 0, false)}`).join(', ')} nguồn cung hiện hữu`}
+    ])));
     box.append(section('A', 'Động lực nguồn cung', st.seg === 'land' ? 'Đất KCN trong phạm vi khảo sát C&W. Đổi bộ lọc Phân khúc để xem nhà xưởng, nhà kho xây sẵn.' : `Phân khúc ${st.seg === 'RBF' ? 'nhà xưởng' : 'nhà kho'} xây sẵn (m²), khác thị trường đất.`));
     const g = el('div', 'kc-grid');
     if (st.seg === 'land') {
@@ -784,11 +798,11 @@
     const plan = D.dev.find(d => d.ticker === 'IDC' && d.cls === 'COMPANY_PLAN' && d.metric === 'Land_leased_total');
     const bcm = L.filter(x => x.ticker === 'BCM' && fin(x.commercial_ha));
     box.append(el('div', '', kpis([
-      {label: 'Doanh nghiệp trong workbook', value: `${D.company.length} mã`, sub: `${L.length} dòng dự án/giai đoạn · SIP chưa xác minh`},
       lease.length && {label: `IDC ký mới đất KCN ${lease[lease.length - 1].year}`, value: `${nf(lease[lease.length - 1].value_ha)} ha`, delta: mom.ok ? `${pf(mom.changes[mom.changes.length - 1].value)} so ${lease[lease.length - 2].year}` : '', dcls: 'dn', sub: `${chip('ACTUAL')} BCTN 2025 hợp nhất`},
       plan && {label: 'IDC kế hoạch ký mới 2026', value: `${nf(plan.value)} ha`, sub: `${chip('PLAN')} không phải số thực hiện`},
       bcm.length && {label: `BCM · ${bcm.length} KCN đang cho thuê`, value: `${nf(bcm.reduce((s, x) => s + x.unleased_est_ha, 0), 1)} ha`, sub: `chưa lấp đầy ước tính trên ${nf(bcm.reduce((s, x) => s + x.commercial_ha, 0))} ha thương phẩm ${chip('ESTIMATE')}`},
-      {label: 'Đất sạch sẵn sàng bàn giao', value: 'Chưa công bố', sub: 'BCTN 2025 không ghi số kèm ngày đo; không suy từ quỹ đất. Tài liệu xác nhận: BCTN/ĐHCĐ ghi diện tích đất sạch và ngày đo'}
+      {label: 'Đất sạch sẵn sàng bàn giao', value: 'Chưa công bố', sub: 'BCTN 2025 không ghi số kèm ngày đo; không suy từ quỹ đất. Tài liệu xác nhận: BCTN/ĐHCĐ ghi diện tích đất sạch và ngày đo'},
+      {label: 'Doanh nghiệp trong workbook', value: `${D.company.length} mã`, sub: `${L.length} dòng dự án/giai đoạn · SIP chưa xác minh`}
     ])));
     box.append(section('A', 'Quỹ đất có thể giao', 'Tách diện tích toàn dự án (gross), thương phẩm và phần chưa lấp đầy ước tính; quyền lợi kinh tế của doanh nghiệp ghi riêng khi dự án qua công ty con, liên doanh. Mỗi doanh nghiệp công bố một loại diện tích khác nhau: không xếp hạng chung, không cộng ngang.'));
     const rows = D.company.filter(c => coOn(c.ticker)).map(c => {
@@ -994,6 +1008,21 @@
   const TITLE = {market: 'Toàn thị trường', demand: 'Nhu cầu thuê đất & FDI', supply: 'Nguồn cung & lấp đầy', rent: 'Giá thuê & địa phương', landbank: 'Quỹ đất & doanh nghiệp', finance: 'Tài chính ngành'};
   const SHORT = {market: 'Toàn thị trường', demand: 'Nhu cầu', supply: 'Nguồn cung', rent: 'Giá thuê', landbank: 'Quỹ đất', finance: 'Tài chính ngành'};
   const MOVE_Q = {demand: 'Các chỉ báo hằng tháng (FDI đăng ký, vốn thực hiện, IIP) đang nói gì?', supply: 'Đất cao su chuyển đổi đang ở mốc pháp lý nào?', rent: 'Giá chào thuê ở từng dự án mở bán 2026 ra sao?', landbank: 'Doanh nghiệp dự kiến ký mới bao nhiêu (dự phóng, không phải số thực hiện)?'};
+  const GOAL = {market: 'Cầu thuê, cung chào thuê và giá chào theo vùng; chọn vùng và kỳ ở ba khối bên dưới.', demand: 'Cầu thuê đất thực tế và các chỉ báo sớm: FDI chế biến chế tạo, vốn thực hiện, IIP.',
+    supply: 'Nguồn cung hiện hữu, lấp đầy và cung mới sắp vào thị trường.', rent: 'Giá chào thuê theo vùng, theo tỉnh và theo dự án mở bán.', landbank: 'Quỹ đất có thể giao → ký mới → bàn giao, doanh thu và tiền của doanh nghiệp niêm yết.'};
+  // Ngày dữ liệu mới nhất của sub-tab: kỳ quan sát mới nhất của các chuỗi dùng trong sub-tab (không lấy ngày dựng trang).
+  function asofKcn(k) {
+    if (!D) return '';
+    const lastQ = arr => arr.filter(p => /^\d{4}Q[1-4]$/.test(p)).sort((a, b) => K.qk(a) - K.qk(b)).pop();
+    const mk = f => lastQ(D.market.filter(f).map(m => m.period)), cb = lastQ(SERIES.filter(s => s.reporter === 'CBRE').flatMap(s => s.points.filter(p => fin(p.value)).map(p => p.period)));
+    const mon = p => { const m = /^(\d{4})M(\d+)$/.exec(p || ''); return m ? +m[1] * 100 + +m[2] : 0; };
+    const fdi = D.fdi_snap.filter(f => f.sector === 'FDI_MFG').map(f => f.period).sort((a, b) => mon(a) - mon(b)).pop();
+    const ly = Math.max(...D.lease.map(l => l.year).filter(fin), 0);
+    const L = {market: [['C&W', mk(m => fin(m.occ) || fin(m.stock_ha))], ['CBRE', cb]], demand: [['hấp thụ CBRE', cb], ['FDI chế biến chế tạo', fdi]],
+      supply: [['C&W', mk(m => fin(m.stock_ha))]], rent: [['giá chào C&W', mk(m => fin(m.ask_usd) || fin(m.ask_vnd))]], landbank: [['BCTN', ly ? String(ly) : null]]}[k] || [];
+    const t = L.filter(x => x[1]).map(([l, p]) => `${l} ${/Q/.test(p) ? QL(p) : PL(p)}`).join(' · ');
+    return t ? 'Dữ liệu mới nhất: ' + t : '';
+  }
   const BAR_TABS = ['market', 'demand', 'supply', 'rent', 'landbank']; // 26/11/2026: thêm Toàn thị trường làm tab con mặc định; Tài chính ngành ở tab lớn #mt14
   // Mỗi đoạn có tiêu đề (kc-sec-h) thành một mục câu hỏi pp-panel; phần trước đoạn đầu (ô số) giữ nguyên.
   function toPanels(box, key, prefix, start = 0) {
@@ -1011,11 +1040,49 @@
     });
     return k - start;
   }
+  /* 28/11/2026 (khung chuẩn Điện §42): mỗi câu hỏi = chart trả lời chính (.pp-main) → chart phụ (.pp-sup1) → xem thêm (.pp-more).
+     Thẻ trong lưới kc-grid được xếp lại theo thứ tự: thẻ đầu là chart chính, thẻ thứ hai là chart phụ, còn lại vào "xem thêm".
+     Ba khối của Toàn thị trường (kc-mk3) cũng tách: cầu thuê là chart chính, cung là chart phụ, giá chào thuê ở "xem thêm". */
+  function mainify(s) {
+    const head = s.querySelector(':scope>.pp-ph'), items = [];
+    [...s.children].filter(n => n !== head).forEach(n => { if (n.matches('.kc-grid, .grid.two')) items.push(...n.children); else items.push(n); n.remove(); });
+    let k = 0, more = null;
+    items.forEach(n => {
+      if (!n.classList.contains('card')) { s.append(n); return; }
+      if (k === 0) { const w = el('div', 'pp-main'); w.append(n); s.append(w); }
+      else if (k === 1) { const w = el('div', 'pp-sup1'); w.append(n); s.append(w); }
+      else { if (!more) { more = el('div', 'pp-sup1 pp-more'); s.append(more); } more.append(n); }
+      k++;
+    });
+    if (more && more.children.length > 1) more.className = 'grid two g2 pp-sup pp-more';
+  }
+  // Thanh luồng từng sub-tab (như Điện): khâu → câu hỏi (số thứ tự trong sub-tab; 'm' = câu hỏi chứa thẻ cũ dời vào, đặt sau phần động).
+  const FLOWK = {
+    demand: [['abs', 'Cầu thực tế', 'Hấp thụ đất', [1]], ['fdi', 'Chỉ báo sớm', 'FDI chế biến chế tạo', [2]], ['mon', 'Hằng tháng', 'FDI, vốn thực hiện, IIP', ['m']]],
+    supply: [['now', 'Hiện hữu', 'Nguồn cung và lấp đầy', [1]], ['new', 'Tương lai', 'Cung mới và thời điểm', [2]], ['rub', 'Pháp lý', 'Đất cao su chuyển đổi', ['m']]],
+    rent: [['reg', 'Theo vùng', 'Xu hướng giá chào thuê', [1]], ['prov', 'Theo tỉnh', 'Sức mạnh giá', [2]], ['proj', 'Theo dự án', 'Giá chào dự án mở bán 2026', ['m']]],
+    landbank: [['in', 'Đầu vào', 'Quỹ đất có thể giao', [1]], ['make', 'Sản xuất', 'Ký mới', [2]], ['out', 'Đầu ra', 'Bàn giao, doanh thu, tiền', [3]], ['fc', 'Dự phóng', 'Ký mới dự kiến (CTCK)', ['m']]]
+  };
+  const stageEl = (key, id, k, t) => { const h = el('div', 'pp-stage', `<span>${esc(k)}</span><h3>${esc(t)}</h3>`); h.id = `mt2-pp-${key}-${id}`; return h; };
+  function frameTab(key, box) {
+    $$(':scope>.pp-panel', box).forEach(mainify);
+    const F = FLOWK[key]; if (!F) return;
+    const qs = $$(':scope>.pp-panel', box);
+    const live = F.filter(([, , , at]) => at.some(a => a === 'm' ? !!moved[key] : !!qs[a - 1]));
+    if (live.length < 2) return;
+    const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + (SHORT[key] || '').toLowerCase());
+    bar.innerHTML = live.map(([id, k, t], i) => `${i ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<button type="button" class="pp-flow-s" data-kc-stage="mt2-pp-${key}-${id}"><small>${esc(k)}</small><b>${esc(t)}</b></button>`).join('');
+    box.insertBefore(bar, qs[0] || null);
+    live.forEach(([id, k, t, at]) => { const first = at.find(a => a !== 'm'); if (first && qs[first - 1]) qs[first - 1].before(stageEl(key, id, k, t)); });
+  }
   function renderInto(key, box, prefix, start = 0) {
     box.replaceChildren();
+    kpiOn = BAR_TABS.includes(key);
     try { ({market: renderMarket, overview: renderOverview, demand: renderDemand, supply: renderSupply, rent: renderRent, landbank: renderLandbank, data: renderData})[key](box); }
     catch (e) { box.append(el('p', 'kc-gap', 'Không dựng được phần này: ' + esc(e.message))); console.error(e); }
+    kpiOn = false;
     const n = toPanels(box, key, prefix, start);
+    if (BAR_TABS.includes(key)) frameTab(key, box);
     setTimeout(() => { paint(box); refit(box); if (window.FinShareImage) window.FinShareImage.scan(box); }, 0); // không dùng rAF: tab chạy nền sẽ không vẽ
     setTimeout(() => refit(box), 450); // mở thẳng bằng link #mt2: lưới 3 cột chưa có bề rộng ở lần vẽ đầu
     return n;
@@ -1084,7 +1151,8 @@
     setTop(); addEventListener('resize', setTop);
     BAR_TABS.forEach((k, i) => {
       const p = el('div', 'pane-subpane pp-pane'); p.id = 'mt2-pp-' + k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', 'mt2-pp-' + k + '-tab'); p.hidden = true;
-      p.innerHTML = `<h2>${esc(TITLE[k])}</h2><div class="kc-dyn"></div>`;
+      // 28/11/2026 (khung chuẩn Điện): đầu sub-tab = số · tiêu đề · mục tiêu, bên phải "Dữ liệu mới nhất" từ chính dữ liệu của sub-tab.
+      p.innerHTML = `<header class="pp-head"><div><span class="pp-k">${String(i + 1).padStart(2, '0')}</span><h2>${esc(TITLE[k])}</h2><p>${esc(GOAL[k] || '')}</p></div><span class="pp-asof">${esc(asofKcn(k))}</span></header><div class="kc-dyn"></div>`;
       if (MOVE[k]) {
         const cards = MOVE[k].map(id => document.querySelector(`[data-block-id="${id}"]`)).filter(Boolean);
         if (cards.length) {
@@ -1092,7 +1160,9 @@
           s.innerHTML = `<header class="pp-ph"><span class="pp-num">${i + 1}.·</span><div><h3>${esc(MOVE_Q[k])}</h3><p class="kc-q-sub">${esc(MOVE_TITLE[k])}</p></div></header>`;
           // Thẻ dời vào chưa có dòng nguồn hiện sẵn (bảng, không có chart): lấy từ ghi chú "Nguồn:" có sẵn của thẻ.
           cards.forEach(c => { if (c.querySelector('.pw-src')) return; const b = c.querySelector('.chart-info-button[aria-controls]'), pn = b && document.getElementById(b.getAttribute('aria-controls')); const n = c.querySelector('.source-note') || pn?.querySelector('.chart-primary-source, .source-note, a[href]')?.closest('li, p, div') || pn, a = n && n.querySelector('a[href]'); if (!n) return; const d = el('div', 'pw-src'); d.append('Nguồn: '); d.append(a ? a.cloneNode(true) : n.textContent.replace(/^\s*Nguồn\s*:\s*/i, '').split('. ')[0]); c.append(d); });
-          const g = el('div', 'grid two g2'); cards.forEach(c => g.append(c)); s.append(g); p.append(s); moved[k] = s;
+          const g = el('div', 'grid two g2'); cards.forEach(c => g.append(c)); s.append(g); mainify(s);
+          const fs = (FLOWK[k] || []).find(x => x[3].includes('m')); if (fs) p.append(stageEl(k, fs[0], fs[1], fs[2]));
+          p.append(s); moved[k] = s;
         }
       }
       panels[k] = p; root.append(p);
@@ -1100,6 +1170,7 @@
     // Khung cũ của Bức tranh ngành (#supply-world / #supply-vietnam, lưới giá) không dùng ở trang này.
     $$('#supply-world, #supply-vietnam, .supply-tabs', pane).forEach(n => { n.hidden = true; n.style.display = 'none'; });
     nav.addEventListener('click', e => { const b = e.target.closest('[data-kc-tab]'); if (b) select(b.dataset.kcTab, true); });
+    root.addEventListener('click', e => { const b = e.target.closest('[data-kc-stage]'); if (!b) return; e.preventDefault(); document.getElementById(b.dataset.kcStage)?.scrollIntoView({block: 'start'}); });
     nav.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return; const i = BAR_TABS.indexOf(st.tab), j = (i + (e.key === 'ArrowRight' ? 1 : BAR_TABS.length - 1)) % BAR_TABS.length; select(BAR_TABS[j], true); nav.children[j].focus(); });
     // Back/Forward: trạng thái đọc lại từ URL khi quay về #mt2.
     addEventListener('popstate', () => { if (location.hash !== '#mt2') return; readUrl(); rendered = {}; select(st.tab, false); });

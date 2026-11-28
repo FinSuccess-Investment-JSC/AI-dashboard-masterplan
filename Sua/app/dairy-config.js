@@ -2,6 +2,15 @@
 (() => {
 const C = {navy: '#2938A8', teal: '#59C5C8', plum: '#861C52', gold: '#c29100', grey: '#6b7686', red: '#d1583f', green: '#27af95'};
 const DNPL_VNM = ['Vinamilk qua DN&PL', 'https://doanhnhan.baophapluat.vn/vinamilk-vnm-bao-lai-nua-dau-nam-2026-tang-manh-38-xuat-khau-dong-vai-tro-diem-sang.html'];
+// "Dữ liệu mới nhất" từng sub-tab (28/11/2026, khung chuẩn Điện): đọc kỳ cuối của chính dữ liệu đã nạp trên trang, không lấy ngày build.
+// Trả 'yyyy-mm' (tháng), 'yyyy-mm-dd' (ngày) hoặc chuỗi kỳ (Q3/2026…); pkg-frame.js định dạng.
+const RP = () => window.RETAIL_PUBLIC?.blocks || {};
+const lastMonth = keys => keys.map(k => (RP().macro?.series?.[k] || RP().commodity?.series?.[k])?.records?.at(-1)?.date).filter(Boolean).sort().at(-1)?.slice(0, 7);
+const finLast = key => { const p = window[key]?.periods?.at(-1); return p ? 'Q' + p.slice(-1) + '/' + p.slice(0, 4) : ''; };
+const lastMilestone = id => { const d = (window.PKG.charts.find(c => c.id === id)?.items || []).map(x => x.d).sort().at(-1); return d ? 'mốc ' + d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4) : ''; };
+const valDate = () => { const V = window.COMPANY_VALUATION?.companies || {}; return (window.DAIRY_FIN?.companies || []).map(c => V[c.ticker]?.date).filter(Boolean).sort().at(-1) || ''; };
+// Tài chính ngành › 03 Định giá: app/peer-valuation.js (data-auto) tìm #of-mt14-valuation .of-body rồi vẽ 4 chart vào đó.
+const valHost = () => { const h = document.createElement('div'); h.id = 'of-mt14-valuation'; h.className = 'rf-wide'; h.innerHTML = '<div class="of-body"></div>'; return h; };
 window.PKG = {
   key: 'dairy', prefix: 'sua', label: 'Sữa',
   wide: ['sua-01', 'sua-05', 'sua-50', 'sua-52', 'sua-60'],
@@ -10,6 +19,11 @@ window.PKG = {
     {spark: 'spk-mp', series: 'milkpowder_output', unit: 'nghìn tấn', digits: 1},
     {spark: 'spk-wmp', series: 'wmp', unit: 'USD/tấn', digits: 0, ytd: false, color: C.red},
     {spark: 'spk-pe', pe: '239', label: 'Sữa'},
+    // 28/11/2026 (khung chuẩn Điện): ô số thêm cho 01 Toàn ngành và 02 Giá đầu vào → biên (cùng nguồn các chart trong sub-tab).
+    {spark: 'spk-cpif', series: 'cpi_food_yoy', pct: true, signed: true, note: 'CPI hàng ăn & dịch vụ ăn uống', color: C.gold},
+    {spark: 'spk-smp', series: 'smp', unit: 'USD/tấn', digits: 0, ytd: false, color: C.plum},
+    {spark: 'spk-gm-vnm', cq: 'VNM', field: 'gross_margin', note: 'biên gộp VNM'},
+    {spark: 'spk-gm-mcm', cq: 'MCM', field: 'gross_margin', note: 'biên gộp MCM', color: C.teal},
   ],
   charts: [
     {id: 'chDairyChain', type: 'html', src: [['FinSuccess tự tổng hợp', '#rf-q-model']],
@@ -96,37 +110,50 @@ window.PKG = {
   ],
   sourceManual: [[/^Chuỗi giá trị ngành sữa/, 'FinSuccess tổng hợp']],
   topics: {'sua-t1': ['Doanh thu xuất khẩu và nội địa, biên gộp VNM', 'Doanh thu xuất khẩu quý III–IV, giá WMP/SMP, biên gộp quý IV', [['#rf-q-input', 'Giá sữa bột'], ['#rf-q-gm', 'Biên gộp VNM, MCM']]]},
-  alias: {mt3: ['mt2', 'input']},
-  section: {input: ['mt2', 'input'], price: ['mt2', 'input']},
+  // 28/11/2026 (khung chuẩn Điện, DASHBOARD_WORKFLOW §42): link cũ.
+  alias: {mt3: ['mt2', 'input'], mt6: ['mt14', 'listed'], mt9: ['mt14', 'sector']},
+  section: {input: ['mt2', 'input'], price: ['mt2', 'input'], margin: ['mt2', 'input', 'rf-q-gm'], demand: ['mt2', 'all', 'rf-q-demand'], valuation: ['mt14', 'valuation'], pe: ['mt14', 'listed', 'rf-q-pe']},
+  subAlias: {'mt14/pe': ['mt14', 'listed']},
   tree: {
     mt1: {title: 'Tổng quan ngành', subs: [
-      {k: 'map', t: 'Bản đồ ngành', d: 'Nguồn sữa (bò trong nước, sữa bột nhập) → chế biến → kênh bán → biên.', items: [
+      {k: 'map', t: 'Bản đồ ngành', sub: 'Bò sữa, sữa bột nhập → chế biến → kênh bán', d: 'Nguồn sữa (bò trong nước, sữa bột nhập) → chế biến → kênh bán → biên.', items: [
         {q: 'Sữa đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['sua-01']}]},
-      {k: 'model', t: 'Mô hình kiếm tiền', d: 'Doanh thu đến từ đâu, biến nào quyết định biên, mã nào đại diện.', items: [
+      {k: 'model', t: 'Mô hình kiếm tiền', sub: 'Sữa đa sản phẩm · sữa tươi từ đàn bò', d: 'Doanh thu đến từ đâu, biến nào quyết định biên, mã nào đại diện.', items: [
         {q: 'Mỗi doanh nghiệp kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['sua-05']}]},
     ]},
+    // Bức tranh ngành: 01 Toàn ngành → 02 Giá đầu vào → biên (luồng Đầu vào → Sản xuất → Đầu ra) → Chính sách cuối. Ngày dữ liệu đọc kỳ cuối của chính chuỗi trong sub-tab.
     mt2: {title: 'Bức tranh ngành', subs: [
-      {k: 'all', t: 'Sản lượng & sức mua', d: 'Ngành đang sản xuất nhiều hơn hay ít hơn? Sản lượng sữa tươi, sữa bột và giá hàng ăn.', kpis: ['spk-milk', 'spk-mp'], items: [
-        {q: 'Ngành đang sản xuất nhiều hơn hay ít hơn?', id: 'rf-q-output', meta: '<b>sản lượng sản xuất</b> toàn ngành (NSO), không phải sản lượng bán của doanh nghiệp', take: ['sua-10', 'sua-11']},
+      {k: 'all', t: 'Toàn ngành: sản lượng & sức mua', d: 'Ngành đang sản xuất nhiều hơn hay ít hơn? Sản lượng sữa tươi, sữa bột và giá hàng ăn.', kpis: ['spk-milk', 'spk-mp', 'spk-cpif', 'spk-pe'],
+        asof: () => lastMonth(['milk_output', 'milkpowder_output', 'cpi_food_yoy']), items: [
+        {q: 'Sản lượng sữa tươi đang tăng hay giảm?', id: 'rf-q-output', meta: '<b>sản lượng sản xuất</b> toàn ngành (NSO), không phải sản lượng bán của doanh nghiệp · bảng nhiệt % so cùng kỳ', main: ['sua-10'], more: ['.fsv-heat']},
+        {q: 'Sữa bột, mảng biên cao, có giữ được sản lượng?', id: 'rf-q-powder', meta: 'nghìn tấn · theo tháng (NSO), toàn ngành', take: ['sua-11']},
         {q: 'Sản lượng đi cùng hay ngược giá hàng ăn?', id: 'rf-q-demand', meta: '% so cùng kỳ · sản lượng tự tính, CPI do NSO công bố', take: ['sua-12']}]},
-      {k: 'input', t: 'Giá đầu vào → biên', d: 'Giá sữa bột, đường, thức ăn chăn nuôi đang tác động thế nào lên biên gộp?', kpis: ['spk-wmp'],
-        flow: [['cost', 'Đầu vào', 'Sữa bột, đường, thức ăn'], ['margin', 'Biên', 'Biên gộp VNM, MCM'], ['lag', 'Kiểm cơ chế', 'Độ trễ 2 quý (giả định)']], items: [
+      {k: 'input', t: 'Giá đầu vào → biên', d: 'Giá sữa bột, đường, thức ăn chăn nuôi đang tác động thế nào lên biên gộp?', kpis: ['spk-wmp', 'spk-smp', 'spk-gm-vnm', 'spk-gm-mcm'],
+        asof: () => { const m = lastMonth(['wmp', 'smp', 'corn', 'soymeal']), q = window.COMPANY_QUARTERLY?.quarters?.at(-1); return [m ? 'giá sữa bột T' + Number(m.slice(5, 7)) + '/' + m.slice(0, 4) : '', q ? 'biên gộp ' + q : ''].filter(Boolean).join(' · '); },
+        flow: [['cost', 'Đầu vào', 'Sữa bột nhập, đường, thức ăn đàn bò'], ['prod', 'Sản xuất', 'Sản lượng sữa tươi, sữa bột'], ['margin', 'Đầu ra', 'Biên gộp VNM, MCM'], ['lag', 'Kiểm cơ chế', 'Độ trễ 2 quý (giả định)']], items: [
         {stage: 'cost'},
         {q: 'Giá sữa bột, đường và thức ăn chăn nuôi đang đi hướng nào?', id: 'rf-q-input', meta: 'chỉ số T1/2024 = 100 · giá gốc (USD) ở Chi tiết dữ liệu', take: ['sua-20']},
+        {stage: 'prod'},
+        {link: ['#rf-q-output', 'Toàn ngành › 1.1', 'Sản lượng sữa tươi, sữa bột toàn ngành', 'NSO theo tháng · cầu nội địa và mức chạy máy']},
         {stage: 'margin'},
         {q: 'Biên gộp doanh nghiệp đang mở rộng hay thu hẹp?', id: 'rf-q-gm', meta: '% · BCTC hợp nhất quý từng mã', take: ['sua-21']},
         {stage: 'lag'},
         {q: 'Nếu giá nguyên liệu đi trước biên gộp 2 quý thì sao? (giả định phân tích)', id: 'rf-q-lag', meta: '<b>giả định</b> độ trễ 2 quý · chỉ ghép chuỗi cùng quý quan sát', take: ['sua-22']}]},
-      {k: 'policy', t: 'Chính sách & thuế', d: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí?', items: [
+      {k: 'policy', t: 'Chính sách & thuế', d: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí?', asof: () => lastMilestone('dairyTimeline'), items: [
         {q: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí?', id: 'rf-q-policy', meta: '● đã ban hành · ○ dự thảo · ngày hiệu lực', take: ['sua-52']}]},
     ]},
+    // 28/11/2026 (khung chuẩn Điện/Chăn nuôi): 01 Tài chính ngành = chỉ số cộng gộp BCTC quý (app/dairy-finance.js, window.DAIRY_FIN từ scripts/build_dairy_financials.py)
+    // · 02 Doanh nghiệp niêm yết = từng mã, P/E rổ cuối cùng · 03 Định giá = app/peer-valuation.js gắn vào #of-mt14-valuation.
     mt14: {title: 'Tài chính ngành', subs: [
-      {k: 'sector', t: 'Tài chính ngành', d: 'Định giá rổ sữa, doanh thu và lợi nhuận theo quý từng mã.', kpis: ['spk-pe'], items: [
-        {q: 'Thị trường định giá cổ phiếu sữa ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ "Sữa" VNDirect (VNM)', take: ['sua-03']},
-        {q: 'Doanh thu và lợi nhuận đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã, không cộng (MCM trong hợp nhất VNM)', take: ['sua-06']}]},
-      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Bảng so sánh, bộ lọc mã và kỳ báo cáo; kế hoạch và kết quả 2026.', items: [
+      {k: 'sector', t: 'Tài chính ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của VNM, MCM, IDP, HNM (loại trùng VNM – MCM).',
+        asof: () => finLast('DAIRY_FIN'), items: [{html: () => { const h = document.createElement('div'); h.id = 'sua-fin-root'; h.className = 'sua-fin-host rf-wide'; return h; }}]},
+      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Doanh thu, lợi nhuận từng mã; bảng so sánh, kế hoạch và kết quả 2026; định giá rổ sữa.', asof: () => window.COMPANY_QUARTERLY?.quarters?.at(-1), items: [
+        {q: 'Doanh thu và lợi nhuận đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã, không cộng (MCM trong hợp nhất VNM)', take: ['sua-06']},
         {q: 'Doanh nghiệp nào sinh lời tốt hơn, định giá ra sao?', id: 'rf-q-compare', meta: 'số quý, lũy kế hoặc cả năm theo bộ chọn kỳ', take: ['.financial-comparison']},
-        {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['sua-60']}]},
+        {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['sua-60']},
+        {q: 'Thị trường định giá cổ phiếu sữa ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ "Sữa" VNDirect (VNM)', take: ['sua-03']}]},
+      {k: 'valuation', t: 'Định giá', d: 'P/B so với ROE, biên gộp so với ROE, lợi suất lợi nhuận và bội số dòng tiền giữa các mã sữa.', asof: () => valDate(), items: [
+        {q: 'Mã sữa nào đang rẻ hay đắt so với khả năng sinh lời?', id: 'rf-q-val', meta: 'P/E, P/B theo phiên (VNDirect) · số tài chính TTM từ BCTC hợp nhất quý', after: valHost}]},
     ]},
   },
 };

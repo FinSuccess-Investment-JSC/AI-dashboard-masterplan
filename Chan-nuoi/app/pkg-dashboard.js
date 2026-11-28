@@ -202,6 +202,9 @@ function kpi(k) {
   } else if (k.price) {
     const rs = (window.PLASTIC_PRICES?.series || {})[k.price]?.records || [], l = rs.at(-1);
     if (l) { const p = rs.find(r => r[0] === String(Number(l[0].slice(0, 4)) - 1) + l[0].slice(4)); value = nf(l[1], k.digits ?? 1); unit = k.unit || ''; sub = 'T' + Number(l[0].slice(5)) + '/' + l[0].slice(0, 4) + (k.note ? ' · ' + k.note : ''); delta = p ? signed((l[1] / p[1] - 1) * 100, 1) + '% so cùng kỳ' : ''; spark = rs.slice(-24).map(r => r[1]); }
+  } else if (k.calc) {
+    // 28/11/2026: ô số tính từ dữ liệu trên trang bằng hàm của cấu hình (lũy kế Cục HK, giá theo ngày, số quý…); hàm trả null thì ô giữ "—".
+    const r = k.calc({S, nf, signed, mon, short, yoyAt}) || {}; ({value = '—', unit = '', sub = '', delta = '', spark = []} = r); if (r.color) color = r.color;
   } else if (k.fixed) {
     [value, unit, sub, delta] = k.fixed; spark = k.spark2 || [];
   } else if (k.pe) {

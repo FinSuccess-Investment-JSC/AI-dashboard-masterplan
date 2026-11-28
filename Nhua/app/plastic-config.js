@@ -1,7 +1,8 @@
 /* Nhựa · cấu hình dashboard (26/11/2026, nhóm Xây dựng - Đầu tư công).
    Số thế giới và cơ cấu Việt Nam: Finsuccess tổng hợp từ nguồn gốc ghi ở từng chart (OECD, Plastics Europe, Bloomberg, VPA…).
    Số cập nhật: Hải quan (xuất nhập khẩu 2022 – 10T/2026, biểu 2X/2N), FRED (giá tháng, scripts/build_plastic_prices.py),
-   BCTC quý 9 mã (scripts/update_company_comparison.py rổ 'plastic'). */
+   BCTC quý 9 mã (scripts/update_company_comparison.py rổ 'plastic'); Tài chính ngành › 01: 11 mã cộng gộp
+   (scripts/fetch_plastic_financials.py → scripts/build_plastic_financials.py → data/plastic-financials.js, window.PLASTIC_FIN; 28/11/2026). */
 (() => {
 const C = {navy: '#2938A8', teal: '#59C5C8', plum: '#861C52', gold: '#c29100', grey: '#9aa3b5', red: '#C0272D', ink: '#1D2678', sky: '#4A90D9'};
 const FS = ['Finsuccess tổng hợp', '#rf-q-chain'];
@@ -17,6 +18,11 @@ const CUS = ['Hải quan Việt Nam (biểu xuất khẩu)', 'https://files.cust
 const CUS_N = ['Hải quan Việt Nam (biểu nhập khẩu)', 'https://files.customs.gov.vn/CustomsCMS/TONG_CUC/2026/11/5/2026-t10-2n(vn-sb).pdf'];
 const LAW = k => 'https://thuvienphapluat.vn/page/tim-van-ban.aspx?keyword=' + encodeURIComponent(k);
 const YRS = ['2022', '2023', '2024', '2025', '10T/2026'];
+// "Dữ liệu mới nhất" đầu sub-tab Bức tranh ngành (28/11/2026): đọc quan sát mới nhất của chính dữ liệu trên trang.
+const mlabel = m => 'T' + Number(m.slice(5, 7)) + '/' + m.slice(0, 4);
+const lastPrice = keys => { const S = window.PLASTIC_PRICES?.series || {}, m = keys.map(k => S[k]?.records?.at(-1)?.[0]).filter(Boolean).sort().at(-1); return m ? mlabel(m) : ''; };
+const periodOf = (id, note) => { const c = (window.PKG?.charts || []).find(x => x.id === id), p = c?.categories?.at(-1) || c?.period || ''; const m = /^(\d{1,2})T\/(\d{4})$/.exec(p); return p ? (m ? 'T' + m[1] + '/' + m[2] : p) + (note ? ' · ' + note : '') : ''; };
+const lastMilestone = id => { const t = new Date().toISOString().slice(0, 10), d = ((window.PKG?.charts || []).find(x => x.id === id)?.items || []).map(x => x.d).filter(x => x <= t).sort().at(-1); return d ? d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4) : ''; };
 
 window.PKG = {
   key: 'plastic', prefix: 'nh', label: 'Nhựa',
@@ -121,48 +127,53 @@ window.PKG = {
   ],
   sourceManual: [[/^Chuỗi giá trị ngành nhựa/, 'Finsuccess tổng hợp']],
   topics: {},
-  alias: {mt3: ['mt2', 'world']},
-  section: {world: ['mt2', 'world'], vietnam: ['mt2', 'vn'], price: ['mt2', 'world']},
+  alias: {mt3: ['mt2', 'world'], mt4: ['mt2', 'policy'], mt6: ['mt14', 'listed'], mt9: ['mt14', 'sector']},
+  section: {world: ['mt2', 'world'], vietnam: ['mt2', 'vn'], price: ['mt2', 'world'], policy: ['mt2', 'policy'], finance: ['mt14', 'sector'], listed: ['mt14', 'listed'], companies: ['mt14', 'listed'], valuation: ['mt14', 'valuation']},
+  // 28/11/2026 (khung chuẩn Điện, DASHBOARD_WORKFLOW §42): Tổng quan 00 Bản đồ ngành · 01 Mô hình kinh doanh (.ov-nav);
+  // Bức tranh 01 Nhựa thế giới · 02 Nhựa Việt Nam · 03 Chính sách (sub-tab cuối, tách từ khâu Chính sách của 02), mỗi câu hỏi một chart trả lời chính;
+  // Tài chính 01 Tài chính ngành (số cộng gộp BCTC quý, app/plastic-finance.js) · 02 Doanh nghiệp niêm yết · 03 Định giá (app/peer-valuation.js).
   tree: {
     mt1: {title: 'Tổng quan ngành', subs: [
-      {k: 'map', t: 'Chuỗi giá trị', d: 'Hạt nhựa → nóng chảy, định hình → bao bì, xây dựng, gia dụng, kỹ thuật.', items: [
+      {k: 'map', t: 'Bản đồ ngành', sub: 'Chuỗi giá trị, chi phí, sản lượng', d: 'Hạt nhựa → nóng chảy, định hình → bao bì, xây dựng, gia dụng, kỹ thuật.', items: [
         {q: 'Ngành nhựa đi qua những khâu nào?', id: 'rf-q-chain', take: ['nh-01']},
-        {q: 'Chi phí và sản lượng phân bổ ra sao?', id: 'rf-q-cost', take: ['nh-02', 'nh-03']}]},
-      {k: 'model', t: 'Mô hình kinh doanh', d: 'Doanh nghiệp niêm yết theo mảng và biến quyết định biên.', items: [
+        {q: 'Chi phí và sản lượng dồn vào đâu?', id: 'rf-q-cost', take: ['nh-02', 'nh-03']}]},
+      {k: 'model', t: 'Mô hình kinh doanh', sub: 'Xây dựng · bao bì · kỹ thuật, gia dụng', d: 'Doanh nghiệp niêm yết theo mảng và biến quyết định biên.', items: [
         {q: 'Mỗi nhóm doanh nghiệp kiếm tiền từ đâu?', id: 'rf-q-model', take: ['nh-05']}]},
     ]},
     mt2: {title: 'Bức tranh ngành', subs: [
-      {k: 'world', t: 'Nhựa thế giới', d: 'Giá nguyên liệu, chủng loại hạt nhựa, nhu cầu theo khu vực và theo mảng.', kpis: ['spk-resin', 'spk-brent'],
+      {k: 'world', t: 'Nhựa thế giới', d: 'Giá nguyên liệu, chủng loại hạt nhựa, nhu cầu theo khu vực và theo mảng.', kpis: ['spk-resin', 'spk-brent'], asof: () => lastPrice(['resin_ppi', 'brent', 'henry_hub']),
         flow: [['in', 'Đầu vào', 'Giá hạt nhựa, dầu, khí'], ['use', 'Tiêu thụ', 'Khu vực, mảng'], ['seg', 'Đầu ra', 'Bao bì, xây dựng']], items: [
         {stage: 'in'},
-        {q: 'Giá hạt nhựa đi cùng dầu Brent và khí thiên nhiên thế nào?', id: 'rf-q-price', meta: '% thay đổi so với T1/2007 · theo tháng', take: ['nh-20']},
-        {q: 'Dự báo giá HDPE, PP, PVC đến 2030 và chủng loại hạt nhựa?', id: 'rf-q-fcst', take: ['nh-21', 'nh-22']},
+        {q: 'Giá hạt nhựa có đang đi theo giá dầu và khí?', id: 'rf-q-price', meta: '% thay đổi so với T1/2007 · theo tháng', take: ['nh-20']},
+        {q: 'Giá HDPE, PP, PVC được dự báo đi đâu đến 2030?', id: 'rf-q-fcst', meta: 'USD/tấn · Bloomberg', take: ['nh-21']},
+        {q: 'Hạt nhựa nào chiếm phần lớn sản lượng thế giới?', id: 'rf-q-resintype', take: ['nh-22']},
         {stage: 'use'},
         {q: 'Khu vực nào tiêu thụ nhiều, khu vực nào tăng nhanh?', id: 'rf-q-region', take: ['nh-23', 'nh-24']},
-        {q: 'Nhựa dùng vào đâu?', id: 'rf-q-use', take: ['nh-25', 'nh-28']},
+        {q: 'Nhựa dùng vào đâu, tái chế được bao nhiêu?', id: 'rf-q-use', take: ['nh-25', 'nh-28']},
         {stage: 'seg'},
-        {q: 'Bao bì: nhu cầu theo khu vực và theo ứng dụng?', id: 'rf-q-pack', take: ['nh-26', 'nh-27']},
-        {q: 'Xây dựng: khu vực nào tăng nhanh?', id: 'rf-q-build', take: ['nh-29']}]},
-      {k: 'vn', t: 'Nhựa Việt Nam', d: 'Nguồn hạt nhựa, máy móc, sản phẩm, xuất khẩu và chính sách.', kpis: ['spk-ex', 'spk-im'],
-        flow: [['in', 'Đầu vào', 'Hạt nhựa, máy móc'], ['out', 'Đầu ra', 'Sản phẩm, thị phần'], ['ex', 'Xuất khẩu', 'Sản phẩm, thị trường'], ['pol', 'Chính sách', 'Mốc hiệu lực']], items: [
+        {q: 'Nhu cầu bao bì dồn vào khu vực và ứng dụng nào?', id: 'rf-q-pack', take: ['nh-26', 'nh-27']},
+        {q: 'Xây dựng ở khu vực nào tăng nhanh nhất?', id: 'rf-q-build', take: ['nh-29']}]},
+      {k: 'vn', t: 'Nhựa Việt Nam', d: 'Nguồn hạt nhựa, máy móc, sản phẩm và xuất khẩu.', kpis: ['spk-ex', 'spk-im'], asof: () => periodOf('chNhExport', 'Hải quan sơ bộ'),
+        flow: [['in', 'Đầu vào', 'Hạt nhựa, máy móc'], ['out', 'Sản xuất', 'Sản phẩm, thị phần'], ['ex', 'Đầu ra', 'Xuất khẩu, thị trường']], items: [
         {stage: 'in'},
-        {q: 'Hạt nhựa đến từ đâu?', id: 'rf-q-resin', meta: 'nghìn tấn · Hải quan sơ bộ', take: ['nh-31', 'nh-30']},
-        {q: 'Nguồn cung trong nước và máy móc?', id: 'rf-q-supply', take: ['nh-32', 'nh-33']},
+        {q: 'Việt Nam phụ thuộc hạt nhựa nhập khẩu đến mức nào?', id: 'rf-q-resin', meta: 'nghìn tấn · Hải quan sơ bộ', take: ['nh-31', 'nh-30']},
+        {q: 'Nguồn hạt nhựa trong nước và máy móc đến từ đâu?', id: 'rf-q-supply', take: ['nh-32', 'nh-33']},
         {stage: 'out'},
-        {q: 'Ống nhựa và bao bì: ai nắm thị trường?', id: 'rf-q-pipe', take: ['nh-36', 'nh-38']},
+        {q: 'Ai nắm thị trường ống nhựa và bao bì?', id: 'rf-q-pipe', take: ['nh-36', 'nh-38']},
         {stage: 'ex'},
-        {q: 'Xuất nhập khẩu sản phẩm nhựa đến 10T/2026?', id: 'rf-q-export', meta: 'triệu USD · Hải quan sơ bộ', take: ['nh-34', 'nh-35']},
-        {q: 'Túi nhựa và sàn nhựa xuất khẩu?', id: 'rf-q-bag', take: ['nh-37', 'nh-39']},
-        {stage: 'pol'},
+        {q: 'Xuất khẩu sản phẩm nhựa đang tăng hay giảm?', id: 'rf-q-export', meta: 'triệu USD · Hải quan sơ bộ', take: ['nh-34', 'nh-35']},
+        {q: 'Túi nhựa và sàn nhựa xuất khẩu dựa vào thị trường nào?', id: 'rf-q-bag', take: ['nh-37', 'nh-39']}]},
+      {k: 'policy', t: 'Chính sách', d: 'Văn bản nào đổi chi phí nguyên liệu, nghĩa vụ tái chế hoặc sản lượng bao bì?', asofLabel: 'Mốc hiệu lực gần nhất', asof: () => lastMilestone('nhTimeline'), items: [
         {q: 'Mốc nào đổi chi phí hoặc sản lượng?', id: 'rf-q-policy', meta: '● đã ban hành · ○ dự thảo · ngày hiệu lực', take: ['nh-52']}]},
     ]},
     mt14: {title: 'Tài chính ngành', subs: [
-      {k: 'sector', t: 'Tài chính ngành', d: 'Doanh thu, lợi nhuận và biên theo quý từng mã.', items: [
-        {q: 'Doanh thu và lợi nhuận nhựa xây dựng?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã', take: ['nh-40']},
-        {q: 'Doanh thu và lợi nhuận nhựa bao bì, kỹ thuật, gia dụng?', id: 'rf-q-rev2', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã', take: ['nh-41']},
-        {q: 'Biên gộp, biên ròng theo quý?', id: 'rf-q-gm', meta: '% · BCTC hợp nhất quý', take: ['nh-42']}]},
-      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Bảng so sánh, bộ lọc mã và kỳ báo cáo.', items: [
-        {q: 'Doanh nghiệp nào sinh lời tốt hơn, định giá ra sao?', id: 'rf-q-compare', meta: 'số quý, lũy kế hoặc cả năm theo bộ chọn kỳ', take: ['.financial-comparison']}]},
+      {k: 'sector', t: 'Tài chính ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của 11 doanh nghiệp nhựa niêm yết.', items: [
+        {html: () => { const h = document.createElement('div'); h.className = 'nh-fin-host rf-wide'; h.id = 'nh-fin-root'; return h; }}]},
+      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Bảng so sánh, doanh thu, lợi nhuận và biên theo quý từng mã.', items: [
+        {q: 'Doanh nghiệp nào sinh lời tốt hơn, định giá ra sao?', id: 'rf-q-compare', meta: 'số quý, lũy kế hoặc cả năm theo bộ chọn kỳ', take: ['.financial-comparison']},
+        {q: 'Doanh thu, lợi nhuận nhựa xây dựng đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã', take: ['nh-40']},
+        {q: 'Doanh thu, lợi nhuận nhựa bao bì, kỹ thuật, gia dụng đi thế nào?', id: 'rf-q-rev2', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã', take: ['nh-41']},
+        {q: 'Biên gộp từng mã đang mở rộng hay thu hẹp?', id: 'rf-q-gm', meta: '% · BCTC hợp nhất quý', take: ['nh-42']}]},
     ]},
   },
 };

@@ -1,0 +1,673 @@
+{
+ "updated_at": "2026-11-28",
+ "categories": {
+  "sales": "Doanh số ô tô",
+  "moto": "Xe máy",
+  "ev": "Xe điện & VinFast",
+  "supply": "Lắp ráp & nhập khẩu",
+  "companies": "Doanh nghiệp & đại lý",
+  "policy": "Thuế, phí & chính sách"
+ },
+ "articles": [
+  {
+   "id": "a1",
+   "source_name": "VOV",
+   "title": "Doanh số VinFast tháng 9/2026 tăng trưởng ấn tượng với hơn 23.000 xe bàn giao",
+   "url": "https://vov.vn/o-to-xe-may/doanh-so-vinfast-thang-92026-tang-truong-an-tuong-voi-hon-23000-xe-ban-giao-post1340347.vov",
+   "published_at": "2026-10-11"
+  },
+  {
+   "id": "a2",
+   "source_name": "VietnamPlus",
+   "title": "Doanh số bán ôtô tại Việt Nam tăng 38%, xe hybrid tăng tốc",
+   "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+   "published_at": "2026-10-09"
+  },
+  {
+   "id": "a3",
+   "source_name": "VietnamPlus",
+   "title": "Doanh số xe máy Việt Nam vượt 2 triệu chiếc, xe xăng vẫn tăng trưởng",
+   "url": "https://www.vietnamplus.vn/doanh-so-xe-may-viet-nam-vuot-2-trieu-chiec-xe-xang-van-tang-truong-post1141075.vnp",
+   "published_at": "2026-10-09"
+  },
+  {
+   "id": "a4",
+   "source_name": "Nhà Đầu tư",
+   "title": "Thị trường ô tô tăng tốc, doanh nghiệp nào hưởng lợi?",
+   "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+   "published_at": "2026-08-10"
+  },
+  {
+   "id": "a5",
+   "source_name": "VietnamPlus",
+   "title": "Thị trường ôtô \"giảm tốc\" trong tháng 10, các hãng tăng ưu đãi cuối năm",
+   "url": "https://www.vietnamplus.vn/thi-truong-oto-giam-toc-trong-thang-10-cac-hang-tang-uu-dai-cuoi-nam-post1147700.vnp",
+   "published_at": "2026-11-11"
+  },
+  {
+   "id": "a6",
+   "source_name": "Nhà Đầu tư",
+   "title": "Cuộc đua \"về đích\" của doanh nghiệp ô tô",
+   "url": "https://nhadautu.vn/cuoc-dua-ve-dich-cua-doanh-nghiep-o-to-d108907.html",
+   "published_at": "2026-11-20"
+  },
+  {
+   "id": "a7",
+   "source_name": "VOV",
+   "title": "Người Việt Nam mua gần 7.500 xe máy mỗi ngày",
+   "url": "https://vov.vn/o-to-xe-may/nguoi-viet-nam-mua-gan-7500-xe-may-moi-ngay-post1339729.vov",
+   "published_at": "2026-10-09"
+  },
+  {
+   "id": "a8",
+   "source_name": "Mekong ASEAN",
+   "title": "Ford Territory đạt cột mốc 40.000 xe bán ra tại Việt Nam",
+   "url": "https://mekongasean.vn/ford-territory-dat-cot-moc-40000-xe-ban-ra-tai-viet-nam-62347.html",
+   "published_at": "2026-11-27"
+  },
+  {
+   "id": "a9",
+   "source_name": "Mekong ASEAN",
+   "title": "VinFast bàn giao hơn 70.000 ô tô điện trong một quý, thu về 30.340 tỷ đồng",
+   "url": "https://mekongasean.vn/vinfast-ban-giao-hon-70000-o-to-dien-trong-mot-quy-thu-ve-30340-ty-dong-60839.html",
+   "published_at": "2026-10-19"
+  },
+  {
+   "id": "a10",
+   "source_name": "Mekong ASEAN",
+   "title": "VinFast bán gần 660 ô tô điện mỗi ngày trong 10 tháng đầu năm",
+   "url": "https://mekongasean.vn/vinfast-ban-gan-660-o-to-dien-moi-ngay-trong-10-thang-dau-nam-61722.html",
+   "published_at": "2026-11-11"
+  },
+  {
+   "id": "a11",
+   "source_name": "VOV",
+   "title": "Xe máy điện chiếm gần 28% doanh số: Thị trường Việt phân chia lại thị phần?",
+   "url": "https://vov.vn/o-to-xe-may/xe-may-dien-chiem-gan-28-doanh-so-thi-truong-viet-phan-chia-lai-thi-phan-post1327209.vov",
+   "published_at": "2026-08-29"
+  },
+  {
+   "id": "a12",
+   "source_name": "VietnamPlus",
+   "title": "Xe máy xăng vẫn hút khách tại Việt Nam trong quý III/2026",
+   "url": "https://www.vietnamplus.vn/xe-may-xang-tiep-tuc-hut-khach-tai-thi-truong-viet-nam-post1141689.vnp",
+   "published_at": "2026-10-13"
+  },
+  {
+   "id": "a13",
+   "source_name": "VietnamPlus",
+   "title": "Hà Nội xây dựng phương án hỗ trợ người thu nhập thấp đổi xe máy cũ",
+   "url": "https://www.vietnamplus.vn/ha-noi-xay-dung-phuong-an-ho-tro-nguoi-thu-nhap-thap-doi-xe-may-cu-post1126047.vnp",
+   "published_at": "2026-07-24"
+  },
+  {
+   "id": "a14",
+   "source_name": "VietnamPlus",
+   "title": "Chính sách ưu đãi thuế sản xuất ôtô của Việt Nam tạo cơ hội cho Thái Lan",
+   "url": "https://www.vietnamplus.vn/chinh-sach-uu-dai-thue-san-xuat-oto-cua-viet-nam-tao-co-hoi-cho-thai-lan-post1144037.vnp",
+   "published_at": "2026-10-24"
+  },
+  {
+   "id": "a15",
+   "source_name": "VietnamPlus",
+   "title": "Thị trường ôtô Việt Nam hướng tới mốc doanh số cả năm 700.000 xe",
+   "url": "https://www.vietnamplus.vn/thi-truong-oto-viet-nam-huong-toi-moc-doanh-so-ca-nam-700000-xe-post1141515.vnp",
+   "published_at": "2026-10-12"
+  },
+  {
+   "id": "a16",
+   "source_name": "VietnamPlus",
+   "title": "Đà Nẵng có thêm Khu liên hợp sản xuất lắp ráp ôtô sản lượng 150.000 xe mỗi năm",
+   "url": "https://www.vietnamplus.vn/da-nang-co-them-khu-lien-hop-san-xuat-lap-rap-oto-san-luong-150000-xe-moi-nam-post1150898.vnp",
+   "published_at": "2026-11-27"
+  },
+  {
+   "id": "a17",
+   "source_name": "Cục Hải quan",
+   "title": "Nhập khẩu hàng hóa theo tháng – Tháng 10 năm 2026 (sơ bộ, biểu 016.T/BCB-TC)",
+   "url": "https://files.customs.gov.vn/CustomsCMS/TONG_CUC/2026/11/5/2026-t10-2n(vn-sb).pdf",
+   "published_at": "2026-11-04"
+  },
+  {
+   "id": "a18",
+   "source_name": "Mekong ASEAN",
+   "title": "Haxaco dự chi 45 tỷ đồng mua lại cổ phiếu",
+   "url": "https://mekongasean.vn/haxaco-du-chi-45-ty-dong-mua-lai-co-phieu-62195.html",
+   "published_at": "2026-11-24"
+  },
+  {
+   "id": "a19",
+   "source_name": "Luật sư Việt Nam (LSVN)",
+   "title": "Ô tô điện được áp dụng lệ phí trước bạ lần đầu 0% đến hết năm 2030",
+   "url": "https://lsvn.vn/o-to-dien-duoc-ap-dung-le-phi-truoc-ba-lan-dau-0-den-het-nam-2030-a173952.html",
+   "published_at": "2026-06-09"
+  },
+  {
+   "id": "a20",
+   "source_name": "VOV",
+   "title": "Thị trường ô tô tháng 9/2026: Doanh số khởi sắc mạnh mẽ",
+   "url": "https://vov.vn/o-to-xe-may/thi-truong-o-to-thang-92026-doanh-so-khoi-sac-manh-me-post1339924.vov",
+   "published_at": "2026-10-11"
+  }
+ ],
+ "events": [
+  {
+   "id": "ev1",
+   "title": "Doanh số VAMA tháng 10 giảm 17,5% còn 28.957 xe; 10 tháng tăng 7%",
+   "summary": "Thành viên VAMA bán 28.957 xe trong tháng 10/2026, giảm khoảng 17,5% so với tháng 9; lũy kế 10 tháng tăng 7%, chậm lại từ mức 12% sau 9 tháng. Xe lắp ráp trong nước 12.753 xe (-7%), xe nhập khẩu nguyên chiếc 16.204 xe (-24%).",
+   "new_information": "Các hãng tăng ưu đãi cuối năm: Toyota giảm 41–75 triệu đồng tùy mẫu, Honda BR-V tổng ưu đãi tới 142 triệu đồng.",
+   "key_figures": [
+    "VAMA tháng 10/2026: 28.957 xe, -17,5% so với tháng 9",
+    "Lũy kế 10 tháng: +7% so với cùng kỳ",
+    "Lắp ráp: 12.753 xe (-7%); nhập khẩu: 16.204 xe (-24%)",
+    "Toyota: 6.132 xe (-12%)"
+   ],
+   "companies": [
+    "Toyota",
+    "Hyundai",
+    "Kia"
+   ],
+   "segments": [
+    "Ô tô"
+   ],
+   "category": "sales",
+   "topic_ids": [
+    "market"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a5"
+   ],
+   "impact": "Biến số liên quan: doanh số ô tô, mức chiết khấu, biên gộp đại lý."
+  },
+  {
+   "id": "ev2",
+   "title": "VAMA tháng 9 đạt 35.094 xe, tăng 38% so với tháng 8; hybrid 9 tháng tăng 64%",
+   "summary": "Tháng 9/2026 thành viên VAMA bán 35.094 xe, tăng 38% so với tháng trước và 14% so với cùng kỳ; lũy kế 9 tháng 282.029 xe (+12%). Xe nhập khẩu 21.310 xe, lắp ráp 13.784 xe; xe hybrid 9 tháng 16.057 xe (+64%).",
+   "new_information": "Toyota dẫn đầu với 6.935 xe; Yaris Cross là mẫu bán chạy nhất (1.799 xe).",
+   "key_figures": [
+    "VAMA tháng 9/2026: 35.094 xe, +38% so với tháng 8, +14% so với cùng kỳ",
+    "Lũy kế 9 tháng: 282.029 xe, +12%",
+    "Hybrid 9 tháng: 16.057 xe, +64%",
+    "Nhập khẩu tháng 9: 21.310 xe; lắp ráp: 13.784 xe"
+   ],
+   "companies": [
+    "Toyota"
+   ],
+   "segments": [
+    "Ô tô"
+   ],
+   "category": "sales",
+   "topic_ids": [
+    "market"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a20",
+    "a2"
+   ],
+   "impact": "Biến số liên quan: doanh số ô tô, cơ cấu xe nhập khẩu – lắp ráp."
+  },
+  {
+   "id": "ev3",
+   "title": "Thị trường ô tô 9 tháng 495.138 xe, hướng tới 700.000 xe cả năm",
+   "summary": "Cộng VAMA, Hyundai Thành Công và VinFast, thị trường 9 tháng 2026 đạt 495.138 xe, tăng 20,2%. VinFast 177.697 xe (đã vượt cả năm 2025), Hyundai Thành Công 35.412 xe; kịch bản cả năm có thể chạm 700.000 xe (năm 2025: 604.134 xe).",
+   "new_information": "Doanh số 9 tháng của VinFast đã vượt tổng cả năm 2025 của hãng (175.099 xe).",
+   "key_figures": [
+    "Toàn thị trường 9 tháng: 495.138 xe, +20,2%",
+    "VinFast 9 tháng: 177.697 xe (cả năm 2025: 175.099 xe)",
+    "Hyundai Thành Công 9 tháng: 35.412 xe",
+    "Năm 2025: 604.134 xe"
+   ],
+   "companies": [
+    "VinFast",
+    "Hyundai"
+   ],
+   "segments": [
+    "Ô tô",
+    "Xe điện"
+   ],
+   "category": "sales",
+   "topic_ids": [
+    "market",
+    "ev-shift"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a15"
+   ],
+   "impact": "Biến số liên quan: quy mô thị trường ô tô, thị phần xe điện."
+  },
+  {
+   "id": "ev4",
+   "title": "VinFast bàn giao 22.896 ô tô tháng 10, 10 tháng vượt 200.000 xe",
+   "summary": "VinFast bàn giao 22.896 ô tô điện tại Việt Nam trong tháng 10/2026, giảm khoảng 3,1% so với tháng 9; lũy kế 10 tháng 200.593 xe, bình quân gần 660 xe/ngày. VF 3 dẫn đầu với 46.232 xe sau 10 tháng.",
+   "new_information": "Cùng tháng, toàn bộ thành viên VAMA bán 28.957 xe.",
+   "key_figures": [
+    "VinFast tháng 10/2026: 22.896 xe",
+    "Lũy kế 10 tháng: 200.593 xe (~660 xe/ngày)",
+    "VF 3 10 tháng: 46.232 xe; Limo Green: 42.975 xe"
+   ],
+   "companies": [
+    "VinFast"
+   ],
+   "segments": [
+    "Xe điện"
+   ],
+   "category": "ev",
+   "topic_ids": [
+    "ev-shift"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a10",
+    "a5"
+   ],
+   "impact": "Biến số liên quan: thị phần xe điện, doanh thu đại lý VinFast (HAX)."
+  },
+  {
+   "id": "ev5",
+   "title": "VinFast tháng 9 bàn giao 23.624 xe, tăng 17% so với tháng 8",
+   "summary": "Tháng 9/2026 VinFast bàn giao 23.624 ô tô điện tại Việt Nam, tăng 17% so với tháng 8; lũy kế 9 tháng 177.697 xe. VF 3 (6.474 xe) và Limo Green (5.027 xe) bán nhiều nhất.",
+   "new_information": "VF 5/Herio Green lũy kế 30.420 xe, VF 6 19.026 xe sau 9 tháng.",
+   "key_figures": [
+    "VinFast tháng 9/2026: 23.624 xe, +17%",
+    "Lũy kế 9 tháng: 177.697 xe",
+    "VF 3: 6.474 xe; Limo Green: 5.027 xe"
+   ],
+   "companies": [
+    "VinFast"
+   ],
+   "segments": [
+    "Xe điện"
+   ],
+   "category": "ev",
+   "topic_ids": [
+    "ev-shift"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a1"
+   ],
+   "impact": "Biến số liên quan: thị phần xe điện, doanh số xe xăng cùng phân khúc."
+  },
+  {
+   "id": "ev6",
+   "title": "VinFast quý II: 70.085 ô tô, 286.039 xe máy điện, doanh thu 30.340 tỷ đồng",
+   "summary": "Báo cáo quý II/2026 của VinFast: bàn giao toàn cầu 70.085 ô tô điện (+96% so với cùng kỳ) và 286.039 xe máy, xe đạp điện (+311%). Doanh thu 30.340,9 tỷ đồng (+85,5%); thị phần ô tô tại Việt Nam khoảng 38% đến 30/6/2026.",
+   "new_information": "Thị trường quốc tế chỉ đóng góp khoảng 11% lượng ô tô bàn giao.",
+   "key_figures": [
+    "Ô tô điện bàn giao Q2/2026: 70.085 xe, +96%",
+    "Xe máy, xe đạp điện Q2/2026: 286.039 xe, +311%",
+    "Doanh thu Q2/2026: 30.340,9 tỷ đồng, +85,5%",
+    "Thị phần ô tô Việt Nam: khoảng 38%"
+   ],
+   "companies": [
+    "VinFast"
+   ],
+   "segments": [
+    "Xe điện",
+    "Xe máy"
+   ],
+   "category": "ev",
+   "topic_ids": [
+    "ev-shift",
+    "emoto"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a9"
+   ],
+   "impact": "Biến số liên quan: thị phần xe điện ô tô và xe máy."
+  },
+  {
+   "id": "ev7",
+   "title": "Xe máy VAMM quý III đạt 686.661 xe, tăng 10,4%; 9 tháng vượt 2 triệu xe",
+   "summary": "Thành viên VAMM bán 686.661 xe máy trong quý III/2026 (+10,4%), lũy kế 9 tháng 2.054.213 xe. Honda Việt Nam chiếm khoảng 86% nhóm VAMM, riêng tháng 9 bán 210.983 xe (+28,8%).",
+   "new_information": "Danh mục của các hãng VAMM vẫn chủ yếu là xe xăng.",
+   "key_figures": [
+    "VAMM quý III/2026: 686.661 xe, +10,4%",
+    "VAMM 9 tháng: 2.054.213 xe",
+    "Honda tháng 9/2026: 210.983 xe, +28,8%",
+    "Bình quân: gần 7.500 xe/ngày"
+   ],
+   "companies": [
+    "Honda",
+    "Yamaha"
+   ],
+   "segments": [
+    "Xe máy"
+   ],
+   "category": "moto",
+   "topic_ids": [
+    "emoto"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a3",
+    "a7",
+    "a12"
+   ],
+   "impact": "Biến số liên quan: doanh số xe máy xăng, thị phần xe máy điện."
+  },
+  {
+   "id": "ev8",
+   "title": "Xe máy điện chiếm 27,7% doanh số xe hai bánh 7 tháng",
+   "summary": "Theo số liệu MotorcyclesData dẫn trong bài, 7 tháng 2026 Việt Nam bán gần 514.000 xe máy điện (+97,2%), chiếm 27,7% tổng doanh số xe hai bánh khoảng 1,86 triệu xe. VinFast bán 406.453 xe máy điện năm 2025 (+473%).",
+   "new_information": "Số liệu MotorcyclesData gồm cả hãng ngoài VAMM, nên khác phạm vi với số VAMM chỉ gồm hội viên.",
+   "key_figures": [
+    "Xe máy điện 7 tháng 2026: gần 514.000 xe, +97,2%",
+    "Tỷ trọng: 27,7% doanh số xe hai bánh",
+    "Tổng thị trường 7 tháng: khoảng 1,86 triệu xe, +19,6%",
+    "VinFast 2025: 406.453 xe máy điện"
+   ],
+   "companies": [
+    "VinFast",
+    "Honda"
+   ],
+   "segments": [
+    "Xe máy",
+    "Xe điện"
+   ],
+   "category": "moto",
+   "topic_ids": [
+    "emoto"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a11"
+   ],
+   "impact": "Biến số liên quan: thị phần xe máy điện, doanh số xe máy xăng."
+  },
+  {
+   "id": "ev9",
+   "title": "Hà Nội lập phương án hỗ trợ đổi xe máy cũ, miễn phí kiểm định khí thải lần đầu",
+   "summary": "Hà Nội giao Sở Xây dựng xây dựng phương án hỗ trợ người thu nhập thấp thay xe đã dùng nhiều năm, có nguy cơ ô nhiễm cao, và bố trí kinh phí miễn phí kiểm định khí thải lần đầu cho xe máy, theo Quyết định 13/2026/QĐ-TTg. Vùng phát thải thấp thí điểm từ 1/7 ở khu vực trung tâm.",
+   "new_information": "Bài viết không nêu mức hỗ trợ và số xe áp dụng.",
+   "key_figures": [
+    "Văn bản: Công văn 3676/UBND-NNMT, thực hiện Quyết định 13/2026/QĐ-TTg (2/4/2026)",
+    "Vùng phát thải thấp: thí điểm từ 1/7 tại khu vực trung tâm"
+   ],
+   "companies": [],
+   "segments": [
+    "Xe máy"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "emoto"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a13"
+   ],
+   "impact": "Biến số liên quan: nhu cầu thay xe máy cũ, doanh số xe máy điện tại Hà Nội."
+  },
+  {
+   "id": "ev10",
+   "title": "Nghị định 202/2026: lệ phí trước bạ 0% cho ô tô điện đến hết 2030",
+   "summary": "Nghị định 202/2026/NĐ-CP (ban hành 8/6) giữ lệ phí trước bạ lần đầu 0% với ô tô điện chạy pin đăng ký từ 01/3/2027 đến hết 31/12/2030, thay Nghị định 51/2025/NĐ-CP (0% đến hết tháng 2/2027).",
+   "new_information": "Ưu đãi lệ phí trước bạ cho ô tô điện được nối liền, không có khoảng trống sau tháng 2/2027.",
+   "key_figures": [
+    "Lệ phí trước bạ ô tô điện pin: 0% từ 01/3/2027 đến 31/12/2030",
+    "Hiệu lực: 01/3/2027"
+   ],
+   "companies": [
+    "VinFast"
+   ],
+   "segments": [
+    "Xe điện"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "ev-shift"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a19"
+   ],
+   "impact": "Biến số liên quan: giá lăn bánh ô tô điện so với xe xăng."
+  },
+  {
+   "id": "ev11",
+   "title": "Đề xuất gia hạn ưu đãi thuế sản xuất, lắp ráp ô tô đến 2032",
+   "summary": "Bộ Tài chính đề xuất sửa Nghị định 26/2023/NĐ-CP, gia hạn chương trình ưu đãi thuế sản xuất, lắp ráp ô tô thêm 5 năm đến 2032; linh kiện nhập khẩu để sản xuất xe xuất khẩu hưởng thuế nhập khẩu 0%. Việt Nam dự kiến nâng sản lượng tối thiểu và siết tiêu chuẩn khí thải.",
+   "new_information": "Đây là đề xuất, chưa được thông qua; bài dẫn báo cáo của Trung tâm Thương mại Thái Lan tại TP.HCM.",
+   "key_figures": [
+    "Gia hạn đề xuất: thêm 5 năm, đến 2032",
+    "Thuế nhập khẩu linh kiện để sản xuất xe xuất khẩu: 0%"
+   ],
+   "companies": [],
+   "segments": [
+    "Lắp ráp & nhập khẩu"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "assembly"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a14"
+   ],
+   "impact": "Biến số liên quan: chi phí linh kiện của nhà lắp ráp trong nước."
+  },
+  {
+   "id": "ev12",
+   "title": "Nhập khẩu ô tô nguyên chiếc 10 tháng 212.339 chiếc, 4,9 tỷ USD",
+   "summary": "Số liệu sơ bộ của Cục Hải quan: 10 tháng 2026 nhập 212.339 ô tô nguyên chiếc, trị giá 4,90 tỷ USD, tăng 22,9% về lượng và 26,6% về trị giá. Linh kiện, phụ tùng ô tô nhập 6,29 tỷ USD (+35,1%).",
+   "new_information": "Riêng tháng 10 nhập 19.187 chiếc, giảm 24,1% so với tháng 9.",
+   "key_figures": [
+    "Ô tô nguyên chiếc 10 tháng: 212.339 chiếc, 4.896.429.305 USD",
+    "So với cùng kỳ: lượng +22,9%, trị giá +26,6%",
+    "Tháng 10/2026: 19.187 chiếc, -24,1% so với tháng trước",
+    "Linh kiện, phụ tùng ô tô 10 tháng: 6.290.185.885 USD, +35,1%"
+   ],
+   "companies": [],
+   "segments": [
+    "Lắp ráp & nhập khẩu"
+   ],
+   "category": "supply",
+   "topic_ids": [
+    "assembly",
+    "market"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a17"
+   ],
+   "impact": "Biến số liên quan: tỷ trọng xe nhập khẩu, nguồn cung xe lắp ráp trong nước."
+  },
+  {
+   "id": "ev13",
+   "title": "NewCity khởi công tổ hợp lắp ráp ô tô 150.000 xe/năm tại Đà Nẵng",
+   "summary": "Sáng 27/11/2026, Tập đoàn Tân Thành Đô (NewCity Group) khởi công khu liên hợp sản xuất lắp ráp ô tô tại cụm công nghiệp Hòa Liên, Đà Nẵng: vốn 400 triệu USD, 58,42 ha, sản lượng dự kiến 150.000 xe/năm.",
+   "new_information": "Xe đầu tiên dự kiến xuất xưởng quý 4/2028, tỷ lệ nội địa hóa mục tiêu trên 60%.",
+   "key_figures": [
+    "Tổng vốn: 400 triệu USD",
+    "Diện tích: 58,42 ha",
+    "Sản lượng dự kiến: 150.000 xe/năm",
+    "Xe đầu tiên: quý 4/2028"
+   ],
+   "companies": [],
+   "segments": [
+    "Lắp ráp & nhập khẩu"
+   ],
+   "category": "supply",
+   "topic_ids": [
+    "assembly"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a16"
+   ],
+   "impact": "Biến số liên quan: công suất lắp ráp trong nước.",
+   "event_date": "2026-11-27"
+  },
+  {
+   "id": "ev14",
+   "title": "Đại lý ô tô quý III: HAX có lãi trở lại, Savico giảm 62,5%",
+   "summary": "Quý III/2026 Haxaco đạt doanh thu gần 1.392 tỷ đồng, lãi sau thuế 3,55 tỷ đồng (cùng kỳ lỗ gần 25,8 tỷ đồng). Savico doanh thu khoảng 6.074 tỷ đồng (-26,1%), lãi 129 tỷ đồng (-62,5%); Tasco lãi gần 138 tỷ đồng (-~72%).",
+   "new_information": "Haxaco cuối tháng 9 tồn kho hơn 2.117 tỷ đồng, vay ngắn hạn khoảng 1.640 tỷ đồng.",
+   "key_figures": [
+    "HAX Q3/2026: doanh thu gần 1.392 tỷ đồng, LNST 3,55 tỷ đồng",
+    "SVC Q3/2026: doanh thu ~6.074 tỷ đồng (-26,1%), LNST 129 tỷ đồng (-62,5%)",
+    "SVC 9 tháng: LNST ~236 tỷ đồng, -52%",
+    "HUT Q3/2026: LNST gần 138 tỷ đồng"
+   ],
+   "companies": [
+    "HAX",
+    "SVC",
+    "HUT"
+   ],
+   "segments": [
+    "Đại lý"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "dealers",
+    "ev-shift"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a6"
+   ],
+   "impact": "Biến số liên quan: biên gộp đại lý, tồn kho, chi phí lãi vay."
+  },
+  {
+   "id": "ev15",
+   "title": "Haxaco mua lại tối đa 4,5 triệu cổ phiếu; 9 tháng mới đạt 28,5% kế hoạch lợi nhuận",
+   "summary": "Haxaco dự chi tối đa 45 tỷ đồng mua lại 4,5 triệu cổ phiếu (khoảng 4,2% lưu hành) với giá tối đa 10.000 đồng/cổ phiếu để giảm vốn. 9 tháng 2026 doanh thu thuần hơn 4.048 tỷ đồng (+29%), lợi nhuận trước thuế hơn 57 tỷ đồng.",
+   "new_information": "Tương Lai Việt (phân phối, dịch vụ VinFast) là công ty con của Haxaco từ tháng 3/2026; kế hoạch LNTT năm 200 tỷ đồng.",
+   "key_figures": [
+    "Mua lại: 4,5 triệu cổ phiếu (~4,2%), tối đa 45 tỷ đồng",
+    "Doanh thu 9 tháng: hơn 4.048 tỷ đồng, +29%",
+    "LNTT 9 tháng: hơn 57 tỷ đồng (cùng kỳ 16 tỷ đồng)",
+    "Hoàn thành kế hoạch LNTT: khoảng 28,5%"
+   ],
+   "companies": [
+    "HAX"
+   ],
+   "segments": [
+    "Đại lý",
+    "Xe điện"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "dealers",
+    "ev-shift"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a18"
+   ],
+   "impact": "Biến số liên quan: lợi nhuận đại lý VinFast, số cổ phiếu lưu hành HAX."
+  },
+  {
+   "id": "ev16",
+   "title": "Nửa đầu 2026: thị trường ô tô 328.818 xe, HAX doanh thu quý II tăng 51,5%",
+   "summary": "Cộng VAMA, VinFast và Hyundai Thành Công, nửa đầu 2026 bán 328.818 ô tô (+29,3%), trong đó VinFast 115.916 xe. Haxaco quý II doanh thu khoảng 1.559 tỷ đồng (+51,5%); Savico lãi ròng nửa năm 103,5 tỷ đồng (-30%).",
+   "new_information": "VIRAC dự báo doanh số cả năm 2026 tăng 10–15%.",
+   "key_figures": [
+    "Toàn thị trường 6 tháng: 328.818 xe, +29,3%",
+    "VinFast 6 tháng: 115.916 xe",
+    "HAX Q2/2026: doanh thu ~1.559 tỷ đồng, +51,5%",
+    "SVC 6 tháng: lãi ròng 103,5 tỷ đồng, -30%"
+   ],
+   "companies": [
+    "HAX",
+    "SVC",
+    "VinFast"
+   ],
+   "segments": [
+    "Đại lý",
+    "Ô tô"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "dealers"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a4"
+   ],
+   "impact": "Biến số liên quan: doanh thu đại lý theo hãng xe."
+  },
+  {
+   "id": "ev17",
+   "title": "Ford Territory đạt 40.000 xe bán ra tại Việt Nam",
+   "summary": "Ford Territory đạt mốc 40.000 xe bán ra từ khi mở bán tháng 11/2022, trong đó hơn 10.000 xe từ đầu năm 2026. Bảo hành tiêu chuẩn 5 năm hoặc 150.000 km áp dụng từ 1/7/2026.",
+   "new_information": "Theo VAMA, Ford bán 2.561 xe trong tháng 10, giảm 32% so với tháng 9.",
+   "key_figures": [
+    "Lũy kế Territory: 40.000 xe",
+    "Từ đầu 2026: hơn 10.000 xe"
+   ],
+   "companies": [
+    "Ford"
+   ],
+   "segments": [
+    "Ô tô"
+   ],
+   "category": "sales",
+   "topic_ids": [
+    "market"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a8",
+    "a5"
+   ],
+   "impact": "Biến số liên quan: doanh số SUV cỡ C, mức giảm giá cạnh tranh."
+  }
+ ],
+ "topics": [
+  {
+   "id": "ev-shift",
+   "title": "Xe điện và đại lý VinFast",
+   "background": "VinFast bàn giao 200.593 ô tô tại Việt Nam sau 10 tháng 2026 (tháng 9 đạt 23.624 xe, tháng 10 22.896 xe). HAX mua 65% đại lý VinFast (Tương Lai Việt) tháng 3/2026, quý III có lãi trở lại 3,55 tỷ đồng nhưng 9 tháng mới đạt khoảng 28,5% kế hoạch lợi nhuận. Lệ phí trước bạ ô tô điện 0% được nối đến hết 31/12/2030 (Nghị định 202/2026). Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: doanh số VinFast và VAMA hằng tháng, biên gộp HAX quý IV, doanh số đại lý chỉ bán xe xăng (SVC, CTF); kết thúc theo dõi khi thị phần VinFast ổn định 2 quý liên tiếp.",
+   "related_data": [
+    "Doanh số xe",
+    "#rf-q-car"
+   ]
+  },
+  {
+   "id": "market",
+   "title": "Doanh số ô tô sau đỉnh tháng 9",
+   "background": "Thành viên VAMA bán 35.094 xe tháng 9/2026 rồi giảm 17,5% còn 28.957 xe tháng 10; lũy kế 10 tháng chỉ còn tăng 7% (sau 9 tháng là 12%). Tính cả VinFast và Hyundai Thành Công, 9 tháng đạt 495.138 xe (+20,2%), kịch bản cả năm có thể chạm 700.000 xe. Các hãng tăng ưu đãi cuối năm. Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: VAMA tháng 11–12, mức chiết khấu cuối năm, nhập khẩu nguyên chiếc; kết thúc theo dõi khi có số cả năm 2026.",
+   "related_data": [
+    "Chỉ báo tăng, giảm so với cùng kỳ",
+    "#rf-q-heat"
+   ]
+  },
+  {
+   "id": "emoto",
+   "title": "Xe máy: xăng vẫn chiếm đa số, điện tăng nhanh",
+   "background": "Thành viên VAMM bán 686.661 xe máy quý III/2026 (+10,4%), 9 tháng vượt 2 triệu xe; Honda chiếm khoảng 86% nhóm. Theo MotorcyclesData, xe máy điện chiếm 27,7% doanh số hai bánh 7 tháng (gần 514.000 xe, +97,2%); VinFast giao 286.039 xe máy, xe đạp điện trong quý II. Hà Nội thí điểm vùng phát thải thấp từ 1/7 và lập phương án hỗ trợ đổi xe máy cũ. Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: VAMM quý IV, doanh số xe máy điện VinFast, mức hỗ trợ đổi xe của Hà Nội, lộ trình kiểm định khí thải xe máy; kết thúc theo dõi khi tỷ trọng xe máy điện ổn định.",
+   "related_data": [
+    "Xe máy bán ra",
+    "#rf-q-vamm"
+   ]
+  },
+  {
+   "id": "dealers",
+   "title": "Đại lý ô tô niêm yết",
+   "background": "Quý III/2026 Haxaco lãi 3,55 tỷ đồng (cùng kỳ lỗ), Savico lãi 129 tỷ đồng (-62,5%), Tasco lãi gần 138 tỷ đồng (giảm mạnh). Haxaco tồn kho hơn 2.117 tỷ đồng, vay ngắn hạn khoảng 1.640 tỷ đồng và dự chi 45 tỷ đồng mua lại cổ phiếu. Xe nhập khẩu của thành viên VAMA giảm 24% trong tháng 10 so với tháng 9. Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: BCTC quý IV (biên gộp, tồn kho, chi phí lãi vay) của HAX, SVC, HUT; kết thúc theo dõi khi biên gộp đại lý hồi phục 2 quý liên tiếp.",
+   "related_data": [
+    "Biên gộp đại lý",
+    "#rf-q-gm"
+   ]
+  },
+  {
+   "id": "assembly",
+   "title": "Xe nhập khẩu và lắp ráp trong nước",
+   "background": "10 tháng 2026 nhập 212.339 ô tô nguyên chiếc (4,90 tỷ USD, +26,6%) và 6,29 tỷ USD linh kiện (+35,1%); tháng 10 xe nhập giảm 24,1%. Bộ Tài chính đề xuất gia hạn ưu đãi thuế sản xuất, lắp ráp ô tô đến 2032; NewCity khởi công nhà máy 150.000 xe/năm tại Đà Nẵng (xe đầu tiên quý 4/2028). Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: số nhập khẩu ô tô tháng 11–12 (Hải quan), nghị định sửa Nghị định 26/2023, tiến độ nhà máy mới; kết thúc theo dõi khi nghị định sửa đổi được ban hành.",
+   "related_data": [
+    "Nguồn cung ô tô",
+    "#rf-q-output"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,908 @@
+{
+ "updated_at": "2026-11-28",
+ "categories": {
+  "macro": "Sức mua & bán lẻ",
+  "grocery": "Bách hóa & siêu thị",
+  "electronics": "Điện máy & ICT",
+  "pharmacy": "Nhà thuốc",
+  "jewelry": "Vàng & trang sức",
+  "ecommerce": "Thương mại điện tử",
+  "companies": "Doanh nghiệp",
+  "policy": "Chính sách & thuế"
+ },
+ "articles": [
+  {
+   "id": "a1",
+   "source_name": "VnEconomy",
+   "title": "PNJ báo lỗ 258 tỷ, điều chỉnh kế hoạch lỗ ròng 6.271 tỷ",
+   "url": "https://vneconomy.vn/pnj-bao-lo-258-ty.htm",
+   "published_at": "2026-10-22"
+  },
+  {
+   "id": "a2",
+   "source_name": "Thị trường Tài chính Tiền tệ",
+   "title": "PNJ lỗ gần 258 tỷ đồng trong quý III, tồn kho vượt 18.800 tỷ đồng",
+   "url": "https://thitruongtaichinhtiente.vn/pnj-lo-gan-258-ty-dong-trong-quy-iii-ton-kho-vuot-18-800-ty-dong-86712.html",
+   "published_at": "2026-10-31"
+  },
+  {
+   "id": "a3",
+   "source_name": "Báo Pháp Luật Việt Nam (Doanh nhân)",
+   "title": "Đầu tư Thế Giới Di Động (MWG) thu gần 148.000 tỷ đồng sau 9 tháng, Bách Hóa Xanh tăng trưởng 34%",
+   "url": "https://doanhnhan.baophapluat.vn/dau-tu-the-gioi-di-dong-mwg-thu-gan-148-000-ty-dong-sau-9-thang-bach-hoa-xanh-tang-truong-34.html",
+   "published_at": "2026-10-15"
+  },
+  {
+   "id": "a4",
+   "source_name": "Báo Pháp Luật Việt Nam (Doanh nhân)",
+   "title": "FPT Retail ghi nhận doanh thu 48.273 tỷ đồng sau 9 tháng, tăng 33% so với cùng kỳ",
+   "url": "https://doanhnhan.baophapluat.vn/fpt-retail-ghi-nhan-doanh-thu-48-273-ty-dong-sau-9-thang-tang-33-so-voi-cung-ky.html",
+   "published_at": "2026-10-29"
+  },
+  {
+   "id": "a5",
+   "source_name": "Thị trường Tài chính Tiền tệ",
+   "title": "Điện Máy Xanh tiến sát mốc doanh thu 100.000 tỷ đồng sau 9 tháng",
+   "url": "https://thitruongtaichinhtiente.vn/dien-may-xanh-tien-sat-moc-doanh-thu-100-000-ty-dong-sau-9-thang-86085.html",
+   "published_at": "2026-10-06"
+  },
+  {
+   "id": "a6",
+   "source_name": "Mekong ASEAN",
+   "title": "PNJ sẽ tái thiết như thế nào sau \"cú sốc\" kim cương",
+   "url": "https://mekongasean.vn/pnj-se-tai-thiet-nhu-the-nao-sau-cu-soc-kim-cuong-60086.html",
+   "published_at": "2026-09-28"
+  },
+  {
+   "id": "a7",
+   "source_name": "Mekong ASEAN",
+   "title": "Masan trình cổ đông miễn nhiệm thành viên HĐQT, nâng mục tiêu lợi nhuận",
+   "url": "https://mekongasean.vn/masan-trinh-co-dong-mien-nhiem-thanh-vien-hdqt-nang-muc-tieu-loi-nhuan-62252.html",
+   "published_at": "2026-11-25"
+  },
+  {
+   "id": "a8",
+   "source_name": "Mekong ASEAN",
+   "title": "Thêm ba lãnh đạo cấp cao tại PNJ từ nhiệm",
+   "url": "https://mekongasean.vn/them-ba-lanh-dao-cap-cao-tai-pnj-tu-nhiem-62062.html",
+   "published_at": "2026-11-20"
+  },
+  {
+   "id": "a9",
+   "source_name": "Thị trường Tài chính Tiền tệ",
+   "title": "Chủ tịch PNJ xin lỗi cổ đông, nói doanh nghiệp đang ở thời điểm khó khăn nhất gần 40 năm",
+   "url": "https://thitruongtaichinhtiente.vn/chu-tich-pnj-xin-loi-co-dong-noi-doanh-nghiep-dang-o-thoi-diem-kho-khan-nhat-gan-40-nam-86461.html",
+   "published_at": "2026-10-21"
+  },
+  {
+   "id": "a10",
+   "source_name": "Mekong ASEAN",
+   "title": "MWG bảo lãnh thêm khoản vay gần 2.000 tỷ đồng cho Bách Hóa Xanh",
+   "url": "https://mekongasean.vn/mwg-bao-lanh-them-khoan-vay-gan-2000-ty-dong-cho-bach-hoa-xanh-62340.html",
+   "published_at": "2026-11-27"
+  },
+  {
+   "id": "a11",
+   "source_name": "Mekong ASEAN",
+   "title": "PNJ dự phòng gần 1.700 tỷ đồng cho tổn thất kim cương",
+   "url": "https://mekongasean.vn/pnj-du-phong-gan-1700-ty-dong-cho-ton-that-kim-cuong-61294.html",
+   "published_at": "2026-10-30"
+  },
+  {
+   "id": "a12",
+   "source_name": "Mekong ASEAN",
+   "title": "Masan báo lãi quý cao nhất trong 5 năm",
+   "url": "https://mekongasean.vn/masan-bao-lai-quy-cao-nhat-trong-5-nam-60974.html",
+   "published_at": "2026-10-22"
+  },
+  {
+   "id": "a13",
+   "source_name": "Mekong ASEAN",
+   "title": "Vàng thế giới chịu sức ép lãi suất, vàng trong nước đứng giá",
+   "url": "https://mekongasean.vn/vang-the-gioi-chiu-suc-ep-lai-suat-vang-trong-nuoc-dung-gia-62274.html",
+   "published_at": "2026-11-26"
+  },
+  {
+   "id": "a14",
+   "source_name": "Mekong ASEAN",
+   "title": "MWG vượt mục tiêu lợi nhuận năm, lãi gần 2.800 tỷ đồng từ \"kho tiền mặt\"",
+   "url": "https://mekongasean.vn/mwg-vuot-muc-tieu-loi-nhuan-nam-lai-gan-2800-ty-dong-tu-kho-tien-mat-61192.html",
+   "published_at": "2026-10-28"
+  },
+  {
+   "id": "a15",
+   "source_name": "Mekong ASEAN",
+   "title": "\"Bách Hóa Xanh cần mở nhanh và hiệu quả để hướng tới doanh thu 10 tỷ USD\"",
+   "url": "https://mekongasean.vn/bach-hoa-xanh-can-mo-nhanh-va-hieu-qua-de-huong-toi-doanh-thu-10-ty-usd-61574.html",
+   "published_at": "2026-11-06"
+  },
+  {
+   "id": "a16",
+   "source_name": "Cục Thống kê",
+   "title": "Báo cáo tình hình kinh tế – xã hội tháng Mười và 10 tháng năm 2026",
+   "url": "https://www.nso.gov.vn/bai-top/2026/11/bao-cao-tinh-hinh-kinh-te-xa-hoi-thang-muoi-va-10-thang-nam-2026/",
+   "published_at": "2026-11-03"
+  },
+  {
+   "id": "a17",
+   "source_name": "Cục Thống kê",
+   "title": "Báo cáo tình hình kinh tế – xã hội quý III và 9 tháng năm 2026",
+   "url": "https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+   "published_at": "2026-10-03"
+  },
+  {
+   "id": "a18",
+   "source_name": "VnEconomy",
+   "title": "PNJ dự kiến lỗ ròng gần 6.300 tỷ đồng trong năm 2026",
+   "url": "https://vneconomy.vn/pnj-du-kien-lo-rong-gan-6300-ty-dong-trong-nam-2026.htm",
+   "published_at": "2026-10-14"
+  },
+  {
+   "id": "a19",
+   "source_name": "VnEconomy",
+   "title": "Giá vàng nhẫn \"4 số 9\" tăng vọt tới 4 triệu đồng trong tuần",
+   "url": "https://vneconomy.vn/gia-vang-nhan-4-so-9-tang-vot-toi-4-trieu-dong-trong-tuan.htm",
+   "published_at": "2026-11-28"
+  },
+  {
+   "id": "a20",
+   "source_name": "VnEconomy",
+   "title": "4 sàn thương mại điện tử lớn thu về 442 nghìn tỷ đồng trong 9 tháng",
+   "url": "https://vneconomy.vn/4-san-thuong-mai-dien-tu-lon-thu-ve-442-nghin-ty-dong-trong-9-thang.htm",
+   "published_at": "2026-10-29"
+  },
+  {
+   "id": "a21",
+   "source_name": "VnEconomy",
+   "title": "Tổng giá trị hàng hóa ước đạt 49 tỷ USD năm 2026, kinh tế số Việt Nam tăng nhanh nhất Đông Nam Á",
+   "url": "https://vneconomy.vn/tong-gia-tri-hang-hoa-uoc-dat-49-ty-usd-nam-2026-kinh-te-so-viet-nam-tang-nhanh-nhat-dong-nam-a.htm",
+   "published_at": "2026-11-06"
+  },
+  {
+   "id": "a22",
+   "source_name": "Mekong ASEAN",
+   "title": "MWG và công thức tăng trưởng mới",
+   "url": "https://mekongasean.vn/mwg-va-cong-thuc-tang-truong-moi-61342.html",
+   "published_at": "2026-11-03"
+  },
+  {
+   "id": "a23",
+   "source_name": "Người Quan Sát",
+   "title": "\"Bỏ túi\" gần 292.000 tỷ đồng sau 6 tháng, thương mại điện tử Việt Nam tăng tốc ngoài sức tưởng tượng",
+   "url": "https://nguoiquansat.vn/bo-tui-gan-292-000-ty-dong-sau-6-thang-thuong-mai-dien-tu-viet-nam-tang-toc-ngoai-suc-tuong-tuong-306108.html",
+   "published_at": "2026-07-24"
+  },
+  {
+   "id": "a24",
+   "source_name": "VnEconomy",
+   "title": "Doanh nghiệp, hộ kinh doanh được giảm 30% thuế thu nhập theo từng kỳ",
+   "url": "https://vneconomy.vn/doanh-nghiep-ho-kinh-doanh-duoc-giam-30-thue-thu-nhap-theo-tung-ky.htm",
+   "published_at": "2026-10-31"
+  },
+  {
+   "id": "a25",
+   "source_name": "VnEconomy",
+   "title": "Hộ kinh doanh loay hoay trước bài toán nối chuỗi khấu trừ thuế",
+   "url": "https://vneconomy.vn/ho-kinh-doanh-loay-hoay-truoc-bai-toan-noi-chuoi-khau-tru-thue.htm",
+   "published_at": "2026-10-26"
+  }
+ ],
+ "events": [
+  {
+   "id": "ev1",
+   "title": "PNJ lỗ khoảng 258 tỷ đồng quý III/2026, biên gộp còn 8,7%",
+   "summary": "Doanh thu thuần quý III/2026 của PNJ đạt 6.995 tỷ đồng, giảm 14% so với cùng kỳ; lợi nhuận gộp 609 tỷ đồng. Sau thuế PNJ lỗ khoảng 258 tỷ đồng, trong khi quý III/2025 lãi 496 tỷ đồng.",
+   "new_information": "Biên gộp quý giảm từ 19,8% xuống 8,7%; quý thứ hai liên tiếp PNJ lỗ sau sự cố thu đổi kim cương.",
+   "key_figures": [
+    "Doanh thu thuần Q3/2026: 6.995 tỷ đồng, -14%",
+    "Lợi nhuận gộp Q3/2026: 609 tỷ đồng, biên gộp 8,7% (cùng kỳ 19,8%)",
+    "Lỗ sau thuế Q3/2026: gần 258 tỷ đồng (Q3/2025 lãi 496 tỷ đồng)",
+    "Doanh thu thuần 9 tháng: 32.704 tỷ đồng"
+   ],
+   "companies": [
+    "PNJ"
+   ],
+   "segments": [
+    "Trang sức"
+   ],
+   "category": "jewelry",
+   "topic_ids": [
+    "pnj-diamond"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a1",
+    "a11",
+    "a2"
+   ],
+   "impact": "Biến số liên quan: biên gộp trang sức, chi phí dự phòng, lợi nhuận ròng PNJ."
+  },
+  {
+   "id": "ev2",
+   "title": "ĐHĐCĐ bất thường PNJ thông qua kế hoạch lỗ 6.271 tỷ đồng, phát hành riêng lẻ tối đa 550 triệu cổ phiếu",
+   "summary": "Ngày 21/10/2026, ĐHĐCĐ bất thường PNJ thông qua kế hoạch 2026: doanh thu 39.057 tỷ đồng, lỗ sau thuế 6.271 tỷ đồng do dự phòng hơn 7.071 tỷ đồng cho chính sách thu đổi. Công ty chào bán riêng lẻ tối đa 550 triệu cổ phiếu, khoảng 107,5% số cổ phiếu đang lưu hành.",
+   "new_information": "Phương án huy động vốn và kế hoạch lỗ đã được cổ đông thông qua; loại trừ dự phòng, lãi sau thuế ước khoảng 800 tỷ đồng.",
+   "key_figures": [
+    "Kế hoạch doanh thu 2026: 39.057 tỷ đồng",
+    "Kế hoạch lợi nhuận sau thuế 2026: lỗ 6.271 tỷ đồng",
+    "Dự phòng thu đổi: hơn 7.071 tỷ đồng",
+    "Chào bán riêng lẻ: tối đa 550 triệu cổ phiếu",
+    "Vay Chủ tịch HĐQT: 700 tỷ đồng (giải ngân 15/9 và 25/9)",
+    "Cổ tức 2025 hạ còn 10% tiền mặt"
+   ],
+   "companies": [
+    "PNJ"
+   ],
+   "segments": [
+    "Trang sức"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "pnj-diamond"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a9",
+    "a1"
+   ],
+   "impact": "Biến số liên quan: số cổ phiếu lưu hành, vốn chủ sở hữu, dư nợ vay PNJ.",
+   "event_date": "2026-10-21"
+  },
+  {
+   "id": "ev3",
+   "title": "PNJ dự phòng gần 1.700 tỷ đồng cho kim cương, tồn kho giá gốc 18.855 tỷ đồng",
+   "summary": "Báo cáo quý III/2026 ghi nhận dự phòng gần 1.700 tỷ đồng cho trang sức kim cương và kim cương rời, cùng 473 tỷ đồng cho trang sức thu mua lại. Tồn kho giá gốc 18.855 tỷ đồng, tổng dự phòng gần 2.230 tỷ đồng; số cửa hàng còn 424, giảm 30 so với quý trước.",
+   "new_information": "Lần đầu PNJ tách khoản dự phòng riêng cho tổn thất kim cương trên báo cáo quý.",
+   "key_figures": [
+    "Dự phòng kim cương: gần 1.700 tỷ đồng",
+    "Dự phòng trang sức thu mua lại: 473 tỷ đồng",
+    "Tồn kho giá gốc 30/9/2026: 18.855 tỷ đồng",
+    "Lợi nhuận sau thuế 9 tháng: 471 tỷ đồng, -71%",
+    "Số cửa hàng: 424, giảm 30 so với quý trước"
+   ],
+   "companies": [
+    "PNJ"
+   ],
+   "segments": [
+    "Trang sức"
+   ],
+   "category": "jewelry",
+   "topic_ids": [
+    "pnj-diamond"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a11",
+    "a2"
+   ],
+   "impact": "Biến số liên quan: dự phòng giảm giá tồn kho, vòng quay tồn kho, số cửa hàng PNJ."
+  },
+  {
+   "id": "ev4",
+   "title": "PNJ chi hơn 7.000 tỷ đồng mua lại sản phẩm, tháng 7–8 lỗ 61 tỷ đồng",
+   "summary": "Từ 1/7 đến 27/7/2026, PNJ chi hơn 7.000 tỷ đồng mua lại sản phẩm từ khách hàng. Hai tháng 7–8 doanh thu thuần 5.695 tỷ đồng nhưng lỗ sau thuế 61 tỷ đồng; kiểm định độc lập cho thấy 100% mẫu là kim cương thiên nhiên.",
+   "new_information": "PNJ dự kiến đóng 25–30 cửa hàng trong năm 2026 và chỉ mở mới khoảng 10 cửa hàng.",
+   "key_figures": [
+    "Chi mua lại sản phẩm 1/7–27/7/2026: hơn 7.000 tỷ đồng",
+    "Doanh thu thuần T7–T8/2026: 5.695 tỷ đồng, +4,5%",
+    "Lợi nhuận sau thuế T7–T8: âm 61 tỷ đồng (cùng kỳ lãi 325 tỷ đồng)",
+    "Biên lợi nhuận gộp: khoảng 10% (cùng kỳ 18,5%)",
+    "Kế hoạch 2026: đóng 25–30 cửa hàng"
+   ],
+   "companies": [
+    "PNJ"
+   ],
+   "segments": [
+    "Trang sức"
+   ],
+   "category": "jewelry",
+   "topic_ids": [
+    "pnj-diamond"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a6"
+   ],
+   "impact": "Biến số liên quan: dòng tiền thu đổi, số cửa hàng, biên gộp PNJ."
+  },
+  {
+   "id": "ev5",
+   "title": "PNJ công bố kế hoạch lỗ ròng gần 6.300 tỷ đồng, 8 tháng còn lãi 668 tỷ đồng",
+   "summary": "Tài liệu ĐHĐCĐ bất thường nêu kế hoạch lợi nhuận sau thuế 2026 đổi từ lãi 2.828 tỷ đồng thành lỗ 6.270,55 tỷ đồng, tổng trích lập dự phòng 7.071,137 tỷ đồng. Giá chào bán riêng lẻ dự kiến 10.000 đồng/cổ phiếu.",
+   "new_information": "8 tháng 2026 PNJ vẫn lãi sau thuế 668 tỷ đồng (-54%) trước khi ghi nhận dự phòng.",
+   "key_figures": [
+    "LNST kế hoạch 2026: từ 2.828 tỷ đồng thành -6.270,55 tỷ đồng",
+    "Doanh thu 8 tháng: 31.404 tỷ đồng, +39%",
+    "LNST 8 tháng: 668 tỷ đồng, -54%",
+    "Hoàn nhập Quỹ đầu tư phát triển: tối đa 4.602,8 tỷ đồng"
+   ],
+   "companies": [
+    "PNJ"
+   ],
+   "segments": [
+    "Trang sức"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "pnj-diamond"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a18"
+   ],
+   "impact": "Biến số liên quan: lợi nhuận giữ lại, giá trị sổ sách mỗi cổ phiếu PNJ."
+  },
+  {
+   "id": "ev6",
+   "title": "Ba giám đốc cấp cao PNJ từ nhiệm; lao động giảm gần 13% trong quý III",
+   "summary": "HĐQT PNJ ngày 19/11/2026 thông qua đơn từ nhiệm của ba giám đốc cấp cao (chiến lược, nhân sự, khách hàng và bán lẻ), hiệu lực từ 26/11. Đến 30/9 PNJ còn 7.123 nhân viên, giảm khoảng 1.040 người so với quý trước.",
+   "new_information": "Cổ phiếu PNJ đóng cửa 13.500 đồng phiên 20/11, thấp nhất hơn 10 năm.",
+   "key_figures": [
+    "Nhân viên 30/9/2026: 7.123 người, giảm khoảng 1.040",
+    "Giá cổ phiếu 20/11/2026: 13.500 đồng, giảm khoảng 84% từ đầu năm",
+    "Vốn hóa: khoảng 6.934 tỷ đồng"
+   ],
+   "companies": [
+    "PNJ"
+   ],
+   "segments": [
+    "Trang sức"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "pnj-diamond"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a8"
+   ],
+   "impact": "Biến số liên quan: chi phí nhân sự, mạng lưới cửa hàng PNJ.",
+   "event_date": "2026-11-19"
+  },
+  {
+   "id": "ev7",
+   "title": "MWG lãi sau thuế 3.521 tỷ đồng quý III, 9 tháng vượt kế hoạch lợi nhuận năm",
+   "summary": "Quý III/2026 MWG đạt doanh thu thuần 52.614 tỷ đồng (+32%) và lợi nhuận sau thuế 3.521 tỷ đồng (+97%). Lũy kế 9 tháng lãi 9.634 tỷ đồng, vượt kế hoạch cả năm 9.200 tỷ đồng.",
+   "new_information": "MWG vượt kế hoạch lợi nhuận năm sau 9 tháng; lãi từ tiền gửi, trái phiếu 9 tháng gần 2.800 tỷ đồng (+32%).",
+   "key_figures": [
+    "Doanh thu thuần Q3/2026: 52.614 tỷ đồng, +32%",
+    "LNST Q3/2026: 3.521 tỷ đồng, +97%",
+    "LNST 9 tháng: 9.634 tỷ đồng (cùng kỳ 4.989 tỷ đồng)",
+    "Tiền và đầu tư 30/9/2026: hơn 63.000 tỷ đồng"
+   ],
+   "companies": [
+    "MWG"
+   ],
+   "segments": [
+    "Điện máy & ICT",
+    "Bán lẻ hiện đại"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "electronics",
+    "bhx"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a14"
+   ],
+   "impact": "Biến số liên quan: biên gộp, chi phí bán hàng, thu nhập tài chính MWG."
+  },
+  {
+   "id": "ev8",
+   "title": "Điện Máy Xanh đạt 99.460 tỷ đồng doanh thu 9 tháng, SSSG 30%",
+   "summary": "Khối Điện Máy Xanh (gồm Thế Giới Di Động, TopZone, EraBlue) đạt 99.460 tỷ đồng doanh thu 9 tháng 2026, tăng 29%. Doanh thu trả chậm tăng 50%, chiếm 38% doanh thu; nhóm Apple tăng 50%.",
+   "new_information": "Tăng trưởng đến từ cửa hàng hiện hữu: số cửa hàng Điện Máy Xanh và Thế Giới Di Động giảm nhẹ trong khi SSSG đạt 30%.",
+   "key_figures": [
+    "Doanh thu 9 tháng: 99.460 tỷ đồng, +29%, 81% kế hoạch năm",
+    "SSSG: 30%",
+    "Trả chậm: +50%, 38% doanh thu (cùng kỳ 33%)",
+    "Cửa hàng cuối T9: Điện Máy Xanh 1.998, Thế Giới Di Động 919, TopZone 86",
+    "EraBlue: 337 cửa hàng"
+   ],
+   "companies": [
+    "MWG"
+   ],
+   "segments": [
+    "Điện máy & ICT"
+   ],
+   "category": "electronics",
+   "topic_ids": [
+    "electronics"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a5"
+   ],
+   "impact": "Biến số liên quan: doanh thu/cửa hàng, tỷ trọng trả chậm, biên gộp điện máy."
+  },
+  {
+   "id": "ev9",
+   "title": "Điện Máy Xanh lãi hơn 7.700 tỷ đồng 9 tháng, biên ròng khoảng 7,7%",
+   "summary": "Lợi nhuận sau thuế khối Điện Máy Xanh 9 tháng 2026 hơn 7.700 tỷ đồng, tăng 83%. Biên gộp tăng từ 17,7% lên 20,2%, biên ròng từ gần 5,5% lên khoảng 7,7%.",
+   "new_information": "Lợi nhuận tách riêng khối điện máy cho thấy phần lớn lãi MWG đến từ Điện Máy Xanh; Bách Hóa Xanh còn lỗ lũy kế hơn 3.500 tỷ đồng.",
+   "key_figures": [
+    "LNST khối Điện Máy Xanh 9 tháng: hơn 7.700 tỷ đồng, +83%",
+    "Biên gộp: 17,7% → 20,2%",
+    "Biên ròng: gần 5,5% → khoảng 7,7%",
+    "Bách Hóa Xanh mở mới 9 tháng: 1.345 cửa hàng, tổng 3.904"
+   ],
+   "companies": [
+    "MWG"
+   ],
+   "segments": [
+    "Điện máy & ICT"
+   ],
+   "category": "electronics",
+   "topic_ids": [
+    "electronics"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a22"
+   ],
+   "impact": "Biến số liên quan: biên gộp, biên ròng khối điện máy MWG."
+  },
+  {
+   "id": "ev10",
+   "title": "Bách Hóa Xanh đạt 45.900 tỷ đồng doanh thu 9 tháng, 3.904 cửa hàng",
+   "summary": "Doanh thu 9 tháng 2026 của Bách Hóa Xanh đạt 45.900 tỷ đồng, tăng gần 34%, chiếm 31% doanh thu MWG. Cuối tháng 9 chuỗi có 3.904 cửa hàng; cửa hàng mở mới trong năm có lợi nhuận hoạt động cấp cửa hàng dương.",
+   "new_information": "MWG đạt 147.953 tỷ đồng doanh thu 9 tháng (+30%), khoảng 80% kế hoạch 185.000 tỷ đồng.",
+   "key_figures": [
+    "Doanh thu Bách Hóa Xanh 9 tháng: 45.900 tỷ đồng, +34%",
+    "Cửa hàng Bách Hóa Xanh cuối T9: 3.904",
+    "Doanh thu MWG 9 tháng: 147.953 tỷ đồng, +30%",
+    "An Khang: 438 nhà thuốc, doanh thu 9 tháng +22%"
+   ],
+   "companies": [
+    "MWG"
+   ],
+   "segments": [
+    "Bán lẻ hiện đại"
+   ],
+   "category": "grocery",
+   "topic_ids": [
+    "bhx"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a3"
+   ],
+   "impact": "Biến số liên quan: số cửa hàng, doanh thu/cửa hàng Bách Hóa Xanh."
+  },
+  {
+   "id": "ev11",
+   "title": "Bách Hóa Xanh lãi khoảng 1.650 tỷ đồng 9 tháng, đặt mục tiêu 10 tỷ USD doanh thu năm 2030",
+   "summary": "Bách Hóa Xanh lãi sau thuế khoảng 1.650 tỷ đồng sau 9 tháng 2026, riêng quý III khoảng 550 tỷ đồng. Chuỗi đã vượt mục tiêu mở 1.000 cửa hàng và hướng tới 1.500 cửa hàng; IPO có thể thực hiện sau khi xóa lỗ lũy kế.",
+   "new_information": "Ban lãnh đạo nêu giai đoạn 2027–2028 cần mở nhanh và hiệu quả để hướng tới IPO và doanh thu 10 tỷ USD năm 2030.",
+   "key_figures": [
+    "LNST Bách Hóa Xanh 9 tháng: khoảng 1.650 tỷ đồng",
+    "LNST quý III: khoảng 550 tỷ đồng",
+    "Mục tiêu mở mới năm 2026: hướng tới 1.500 cửa hàng",
+    "Mục tiêu 2030: doanh thu 10 tỷ USD"
+   ],
+   "companies": [
+    "MWG"
+   ],
+   "segments": [
+    "Bán lẻ hiện đại"
+   ],
+   "category": "grocery",
+   "topic_ids": [
+    "bhx"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a15"
+   ],
+   "impact": "Biến số liên quan: tốc độ mở cửa hàng, lợi nhuận Bách Hóa Xanh, thời điểm IPO."
+  },
+  {
+   "id": "ev12",
+   "title": "Bách Hóa Xanh 10 tháng gần 52.000 tỷ đồng; MWG bảo lãnh thêm gần 2.000 tỷ đồng vay",
+   "summary": "MWG bảo lãnh thêm 65 triệu USD và 400 tỷ đồng khoản vay cho Bách Hóa Xanh tại HSBC, Citibank, Standard Chartered, sau hạn mức tối đa 2.000 tỷ đồng ngày 21/10. Doanh thu 10 tháng của chuỗi gần 52.000 tỷ đồng, tăng hơn 35%.",
+   "new_information": "Số cửa hàng Bách Hóa Xanh lên 4.318 cuối tháng 10/2026.",
+   "key_figures": [
+    "Bảo lãnh bổ sung: 65 triệu USD + 400 tỷ đồng (gần 2.000 tỷ đồng)",
+    "Doanh thu Bách Hóa Xanh 10 tháng: gần 52.000 tỷ đồng, +35%",
+    "Cửa hàng cuối T10: 4.318"
+   ],
+   "companies": [
+    "MWG"
+   ],
+   "segments": [
+    "Bán lẻ hiện đại"
+   ],
+   "category": "grocery",
+   "topic_ids": [
+    "bhx"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a10"
+   ],
+   "impact": "Biến số liên quan: nợ vay, vốn lưu động, tốc độ mở cửa hàng Bách Hóa Xanh."
+  },
+  {
+   "id": "ev13",
+   "title": "FPT Retail 9 tháng: doanh thu 48.273 tỷ đồng, Long Châu chiếm 69%",
+   "summary": "FRT đạt doanh thu hợp nhất 9 tháng 48.273 tỷ đồng (+33%) và lợi nhuận trước thuế 1.724 tỷ đồng (+114%). Long Châu đạt 33.408 tỷ đồng (+35%) với 2.741 nhà thuốc và 244 trung tâm tiêm chủng; FPT Shop đạt 15.014 tỷ đồng (+30%).",
+   "new_information": "Doanh thu hợp nhất quý III tăng 34%, nhanh hơn nửa đầu năm.",
+   "key_figures": [
+    "Doanh thu FRT 9 tháng: 48.273 tỷ đồng, +33%",
+    "LNTT 9 tháng: 1.724 tỷ đồng, +114%",
+    "Long Châu 9 tháng: 33.408 tỷ đồng, +35%; 2.741 nhà thuốc, 244 trung tâm tiêm chủng",
+    "FPT Shop 9 tháng: 15.014 tỷ đồng, +30%; 622 cửa hàng"
+   ],
+   "companies": [
+    "FRT"
+   ],
+   "segments": [
+    "Nhà thuốc",
+    "Điện máy & ICT"
+   ],
+   "category": "pharmacy",
+   "topic_ids": [
+    "bhx",
+    "electronics"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a4"
+   ],
+   "impact": "Biến số liên quan: số nhà thuốc, doanh thu/nhà thuốc, biên lợi nhuận FRT."
+  },
+  {
+   "id": "ev14",
+   "title": "Masan lãi 4.552 tỷ đồng quý III; WinCommerce lên 5.486 cửa hàng",
+   "summary": "Quý III/2026 Masan đạt doanh thu thuần 36.981 tỷ đồng và lãi sau thuế gần 4.552 tỷ đồng, cao nhất 5 năm. WinCommerce đạt doanh thu 12.775 tỷ đồng, lãi 325 tỷ đồng (trước lợi ích cổ đông thiểu số), mở ròng 345 cửa hàng.",
+   "new_information": "Tổng số cửa hàng WinCommerce lên 5.486 cuối quý III.",
+   "key_figures": [
+    "Doanh thu thuần Masan Q3/2026: 36.981 tỷ đồng",
+    "LNST Masan Q3/2026: gần 4.552 tỷ đồng",
+    "WinCommerce Q3: doanh thu 12.775 tỷ đồng, lãi 325 tỷ đồng",
+    "WinCommerce: 5.486 cửa hàng, +345 trong quý"
+   ],
+   "companies": [
+    "MSN"
+   ],
+   "segments": [
+    "Bán lẻ hiện đại"
+   ],
+   "category": "grocery",
+   "topic_ids": [
+    "bhx"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a12"
+   ],
+   "impact": "Biến số liên quan: số cửa hàng, lợi nhuận WinCommerce, lợi nhuận Masan."
+  },
+  {
+   "id": "ev15",
+   "title": "Masan nâng mục tiêu lợi nhuận 2026 lên 10.000–11.500 tỷ đồng",
+   "summary": "Masan trình cổ đông nâng mục tiêu lợi nhuận sau thuế 2026 từ 7.250–7.900 tỷ đồng lên 10.000–11.500 tỷ đồng, doanh thu thuần từ 93.500–98.000 tỷ đồng lên 98.000–105.000 tỷ đồng, kèm miễn nhiệm thành viên HĐQT.",
+   "new_information": "Quý III Masan lãi gần 4.552 tỷ đồng, cao nhất 5 năm, trước khi trình nâng mục tiêu.",
+   "key_figures": [
+    "Mục tiêu LNST 2026: 10.000–11.500 tỷ đồng (cũ 7.250–7.900 tỷ đồng)",
+    "Mục tiêu doanh thu thuần: 98.000–105.000 tỷ đồng (cũ 93.500–98.000 tỷ đồng)"
+   ],
+   "companies": [
+    "MSN"
+   ],
+   "segments": [
+    "Bán lẻ hiện đại"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "bhx"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a7"
+   ],
+   "impact": "Biến số liên quan: kế hoạch lợi nhuận Masan, đóng góp WinCommerce."
+  },
+  {
+   "id": "ev16",
+   "title": "Bán lẻ hàng hóa và dịch vụ tiêu dùng tháng 10 tăng 14,7%, 10 tháng tăng thực 7,7%",
+   "summary": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng tháng 10/2026 ước 695,5 nghìn tỷ đồng, tăng 14,7% so với cùng kỳ. 10 tháng đạt 6.618,9 nghìn tỷ đồng (+13,5%); loại trừ giá tăng 7,7%.",
+   "new_information": "Tăng thực 10 tháng 7,7%, cao hơn cùng kỳ 2025 (7,4%); CPI tháng 10 tăng 5,09% so với cùng kỳ.",
+   "key_figures": [
+    "Tháng 10/2026: 695,5 nghìn tỷ đồng, +1,0% so với tháng trước, +14,7% so với cùng kỳ",
+    "10 tháng: 6.618,9 nghìn tỷ đồng, +13,5%; thực +7,7% (cùng kỳ 2025: +7,4%)",
+    "CPI tháng 10: +5,09% so với cùng kỳ; bình quân 10 tháng +4,57%",
+    "Khách quốc tế 10 tháng: 19,5 triệu lượt, +13,8%"
+   ],
+   "companies": [],
+   "segments": [
+    "Vĩ mô"
+   ],
+   "category": "macro",
+   "topic_ids": [
+    "demand"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a16"
+   ],
+   "impact": "Biến số liên quan: sức mua thực, giá bán lẻ, doanh thu dịch vụ tiêu dùng."
+  },
+  {
+   "id": "ev17",
+   "title": "Bán lẻ 9 tháng tăng 13,4%, loại trừ giá tăng 7,8%",
+   "summary": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng 9 tháng 2026 tăng 13,4% so với cùng kỳ; loại trừ yếu tố giá tăng 7,8% (năm 2025 tăng 7,2%). Riêng quý III tăng 14,5%, tháng 9 tăng 14,1%.",
+   "new_information": "CPI bình quân 9 tháng tăng 4,52%, lạm phát cơ bản 4,26%.",
+   "key_figures": [
+    "9 tháng: +13,4%; thực +7,8%",
+    "Quý III/2026: +14,5%",
+    "Tháng 9/2026: +14,1%",
+    "CPI bình quân 9 tháng: +4,52%; lạm phát cơ bản +4,26%"
+   ],
+   "companies": [],
+   "segments": [
+    "Vĩ mô"
+   ],
+   "category": "macro",
+   "topic_ids": [
+    "demand"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a17"
+   ],
+   "impact": "Biến số liên quan: sức mua thực, giá bán lẻ."
+  },
+  {
+   "id": "ev18",
+   "title": "4 sàn TMĐT đạt 441,97 nghìn tỷ đồng 9 tháng, tăng 44,47%",
+   "summary": "Theo Metric.vn, doanh số 9 tháng 2026 của Shopee, Lazada, TikTok Shop và Tiki đạt 441,97 nghìn tỷ đồng, tăng 44,47%. Riêng quý III đạt 150,38 nghìn tỷ đồng (+45,16%), trong khi số gian hàng có lượt bán giảm 2,47%.",
+   "new_information": "Chênh lệch thị phần Shopee và TikTok Shop thu hẹp còn hơn 1 điểm phần trăm trong quý III/2026 (cùng kỳ gần 15 điểm).",
+   "key_figures": [
+    "Doanh số 9 tháng: 441,97 nghìn tỷ đồng, +44,47%",
+    "Quý III/2026: 150,38 nghìn tỷ đồng, +45,16%",
+    "Sản lượng 9 tháng: khoảng 3,28 tỷ sản phẩm, +12,46%",
+    "Shopee: 72,1% ngành điện thoại – máy tính bảng, 61,8% điện gia dụng (Q3)"
+   ],
+   "companies": [],
+   "segments": [
+    "TMĐT"
+   ],
+   "category": "ecommerce",
+   "topic_ids": [
+    "ecommerce"
+   ],
+   "importance": 3,
+   "article_ids": [
+    "a20"
+   ],
+   "impact": "Biến số liên quan: tỷ trọng bán online, giá bán điện thoại, điện gia dụng của chuỗi cửa hàng."
+  },
+  {
+   "id": "ev19",
+   "title": "e-Conomy SEA 2026: TMĐT Việt Nam đạt 32 tỷ USD, tăng 22%",
+   "summary": "Báo cáo e-Conomy SEA 2026 (Google, Temasek, Bain & Company) ước tổng giá trị hàng hóa kinh tế số Việt Nam năm 2026 đạt 49 tỷ USD, tăng 20%. Riêng thương mại điện tử 32 tỷ USD, tăng 22%, khoảng hai phần ba nền kinh tế số.",
+   "new_information": "Việt Nam cùng Malaysia có kinh tế số tăng nhanh nhất Đông Nam Á.",
+   "key_figures": [
+    "GMV kinh tế số 2026: 49 tỷ USD, +20%",
+    "GMV thương mại điện tử 2026: 32 tỷ USD, +22%"
+   ],
+   "companies": [],
+   "segments": [
+    "TMĐT"
+   ],
+   "category": "ecommerce",
+   "topic_ids": [
+    "ecommerce"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a21"
+   ],
+   "impact": "Biến số liên quan: tỷ trọng TMĐT trong bán lẻ."
+  },
+  {
+   "id": "ev20",
+   "title": "TMĐT 6 tháng: 4 sàn đạt khoảng 291.600 tỷ đồng, tăng 44,11%",
+   "summary": "Theo Metric.vn, tổng doanh số 4 sàn Shopee, TikTok Shop, Lazada và Tiki nửa đầu 2026 khoảng 291.600 tỷ đồng, tăng 44,11%; quý II đạt khoảng 143.000 tỷ đồng (+41,62%).",
+   "new_information": "Shop Mall chiếm 2,79% số gian hàng nhưng đóng góp 34,2% doanh số.",
+   "key_figures": [
+    "Doanh số 6 tháng 2026: khoảng 291.600 tỷ đồng, +44,11%",
+    "Quý II/2026: khoảng 143.000 tỷ đồng, +41,62%",
+    "Gian hàng hoạt động: khoảng 613.800, +14,11%"
+   ],
+   "companies": [],
+   "segments": [
+    "TMĐT"
+   ],
+   "category": "ecommerce",
+   "topic_ids": [
+    "ecommerce"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a23"
+   ],
+   "impact": "Biến số liên quan: tỷ trọng TMĐT trong bán lẻ."
+  },
+  {
+   "id": "ev21",
+   "title": "Vàng miếng SJC 134,1 triệu đồng/lượng, cao hơn thế giới khoảng 21,95 triệu đồng",
+   "summary": "Sáng 26/11/2026 vàng miếng SJC, DOJI, PNJ niêm yết 129,1–134,1 triệu đồng/lượng; vàng nhẫn PNJ 126–131,5 triệu đồng/lượng. Giá thế giới 3.575 USD/ounce, tương đương khoảng 112,15 triệu đồng/lượng.",
+   "new_information": "Vàng trong nước đứng giá khi vàng thế giới chịu sức ép lãi suất.",
+   "key_figures": [
+    "Vàng miếng SJC: 129,1–134,1 triệu đồng/lượng (26/11)",
+    "Vàng nhẫn PNJ: 126–131,5 triệu đồng/lượng",
+    "Vàng thế giới: 3.575 USD/ounce",
+    "SJC cao hơn thế giới quy đổi: khoảng 21,95 triệu đồng/lượng"
+   ],
+   "companies": [
+    "PNJ"
+   ],
+   "segments": [
+    "Trang sức"
+   ],
+   "category": "jewelry",
+   "topic_ids": [
+    "gold"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a13"
+   ],
+   "impact": "Biến số liên quan: chênh lệch giá vàng trong nước – thế giới, giá vốn vàng nhẫn.",
+   "event_date": "2026-11-26"
+  },
+  {
+   "id": "ev22",
+   "title": "Vàng nhẫn tăng tới 4 triệu đồng/lượng trong tuần, SJC lên 136 triệu đồng",
+   "summary": "Trưa 28/11/2026 vàng nhẫn SJC 130,8–135,8 triệu đồng/lượng, vàng miếng SJC, DOJI, PNJ 131–136 triệu đồng/lượng. Giá vàng giao ngay New York chốt phiên 27/11 ở 3.644,1 USD/ounce, tăng hơn 2,1%.",
+   "new_information": "Vàng miếng SJC cao hơn thế giới khoảng 20,46 triệu đồng/lượng (quy đổi gồm thuế, phí).",
+   "key_figures": [
+    "Vàng nhẫn SJC: 130,8–135,8 triệu đồng/lượng",
+    "Vàng nhẫn PNJ: 127,5–133,7 triệu đồng/lượng",
+    "Vàng miếng SJC: 131–136 triệu đồng/lượng",
+    "Vàng thế giới 27/11: 3.644,1 USD/ounce",
+    "SJC cao hơn thế giới: khoảng 20,46 triệu đồng/lượng"
+   ],
+   "companies": [
+    "PNJ"
+   ],
+   "segments": [
+    "Trang sức"
+   ],
+   "category": "jewelry",
+   "topic_ids": [
+    "gold"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a19"
+   ],
+   "impact": "Biến số liên quan: giá vàng trong nước, chênh lệch với thế giới, sức mua vàng nhẫn.",
+   "event_date": "2026-11-28"
+  },
+  {
+   "id": "ev23",
+   "title": "Nghị định 398/2026: giảm 30% thuế thu nhập cho hộ kinh doanh, doanh nghiệp doanh thu đến 10 tỷ đồng",
+   "summary": "Nghị định 398/2026/NĐ-CP giảm 30% số thuế TNCN hoặc TNDN phải nộp cho hộ, cá nhân kinh doanh và doanh nghiệp có doanh thu năm không quá 10 tỷ đồng, áp dụng kỳ tính thuế 2026 và 2027. Doanh thu lũy kế vượt ngưỡng thì phải nộp lại phần đã giảm.",
+   "new_information": "Chính sách có hiệu lực từ 29/10; Bộ Tài chính ước giảm thu ngân sách khoảng 6.700 tỷ đồng trong hai năm.",
+   "key_figures": [
+    "Đối tượng: doanh thu năm không quá 10 tỷ đồng",
+    "Mức giảm: 30% số thuế thu nhập phải nộp",
+    "Kỳ áp dụng: 2026 và 2027",
+    "Giảm thu ngân sách: khoảng 6.700 tỷ đồng"
+   ],
+   "companies": [],
+   "segments": [
+    "Chính sách"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "hkd-tax"
+   ],
+   "importance": 2,
+   "article_ids": [
+    "a24"
+   ],
+   "impact": "Biến số liên quan: chi phí thuế của cửa hàng truyền thống, chênh lệch giá giữa kênh truyền thống và hiện đại."
+  },
+  {
+   "id": "ev24",
+   "title": "Hộ kinh doanh vẫn đứng ngoài chuỗi khấu trừ thuế GTGT",
+   "summary": "Hộ kinh doanh nộp GTGT theo phương pháp trực tiếp (1% với phân phối hàng hóa), nên hóa đơn bán ra không tách thuế đầu vào cho doanh nghiệp mua hàng khấu trừ. Hộ có doanh thu năm trên 1 tỷ đồng phải dùng hóa đơn điện tử.",
+   "new_information": "Đại diện Bộ Tài chính nêu hộ kinh doanh muốn được khấu trừ thuế phải chuyển thành doanh nghiệp.",
+   "key_figures": [
+    "GTGT trực tiếp: 1% phân phối, cung cấp hàng hóa",
+    "Ngưỡng hóa đơn điện tử: doanh thu năm trên 1 tỷ đồng",
+    "Thanh toán không dùng tiền mặt: từ 5 triệu đồng/lần"
+   ],
+   "companies": [],
+   "segments": [
+    "Chính sách"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "hkd-tax"
+   ],
+   "importance": 1,
+   "article_ids": [
+    "a25"
+   ],
+   "impact": "Biến số liên quan: chi phí tuân thủ của kênh truyền thống, chuyển dịch sang chuỗi hiện đại."
+  }
+ ],
+ "topics": [
+  {
+   "id": "pnj-diamond",
+   "title": "PNJ: cú sốc kim cương",
+   "background": "Quý II/2026 PNJ lỗ 283 tỷ đồng vì dự phòng 865 tỷ đồng; tháng 7–8 lỗ tiếp 61 tỷ đồng, biên gộp khoảng 10%. ĐHĐCĐ bất thường 21/10 thông qua kế hoạch 2026 lỗ 6.271 tỷ đồng (dự phòng thu đổi 7.071 tỷ đồng), chào bán riêng lẻ tối đa 550 triệu cổ phiếu, vay 700 tỷ đồng từ Chủ tịch HĐQT. Quý III lỗ khoảng 258 tỷ đồng, biên gộp 8,7%, tồn kho giá gốc 18.855 tỷ đồng, còn 424 cửa hàng. Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: biên gộp quý IV, dự phòng thu đổi còn lại, tiến độ chào bán riêng lẻ (quý IV/2026–quý III/2027), số cửa hàng; kết thúc theo dõi khi PNJ hoàn tất phát hành và có lãi trở lại theo quý.",
+   "related_data": [
+    "Biên gộp PNJ cạnh giá vàng",
+    "#rf-q-pnj"
+   ]
+  },
+  {
+   "id": "bhx",
+   "title": "Bách Hóa Xanh, Long Châu tăng tốc",
+   "background": "Bách Hóa Xanh đạt 45.900 tỷ đồng doanh thu 9 tháng 2026 (+34%), lãi khoảng 1.650 tỷ đồng, 4.318 cửa hàng cuối tháng 10; MWG tính IPO sau khi xóa lỗ lũy kế. Long Châu đạt 33.408 tỷ đồng 9 tháng (+35%) với 2.741 nhà thuốc, 244 trung tâm tiêm chủng. WinCommerce có 5.486 cửa hàng, quý III lãi 325 tỷ đồng; Masan nâng mục tiêu lợi nhuận năm. Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: số cửa hàng mở mới quý IV, doanh thu/cửa hàng, lợi nhuận Bách Hóa Xanh và WinCommerce; kết thúc theo dõi khi tốc độ mở mới chậm lại hoặc biên lợi nhuận cửa hàng mới chuyển âm.",
+   "related_data": [
+    "Mạng lưới & năng suất",
+    "#rf-q-stores"
+   ]
+  },
+  {
+   "id": "ecommerce",
+   "title": "TMĐT +44% và luật mới",
+   "background": "Theo Metric.vn, 4 sàn lớn đạt 441,97 nghìn tỷ đồng 9 tháng 2026 (+44,47%), sau 291.600 tỷ đồng nửa đầu năm (+44,11%); Shopee và TikTok Shop gần ngang thị phần trong quý III. e-Conomy SEA ước TMĐT Việt Nam 32 tỷ USD năm 2026 (+22%). Luật TMĐT hiệu lực 1/7/2026 (ký quỹ nền tảng ngoại, định danh người livestream). Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: doanh số 4 sàn quý IV, tỷ trọng online trong doanh thu chuỗi (MWG, FRT), văn bản hướng dẫn Luật TMĐT; kết thúc theo dõi khi tăng trưởng TMĐT về dưới 25%/năm.",
+   "related_data": [
+    "Luật TMĐT (1/7/2026)",
+    "#rf-q-policy"
+   ]
+  },
+  {
+   "id": "demand",
+   "title": "Sức mua và tổng mức bán lẻ",
+   "background": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng 10 tháng 2026 đạt 6.618,9 nghìn tỷ đồng (+13,5%), tăng thực 7,7%; tháng 10 tăng 14,7%. CPI tháng 10 tăng 5,09% so với cùng kỳ nên tăng thực thấp hơn nhiều so với tăng danh nghĩa. Khách quốc tế 10 tháng 19,5 triệu lượt (+13,8%). Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: số liệu tháng 11–12 của Cục Thống kê (tăng thực, CPI), khách quốc tế; kết thúc theo dõi khi tăng thực về dưới 6%.",
+   "related_data": [
+    "Sức mua thực",
+    "#rf-q-real"
+   ]
+  },
+  {
+   "id": "electronics",
+   "title": "Điện máy & ICT: tăng nhờ cửa hàng hiện hữu",
+   "background": "Khối Điện Máy Xanh đạt 99.460 tỷ đồng doanh thu 9 tháng 2026 (+29%), SSSG 30%, trả chậm chiếm 38% doanh thu; lợi nhuận hơn 7.700 tỷ đồng (+83%). MWG lãi 9.634 tỷ đồng 9 tháng, vượt kế hoạch năm. FPT Shop đạt 15.014 tỷ đồng (+30%). Số cửa hàng điện máy giảm nhẹ, tăng trưởng đến từ năng suất. Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: SSSG quý IV, tỷ trọng trả chậm, biên gộp điện máy, doanh thu nhóm Apple; kết thúc theo dõi khi SSSG về dưới 10%.",
+   "related_data": [
+    "SSSG so với tăng trưởng doanh thu",
+    "#rf-q-sssg"
+   ]
+  },
+  {
+   "id": "gold",
+   "title": "Giá vàng và chênh lệch trong nước",
+   "background": "Cuối tháng 11/2026 vàng miếng SJC 131–136 triệu đồng/lượng, cao hơn thế giới quy đổi khoảng 20–22 triệu đồng/lượng; vàng nhẫn tăng tới 4 triệu đồng/lượng trong tuần đến 28/11. Giá vàng thế giới 3.575–3.644 USD/ounce. Chênh lệch lớn ảnh hưởng giá vốn và sức mua vàng nhẫn, trang sức của PNJ. Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: chênh lệch SJC – thế giới, giá vàng nhẫn, chính sách nhập khẩu vàng nguyên liệu; kết thúc theo dõi khi chênh lệch về dưới 5 triệu đồng/lượng.",
+   "related_data": [
+    "Chênh lệch vàng trong nước – thế giới",
+    "#rf-q-gap"
+   ]
+  },
+  {
+   "id": "hkd-tax",
+   "title": "Thuế hộ kinh doanh và kênh truyền thống",
+   "background": "Nghị định 398/2026/NĐ-CP giảm 30% thuế thu nhập cho hộ kinh doanh và doanh nghiệp doanh thu đến 10 tỷ đồng trong 2026–2027. Hộ kinh doanh nộp GTGT trực tiếp và phải dùng hóa đơn điện tử khi doanh thu trên 1 tỷ đồng; muốn khấu trừ thuế phải chuyển thành doanh nghiệp. Các quy định này đổi chi phí của cửa hàng truyền thống so với chuỗi hiện đại. Cập nhật phân tích 28/11/2026.",
+   "next_check": "Theo dõi: hướng dẫn thuế hộ kinh doanh 2027, số hộ chuyển thành doanh nghiệp, thị phần kênh hiện đại; kết thúc theo dõi khi khung thuế hộ kinh doanh ổn định sau 2027.",
+   "related_data": [
+    "Kênh hiện đại và kênh truyền thống",
+    "#rf-q-channel"
+   ]
+  }
+ ]
+}

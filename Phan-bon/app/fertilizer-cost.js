@@ -1,6 +1,7 @@
 /* Phân bón · Bức tranh ngành: phần chi phí và biên gộp theo mô hình sản xuất (25/11/2026), dựng vào sub-tab theo loại phân (26/11/2026):
    01 Phân đạm: urê từ khí (DPM, DCM), urê từ than (DHB) · 02 Phân lân & DAP (DDV, LAS, VAF, NFC) · 03 NPK & kali (BFC, SFG)
    · 04 Nguồn khí: benchmark khí quốc tế, Brent, cơ chế giá khí DPM/DCM · 05 Ma trận tác động lên doanh nghiệp.
+   28/11/2026 (khung chuẩn Điện): npkIn (chỉ số giá urê, DAP, kali) và matrix dựng vào 01 Toàn ngành; câu hỏi đánh số lại ở fertilizer.js (renum).
    Nguyên tắc (yêu cầu người dùng):
    - Không dùng benchmark quốc tế thay giá mua thực tế của doanh nghiệp; benchmark gắn nhãn Proxy.
    - Không tự giả định định mức hay trọng số để tạo spread; thiếu định mức có nguồn thì chỉ hiện từng chuỗi giá.
@@ -81,21 +82,21 @@ function views() {
 
   const V = {
     ureaMargin(h) {
-      const q1 = panel('1.5', 'Giá urê thế giới có truyền vào biên gộp của DPM, DCM không?', 'Hai chart cùng trục quý: trên là giá bán tham chiếu, dưới là biên gộp thực tế từ BCTC.');
+      const q1 = panel('·', 'Giá urê thế giới có truyền vào biên gộp DPM, DCM không?');
       const a = card('pb-c-gas-px', 'Giá urê thế giới, bình quân quý', {sub: 'USD/tấn · FOB Trung Đông · Actual', source: SRC.wb + '; bình quân 3 tháng', info: 'Quý chỉ tính khi đủ 3 tháng. Đây là benchmark quốc tế, không phải giá bán thực tế của DPM, DCM; giá urê nội địa chưa có (WiData).'});
       const b = card('pb-c-gas-gm', 'Biên lợi nhuận gộp DPM, DCM theo quý', {sub: '% · LN gộp ÷ doanh thu thuần hợp nhất · Actual', source: SRC.vnd + '; tự tính', info: 'Biên gộp hợp nhất gồm urê, NPK và hàng kinh doanh thương mại; không phải biên riêng mảng urê.'});
-      q1.append(a.el, b.el, insight(`${corrNote('DPM', 'urea')}; ${corrNote('DCM', 'urea')}. Tương quan là thống kê mô tả, không thay cho phân tích giá khí đầu vào.`)); h.append(q1);
+      q1.append(b.el, a.el, insight(`${corrNote('DPM', 'urea')}; ${corrNote('DCM', 'urea')}. Tương quan là thống kê mô tả, không thay cho phân tích giá khí đầu vào.`)); h.append(q1);
       chart(a.host, 'pb-c-gas-px', QL, [{name: 'Urê (World Bank)', color: C.blue, values: qOf('urea')}], {unit: 'USD/tấn', zeroBase: false});
       chart(b.host, 'pb-c-gas-gm', QL, [{name: 'DPM', color: C.blue, values: gm('DPM')}, {name: 'DCM', color: C.sky, values: gm('DCM')}], {unit: '%', digits: 1, zeroBase: false});
     },
     coalIn(h) {
-      const q1 = panel('1.6', 'Giá than và giá urê đang dịch chuyển thế nào với nhà sản xuất urê từ than?');
+      const q1 = panel('·', 'Giá than có đi cùng chiều giá urê không?');
       const a = card('pb-c-coal-px', 'Giá than Newcastle và giá urê, bình quân quý', {sub: 'USD/tấn · than: Proxy · urê: benchmark', source: SRC.wb, info: 'Newcastle là giá than nhiệt xuất khẩu Úc, không phải giá than antraxit TKV bán cho DHB, Đạm Ninh Bình. Giá than nội địa chưa có nguồn công khai theo tháng.'});
       q1.append(a.el); h.append(q1);
       chart(a.host, 'pb-c-coal-px', QL, [{name: 'Urê (World Bank)', color: C.blue, values: qOf('urea')}, {name: 'Than Newcastle (proxy)', color: C.grey, values: qOf('coal_au')}], {unit: 'USD/tấn', zeroBase: false});
     },
     coalMargin(h) {
-      const q2 = panel('1.7', 'Biên gộp công nghệ than khác công nghệ khí thế nào?', 'Biên gộp hợp nhất theo nhóm doanh nghiệp, tổng LN gộp ÷ tổng doanh thu.');
+      const q2 = panel('·', 'Urê từ than có biên gộp khác urê từ khí không?');
       const b = card('pb-c-coal-gm', 'Biên gộp: urê từ than (DHB) so với urê từ khí (DPM + DCM)', {sub: '% · theo quý · Actual', source: SRC.vnd + '; tự tính', info: 'Nhóm khí = tổng LN gộp DPM + DCM ÷ tổng doanh thu; nhóm than = DHB. DHB Q4/2023 giá vốn bằng 0 trên nguồn nên để trống.'});
       q2.append(b.el, insight(corrNote('DHB', 'urea') + '.'));
       h.append(q2);
@@ -104,17 +105,17 @@ function views() {
     },
     phosIn(h) {
       const L = k.months('2021-01', last('dap').date);
-      const q1 = panel('2.2', 'Giá quặng phosphate (nguyên liệu) và giá DAP, TSP biến động ra sao?', 'Từng chuỗi độc lập: chưa có định mức tiêu hao có nguồn nên không ghép thành chi phí rổ.');
+      const q1 = panel('·', 'Giá quặng phosphate đang tăng hay giảm so với giá DAP, TSP?');
       const a = card('pb-c-phos-px', 'Giá DAP, TSP và quặng phosphate', {sub: 'USD/tấn · bình quân tháng · quặng: Proxy cho apatit', source: SRC.wb, info: 'Quặng phosphate Morocco là benchmark quốc tế; apatit Lào Cai có hàm lượng và cơ chế giá khác.'});
       q1.append(a.el);
       h.append(q1);
       chart(a.host, 'pb-c-phos-px', L.map(mL), [['dap', 'DAP', C.gold], ['tsp', 'TSP', C.plum], ['phosrock', 'Quặng phosphate (proxy)', C.grey]].map(([key, n, col]) => ({name: n, color: col, values: L.map(m => k.val(key, m))})), {unit: 'USD/tấn'});
     },
     phosMargin(h) {
-      const q2 = panel('2.3', 'Giá DAP có truyền vào biên gộp các nhà sản xuất lân không?');
+      const q2 = panel('·', 'Giá DAP có truyền vào biên gộp nhà sản xuất lân không?');
       const b = card('pb-c-phos-gm', 'Biên gộp DDV, LAS, VAF, NFC theo quý', {sub: '% · Actual', source: SRC.vnd + '; tự tính'});
       const c2 = card('pb-c-phos-dapq', 'Giá DAP, bình quân quý', {sub: 'USD/tấn · benchmark', source: SRC.wb});
-      q2.append(c2.el, b.el, insight(['DDV', 'LAS'].map(t => corrNote(t, 'dap')).join('; ') + '.')); h.append(q2);
+      q2.append(b.el, c2.el, insight(['DDV', 'LAS'].map(t => corrNote(t, 'dap')).join('; ') + '.')); h.append(q2);
       chart(c2.host, 'pb-c-phos-dapq', QL, [{name: 'DAP', color: C.gold, values: qOf('dap')}], {unit: 'USD/tấn', zeroBase: false});
       chart(b.host, 'pb-c-phos-gm', QL, [['DDV', C.gold], ['LAS', C.plum], ['VAF', C.teal], ['NFC', C.grey]].map(([t, col]) => ({name: t, color: col, values: gm(t)})), {unit: '%', digits: 1, zeroBase: false});
     },
@@ -122,13 +123,13 @@ function views() {
       // Chỉ số giá từng nguyên liệu, gốc = bình quân 2024 = 100 (tự tính). Không ghép thành rổ vì chưa có công thức có nguồn.
       const base = key => { const v = recs(key).filter(r => r.date.startsWith('2024')).map(r => r.value); return v.length === 12 ? v.reduce((a, b) => a + b, 0) / 12 : null; };
       const L = k.months('2021-01', last('urea').date);
-      const q1 = panel('3.4', 'Giá urê, DAP, kali — nguyên liệu của NPK — đang ở đâu so với 2024?', 'Giá nguyên liệu tăng là chi phí với nhà sản xuất NPK, nhưng là doanh thu với nhà sản xuất phân đơn (xem 05 Ma trận tác động).');
+      const q1 = panel('·', 'Giá urê, DAP, kali đang cao hay thấp so với năm 2024?');
       const a = card('pb-c-npk-idx', 'Chỉ số giá nguyên liệu NPK (bình quân 2024 = 100)', {sub: 'Calculated · từng chuỗi riêng, không phải chi phí rổ', source: SRC.wb + '; tự tính', info: 'Chỉ số = giá tháng ÷ bình quân 12 tháng 2024 × 100. Không dùng hàm lượng N-P-K trên bao bì làm tỷ trọng chi phí; chưa có công thức phối trộn có nguồn nên không tính rổ.'});
       q1.append(a.el); h.append(q1);
       chart(a.host, 'pb-c-npk-idx', L.map(mL), [['urea', 'Urê', C.blue], ['dap', 'DAP', C.gold], ['potash', 'Kali', C.plum]].map(([key, n, col]) => { const b = base(key); return {name: n, color: col, values: L.map(m => { const v = k.val(key, m); return fin(v) && b ? v / b * 100 : null; })}; }), {unit: 'điểm', zeroBase: false});
     },
     npkMargin(h) {
-      const q2 = panel('3.5', 'Giá nguyên liệu đi qua tồn kho rồi mới vào biên gộp NPK: độ trễ bao lâu?', 'Giá nguyên liệu → giá vốn hàng tồn kho → giá bán NPK → biên gộp.');
+      const q2 = panel('·', 'Giá nguyên liệu vào biên gộp NPK trễ bao lâu?');
       const b = card('pb-c-npk-gm', 'Biên gộp BFC, SFG theo quý', {sub: '% · Actual', source: SRC.vnd + '; tự tính'});
       const c = card('pb-c-npk-dio', 'Số ngày tồn kho BFC, SFG', {sub: 'ngày · hàng tồn kho bình quân ÷ giá vốn 4 quý × 365 · Calculated', source: SRC.vnd + '; tự tính', info: 'Hàng tồn kho bình quân = (cuối kỳ + cùng kỳ năm trước) ÷ 2. Số ngày tồn kho cho biết khoảng thời gian giá nguyên liệu mua vào nằm trong giá vốn trước khi bán ra.'});
       const lagTxt = ['BFC', 'SFG'].map(t => { const g = gm(t), u = qOf('urea'); const r0 = pearson(g, u), r1 = pearson(g.slice(1), u.slice(0, -1)); return fin(r0.r) ? `${t}: tương quan biên gộp với giá urê cùng quý ${nf(r0.r, 2)}, trễ 1 quý ${nf(r1.r, 2)}` : `${t}: chưa đủ quý`; }).join('; ');
@@ -138,18 +139,18 @@ function views() {
     },
     gas(h) {
       const L = k.months('2019-01', last('gas_eu').date);
-      const q1 = panel('4.1', 'Chi phí khí của các khu vực sản xuất urê lớn trên thế giới đang ở đâu?', 'Dùng để theo dõi lợi thế chi phí giữa các khu vực và rủi ro cắt giảm cung ở châu Âu; không đại diện cho lợi nhuận DPM, DCM.');
+      const q1 = panel('·', 'Giá khí ở các khu vực sản xuất urê lớn đang ở đâu?');
       const a = card('pb-c-intl-gas', 'Giá khí tự nhiên theo khu vực', {sub: 'USD/MMBtu · bình quân tháng · Actual', source: SRC.wb});
       q1.append(a.el, k.heat('pb-c-intl-heat', 'Giá khí châu Âu tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'gas_eu', k.lastYears('gas_eu', 3), SRC.wb)); h.append(q1);
       chart(a.host, 'pb-c-intl-gas', L.map(mL), [['gas_eu', 'Châu Âu (TTF)', C.blue], ['lng_jp', 'LNG Nhật Bản', C.gold], ['gas_us', 'Mỹ (Henry Hub)', C.teal]].map(([key, n, col]) => ({name: n, color: col, values: L.map(m => k.val(key, m))})), {unit: 'USD/MMBtu', digits: 2});
-      const q3 = panel('4.2', 'Giá dầu (biến số trong công thức giá khí gắn với dầu) thay đổi ra sao?');
+      const q3 = panel('·', 'Giá dầu trong công thức giá khí đang tăng hay giảm?');
       const c = card('pb-c-gas-brent', 'Dầu Brent, bình quân quý', {sub: 'USD/thùng · Proxy cho nhóm giá khí gắn với giá dầu', source: SRC.wb, info: 'Brent không phải giá FO Singapore; chỉ thể hiện xu hướng nhóm giá dầu. Giá khí thực tế phụ thuộc công thức hợp đồng từng doanh nghiệp (2A.2).'});
       q3.append(c.el); h.append(q3);
       chart(c.host, 'pb-c-gas-brent', QL, [{name: 'Brent (proxy)', color: C.grey, values: qOf('brent')}], {unit: 'USD/thùng', digits: 1, zeroBase: false});
       // 26/11/2026: bỏ mục cơ chế giá khí theo doanh nghiệp (pb-c-gas-mech) và dòng chú thích spread theo yêu cầu người dùng; hợp đồng khí DPM, DCM xem bản đồ 4.3 (chế độ DPM/DCM).
     },
     matrix(h) {
-      const q = panel('5.1', 'Biến số nào đang tác động lên doanh nghiệp nào, theo chiều nào?', 'Ba chế độ: phơi nhiễm cấu trúc (định tính), tác động hiện tại (biến động giá thực tế × chiều cấu trúc), tương quan thực tế với biên gộp.');
+      const q = panel('·', 'Biến số giá nào đang tác động lên doanh nghiệp nào, theo chiều nào?');
       const c = el('div', 'card fb-mx'); c.dataset.blockId = 'pb-c-matrix';
       c.innerHTML = `<div class="chart-title">Ma trận tác động chi phí lên doanh nghiệp niêm yết</div>
         <div class="fb-mx-ctl"><div class="pf-seg pf-box" data-k="mode"><button type="button" data-v="struct" aria-pressed="true">Phơi nhiễm cấu trúc</button><button type="button" data-v="now" aria-pressed="false">Tác động hiện tại</button><button type="button" data-v="corr" aria-pressed="false">Tương quan với biên gộp</button></div>

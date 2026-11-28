@@ -98,3 +98,8 @@
 .rf-split a{border:1px solid var(--line,#d6dbe8);border-radius:999px;padding:4px 12px;color:#2938A8;font-weight:600;text-decoration:none;background:var(--card,#fff)}
 .rf-split a small{color:var(--muted,#7a8399);font-weight:500;margin-left:4px}
 .rf-split a:hover{border-color:#2938A8}
+
+/* Đầu sub-tab (28/11/2026, khung chuẩn Điện): "Dữ liệu mới nhất" và Link mục cùng một cụm bên phải. */
+.rf-hside{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
+/* Thẻ dẫn sang chart ở sub-tab khác (giao diện .th-link ở app/sector-frame.css). */
+.rf-xlink.th-link{scroll-margin-top:120px}

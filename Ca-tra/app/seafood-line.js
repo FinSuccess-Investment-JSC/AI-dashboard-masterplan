@@ -17,4 +17,15 @@
   relabel(window.COMPANY_QUARTERLY?.companies);
   relabel(window.COMPANY_QUARTERLY?.missing);
   relabel(window.COMPANY_VALUATION?.companies);
+  // 28/11/2026: BCTC cộng gộp (data/seafood-financials.js, nạp trước file này) chung cho hai trang: giữ nhóm của trang
+  // (nhóm có line = pang | shrimp, xem scripts/seafood_fin_items.py) để Tài chính ngành › 01 và 03 Định giá chỉ tính mã của ngành.
+  const F = window.SEAFOOD_FIN;
+  if (F && Array.isArray(F.groups)) {
+    const want = line === 'shrimp' ? 'shrimp' : 'pang';
+    F.groups = F.groups.filter(g => (g.line || 'pang') === want);
+    const ids = new Set(F.groups.map(g => g.id));
+    F.companies = (F.companies || []).filter(c => ids.has(c.group));
+    const keep = new Set(F.companies.map(c => c.ticker));
+    F.consolidation = (F.consolidation || []).filter(c => keep.has(c.parent) && keep.has(c.child));
+  }
 })();

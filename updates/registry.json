@@ -5236,6 +5236,194 @@
    ]
   },
   {
+   "id": "retail.industry-financials",
+   "tier": "C",
+   "title": "Bán lẻ · tab Tài chính ngành: BCTC doanh nghiệp niêm yết theo nhóm (bán lẻ hiện đại MWG, FRT · phân phối thiết bị DGW, PET · trang sức PNJ · hàng tiêu dùng MSN, KDC)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Ban-le/index.html",
+    "file": "data/retail-financials.js",
+    "blocks": []
+   },
+   "how": "python scripts/fetch_retail_financials.py && python scripts/build_retail_financials.py (refresh-data.yml); giao diện Ban-le/app/retail-finance.js trong tab Tài chính ngành › 01 (#mt14), khung Ban-le/app/retail-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/retail_fin_items.py; không có cặp mẹ − con; MSN là tập đoàn đa ngành, FRT gồm Long Châu (cũng ở rổ Dược); LNST là số hợp nhất"
+   ]
+  },
+  {
+   "id": "seafood.industry-financials",
+   "tier": "C",
+   "title": "Cá tra, Tôm · tab Tài chính ngành: BCTC doanh nghiệp niêm yết theo nhóm (cá tra VHC, ANV, IDI · đa ngành ASM · tôm FMC, CMX, MPC)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Ca-tra/index.html, Tom/index.html",
+    "file": "data/seafood-financials.js",
+    "blocks": []
+   },
+   "how": "python scripts/fetch_seafood_financials.py && python scripts/build_seafood_financials.py (refresh-data.yml); giao diện Ca-tra/app/seafood-finance.js trong tab Tài chính ngành › 01 (#mt14), khung Ca-tra/app/seafood-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/seafood_fin_items.py; loại trùng IDI khi ASM cùng trong rổ (tỷ lệ sở hữu chưa đối chiếu BCTN); dùng chung cho Ca-tra/ và Tom/ (mỗi trang lọc nhóm của mình)"
+   ]
+  },
+  {
+   "id": "beer.industry-financials",
+   "tier": "C",
+   "title": "Bia · tab Tài chính ngành: BCTC doanh nghiệp niêm yết theo nhóm (SAB, BHN, SMB, HAD và các công ty bia niêm yết)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "file": "data/beer-financials.js",
+    "blocks": []
+   },
+   "how": "python scripts/fetch_beer_financials.py && python scripts/build_beer_financials.py (refresh-data.yml); giao diện Bia/app/beer-finance.js trong tab Tài chính ngành › 01 (#mt14), khung Bia/app/pkg-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/beer_fin_items.py; SAB trừ BSQ, BSL, WSB, BSH; BHN trừ HAD, THB, HAT (sở hữu theo VNDirect, chưa đối chiếu BCTN 2025)"
+   ]
+  },
+  {
+   "id": "dairy.industry-financials",
+   "tier": "C",
+   "title": "Sữa · tab Tài chính ngành: BCTC doanh nghiệp niêm yết theo nhóm (VNM, MCM, IDP, HNM)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "file": "data/dairy-financials.js",
+    "blocks": []
+   },
+   "how": "python scripts/fetch_dairy_financials.py && python scripts/build_dairy_financials.py (refresh-data.yml); giao diện Sua/app/dairy-finance.js trong tab Tài chính ngành › 01 (#mt14), khung Sua/app/pkg-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/dairy_fin_items.py; VNM trừ MCM từ Q4/2019 (mốc suy từ lợi ích CĐKKS)"
+   ]
+  },
+  {
    "id": "realestate.industry-financials",
    "tier": "C",
    "title": "BĐS dân cư · tab Tài chính ngành: BCTC 13 doanh nghiệp niêm yết theo nhóm (VHM, chủ đầu tư nhà ở khác, cho thuê & môi giới)",
@@ -5306,6 +5494,100 @@
     "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
     "Mã lỗi tải giữ bản trước, ghi vào stale",
     "Universe và nhóm ở scripts/re_fin_items.py; loại trùng mẹ − con DXG ← DXS (tỷ lệ sở hữu chưa đối chiếu báo cáo thường niên)"
+   ]
+  },
+  {
+   "id": "plastic.industry-financials",
+   "tier": "C",
+   "title": "Nhựa · tab Tài chính ngành: BCTC doanh nghiệp niêm yết theo nhóm (nhựa xây dựng BMP, NTP, DNP, HCD · bao bì AAA, TDP, TPP · kỹ thuật, gia dụng NHH, VTZ · phụ gia, hạt nhựa HII, PLP)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Nhua/index.html",
+    "file": "data/plastic-financials.js",
+    "blocks": []
+   },
+   "how": "python scripts/fetch_plastic_financials.py && python scripts/build_plastic_financials.py (refresh-data.yml); giao diện Nhua/app/plastic-finance.js trong tab Tài chính ngành › 01 (#mt14), khung Nhua/app/pkg-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/plastic_fin_items.py; bỏ APH (mẹ của AAA, HII); DNP gồm mảng nước sạch, AAA/HII gồm thương mại hạt nhựa (chưa đối chiếu BCTN)"
+   ]
+  },
+  {
+   "id": "auto.industry-financials",
+   "tier": "C",
+   "title": "Ô tô – Xe máy · tab Tài chính ngành: BCTC doanh nghiệp niêm yết theo nhóm (đại lý ô tô HAX, SVC, CTF · sản xuất & lắp ráp TMT · sở hữu vốn liên doanh VEA)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "file": "data/auto-financials.js",
+    "blocks": []
+   },
+   "how": "python scripts/fetch_auto_financials.py && python scripts/build_auto_model.py && python scripts/build_auto_financials.py (refresh-data.yml); giao diện O-to-xe-may/app/auto-finance.js trong tab Tài chính ngành › 01 (#mt14), khung O-to-xe-may/app/pkg-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/auto_fin_items.py (FIN_TICKERS, GROUPS); nhóm VEA mặc định tắt vì lãi chủ yếu từ liên doanh"
    ]
   },
   {
@@ -9186,6 +9468,7 @@
     "page": "Xut-clo/index.html",
     "blocks": [
      "xc-01",
+     "xc-02",
      "xc-21",
      "xc-22",
      "xc-31",
@@ -9299,6 +9582,492 @@
    },
    "how": "python3 scripts/build_aviation_valuation.py (chạy trong refresh-data.yml).",
    "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "oil.hot-news",
+   "tier": "C",
+   "title": "Dầu khí · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "file": "data/oil/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/oil/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_oil_news.py → data/oil-news.js (#dk-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "shipping.hot-news",
+   "tier": "C",
+   "title": "Vận tải biển · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Van-tai-bien/index.html",
+    "file": "data/shipping/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/shipping/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_shipping_news.py → data/shipping-news.js (#vt-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "port.hot-news",
+   "tier": "C",
+   "title": "Cảng & kho bãi · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/port/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_port_news.py → data/port-news.js (#cb-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "realestate.hot-news",
+   "tier": "C",
+   "title": "BĐS dân cư · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "file": "data/realestate/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/realestate/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_realestate_news.py → data/realestate-news.js (#re-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "textile.hot-news",
+   "tier": "C",
+   "title": "Dệt may · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "file": "data/textile/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/textile/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_textile_news.py → data/textile-news.js (#dm-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "seafood.hot-news",
+   "tier": "C",
+   "title": "Cá tra · Tôm · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Ca-tra/index.html, Tom/index.html",
+    "file": "data/seafood/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/seafood/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_seafood_news.py → data/seafood-news.js (#sf-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "sugar.hot-news",
+   "tier": "C",
+   "title": "Đường · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "file": "data/sugar/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/sugar/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_sugar_news.py → data/sugar-news.js (#sg-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "beer.hot-news",
+   "tier": "C",
+   "title": "Bia · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "file": "data/beer/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/beer/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_beer_news.py → data/beer-news.js (#bia-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "dairy.hot-news",
+   "tier": "C",
+   "title": "Sữa · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "file": "data/dairy/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/dairy/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_dairy_news.py → data/dairy-news.js (#sua-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "livestock.hot-news",
+   "tier": "C",
+   "title": "Chăn nuôi · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/livestock/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_livestock_news.py → data/livestock-news.js (#cn-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "aviation.hot-news",
+   "tier": "C",
+   "title": "Hàng không · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Hang-khong/index.html",
+    "file": "data/aviation/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/aviation/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_aviation_news.py → data/aviation-news.js (#hk-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "retail.hot-news",
+   "tier": "C",
+   "title": "Bán lẻ · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Ban-le/index.html",
+    "file": "data/retail/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/retail/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_retail_news.py → data/retail-news.js (#rt-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "plastic.hot-news",
+   "tier": "C",
+   "title": "Nhựa · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Nhua/index.html",
+    "file": "data/plastic/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/plastic/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_plastic_news.py → data/plastic-news.js (#nh-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "auto.hot-news",
+   "tier": "C",
+   "title": "Ô tô – Xe máy · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "file": "data/auto/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/auto/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_auto_news.py → data/auto-news.js (#oto-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "rubber.hot-news",
+   "tier": "C",
+   "title": "Cao su · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Cao-su/index.html",
+    "file": "data/rubber/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/rubber/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_rubber_news.py → data/rubber-news.js (#cs-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "fertilizer.hot-news",
+   "tier": "C",
+   "title": "Phân bón · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Phan-bon/index.html",
+    "file": "data/fertilizer/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/fertilizer/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_fertilizer_news.py → data/fertilizer-news.js (#pb-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "steel.hot-news",
+   "tier": "C",
+   "title": "Thép · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "file": "data/steel/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/steel/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_steel_news.py → data/steel-news.js (#th-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
+  },
+  {
+   "id": "pharma.hot-news",
+   "tier": "C",
+   "title": "Dược & y tế · Chủ đề nóng: luồng tin bài gốc → sự kiện → chủ đề (bố cục Điện, §42)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "publication": "Theo sự kiện; báo chí, cơ quan nhà nước, hiệp hội, IR doanh nghiệp",
+   "source": {
+    "name": "Báo chí chính thống, cơ quan nhà nước, hiệp hội ngành, IR doanh nghiệp",
+    "url": "https://vneconomy.vn/"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "file": "data/pharma/news.json",
+    "blocks": []
+   },
+   "how": "Thêm bài đã mở vào data/pharma/news.json (articles → events → topics; URL https, ngày đăng đọc từ bài, số trong key_figures có trong bài), cập nhật next_check của chủ đề, rồi chạy python scripts/build_pharma_news.py → data/pharma-news.js (#duoc-news trong tab #mt7)",
+   "gates": [
+    "Chỉ bài đã mở được, có URL gốc và ngày đăng",
+    "Không bịa số; số lệch giữa nguồn ghi rõ nguồn từng số",
+    "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
+    "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
+   ]
   }
  ]
 }

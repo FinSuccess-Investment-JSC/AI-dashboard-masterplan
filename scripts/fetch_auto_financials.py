@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Tải BCTC hợp nhất (năm + quý) của 5 mã ngành Ô tô – Xe máy từ VNDirect finfo (công khai) cho sub-tab
-Tổng quan › Mô hình kiếm tiền (O-to-xe-may/).
+Tổng quan › Mô hình kiếm tiền và Tài chính ngành › 01 (O-to-xe-may/).
 
-  python scripts/fetch_auto_financials.py [--since 2019-01-01] && python scripts/build_auto_model.py
+  python scripts/fetch_auto_financials.py [--since 2019-01-01] && python scripts/build_auto_model.py && python scripts/build_auto_financials.py
 
 Ghi data/raw/public/fs_auto_full_vndirect.json: {captured, source, url, unit, annual: {mã: {năm: {mã khoản mục: giá trị}}},
 quarter: {mã: {kỳ: {...}}}, stale}. Giá trị đúng như nguồn (đồng); không điền số thiếu. Mã lỗi tải giữ bản trước, ghi vào 'stale'.
@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from auto_fin_items import ITEMS, TICKERS  # noqa: E402
+from auto_fin_items import ITEMS, TICKERS, FIN_ITEMS  # noqa: E402
 
 API = ('https://api-finfo.vndirect.com.vn/v4/financial_statements'
        '?q=code:{c}~reportType:{r}~modelType:{m}~fiscalDate:gte:{since}&size=9999')
@@ -41,7 +41,8 @@ def period(date, report):
 
 
 def fetch(symbol, since):
-    codes = {m: {it['code'] for it in ITEMS if it['model'] == m} for m in (1, 2, 3)}
+    # 28/11/2026: thêm khoản mục của Tài chính ngành (FIN_ITEMS) cho scripts/build_auto_financials.py
+    codes = {m: {it['code'] for it in ITEMS + FIN_ITEMS if it['model'] == m} for m in (1, 2, 3)}
     out = {'ANNUAL': {}, 'QUARTER': {}}
     for rep in out:
         for m in (1, 2, 3):

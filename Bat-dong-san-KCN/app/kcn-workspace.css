@@ -93,3 +93,5 @@
 @media (max-width:860px){.kc-grid{grid-template-columns:minmax(0,1fr)}.kc-ins dl{grid-template-columns:1fr}.kc-reset{margin-left:0}.kc-filters label{flex:1 1 140px}.kc-filters select{max-width:none;flex:1}}
 @media (max-width:520px){.kc-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kc-kpi b{font-size:16px}.kc-ch{flex-direction:column}.kc-tools{justify-content:flex-start}.kc-checks{columns:1}}
 @media print{.kc-nav,.kc-filters,.kc-tools{display:none}}
+/* 28/11/2026: ngày dữ liệu nhiều chuỗi xuống dòng ở màn hình hẹp (sector-frame.css đặt nowrap). */
+@media (max-width:760px){html body .pp-head .pp-asof{white-space:normal}}

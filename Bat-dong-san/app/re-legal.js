@@ -1,6 +1,6 @@
 /* BĐS dân cư · Pháp lý theo văn bản (27/11/2026, người dùng chốt flow "ngành nhiều luật"):
    - Tổng quan ngành › 00 Bản đồ ngành: dưới chuỗi giá trị có mục "Khung pháp lý chính" (luật gắn lên từng khâu + bảng văn bản, trạng thái).
-   - Tab Chính sách: mỗi sub-tab là một văn bản lớn, mở đầu bằng tóm tắt 3–5 dòng rồi mới tới chi tiết; sub-tab cuối "Mới duyệt gần đây".
+   - Chính sách (Bức tranh ngành › 05, thanh con theo văn bản): mỗi mục là một văn bản lớn, mở đầu bằng tóm tắt 3–5 dòng rồi mới tới chi tiết; sub-tab cuối "Mới duyệt gần đây".
    Không thêm số mới: mọi số lấy từ các thẻ đã có nguồn trên trang (bds-19, 20, 21, 37, 39, chuyên đề Luật mới); dòng bảng được DỜI (giữ link gốc).
    Chạy sau re-frame.js (sự kiện 're:frame'). */
 (() => {
@@ -39,7 +39,7 @@ const SUM = {
     'CV 11686/NHNN (31/12/2025): tín dụng BĐS mỗi ngân hàng <b>không vượt tốc độ tăng chung</b>; mục tiêu tín dụng 2026 ~15%.',
     'NOXH được nới: dư nợ tăng thêm không tính vào room; gói 145.000 tỷ mới giải ngân ~12.440 tỷ (8,5%) tới 5/2026.',
     'Trái phiếu: NĐ 65/2022 siết phát hành, NĐ 08/2023 cho gia hạn; phát hành BĐS đã hồi lại từ 2023.',
-    'Doanh nghiệp đòn bẩy cao chịu tác động trước: nợ vay/VCSH cao nhất là NVL, PDR (Tài chính ngành › So sánh doanh nghiệp).']},
+    'Doanh nghiệp đòn bẩy cao chịu tác động trước: nợ vay/VCSH cao nhất là NVL, PDR (Tài chính ngành › Doanh nghiệp niêm yết).']},
   docs: {t: 'Văn bản mới duyệt trong 12 tháng gần nhất', l: [
     'Mốc lớn nhất: <b>21/11/2026</b> Quốc hội thông qua bộ ba luật sửa đổi (hiệu lực 01/07/2027).',
     'Từ 01/01/2026: bảng giá đất hằng năm, thu hồi khi thỏa thuận &gt;75%, tiền SDĐ khi chuyển mục đích 30%/50%.',
@@ -69,7 +69,8 @@ const LAWS = [
   ['Bộ ba luật sửa đổi', 'Thông qua 21/11/2026', '01/07/2027', 'Nhanh hơn ở có đất, pháp lý, tiền đất; đặt cọc ≤5%, đợt đầu ≤30%', 'Cả vòng đời dự án', 'wait', 'law', 'Lợi: KDH, VHM, NLG, DXG · Thiệt: NTL'],
   ['Tín dụng & trái phiếu BĐS', 'CV 11686/NHNN · NĐ 65/2022 · NĐ 08/2023', '31/12/2025', 'Room tín dụng BĐS không vượt tăng chung; NOXH ngoài room', 'Vốn', 'on', 'credit', 'Đòn bẩy cao: NVL, PDR'],
 ];
-function go(k) { $('#research-tab-mt4')?.click(); setTimeout(() => { $(`#of-mt4-${k}-tab`)?.click(); $('#pane-mt4')?.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 60); }
+// 28/11/2026: Chính sách là sub-tab cuối của Bức tranh ngành (khung chuẩn Điện) → mở qua re-frame.js.
+function go(k) { if (window.ReFrame) return window.ReFrame.policy(k); $('#research-tab-mt4')?.click(); setTimeout(() => { $(`#of-mt4-${k}-tab`)?.click(); $('#pane-mt4')?.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 60); }
 const link = (t, k) => `<a href="#mt4" class="re-lg-go" data-go="${k}">${t}</a>`;
 
 function summaries() {

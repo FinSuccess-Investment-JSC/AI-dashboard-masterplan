@@ -6,7 +6,10 @@
      (03–05 ở app/rubber-more.js, dựng từ khối nhập tay có nguồn).
    - Tài chính ngành: app/rubber-finance.js.
    Chart vẽ bằng ChartTypes (Số kỳ, Bảng, Tùy chỉnh); dòng "Nguồn:" hiện sẵn dưới mọi chart. Chỉ mô tả dữ liệu.
-   Dữ liệu: window.RUBBER_DATA (scripts/build_rubber.py). */
+   Dữ liệu: window.RUBBER_DATA (scripts/build_rubber.py).
+   28/11/2026 khung chuẩn Điện (DASHBOARD_WORKFLOW.md §42): Tổng quan chỉ còn 00 Bản đồ ngành; Bức tranh 01 Giá · 02 Xuất khẩu · 03 Cầu Trung Quốc ·
+   04 Cung & tồn kho, mỗi câu hỏi có .pp-main → .pp-sup1 → .pp-more (mainify); sub-tab 05 Doanh nghiệp (số doanh nghiệp) và cs-04 dời sang
+   Tài chính ngành #mt14 (link cũ #mt3) › 02 Doanh nghiệp niêm yết (+ app/listed-compare.js); 03 Định giá do app/peer-valuation.js thêm. */
 (() => {
 'use strict';
 const D = window.RUBBER_DATA;
@@ -182,8 +185,9 @@ function overview() {
   c1.innerHTML = '<h3 class="chart-title" style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3><div class="fb-chain"></div><div class="pw-src">Nguồn: ' + SRC.ar + '</div>';
   s1.append(c1); pane.append(s1); chain(c1.querySelector('.fb-chain'));
 }
+// Doanh nghiệp niêm yết (cs-04): 28/11/2026 dời từ Tổng quan › 01 sang Tài chính ngành › 02, câu 2.1.
 function listed() {
-  const pane = $('#cs-ov-listed'); if (!pane || !E) return;
+  const pane = $('#cs-fin-listed'); if (!pane || !E) return;
   const i = F.periods.length - 1, T = m => E.total(m, E.tickers, 'ttm').per;
   const rev = T('revenue'), np = T('npat_parent'), gr = T('gross'), ot = T('other'), cfo = T('cfo');
   const box = el('div', 'card fb-co-wrap'); box.dataset.blockId = 'cs-04'; box.dataset.updateKind = 'public'; box.dataset.cadence = 'quarterly';
@@ -197,7 +201,7 @@ function listed() {
     t.dataset.code = c.ticker; grid.append(t);
     if (window.ChartTypes) requestAnimationFrame(() => ChartTypes.spark(t.querySelector('.fb-spark'), F.data[c.ticker].npat_parent.slice(-12), g.color));
   });
-  pane.append(box);
+  const q = panel('·', 'Doanh nghiệp nào lớn nhất, lãi nhất trong ngành cao su?'); q.append(box); pane.append(q);
   document.addEventListener('vc:select', e => {
     const codes = e.detail?.codes, f = box.querySelector('.fb-co-filter');
     grid.querySelectorAll('.fb-co').forEach(t => { t.hidden = !!codes && !codes.includes(t.dataset.code); });
@@ -225,7 +229,7 @@ const PIC = {
     const q1 = panel('·', 'Giá cao su thế giới đang ở đâu so với các năm trước?');
     const c1 = card('cs-10', 'TSR 20 và RSS 3 — bình quân tháng', {sub: 'USD/kg · World Bank Pink Sheet', source: SRC.wb,
       info: 'World Bank: TSR 20 là giá SGX/SICOM, RSS 3 là giá Singapore, bình quân tháng; công bố đầu tháng sau. Nút: mức giá, % so cùng tháng năm trước, chỉ số 100 tại tháng đầu của khung.'});
-    q1.append(c1.el); p.append(q1);
+    p.append(q1);
     const L1 = months('2019-01', t.date); let v1 = 'lvl';
     const d1 = () => {
       const base = k => { const r = val(k, L1[0]); return v => fin(v) && r ? v / r * 100 : null; };
@@ -238,13 +242,14 @@ const PIC = {
       info: 'RSS 3 (tờ xông khói) và TSR 20 (cao su khối) là hai benchmark khác nhau về grade, phương thức định giá và thị trường; chênh lệch không phải một khoản lãi có thể thu được.'});
     const L2 = recs('wb_spread').filter(r => r.date >= '2019-01');
     const ys = lastYears('wb_tsr20', 4), c3 = card('cs-12', 'TSR 20 — so cùng tháng', {sub: 'USD/kg · bình quân tháng', source: SRC.wb});
-    const q2 = panel('·', 'RSS 3 cao hơn TSR 20 bao nhiêu, và TSR 20 năm nay so cùng tháng các năm trước?');
-    q2.append(two(c2, c3)); p.append(q2);
+    q1.append(c1.el, c3.el);  // 28/11/2026: so cùng tháng là chart phụ của câu 1.1
+    const q2 = panel('·', 'RSS 3 đắt hơn TSR 20 bao nhiêu?');
+    q2.append(c2.el); p.append(q2);
     if (window.ChartTypes) ChartTypes.balance(c2.host, {labels: L2.map(r => mL(r.date)), values: L2.map(r => r.value), digits: 0, unit: 'USD/tấn', posColor: C.gold, negColor: C.plum});
     seasonal(c3.host, 'cs-12', 'wb_tsr20', ys, {unit: 'USD/kg', digits: 2, native: 'line', zeroBase: false});
     // --- Khu vực
     stage(p, 'price', 'region', 'Khu vực', 'Giá ngày theo grade');
-    const q3 = panel('·', 'Giá SVR 10 Việt Nam đi cùng giá các nước trong khu vực thế nào?');
+    const q3 = panel('·', 'Giá SVR 10 Việt Nam có đi cùng giá các nước trong khu vực không?');
     const c4 = card('cs-13', 'Giá cao su khu vực theo ngày', {sub: 'US cent/kg · chọn grade · 1 US cent/kg = 10 USD/tấn', cadence: 'daily', source: SRC.arbc,
       info: 'Giá ngày hội viên ARBC báo: SVR 10 (VRA), STR 20 và RSS 3 (TRA), SIR 20 (GAPKINDO), SMR 20 (MRE, nguồn MRB), TSR 20 và RSS 3 (RTAS). Các grade và điều kiện giao hàng khác nhau. Ngày nghỉ (M.C.), N.A. và ô lỗi để trống. CSR 10 Campuchia thiếu nhiều kỳ nên không vẽ.'});
     q3.append(c4.el); p.append(q3);
@@ -270,7 +275,7 @@ const PIC = {
     chart(c6.host, 'cs-15', LM.map(mL), ARBC.slice(0, 5).map(([k, n, col]) => ({name: n, color: col, values: LM.map(m => val(k + '_m', m))})), {unit: 'US cent/kg', digits: 1, zeroBase: false});
     // --- Sàn tương lai
     stage(p, 'price', 'fut', 'Sàn tương lai', 'SHFE • INE');
-    const q5 = panel('·', 'Giá cao su trên sàn Trung Quốc đi thế nào so với giá FOB khu vực?');
+    const q5 = panel('·', 'Giá sàn Trung Quốc đi nhanh hay chậm hơn giá FOB khu vực?');
     const c7 = card('cs-16', 'SHFE RU, INE NR so với SVR 10 và TSR 20', {sub: 'bình quân tháng · chỉ số 100 hoặc USD/tấn', source: SRC.sina + '; ' + SRC.ecb + '; ' + SRC.arbc + '; tự tính',
       info: 'RU: cao su tự nhiên SHFE, giao tại kho nội địa Trung Quốc, giá gồm VAT 13%. NR: TSR 20 INE, kho ngoại quan, chưa thuế. Hợp đồng liên tục theo Sina (chuyển sang kỳ hạn có khối lượng lớn nhất); giữ giá thanh toán gốc. Chế độ USD/tấn: bình quân tháng CNY/tấn ÷ bình quân tháng tỷ giá CNY/USD (ECB). SVR 10, TSR 20 Singapore là giá FOB, US cent/kg × 10.'});
     q5.append(c7.el); p.append(q5);
@@ -282,7 +287,7 @@ const PIC = {
         return {name: n, color: col, values: v7 === 'idx' ? v.map(x => fin(x) ? x / b * 100 : null) : v}; }), {unit: v7 === 'idx' ? `chỉ số (${mL(L[0])} = 100)` : 'USD/tấn', digits: v7 === 'idx' ? 1 : 0, zeroBase: false});
     };
     seg(c7, 'Đơn vị', [['idx', 'Chỉ số 100'], ['usd', 'USD/tấn']], v7, k => { v7 = k; d7(); }); d7();
-    const q6 = panel('·', 'Thanh khoản và vị thế mở trên sàn Trung Quốc thay đổi ra sao?');
+    const q6 = panel('·', 'Thanh khoản và vị thế mở trên sàn Trung Quốc tăng hay giảm?');
     const c8 = card('cs-17', 'Khối lượng và vị thế mở — 1 năm', {sub: 'hợp đồng · theo ngày · HĐ liên tục', cadence: 'daily', source: SRC.sina,
       info: 'Khối lượng giao dịch và vị thế mở (open interest) của hợp đồng liên tục theo Sina; ngày chuyển kỳ hạn có thể làm vị thế mở nhảy bậc.'});
     q6.append(c8.el); p.append(q6);
@@ -292,7 +297,7 @@ const PIC = {
     seg(c8, 'Sàn', [['shfe_ru', 'SHFE RU'], ['ine_nr', 'INE NR'], ['shfe_br', 'SHFE BR']], k8, k => { k8 = k; d8(); }); d8();
     // --- Thay thế
     stage(p, 'price', 'syn', 'Thay thế', 'Cao su tổng hợp, dầu');
-    const q7 = panel('·', 'Cao su tổng hợp đắt hay rẻ hơn cao su tự nhiên, và giá dầu đi thế nào?');
+    const q7 = panel('·', 'Cao su tổng hợp đắt hay rẻ hơn cao su tự nhiên?');
     const c9 = card('cs-18', 'Cao su butadiene SHFE BR so với cao su tự nhiên SHFE RU', {sub: 'USD/tấn · bình quân tháng', source: SRC.sina + '; ' + SRC.ecb + '; tự tính',
       info: 'BR là cao su butadiene (tổng hợp), RU là cao su tự nhiên, cùng sàn SHFE, cùng quy đổi bằng tỷ giá bình quân tháng. Hai loại thay thế một phần trong sản xuất lốp.'});
     const c10 = card('cs-19', 'Dầu Brent', {sub: 'USD/thùng · bình quân tháng · đầu vào hóa dầu của cao su tổng hợp', source: SRC.wb});
@@ -301,7 +306,7 @@ const PIC = {
     chart(c9.host, 'cs-18', LB.map(mL), [{name: 'SHFE BR (tổng hợp)', color: C.grey, values: LB.map(m => val('shfe_br_usd', m))}, {name: 'SHFE RU (tự nhiên)', color: C.plum, values: LB.map(m => val('shfe_ru_usd', m))}], {unit: 'USD/tấn', zeroBase: false});
     const LO = months('2021-01', last('brent').date);
     chart(c10.host, 'cs-19', LO.map(mL), [{name: 'Brent', color: C.grey, values: LO.map(m => val('brent', m))}], {unit: 'USD/thùng', digits: 1, zeroBase: false});
-    renum(p, 1);
+    finish(p, 1);
   },
   export() {
     const p = $('#cs-pp-export'), q = last('exp_q'), v = last('exp_v'), px = last('exp_px'), M = +q.date.slice(5), y = +q.date.slice(0, 4);
@@ -312,26 +317,29 @@ const PIC = {
       kpi('Đơn giá xuất khẩu · ' + mL(px.date), nf(px.value), 'USD/tấn', `${sg(yoy('exp_px', px.date))}% so cùng kỳ`, 'trị giá ÷ lượng', tail('exp_px', 24), C.gold),
       kpi(`Lượng ${M} tháng ${y}`, nf(qy, 0), 'nghìn tấn', `${sg((qy / qy0 - 1) * 100)}% so cùng kỳ`, `kim ngạch ${nf(vy, 0)} triệu USD (${sg((vy / vy0 - 1) * 100)}%)`, null)]));
     const L = months('2019-01', q.date);
-    const q1 = panel('·', 'Lượng và đơn giá xuất khẩu cao su Việt Nam theo tháng');
+    // 28/11/2026: luồng Lượng → Giá → Lũy kế (khung chuẩn Điện), mỗi câu một chart chính.
+    flow(p, 'export', [['vol', 'Lượng', 'Lượng xuất khẩu theo tháng'], ['px', 'Giá', 'Đơn giá so với giá thị trường'], ['ytd', 'Lũy kế', 'Từ đầu năm qua các năm']]);
+    stage(p, 'export', 'vol', 'Lượng', 'Lượng xuất khẩu theo tháng');
+    const q1 = panel('·', 'Lượng xuất khẩu cao su đang tăng hay giảm?');
     const c1 = card('cs-20', 'Lượng xuất khẩu cao su', {sub: 'nghìn tấn · theo tháng', source: SRC.customs,
       info: 'Rổ "Cao su" của Hải quan (cao su tự nhiên, tổng hợp, hỗn hợp; chưa tách theo mã HS trong báo cáo tháng). Bản chính thức thay bản sơ bộ khi Hải quan công bố. Tháng gần nhất có thể là số sơ bộ.'});
-    const c2 = card('cs-21', 'Đơn giá xuất khẩu cao su', {sub: 'USD/tấn · trị giá ÷ lượng cùng rổ', source: SRC.customs + '; tự tính'});
-    q1.append(c1.el, c2.el); p.append(q1);
-    chart(c1.host, 'cs-20', L.map(mL), [{name: 'Lượng', color: C.teal, kind: 'bar', values: L.map(m => val('exp_q', m))}], {unit: 'nghìn tấn', digits: 1, native: 'bar'});
-    chart(c2.host, 'cs-21', L.map(mL), [{name: 'Đơn giá', color: C.gold, values: L.map(m => val('exp_px', m))}], {unit: 'USD/tấn', zeroBase: false});
-    const q3 = panel('·', 'Lượng xuất khẩu năm nay so với các năm trước, từng tháng');
     const c5 = card('cs-24', 'Lượng xuất khẩu — so cùng tháng', {sub: 'nghìn tấn', source: SRC.customs});
-    const pm = el('div', 'pp-main'); pm.append(c5.el); q3.append(pm, heat('cs-25', 'Lượng xuất khẩu tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'exp_q', lastYears('exp_q', 3), SRC.customs)); p.append(q3);
+    q1.append(c1.el, c5.el, heat('cs-25', 'Lượng xuất khẩu tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'exp_q', lastYears('exp_q', 3), SRC.customs)); p.append(q1);
+    chart(c1.host, 'cs-20', L.map(mL), [{name: 'Lượng', color: C.teal, kind: 'bar', values: L.map(m => val('exp_q', m))}], {unit: 'nghìn tấn', digits: 1, native: 'bar'});
     seasonal(c5.host, 'cs-24', 'exp_q', lastYears('exp_q', 4), {unit: 'nghìn tấn', digits: 1});
-    const q4 = panel('·', 'Đơn giá xuất khẩu đi sau giá thị trường bao lâu?');
+    stage(p, 'export', 'px', 'Giá', 'Đơn giá so với giá thị trường');
+    const q4 = panel('·', 'Đơn giá xuất khẩu có đi theo giá thị trường không?');
     const c6 = card('cs-26', 'Đơn giá xuất khẩu so với SVR 10 và TSR 20', {sub: 'USD/tấn · bình quân tháng', source: SRC.customs + '; ' + SRC.arbc + '; ' + SRC.wb + '; tự tính',
       info: 'Đơn giá xuất khẩu là bình quân của mọi chủng loại trong rổ "Cao su", theo ngày tờ khai; hợp đồng thường ký trước giao hàng 1–2 tháng. SVR 10 là bình quân tháng giá ngày VRA báo ARBC (US cent/kg × 10). TSR 20 là bình quân tháng World Bank (USD/kg × 1.000).'});
-    q4.append(c6.el); p.append(q4);
+    const c2 = card('cs-21', 'Đơn giá xuất khẩu cao su', {sub: 'USD/tấn · trị giá ÷ lượng cùng rổ', source: SRC.customs + '; tự tính'});
+    q4.append(c6.el, c2.el); p.append(q4);
     const L6 = months('2023-01', q.date);
     chart(c6.host, 'cs-26', L6.map(mL), [{name: 'Đơn giá xuất khẩu', color: C.gold, values: L6.map(m => val('exp_px', m))}, {name: 'SVR 10 Việt Nam', color: C.navy, values: L6.map(m => fin(val('vn_svr10_m', m)) ? val('vn_svr10_m', m) * 10 : null)},
       {name: 'TSR 20 thế giới', color: C.teal, values: L6.map(m => fin(val('wb_tsr20', m)) ? val('wb_tsr20', m) * 1000 : null)}], {unit: 'USD/tấn', zeroBase: false});
+    chart(c2.host, 'cs-21', L.map(mL), [{name: 'Đơn giá', color: C.gold, values: L.map(m => val('exp_px', m))}], {unit: 'USD/tấn', zeroBase: false});
+    stage(p, 'export', 'ytd', 'Lũy kế', 'Từ đầu năm qua các năm');
     // Lũy kế từ T1 đến tháng mới nhất có số Hải quan (M tự lấy từ dữ liệu, tháng sau tự thành M+1); năm thiếu một tháng thì để trống.
-    const q5 = panel('·', `Lũy kế ${M} tháng đầu năm qua các năm`);
+    const q5 = panel('·', `Lũy kế ${M} tháng đầu năm hơn hay kém các năm trước?`);
     const c7 = card('cs-27', `Xuất khẩu cao su lũy kế ${M} tháng đầu năm`, {sub: `T1–T${M} mỗi năm · chọn chỉ tiêu`, source: SRC.customs + '; tự tính',
       info: `Cộng từ tháng 1 đến tháng ${M} (tháng mới nhất có số Hải quan) của từng năm để so cùng kỳ; khi có số tháng sau, chart tự chuyển sang lũy kế ${M + 1} tháng. Đơn giá bình quân = tổng trị giá ÷ tổng lượng của cùng các tháng.`});
     q5.append(c7.el); p.append(q5);
@@ -343,48 +351,109 @@ const PIC = {
       chart(c7.host, 'cs-27-' + v7, YS.map(yy => `${M}T/${yy}`), [{name: o[0], color: o[1], kind: 'bar', values: o[2]}], {unit: o[3], digits: o[4], native: 'bar'});
     };
     seg(c7, 'Chỉ tiêu', [['q', 'Lượng'], ['v', 'Kim ngạch'], ['p', 'Đơn giá bình quân']], v7, k => { v7 = k; d7(); }); d7();
-    renum(p, 2);
+    finish(p, 2);
   },
 };
-function showPic(key) {
+// Chuẩn §42 (28/11/2026): mỗi câu hỏi có chart chính .pp-main (thẻ đầu), chart phụ .pp-sup1, phần còn lại .pp-more; điều khiển đặt trước thẻ đầu giữ nguyên chỗ.
+function mainify(root) {
+  root.querySelectorAll('.pp-panel').forEach(q => {
+    const hasMain = !!q.querySelector(':scope > .pp-main'), cards = [], after = []; let seen = hasMain;
+    [...q.children].filter(n => !n.matches('header.pp-ph, .pp-main, .pp-sup1, .pp-more')).forEach(n => {
+      if (n.matches('.card')) { cards.push(n); seen = true; }
+      else if (n.matches('.grid') && n.querySelector(':scope > .card')) { cards.push(...n.children); n.remove(); seen = true; }
+      else if (seen) after.push(n);
+    });
+    if (!cards.length) return;
+    const out = [], rest = hasMain ? cards : cards.slice(1);
+    if (!hasMain) { const m = el('div', 'pp-main'); m.append(cards[0]); out.push(m); }
+    if (rest.length === 1) { const w = el('div', 'pp-sup1'); w.append(rest[0]); out.push(w); }
+    else if (rest.length === 2) { const w = el('div', 'grid two g2 pp-sup pp-more'); w.append(...rest); out.push(w); }
+    else if (rest.length > 2) { const w = el('div', 'pp-sup1'); w.append(rest[0]); const g = el('div', 'grid two g2 pp-sup pp-more'); g.append(...rest.slice(1)); out.push(w, g); }
+    q.append(...out, ...after);
+  });
+}
+// Thẻ dẫn sang chart ở sub-tab khác (dời, không nhân bản).
+function xlink(p, href, where, title, desc) {
+  const a = el('a', 'th-link', `<small>Xem chart ở ${esc(where)}</small><b>${esc(title)} →</b><span>${esc(desc)}</span>`); a.href = href; p.append(a); return a;
+}
+function finish(p, n) { mainify(p); renum(p, n); }
+function showPic(key, write = true) {
   if (!PIC[key]) key = 'price';
   $$('#pane-mt2 .pp-pane').forEach(p => { p.hidden = p.dataset.sub !== key; });
   $$('#pane-mt2 .pp-tab').forEach(b => { const on = b.dataset.sub === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
   if (!BUILT.has(key)) { BUILT.add(key); try { PIC[key](); } catch (e) { console.error(e); } }
-  const u = new URL(location.href); u.searchParams.set('sub', key); history.replaceState(null, '', u.pathname + u.search + u.hash);
+  if (write) { const u = new URL(location.href); u.searchParams.set('sub', key); history.replaceState(null, '', u.pathname + u.search + u.hash); }
 }
 const BUILT = new Set();
+// Tài chính ngành › 01 Tài chính ngành · 02 Doanh nghiệp niêm yết (03 Định giá do app/peer-valuation.js tự thêm, khóa valuation).
+const FIN_SUBS = ['sector', 'listed'];
+let LISTED_DONE = false;
+function showFin(key, write = true) {
+  if (!FIN_SUBS.includes(key)) key = 'sector';
+  const sec = $('#pane-mt14 .pp-nav')?.parentElement; if (!sec) return;
+  sec.querySelectorAll(':scope > .pp-pane').forEach(p => { p.hidden = p.dataset.fin !== key; if (!p.dataset.fin) p.style.display = 'none'; });
+  sec.querySelectorAll('.pp-nav .pp-tab').forEach(b => { const on = b.dataset.fin === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); });
+  if (key === 'sector' && window.RubberFinance && !$('#cs-fin-root').childElementCount) { RubberFinance.build($('#cs-fin-root')); mainify($('#cs-fin-root')); }
+  if (key === 'listed' && !LISTED_DONE) { LISTED_DONE = true; buildListed(); }
+  if (write) { const u = new URL(location.href); u.searchParams.set('sub', key); history.replaceState(null, '', u.pathname + u.search + u.hash); }
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+}
+// 02 Doanh nghiệp niêm yết: cs-04 (2.1) → so sánh, xu hướng, P/E (app/listed-compare.js) → vận hành doanh nghiệp (sub-tab 05 cũ của Bức tranh, app/rubber-more.js).
+function buildListed() {
+  const pane = $('#cs-fin-listed'); if (!pane) return;
+  if (window.ListedCompare && F) ListedCompare.mount(F, {prefix: 'cs-fin-dn', src: SRC.vnd}).forEach(q => pane.append(q));
+  if (window.RubberCompany) { pane.append(el('div', 'pp-grp', 'Vận hành doanh nghiệp: lượng, giá bán, doanh thu, đất, dòng tiền')); try { RubberCompany(pane); } catch (e) { console.error(e); } }
+  mainify(pane); renum(pane, 2);
+}
 function showOv(key) {
   $$('#pane-mt1 .ov-pane').forEach(p => { p.hidden = p.dataset.ov !== key; });
   $$('#pane-mt1 .ov-tab').forEach(b => { const on = b.dataset.ov === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
+// Link cũ: #mt3 (Tài chính ngành trước 28/11/2026) → #mt14.
+const TAB_ALIAS = {mt3: 'mt14'};
 function showTab(key) {
+  key = TAB_ALIAS[key] || key;
   if (!$(`.majorpane[data-tab="${key}"]`)) key = 'mt1';
   $$('.majorpane').forEach(p => p.classList.toggle('active', p.dataset.tab === key));
   $$('.majortabbtn').forEach(b => { const on = b.dataset.tab === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); });
   if (location.hash !== '#' + key) history.replaceState(null, '', location.pathname + location.search + '#' + key);
-  if (key === 'mt3' && window.RubberFinance && !$('#cs-fin-root').childElementCount) RubberFinance.build($('#cs-fin-root'));
+  if (key === 'mt14') { const cur = $('#pane-mt14 .pp-nav .pp-tab[aria-selected="true"]')?.dataset.fin; if (cur) showFin(cur, false); }
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
 function asof() {
+  const DM = (D.demand && D.demand.series) || {}, lastOf = k => ((DM[k] && DM[k].records) || []).at(-1)?.date || '';
   const t = {price: () => `${dL(last('vn_svr10').date)} (ARBC, sàn TQ) · ${mL(last('wb_tsr20').date)} (World Bank)`, export: () => mL(last('exp_q').date) + ' (Hải quan)',
-    fin: () => F ? `BCTC đến ${qL(F.periods.at(-1))} · tải ${dL(F.captured)}` : ''};
+    demand: () => `${mL(lastOf('cn_tire_output'))} (Trung Quốc) · Comtrade ${D.cn_imports?.latest ? mL(String(D.cn_imports.latest).slice(0, 4) + '-' + String(D.cn_imports.latest).slice(4)) : ''}`,
+    supply: () => `${dL(lastOf('shfe_ru_stock'))} (kho sàn TQ) · ${mL(lastOf('my_stock'))} (Malaysia)`,
+    fin: () => F ? `BCTC đến ${qL(F.periods.at(-1))} · tải ${dL(F.captured)}` : '',
+    listed: () => { const v = window.COMPANY_VALUATION?.companies?.PHR?.date, m = D.dpr_monthly?.months?.map(r => r.period).sort().at(-1); return `BCTC ${F ? qL(F.periods.at(-1)) : ''}${m ? ' · DPR ' + mL(m) : ''}${v ? ' · P/E ' + dL(v) : ''}`; }};
   $$('[data-asof]').forEach(n => { try { n.textContent = t[n.dataset.asof] ? 'Dữ liệu mới nhất: ' + t[n.dataset.asof]() : ''; } catch (e) { n.textContent = ''; } });
 }
-window.RubberKit = {card, chart, seg, panel, kpi, kpiRow, two, heat, seasonal, waterfall, flow, stage, renum, el, esc, nf, sg, mL, qL, dL, last, recs, yoy, val, months, ymAdd, lastYears, tail, SRC, C, E, F, D, PIC, $};
+window.RubberKit = {card, chart, seg, panel, kpi, kpiRow, two, heat, seasonal, waterfall, flow, stage, renum, finish, mainify, xlink, el, esc, nf, sg, mL, qL, dL, last, recs, yoy, val, months, ymAdd, lastYears, tail, SRC, C, E, F, D, PIC, $};
 function init() {
   brief(); overview(); listed(); asof();
   $$('#pane-mt1 .ov-tab').forEach(b => b.addEventListener('click', () => showOv(b.dataset.ov)));
   $$('#pane-mt2 .pp-tab').forEach(b => b.addEventListener('click', () => { showPic(b.dataset.sub); setTimeout(() => window.dispatchEvent(new Event('resize')), 30); }));
+  $$('#pane-mt14 .pp-tab[data-fin]').forEach(b => b.addEventListener('click', () => showFin(b.dataset.fin)));
   $$('.majortabbtn').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
   addEventListener('hashchange', () => showTab(location.hash.slice(1)));
-  document.addEventListener('click', e => { if (e.target.closest('.vc-status button')) showOv('listed'); });
+  // Nút "Xem bảng →" của sơ đồ chuỗi giá trị: mở Tài chính ngành › 02 Doanh nghiệp niêm yết (28/11/2026, trước là Tổng quan › 01).
+  document.addEventListener('click', e => { if (e.target.closest('.vc-status button')) { showTab('mt14'); showFin('listed'); setTimeout(() => $('[data-block-id="cs-04"]')?.scrollIntoView({behavior: 'smooth', block: 'start'}), 60); } });
   showOv('map');
   // Sub-tab không có khối nào (dữ liệu chưa có) thì ẩn nút.
   $$('#pane-mt2 .pp-tab').forEach(b => { if (!PIC[b.dataset.sub]) { b.hidden = true; const pn = $(`#pane-mt2 .pp-pane[data-sub="${b.dataset.sub}"]`); if (pn) pn.hidden = true; } });
-  showPic(new URLSearchParams(location.search).get('sub') || 'price');
-  showTab(location.hash.slice(1) || 'mt1');
+  // Link cũ ?sub=company (Bức tranh › 05 Doanh nghiệp) → Tài chính ngành › 02.
+  let sub = new URLSearchParams(location.search).get('sub') || '', hash = TAB_ALIAS[location.hash.slice(1)] || location.hash.slice(1);
+  if (sub === 'company') { sub = 'listed'; hash = 'mt14'; }
+  const finSub = ['sector', 'listed', 'valuation'].includes(sub);
+  showPic(finSub ? 'price' : sub || 'price', !finSub);
+  if (finSub && sub !== 'valuation') showFin(sub);
+  // 03 Định giá (app/peer-valuation.js): gắn ngay khi dựng trang thay vì chờ sự kiện load (trang nặng thì load đến muộn);
+  // chart dựng lúc sub-tab ẩn nên vẽ lại kích thước khi mở sub-tab.
+  try { window.PeerValuation?.auto?.(); } catch (e) { console.error(e); }
+  $('#pane-mt14 .pp-nav')?.addEventListener('click', e => { if (e.target.closest('[data-sub="valuation"]')) setTimeout(() => $$('#of-mt14-valuation canvas').forEach(c => window.Chart?.getChart?.(c)?.resize()), 80); });
+  showTab(finSub && (!hash || hash === 'mt2') ? 'mt14' : hash || 'mt1');
 }
 if (window.SectorBoot) SectorBoot.add(10, init); else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

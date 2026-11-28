@@ -22,14 +22,14 @@
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=ea2d589497cb" defer></script>
-<script src="../data/company-valuation.js?v=a38a9fa54044" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
 <script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
 <script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/research-editorial.js?v=aad10008bd65" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
@@ -46,10 +46,12 @@
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
 <script src="app/textile-finance.js?v=2a208f974472" defer></script>
-<script src="app/textile-frame.js?v=bbccb4e63447" defer></script>
-<script src="app/legal-config.js?v=a1c13674f8dd" defer></script>
+<script src="app/textile-frame.js?v=34ed49ffe0e4" defer></script>
+<script src="../data/textile-news.js?v=b9cb139ef754" defer></script>
+<script src="app/textile-news.js?v=e315f77eecee" defer></script>
+<script src="app/legal-config.js?v=9e8340f6c947" defer></script>
 <script src="app/sector-legal.js?v=795ef091e74a" defer></script>
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
@@ -59,6 +61,8 @@
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
 <style>.pvtm-cal td:first-child{white-space:nowrap}.pvtm-cal .est{color:var(--muted,#6b7686)}</style>
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
+<link rel="stylesheet" href="app/textile-news.css?v=04fb4b3a26d3">
 </head>
 <body data-sector="textile">
 <nav data-site-navigation="textile"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="./" aria-current="page">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
@@ -238,56 +242,62 @@
   </section>
   </div>
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Bảy câu chuyện đang dẫn dắt ngành.</p></div></div>
-    <div data-topic-key="us_tariff" data-topic-segment="Dệt nhuộm – May" data-topic-title="Thuế Mỹ &amp; chuyển tải">
-      <div class="card" data-block-id="dm-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Khung 7/2025: 20% hàng VN, 40% hàng chuyển tải</li><li>24/2/2026: thuế IEEPA dừng, thay bằng Section 122 10% (150 ngày)</li><li>24/7/2026: thêm 12,5% theo Mục 301 (lao động cưỡng bức), hiệu lực 4 năm</li><li>Mỹ ~40% XK dệt may VN; 2025 XK sang Mỹ 17,8–18,6 tỷ USD (tùy nguồn)</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TCM · TNG · MSH · GIL · ADS · VGT</p>
-        <div class="source-note">Nguồn: <a href="https://vnbusiness.vn/viet-nam/tong-thong-trump-cong-bo-thoa-thuan-thue-20-voi-viet-nam-hang-trung-chuyen-chiu-40-1107896.html" target="_blank" rel="noopener">VnBusiness 3/7/2025</a> · <a href="https://vnbusiness.vn/thue-quan-my-bien-dong-co-hoi-hoan-thue-va-bai-toan-15-voi-det-may-viet-nam.html" target="_blank" rel="noopener">VnBusiness – hoàn thuế &amp; 15%</a> · <a href="https://trungtamwto.vn/chuyen-de/33074-hoa-ky-chinh-thuc-ap-thue-bo-sung-len-60-nen-kinh-te-theo-dieu-tra-301-hang-viet-nam-chiu-thue-bo-sung-125" target="_blank" rel="noopener">Trung tâm WTO – Mục 301, VN 12,5%</a> · <a href="https://trungtamwto.vn/tin-tuc/31777-dieu-chinh-chien-luoc-xuat-khau-sang-my" target="_blank" rel="noopener">Trung tâm WTO – rủi ro hàng trung chuyển</a></div>
+    <!-- 28/11/2026: luồng tin theo bố cục trang Điện (app/textile-news.js, data/textile/news.json → data/textile-news.js qua scripts/build_textile_news.py).
+         Bảy thẻ chủ đề cũ dm-t1…dm-t7 (Thuế Mỹ & chuyển tải; Đơn hàng dịch chuyển; Phòng vệ thương mại sợi polyester; Giá bông; Thiếu lao động & lương;
+         Yêu cầu xanh EU; Bangladesh) thành "Chủ đề đang theo dõi". Thẻ gốc giữ trong details.of-rest ẩn bên dưới (không xóa, không nhân bản);
+         thuộc tính data-topic-* đổi thành data-old-topic-* để app/research-editorial.js không dựng lại thanh chủ đề cũ. -->
+    <section class="section"><div id="dm-news" aria-label="Tin ngành Dệt may"><p role="status">Đang tải tin ngành Dệt may…</p></div></section>
+    <details class="research-fold of-rest" hidden><summary>Thẻ chủ đề cũ (đã chuyển thành Chủ đề đang theo dõi)</summary>
+      <div data-old-topic-key="us_tariff" data-old-topic-segment="Dệt nhuộm – May" data-old-topic-title="Thuế Mỹ &amp; chuyển tải">
+        <div class="card" data-block-id="dm-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+          <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Khung 7/2025: 20% hàng VN, 40% hàng chuyển tải</li><li>24/2/2026: thuế IEEPA dừng, thay bằng Section 122 10% (150 ngày)</li><li>24/7/2026: thêm 12,5% theo Mục 301 (lao động cưỡng bức), hiệu lực 4 năm</li><li>Mỹ ~40% XK dệt may VN; 2025 XK sang Mỹ 17,8–18,6 tỷ USD (tùy nguồn)</li></ul>
+          <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TCM · TNG · MSH · GIL · ADS · VGT</p>
+          <div class="source-note">Nguồn: <a href="https://vnbusiness.vn/viet-nam/tong-thong-trump-cong-bo-thoa-thuan-thue-20-voi-viet-nam-hang-trung-chuyen-chiu-40-1107896.html" target="_blank" rel="noopener">VnBusiness 3/7/2025</a> · <a href="https://vnbusiness.vn/thue-quan-my-bien-dong-co-hoi-hoan-thue-va-bai-toan-15-voi-det-may-viet-nam.html" target="_blank" rel="noopener">VnBusiness – hoàn thuế &amp; 15%</a> · <a href="https://trungtamwto.vn/chuyen-de/33074-hoa-ky-chinh-thuc-ap-thue-bo-sung-len-60-nen-kinh-te-theo-dieu-tra-301-hang-viet-nam-chiu-thue-bo-sung-125" target="_blank" rel="noopener">Trung tâm WTO – Mục 301, VN 12,5%</a> · <a href="https://trungtamwto.vn/tin-tuc/31777-dieu-chinh-chien-luoc-xuat-khau-sang-my" target="_blank" rel="noopener">Trung tâm WTO – rủi ro hàng trung chuyển</a></div>
+        </div>
       </div>
-    </div>
-    <div data-topic-key="china_plus_one" data-topic-segment="Dệt nhuộm – May" data-topic-title="Đơn hàng dịch chuyển / tăng trưởng phân hóa">
-      <div class="card" data-block-id="dm-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>9T/2026 XK <b>35,72 tỷ USD (+3,3%)</b> (VITAS ước; 6T: 22,2 tỷ, +1,7%)</li><li>9T: xơ sợi <b>+13,08%</b> vs may mặc <b>+2,2%</b> (28,24 tỷ USD)</li><li>3/2026 XK 3,82 tỷ USD (+4,4%)</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TNG · MSH · TCM</p>
-        <div class="source-note">Nguồn: <a href="https://vcci.com.vn/news/det-may-viet-nam-xoay-xo-giu-don-hang" target="_blank" rel="noopener">VCCI 16/10/2026 – VITAS 9T</a> · <a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí KTTC 14/9/2026</a> · <a href="https://doanhnghiephoinhap.vn/don-hang-doi-dao-nganh-det-may-buoc-vao-cuoc-dua-nhan-luc-nam-2026-132618.html" target="_blank" rel="noopener">DN Hội nhập – cuộc đua nhân lực 2026</a></div>
+      <div data-old-topic-key="china_plus_one" data-old-topic-segment="Dệt nhuộm – May" data-old-topic-title="Đơn hàng dịch chuyển / tăng trưởng phân hóa">
+        <div class="card" data-block-id="dm-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+          <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>9T/2026 XK <b>35,72 tỷ USD (+3,3%)</b> (VITAS ước; 6T: 22,2 tỷ, +1,7%)</li><li>9T: xơ sợi <b>+13,08%</b> vs may mặc <b>+2,2%</b> (28,24 tỷ USD)</li><li>3/2026 XK 3,82 tỷ USD (+4,4%)</li></ul>
+          <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TNG · MSH · TCM</p>
+          <div class="source-note">Nguồn: <a href="https://vcci.com.vn/news/det-may-viet-nam-xoay-xo-giu-don-hang" target="_blank" rel="noopener">VCCI 16/10/2026 – VITAS 9T</a> · <a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí KTTC 14/9/2026</a> · <a href="https://doanhnghiephoinhap.vn/don-hang-doi-dao-nganh-det-may-buoc-vao-cuoc-dua-nhan-luc-nam-2026-132618.html" target="_blank" rel="noopener">DN Hội nhập – cuộc đua nhân lực 2026</a></div>
+        </div>
       </div>
-    </div>
-    <div data-topic-key="polyester_ad" data-topic-segment="Sợi" data-topic-title="Phòng vệ thương mại sợi polyester (STK)">
-      <div class="card" data-block-id="dm-t3" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>VN áp CBPG FDY nhập: TQ 17%, Ấn 54,9%, Indo 60,6%</li><li>Mỹ PTY: biên độ sơ bộ VN 2,67–22,82%</li><li>Brazil PSF: cáo buộc VN 39,3%</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> STK</p>
-        <div class="source-note">Nguồn: <a href="https://antidumping.vn/vietnam-imposes-anti-dumping-duty-on-polyester-yarn-imports-n27719.html" target="_blank" rel="noopener">antidumping.vn</a> · <a href="https://haiphongnews.gov.vn/foreign-activities/us-gives-preliminary-conclusions-on-anti-dumping-of-local-pty-products-ct290.html" target="_blank" rel="noopener">Haiphong News</a> · <a href="https://www.trenchrossi.com/en/legal-alerts/now-open-antidumping-investigation-on-brazilian-imports-of-polyester-staple-fiber-psf-from-china-india-vietnam-malaysia-and-thailand/" target="_blank" rel="noopener">Trench Rossi</a></div>
+      <div data-old-topic-key="polyester_ad" data-old-topic-segment="Sợi" data-old-topic-title="Phòng vệ thương mại sợi polyester (STK)">
+        <div class="card" data-block-id="dm-t3" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+          <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>VN áp CBPG FDY nhập: TQ 17%, Ấn 54,9%, Indo 60,6%</li><li>Mỹ PTY: biên độ sơ bộ VN 2,67–22,82%</li><li>Brazil PSF: cáo buộc VN 39,3%</li></ul>
+          <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> STK</p>
+          <div class="source-note">Nguồn: <a href="https://antidumping.vn/vietnam-imposes-anti-dumping-duty-on-polyester-yarn-imports-n27719.html" target="_blank" rel="noopener">antidumping.vn</a> · <a href="https://haiphongnews.gov.vn/foreign-activities/us-gives-preliminary-conclusions-on-anti-dumping-of-local-pty-products-ct290.html" target="_blank" rel="noopener">Haiphong News</a> · <a href="https://www.trenchrossi.com/en/legal-alerts/now-open-antidumping-investigation-on-brazilian-imports-of-polyester-staple-fiber-psf-from-china-india-vietnam-malaysia-and-thailand/" target="_blank" rel="noopener">Trench Rossi</a></div>
+        </div>
       </div>
-    </div>
-    <div data-topic-key="cotton" data-topic-segment="Sợi" data-topic-title="Giá bông">
-      <div class="card" data-block-id="dm-t4" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>IMF global cotton price 7/2026: 88,78 US cent/lb (FRED, cập nhật 17/8/2026)</li><li>Giá giá bông/polyester duy trì cao do cung hạn chế (KAFI qua Tạp chí KTTC)</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TCM · ADS · TNG</p>
-        <div class="source-note">Nguồn: <a href="https://fred.stlouisfed.org/series/PCOTTINDUSDM" target="_blank" rel="noopener">FRED PCOTTINDUSDM</a> · <a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí KTTC 14/9/2026</a></div>
+      <div data-old-topic-key="cotton" data-old-topic-segment="Sợi" data-old-topic-title="Giá bông">
+        <div class="card" data-block-id="dm-t4" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+          <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>IMF global cotton price 7/2026: 88,78 US cent/lb (FRED, cập nhật 17/8/2026)</li><li>Giá giá bông/polyester duy trì cao do cung hạn chế (KAFI qua Tạp chí KTTC)</li></ul>
+          <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TCM · ADS · TNG</p>
+          <div class="source-note">Nguồn: <a href="https://fred.stlouisfed.org/series/PCOTTINDUSDM" target="_blank" rel="noopener">FRED PCOTTINDUSDM</a> · <a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí KTTC 14/9/2026</a></div>
+        </div>
       </div>
-    </div>
-    <div data-topic-key="labor" data-topic-segment="Dệt nhuộm – May" data-topic-title="Thiếu lao động &amp; lương">
-      <div class="card" data-block-id="dm-t5" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Lương TTV +7,2% từ 1/1/2026</li><li>Lương bình quân dệt may ~11,7 triệu đ/tháng (2025) vs xây dựng 14–35 triệu</li><li>VITAS: khó khăn lớn nhất là thiếu lao động, không phải đơn hàng</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TNG · MSH · TCM · GIL · VGT</p>
-        <div class="source-note">Nguồn: <a href="https://vietnamfinance.vn/lanh-dao-vitas-tra-luong-nhu-vincons-thi-doanh-nghiep-det-may-pha-san-d147242.html" target="_blank" rel="noopener">VietnamFinance</a> · <a href="https://baophapluat.vn/chinh-phu-quyet-dinh-tang-luong-toi-thieu-vung-tu-1-1-2026.html" target="_blank" rel="noopener">Báo Pháp luật – NĐ 293</a></div>
+      <div data-old-topic-key="labor" data-old-topic-segment="Dệt nhuộm – May" data-old-topic-title="Thiếu lao động &amp; lương">
+        <div class="card" data-block-id="dm-t5" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+          <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Lương TTV +7,2% từ 1/1/2026</li><li>Lương bình quân dệt may ~11,7 triệu đ/tháng (2025) vs xây dựng 14–35 triệu</li><li>VITAS: khó khăn lớn nhất là thiếu lao động, không phải đơn hàng</li></ul>
+          <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TNG · MSH · TCM · GIL · VGT</p>
+          <div class="source-note">Nguồn: <a href="https://vietnamfinance.vn/lanh-dao-vitas-tra-luong-nhu-vincons-thi-doanh-nghiep-det-may-pha-san-d147242.html" target="_blank" rel="noopener">VietnamFinance</a> · <a href="https://baophapluat.vn/chinh-phu-quyet-dinh-tang-luong-toi-thieu-vung-tu-1-1-2026.html" target="_blank" rel="noopener">Báo Pháp luật – NĐ 293</a></div>
+        </div>
       </div>
-    </div>
-    <div data-topic-key="eu_green" data-topic-segment="Dệt nhuộm – May" data-topic-title="Yêu cầu xanh EU">
-      <div class="card" data-block-id="dm-t6" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Cấm tiêu hủy hàng may mặc chưa bán từ 19/7/2026 (DN lớn)</li><li>Tỷ lệ tận dụng ưu đãi EVFTA 30–35%, CPTPP 20–25%</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TCM · MSH · TNG</p>
-        <div class="source-note">Nguồn: <a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí KTTC 14/9/2026</a> · <a href="https://thuehaiquan.tapchikinhtetaichinh.vn/xuat-khau-det-may-viet-nam-nam-2025-uoc-dat-46-ty-usd-103853.html" target="_blank" rel="noopener">Tạp chí Thuế Hải quan</a></div>
+      <div data-old-topic-key="eu_green" data-old-topic-segment="Dệt nhuộm – May" data-old-topic-title="Yêu cầu xanh EU">
+        <div class="card" data-block-id="dm-t6" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+          <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Cấm tiêu hủy hàng may mặc chưa bán từ 19/7/2026 (DN lớn)</li><li>Tỷ lệ tận dụng ưu đãi EVFTA 30–35%, CPTPP 20–25%</li></ul>
+          <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TCM · MSH · TNG</p>
+          <div class="source-note">Nguồn: <a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí KTTC 14/9/2026</a> · <a href="https://thuehaiquan.tapchikinhtetaichinh.vn/xuat-khau-det-may-viet-nam-nam-2025-uoc-dat-46-ty-usd-103853.html" target="_blank" rel="noopener">Tạp chí Thuế Hải quan</a></div>
+        </div>
       </div>
-    </div>
-    <div data-topic-key="bangladesh" data-topic-segment="Dệt nhuộm – May" data-topic-title="Bangladesh">
-      <div class="card" data-block-id="dm-t7" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Thỏa thuận Mỹ–Bangladesh 9/2/2026: thuế đối ứng 20%→15%; miễn thuế theo m² vải dùng bông/xơ Mỹ</li><li>Bầu cử 12/2/2026; tốt nghiệp LDC 24/11/2026; may mặc ~85% XK</li><li>Ước mất tới 8 tỷ USD/năm XK sau LDC</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TCM · TNG · MSH · GIL</p>
-        <div class="source-note">Nguồn: <a href="https://asiatimes.com/2026/02/why-us-bangladesh-rushed-through-a-pre-election-trade-deal/" target="_blank" rel="noopener">Asia Times 2/2026</a> · <a href="https://apparelresources.com/business-news/trade-business-news/bangladesh-apparel-exporters-warn-prolonged-challenges-2026/" target="_blank" rel="noopener">Apparel Resources – BGMEA cảnh báo 2026</a></div>
+      <div data-old-topic-key="bangladesh" data-old-topic-segment="Dệt nhuộm – May" data-old-topic-title="Bangladesh">
+        <div class="card" data-block-id="dm-t7" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+          <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Thỏa thuận Mỹ–Bangladesh 9/2/2026: thuế đối ứng 20%→15%; miễn thuế theo m² vải dùng bông/xơ Mỹ</li><li>Bầu cử 12/2/2026; tốt nghiệp LDC 24/11/2026; may mặc ~85% XK</li><li>Ước mất tới 8 tỷ USD/năm XK sau LDC</li></ul>
+          <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> TCM · TNG · MSH · GIL</p>
+          <div class="source-note">Nguồn: <a href="https://asiatimes.com/2026/02/why-us-bangladesh-rushed-through-a-pre-election-trade-deal/" target="_blank" rel="noopener">Asia Times 2/2026</a> · <a href="https://apparelresources.com/business-news/trade-business-news/bangladesh-apparel-exporters-warn-prolonged-challenges-2026/" target="_blank" rel="noopener">Apparel Resources – BGMEA cảnh báo 2026</a></div>
+        </div>
       </div>
-    </div>
+    </details>
   </div>
   <div class="majorpane" data-tab="mt10" id="pane-mt10">
     <div class="sectionhead"><div><h2>8. Thị trường XK &amp; thuế quan</h2><p>Mỹ chiếm khoảng 45% xuất khẩu dệt may. Thuế Mỹ đã đổi ba lần từ 2025; vị thế của Việt Nam so với Bangladesh, Campuchia, Indonesia, Ấn Độ quyết định đơn hàng dịch chuyển.</p></div></div>

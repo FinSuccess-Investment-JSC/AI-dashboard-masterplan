@@ -134,6 +134,12 @@ def main(argv=None) -> int:
                 symbols += [c['ticker'] for c in json.loads(f.read_text(encoding='utf-8')).get('companies', [])]
             except (OSError, ValueError, KeyError):
                 pass
+        # 28/11/2026: Phân bón, Cao su, Xút–Clo để phần BCTC trong khóa 'fin' của data/<ngành>-data.json
+        for f in sorted((ROOT / 'data').glob('*-data.json')):
+            try:
+                symbols += [c['ticker'] for c in (json.loads(f.read_text(encoding='utf-8')).get('fin') or {}).get('companies', [])]
+            except (OSError, ValueError, KeyError, AttributeError, TypeError):
+                pass
         symbols = list(dict.fromkeys(symbols))
     now = dt.datetime.now(VN)
     old = json.loads(OUT_JSON.read_text(encoding='utf-8')) if OUT_JSON.exists() else {'companies': {}, 'history': {}}

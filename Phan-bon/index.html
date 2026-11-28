@@ -14,16 +14,19 @@
 <script src="app/fertilizer-finance.js?v=51001a441612" defer></script>
 <script src="app/vn-geo.js?v=07f6be6d571b" defer></script>
 <script src="app/fertilizer-map.js?v=36405978ea03" defer></script>
-<script src="app/fertilizer-cost.js?v=21781e14f1ca" defer></script>
+<script src="app/fertilizer-cost.js?v=4c02993361a8" defer></script>
 <script src="app/fertilizer-gasmap.js?v=14c86500157e" defer></script>
 <script src="../data/fertilizer-news.js?v=057536cbda76" defer></script>
 <script src="app/fertilizer-news.js?v=3a5456f68ef8" defer></script>
-<script src="app/fertilizer.js?v=522a0d4da4b3" defer></script>
+<script src="app/fertilizer.js?v=60095ed7f3c7" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
+<script src="app/listed-compare.js?v=b0de580c385a" defer></script>
+<script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
 <script src="app/price-ticker.js?v=9869fca8a959" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <link rel="stylesheet" href="app/site-sidebar.css?v=4efb49eaf265">
 <link rel="stylesheet" href="app/site-tidy.css?v=876dba0fb886">
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
@@ -34,6 +37,7 @@
 <link rel="stylesheet" href="app/overview.css?v=eff54e08565b">
 <link rel="stylesheet" href="app/fertilizer.css?v=9ae7fd9203db">
 <link rel="stylesheet" href="app/fertilizer-news.css?v=c29d814654e2">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
 </head>
 <!-- Trang Phân bón theo khung trang Điện (25/11/2026), viết sẵn bố cục cuối (không có "tab nền" để dời DOM).
      app/fertilizer.js dựng nội dung Tổng quan + Bức tranh ngành; app/fertilizer-finance.js dựng tab Tài chính ngành.
@@ -44,7 +48,7 @@
 <nav class="majortabs tabs" role="tablist" aria-label="Các phần nghiên cứu">
   <button class="majortabbtn active" type="button" data-tab="mt1" role="tab" aria-selected="true">Tổng quan ngành</button>
   <button class="majortabbtn" type="button" data-tab="mt2" role="tab" aria-selected="false">Bức tranh ngành</button>
-  <button class="majortabbtn" type="button" data-tab="mt3" role="tab" aria-selected="false">Tài chính ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt14" role="tab" aria-selected="false">Tài chính ngành</button>
   <button class="majortabbtn" type="button" data-tab="mt7" role="tab" aria-selected="false">Chủ đề nóng</button>
 </nav>
 
@@ -54,11 +58,10 @@
   <section class="majorpane active" data-tab="mt1" id="pane-mt1">
     <section class="db card" id="dataBrief" data-block-id="pb-00" data-update-kind="public" data-cadence="monthly"></section>
     <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Tổng quan ngành phân bón</h2><p>Nhìn để hiểu ngành: chuỗi giá trị và doanh nghiệp niêm yết. Số tài chính chi tiết ở tab Tài chính ngành.</p></div></div>
+      <div class="sectionhead"><div><h2 class="sec">Tổng quan ngành phân bón</h2></div></div>
       <div class="ov-nav" role="tablist" aria-label="Tổng quan ngành">
         <button class="tabbtn ov-tab active" type="button" id="fb-ov-map-tab" role="tab" data-ov="map" aria-controls="fb-ov-map" aria-selected="true"><span>00</span>Bản đồ ngành<small>Chuỗi giá trị · nhà máy · vùng nguyên liệu</small></button>
         <button class="tabbtn ov-tab" type="button" id="fb-ov-cap-tab" role="tab" data-ov="cap" aria-controls="fb-ov-cap" aria-selected="false"><span>01</span>Năng lực sản xuất<small>Công suất · công nghệ · nguồn cung</small></button>
-        <button class="tabbtn ov-tab" type="button" id="fb-ov-listed-tab" role="tab" data-ov="listed" aria-controls="fb-ov-listed" aria-selected="false"><span>02</span>Doanh nghiệp niêm yết<small>9 mã: đạm, lân & DAP, NPK</small></button>
       </div>
       <div class="pane-subpane ov-pane" id="fb-ov-map" data-ov="map" role="tabpanel" aria-labelledby="fb-ov-map-tab">
         <header class="ov-head"><div><span class="ov-k">00 · Toàn cảnh ngành</span><h2>Bản đồ ngành</h2><p>Vị trí nhà máy → nguồn nguyên liệu → công nghệ → công suất → yếu tố chi phí.</p></div></header>
@@ -66,46 +69,52 @@
       <div class="pane-subpane ov-pane" id="fb-ov-cap" data-ov="cap" role="tabpanel" aria-labelledby="fb-ov-cap-tab" hidden>
         <header class="ov-head"><div><span class="ov-k">01 · Năng lực sản xuất</span><h2>Năng lực sản xuất</h2><p>Công suất thiết kế theo vùng, công nghệ và nhà máy; nguyên liệu, nguồn cung và yếu tố chi phí của từng nhà máy.</p></div></header>
       </div>
-      <div class="pane-subpane ov-pane" id="fb-ov-listed" data-ov="listed" role="tabpanel" aria-labelledby="fb-ov-listed-tab" hidden>
-        <header class="ov-head"><div><span class="ov-k">02 · Doanh nghiệp</span><h2>Doanh nghiệp niêm yết</h2><p>Quy mô, lợi nhuận và nợ vay của từng mã.</p></div></header>
-      </div>
     </section>
   </section>
 
   <section class="majorpane" data-tab="mt2" id="pane-mt2">
     <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2><p>Mỗi loại phân theo luồng đầu vào → sản xuất → đầu ra; nguồn khí; ma trận tác động.</p></div></div>
-      <div class="pp-nav" role="tablist" aria-label="Loại phân bón">
-        <button class="tabbtn pp-tab active" type="button" role="tab" data-sub="urea" aria-selected="true"><span>01</span>Phân đạm (urê)</button>
-        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="phos" aria-selected="false"><span>02</span>Phân lân & DAP</button>
-        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="npk" aria-selected="false"><span>03</span>NPK & kali</button>
-        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="gas" aria-selected="false"><span>04</span>Nguồn khí</button>
-        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="matrix" aria-selected="false"><span>05</span>Ma trận tác động</button>
+      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2></div></div>
+      <!-- 28/11/2026 khung chuẩn Điện (§42): 01 Toàn ngành (giá và ma trận tác động, khóa cũ matrix) → từng loại phân theo luồng → nguồn khí. -->
+      <div class="pp-nav" role="tablist" aria-label="Bức tranh ngành phân bón">
+        <button class="tabbtn pp-tab active" type="button" role="tab" data-sub="all" aria-selected="true"><span>01</span>Toàn ngành</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="urea" aria-selected="false"><span>02</span>Phân đạm (urê)</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="phos" aria-selected="false"><span>03</span>Phân lân & DAP</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="npk" aria-selected="false"><span>04</span>NPK & kali</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="gas" aria-selected="false"><span>05</span>Nguồn khí</button>
       </div>
-      <div class="pane-subpane pp-pane" id="fb-pp-urea" data-sub="urea">
-        <header class="pp-head"><div><span class="pp-k">01</span><h2>Phân đạm (urê)</h2><p>Đầu vào khí & than → sản xuất (sản lượng, công suất urê) → đầu ra (giá urê, biên gộp DPM, DCM, DHB).</p></div><span class="pp-asof" data-asof="urea"></span></header>
+      <div class="pane-subpane pp-pane" id="fb-pp-all" data-sub="all">
+        <header class="pp-head"><div><span class="pp-k">01</span><h2>Toàn ngành</h2><p>Giá phân bón và nguyên liệu; biến số giá nào tác động lên doanh nghiệp niêm yết nào.</p></div><span class="pp-asof" data-asof="all"></span></header>
+      </div>
+      <div class="pane-subpane pp-pane" id="fb-pp-urea" data-sub="urea" hidden>
+        <header class="pp-head"><div><span class="pp-k">02</span><h2>Phân đạm (urê)</h2><p>Đầu vào than → sản xuất (sản lượng, công suất urê) → đầu ra (giá urê, biên gộp DPM, DCM, DHB).</p></div><span class="pp-asof" data-asof="urea"></span></header>
       </div>
       <div class="pane-subpane pp-pane" id="fb-pp-phos" data-sub="phos" hidden>
-        <header class="pp-head"><div><span class="pp-k">02</span><h2>Phân lân & DAP</h2><p>Đầu vào quặng phosphate → sản xuất (công suất DAP & lân) → đầu ra (giá DAP, TSP, biên gộp DDV, LAS, VAF, NFC).</p></div><span class="pp-asof" data-asof="dap"></span></header>
+        <header class="pp-head"><div><span class="pp-k">03</span><h2>Phân lân & DAP</h2><p>Đầu vào quặng phosphate → sản xuất (công suất DAP & lân) → đầu ra (giá DAP, biên gộp DDV, LAS, VAF, NFC).</p></div><span class="pp-asof" data-asof="dap"></span></header>
       </div>
       <div class="pane-subpane pp-pane" id="fb-pp-npk" data-sub="npk" hidden>
-        <header class="pp-head"><div><span class="pp-k">03</span><h2>NPK & kali</h2><p>Đầu vào kali, urê, DAP → sản xuất (sản lượng, công suất NPK) → đầu ra (biên gộp, tồn kho BFC, SFG).</p></div><span class="pp-asof" data-asof="npk_output"></span></header>
+        <header class="pp-head"><div><span class="pp-k">04</span><h2>NPK & kali</h2><p>Đầu vào kali, urê, DAP → sản xuất (sản lượng, công suất NPK) → đầu ra (biên gộp, tồn kho BFC, SFG).</p></div><span class="pp-asof" data-asof="npk"></span></header>
       </div>
       <div class="pane-subpane pp-pane" id="fb-pp-gas" data-sub="gas" hidden>
-        <header class="pp-head"><div><span class="pp-k">04</span><h2>Nguồn khí</h2><p>Giá khí theo khu vực, dầu Brent, cơ chế giá khí đầu vào của DPM, DCM và bản đồ hệ thống cung cấp khí Việt Nam.</p></div><span class="pp-asof" data-asof="gas_eu"></span></header>
-      </div>
-      <div class="pane-subpane pp-pane" id="fb-pp-matrix" data-sub="matrix" hidden>
-        <header class="pp-head"><div><span class="pp-k">05</span><h2>Ma trận tác động</h2><p>Biến giá nào tác động lên doanh nghiệp niêm yết nào, theo chiều nào.</p></div></header>
+        <header class="pp-head"><div><span class="pp-k">05</span><h2>Nguồn khí</h2><p>Giá khí theo khu vực, giá dầu trong công thức giá khí, hệ thống cung cấp khí tới nhà máy đạm.</p></div><span class="pp-asof" data-asof="gas"></span></header>
       </div>
     </section>
   </section>
 
-  <section class="majorpane" data-tab="mt3" id="pane-mt3">
+  <!-- Tài chính ngành (#mt14, link cũ #mt3 chuyển về đây), 28/11/2026 theo §42: 01 Tài chính ngành · 02 Doanh nghiệp niêm yết · 03 Định giá (app/peer-valuation.js tự thêm). -->
+  <section class="majorpane" data-tab="mt14" id="pane-mt14">
     <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 9 doanh nghiệp phân bón niêm yết: tổng hợp theo nhóm sản phẩm, từ BCTC quý.</p></div></div>
-      <div class="pane-subpane pp-pane fn-pane">
+      <div class="sectionhead"><div><h2 class="sec">Tài chính ngành</h2></div></div>
+      <div class="pp-nav" role="tablist" aria-label="Tài chính ngành">
+        <button class="tabbtn pp-tab active" type="button" role="tab" data-fin="sector" aria-selected="true"><span>01</span>Tài chính ngành</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-fin="listed" aria-selected="false"><span>02</span>Doanh nghiệp niêm yết</button>
+      </div>
+      <div class="pane-subpane pp-pane fn-pane" data-fin="sector">
         <header class="pp-head"><div><span class="pp-k">01</span><h2>Tài chính ngành</h2><p>Lợi nhuận, biên, dòng vốn đầu tư, công nợ, dòng tiền và hiệu quả vốn.</p></div><span class="pp-asof" data-asof="fin"></span></header>
         <div id="fb-fin-root"></div>
+      </div>
+      <div class="pane-subpane pp-pane" id="fb-fin-listed" data-fin="listed" hidden>
+        <header class="pp-head"><div><span class="pp-k">02</span><h2>Doanh nghiệp niêm yết</h2><p>Quy mô, lợi nhuận, biên, nợ vay và định giá của từng mã.</p></div><span class="pp-asof" data-asof="listed"></span></header>
       </div>
     </section>
   </section>

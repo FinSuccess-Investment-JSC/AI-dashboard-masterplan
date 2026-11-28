@@ -24,14 +24,14 @@
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=ea2d589497cb" defer></script>
-<script src="../data/company-valuation.js?v=a38a9fa54044" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
 <script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
 <script src="app/research-layout.js?v=9e7129e0e65c" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/research-editorial.js?v=5c086de36662" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
@@ -48,18 +48,22 @@
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
 <script src="app/ship-finance.js?v=37e0872854d3" defer></script>
-<script src="app/ship-frame.js?v=053a971546a0" defer></script>
-<script src="app/legal-config.js?v=d28c47e22324" defer></script>
+<script src="app/ship-frame.js?v=9220eb8c5dfc" defer></script>
+<script src="../data/shipping-news.js?v=bdc1ef10a607" defer></script>
+<script src="app/shipping-news.js?v=cf73f4b4e177" defer></script>
+<script src="app/legal-config.js?v=57eb5349b8a6" defer></script>
 <script src="app/sector-legal.js?v=795ef091e74a" defer></script>
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
+<link rel="stylesheet" href="app/shipping-news.css?v=fd5eb9f62549">
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
 </head>
 <body data-sector="shipping">
 <nav data-site-navigation="shipping" aria-label="Điều hướng dashboard ngành"></nav>
@@ -386,7 +390,10 @@
   </section>
   </div>
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Bốn câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <!-- 28/11/2026: luồng tin theo bố cục trang Điện (app/shipping-news.js, data/shipping/news.json → scripts/build_shipping_news.py → data/shipping-news.js).
+         Các thẻ chủ đề cũ thành "Chủ đề đang theo dõi" (giữ ý, ngày phân tích, mã chịu tác động, điều kiện kết thúc); thẻ gốc giữ trong details.of-rest ẩn. -->
+    <section class="section"><div id="vt-news" aria-label="Tin ngành Vận tải biển"><p role="status">Đang tải tin ngành Vận tải biển…</p></div></section>
+    <details class="research-fold of-rest"><summary>Thẻ chủ đề cũ</summary><div class="research-detail">
     <div data-topic-key="hormuz" data-topic-segment="Tàu dầu &amp; khí" data-topic-title="Hormuz đóng: cước tanker và bảo hiểm">
       <div class="card" data-block-id="vt-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
         <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Xung đột từ tháng 2/2026; ngừng bắn 08/04; tái leo thang từ tháng 7; đầu 10/2026 Iran tuyên bố eo chưa mở, 224 tàu neo chờ</li><li>Hormuz 3,6 lượt/ngày T9/2026 (T9/2025: 88); 18/10 chỉ 4 lượt (trước chiến tranh ~85); Clarksons: −95% lượt từ tháng 3</li><li>Tháng 10/2026: <b>28 vụ tấn công</b> tàu quanh eo — tháng tệ nhất; 113 vụ từ 28/02</li><li>Bảo hiểm chiến tranh 7,5–12,5% giá trị tàu mỗi lượt</li><li>10/11/2026: một tàu dầu bị trúng đạn cách Lima (Oman) 19 hải lý, UKMTO cảnh báo 201-26, thủy thủ an toàn; tàu ADNOC L&amp;S bị hư hại cùng ngày trong vịnh Ba Tư (chưa rõ hai vụ có liên quan)</li></ul>
@@ -415,6 +422,7 @@
         <div class="source-note">Nguồn: <a href="https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61" target="_blank" rel="noopener">Clarksons H1/2026</a> · <a href="https://www.hklaw.com/en/insights/publications/2025/11/ustr-port-fee-suspension-what-you-need-to-know" target="_blank" rel="noopener">Holland &amp; Knight</a> · <a href="https://gcaptain.com/u-s-formalizes-two-month-extension-of-china-ship-port-fee-suspension/" target="_blank" rel="noopener">gCaptain 10/11</a></div>
       </div>
     </div>
+    </div></details>
   </div>
   <div class="majorpane" data-tab="mt10" id="pane-mt10">
     <div class="sectionhead"><div><h2>Địa chính trị &amp; tuyến</h2><p>Hai eo biển quyết định tấn-dặm của tanker và container. Số lượt tàu theo AIS từ IMF PortWatch, cập nhật tự động mỗi lượt job.</p></div></div>

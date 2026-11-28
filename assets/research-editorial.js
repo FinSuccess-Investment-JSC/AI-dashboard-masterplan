@@ -50,7 +50,7 @@ document.querySelectorAll('.thesis-signal').forEach((c,i)=>{
  const how=make('p','thesis-howto');how.append(make('b','','Cách đối chiếu: '),s[3]);(c.querySelector('.thesis-limitation')||c.querySelector('.thesis-evidence-links')||c.lastElementChild).before(how);
  editor(c,'signal-'+i,'catalyst',{title});
 });
-if (sector === 'power' && hot.querySelector('#power-news')) {
+if (hot.querySelector('[id$="-news"]:not(#bank-news)')) { // 28/11/2026 (DASHBOARD_WORKFLOW §42): ngành có luồng tin kiểu Điện (#power-news, #xd-news, #kcn-news, #sf-news, #dm-news…) tự dựng Chủ đề nóng
   document.querySelectorAll('.thesis-signal,.thesis-scenario-panel,.thesis-fold-body,.majorpane[data-tab="mt4"] .research-detail,.majorpane[data-tab="mt4"] .policy-timeline,.research-steps,.business-models').forEach(n=>R.emphasize(n));
   return;
 }

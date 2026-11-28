@@ -146,6 +146,10 @@ function kpi(k) {
     else if (l) { value = nf(l.value / (k.div || 1), k.digits ?? 0); unit = k.unit || ''; sub = mon(l.date) + (k.note ? ' · ' + k.note : ''); delta = signed(yoyAt(rs, l), 0) + '% so cùng kỳ' + (k.ytd === false ? '' : ' · lũy kế ' + signed(ytdYo(rs), 0) + '%'); spark = rs.slice(-12).map(r => r.value); }
   } else if (k.pe) {
     const rs = sec[k.pe]?.records || [], l = rs.at(-1); if (l) { value = nf(l[1], 1) + 'x'; sub = 'P/E rổ ' + (k.label || '') + ' · ' + short(l[0]); delta = 'P/B ' + nf(l[2], 2) + 'x'; spark = rs.slice(-30).map(r => r[1]); color = C.grey; }
+  } else if (k.cq) {
+    // 28/11/2026 (khung chuẩn Điện, Bia/Sữa): ô số biên theo quý một mã từ COMPANY_QUARTERLY (cùng nguồn chart biên gộp); so cùng quý năm trước.
+    const D = CQ(), r = cqRow(k.cq), a = r?.[k.field] || [], i = a.map((v, j) => Number.isFinite(v) ? j : -1).filter(j => j >= 0).at(-1);
+    if (i != null && i >= 0) { value = nf(a[i], 1) + '%'; sub = D.quarters[i] + (k.note ? ' · ' + k.note : ''); delta = Number.isFinite(a[i - 4]) ? signed(a[i] - a[i - 4], 1) + ' điểm % so cùng kỳ' : ''; spark = a.slice(Math.max(0, i - 11), i + 1); }
   }
   const ve = card.querySelector('.value'); ve.textContent = value; if (unit) { const u = make('span', 'unit', unit); u.style.cssText = 'font-size:12px;font-weight:600;color:var(--muted,#6b7a90);margin-left:6px;letter-spacing:0'; ve.append(u); }
   card.querySelector('.sub').textContent = sub; card.querySelector('.delta').textContent = delta;

@@ -20,14 +20,15 @@
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=ea2d589497cb" defer></script>
 <script src="app/sector-ticker.js?v=24097f7668e0" defer></script>
-<script src="../data/company-valuation.js?v=a38a9fa54044" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
 <script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
-<script src="app/research-layout.js?v=cbceaf2268db" defer></script>
+<script src="app/research-layout.js?v=83fa1523575f" defer></script>
+<script src="app/sugar-frame.js?v=b266b55ff683" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/research-editorial.js?v=97450dc19c58" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
@@ -44,7 +45,9 @@
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/peer-valuation.js?v=da1d3c34b1e3" defer data-auto></script>
 <script src="app/sugar-finance.js?v=59132948e47b" defer></script>
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="../data/sugar-news.js?v=798a9c2372a1" defer></script>
+<script src="app/sugar-news.js?v=871360b6799f" defer></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
@@ -53,6 +56,8 @@
 <link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
+<link rel="stylesheet" href="app/sugar-news.css?v=eece87f9a264">
 </head>
 <body>
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="sugar"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a><a href="../Dien/">Điện</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -433,6 +438,7 @@
       </div>
     </div>
   </section>
+  <section class="section" data-sector-news><div id="sg-news" aria-label="Tin ngành Đường"><p role="status">Đang tải tin ngành Đường…</p></div></section>
   </div>
 
   <div class="card" style="margin-top:14px;border-left:4px solid var(--warning)"><h3 style="margin-top:0;font-size:13.5px">Nguồn chưa gắn được đường dẫn</h3><p style="font-size:12.5px;line-height:1.65;color:var(--ink2);margin:0 0 8px">Theo chuẩn của bộ dashboard, mỗi số liệu phải có đường dẫn bấm được tới nguồn gốc. Ba nhóm dưới đây hiện <b>chưa có</b>, và cần analyst phụ trách bổ sung trước khi bản này được dùng để trích dẫn:</p><ul class="list"><li><b>Hiệp hội Mía đường Việt Nam (VSSA).</b> Không tra được website chính thức còn hoạt động. Các số liệu giá đường trong nước và ước tính thị phần đường lậu hiện dẫn qua báo chí trích lại — cần thay bằng link bài gốc của từng mốc.</li><li><b>Bài báo trích VSSA</b> trên CafeF, VietnamBiz, Nông nghiệp &amp; Môi trường, Dân trí — mỗi mốc giá cần một đường dẫn riêng, không dùng chung một nguồn cho cả chuỗi.</li><li><b>Báo cáo phân tích của công ty chứng khoán</b> (VCBS 2024, Vietcap 09/01/2024): link ở đây chỉ trỏ tới trang chủ, chưa trỏ tới đúng file báo cáo.</li></ul></div>

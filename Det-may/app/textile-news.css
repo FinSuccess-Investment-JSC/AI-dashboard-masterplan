@@ -1,0 +1,68 @@
+/* Dệt may · Chủ đề nóng (28/11/2026): chép Cao-su/app/rubber-news.css, đổi #cs-news → #dm-news. */
+#dm-news {
+  --pn-navy: #1d2678;
+  --pn-border: #dfe4f0;
+  --pn-muted: #55627a;
+  color: #303540;
+}
+#dm-news [hidden] { display: none !important; }
+#dm-news h2, #dm-news h3, #dm-news h4 { color: var(--pn-navy); margin: 0 0 .55rem; }
+#dm-news h2 { font-size: 1.55rem; }
+#dm-news h3 { font-size: 1.13rem; }
+#dm-news h4 { font-size: .94rem; margin-top: 1rem; }
+#dm-news p { margin: .35rem 0; line-height: 1.45; }
+#dm-news .pn-meta { color: var(--pn-muted); font-size: .79rem; overflow-wrap: anywhere; }
+#dm-news .pn-header { padding: .55rem 0 .8rem; }
+#dm-news .pn-featured, #dm-news .pn-feed, #dm-news .pn-sidebar-section {
+  background: #fff; border: 1px solid var(--pn-border); border-radius: 10px; padding: 1rem;
+}
+#dm-news .pn-feature-grid, #dm-news .pn-desk { display: grid; gap: 1rem; align-items: start; }
+#dm-news .pn-feature-grid { grid-template-columns: minmax(0, 57fr) minmax(0, 43fr); }
+#dm-news .pn-desk { grid-template-columns: minmax(0, 73fr) minmax(0, 27fr); margin-top: 1rem; }
+#dm-news .pn-lead {
+  align-self: stretch; display: grid; align-content: center; padding: clamp(1rem, 3vw, 2rem);
+  background: #eef1fa; border-left: 3px solid var(--pn-navy); border-radius: 6px;
+}
+#dm-news button { cursor: pointer; font: inherit; }
+#dm-news button:focus-visible, #dm-news summary:focus-visible, #dm-news a:focus-visible {
+  outline: 2px solid #2938a8; outline-offset: 3px;
+}
+#dm-news .pn-lead button, #dm-news .pn-short button, #dm-news .pn-topic button {
+  border: 0; padding: 0; text-align: left; background: transparent; color: var(--pn-navy); font-weight: 700;
+}
+#dm-news .pn-lead button { font-size: clamp(1.2rem, 2.1vw, 1.85rem); line-height: 1.2; }
+#dm-news button:hover, #dm-news a:hover { text-decoration: underline; }
+#dm-news .pn-short, #dm-news .pn-topic { padding: .65rem 0; }
+#dm-news .pn-short + .pn-short, #dm-news .pn-topic + .pn-topic { border-top: 1px solid var(--pn-border); }
+#dm-news .pn-topic p { font-size: .84rem; }
+#dm-news .pn-sidebar-section + .pn-sidebar-section { margin-top: .8rem; }
+#dm-news .pn-controls, #dm-news .pn-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin: .65rem 0; }
+#dm-news .pn-controls label { display: grid; flex: 1 1 125px; min-width: 0; gap: .25rem; font-size: .77rem; }
+#dm-news .pn-controls input, #dm-news .pn-controls select, #dm-news button {
+  border: 1px solid var(--pn-border); border-radius: 5px; background: #fff; color: var(--pn-navy);
+  padding: .42rem .58rem; min-width: 0;
+}
+#dm-news .pn-pills button { font-size: .79rem; }
+#dm-news .pn-pills button[aria-pressed="true"] { color: white; background: var(--pn-navy); }
+#dm-news .pn-row { border-top: 1px solid var(--pn-border); padding: .65rem .05rem; }
+#dm-news .pn-row summary { cursor: pointer; }
+#dm-news .pn-row summary strong { color: var(--pn-navy); font-size: .99rem; }
+#dm-news .pn-summary { display: block; line-height: 1.45; }
+#dm-news .pn-detail { padding: .55rem .7rem; margin: .45rem 0 0; background: #f6f8fc; }
+#dm-news .pn-sources { padding-left: 1.15rem; margin: .45rem 0; overflow-wrap: anywhere; }
+#dm-news .pn-dialog {
+  max-width: 720px; width: calc(100% - 2rem); max-height: 88vh; padding: 1.2rem;
+  border: 1px solid var(--pn-border); border-radius: 10px; color: #303540;
+}
+#dm-news .pn-dialog > button { float: right; margin: 0 0 .5rem .5rem; }
+#dm-news .pn-dialog::backdrop { background: rgb(29 38 120 / 35%); }
+#dm-news .pn-timeline { padding-left: 1.2rem; }
+#dm-news .pn-timeline > li { margin-bottom: .85rem; }
+@media (max-width: 760px) {
+  #dm-news .pn-feature-grid, #dm-news .pn-desk { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 440px) {
+  #dm-news .pn-featured, #dm-news .pn-feed, #dm-news .pn-sidebar-section { padding: .72rem; }
+}
+#dm-news .pn-impact { color: var(--pn-navy); font-size: .85rem; font-weight: 600; }
+#dm-news .pn-widen { margin: .3rem 0 .6rem; border: 1px solid var(--pn-navy); background: #fff; color: var(--pn-navy); border-radius: 999px; padding: .35rem .9rem; font-weight: 700; }

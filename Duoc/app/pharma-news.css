@@ -1,0 +1,68 @@
+/* Chủ đề nóng · 28/11/2026, chép Cao-su/app/rubber-news.css (đổi #cs-news → #duoc-news). */
+#duoc-news {
+  --pn-navy: #1d2678;
+  --pn-border: #dfe4f0;
+  --pn-muted: #55627a;
+  color: #303540;
+}
+#duoc-news [hidden] { display: none !important; }
+#duoc-news h2, #duoc-news h3, #duoc-news h4 { color: var(--pn-navy); margin: 0 0 .55rem; }
+#duoc-news h2 { font-size: 1.55rem; }
+#duoc-news h3 { font-size: 1.13rem; }
+#duoc-news h4 { font-size: .94rem; margin-top: 1rem; }
+#duoc-news p { margin: .35rem 0; line-height: 1.45; }
+#duoc-news .pn-meta { color: var(--pn-muted); font-size: .79rem; overflow-wrap: anywhere; }
+#duoc-news .pn-header { padding: .55rem 0 .8rem; }
+#duoc-news .pn-featured, #duoc-news .pn-feed, #duoc-news .pn-sidebar-section {
+  background: #fff; border: 1px solid var(--pn-border); border-radius: 10px; padding: 1rem;
+}
+#duoc-news .pn-feature-grid, #duoc-news .pn-desk { display: grid; gap: 1rem; align-items: start; }
+#duoc-news .pn-feature-grid { grid-template-columns: minmax(0, 57fr) minmax(0, 43fr); }
+#duoc-news .pn-desk { grid-template-columns: minmax(0, 73fr) minmax(0, 27fr); margin-top: 1rem; }
+#duoc-news .pn-lead {
+  align-self: stretch; display: grid; align-content: center; padding: clamp(1rem, 3vw, 2rem);
+  background: #eef1fa; border-left: 3px solid var(--pn-navy); border-radius: 6px;
+}
+#duoc-news button { cursor: pointer; font: inherit; }
+#duoc-news button:focus-visible, #duoc-news summary:focus-visible, #duoc-news a:focus-visible {
+  outline: 2px solid #2938a8; outline-offset: 3px;
+}
+#duoc-news .pn-lead button, #duoc-news .pn-short button, #duoc-news .pn-topic button {
+  border: 0; padding: 0; text-align: left; background: transparent; color: var(--pn-navy); font-weight: 700;
+}
+#duoc-news .pn-lead button { font-size: clamp(1.2rem, 2.1vw, 1.85rem); line-height: 1.2; }
+#duoc-news button:hover, #duoc-news a:hover { text-decoration: underline; }
+#duoc-news .pn-short, #duoc-news .pn-topic { padding: .65rem 0; }
+#duoc-news .pn-short + .pn-short, #duoc-news .pn-topic + .pn-topic { border-top: 1px solid var(--pn-border); }
+#duoc-news .pn-topic p { font-size: .84rem; }
+#duoc-news .pn-sidebar-section + .pn-sidebar-section { margin-top: .8rem; }
+#duoc-news .pn-controls, #duoc-news .pn-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin: .65rem 0; }
+#duoc-news .pn-controls label { display: grid; flex: 1 1 125px; min-width: 0; gap: .25rem; font-size: .77rem; }
+#duoc-news .pn-controls input, #duoc-news .pn-controls select, #duoc-news button {
+  border: 1px solid var(--pn-border); border-radius: 5px; background: #fff; color: var(--pn-navy);
+  padding: .42rem .58rem; min-width: 0;
+}
+#duoc-news .pn-pills button { font-size: .79rem; }
+#duoc-news .pn-pills button[aria-pressed="true"] { color: white; background: var(--pn-navy); }
+#duoc-news .pn-row { border-top: 1px solid var(--pn-border); padding: .65rem .05rem; }
+#duoc-news .pn-row summary { cursor: pointer; }
+#duoc-news .pn-row summary strong { color: var(--pn-navy); font-size: .99rem; }
+#duoc-news .pn-summary { display: block; line-height: 1.45; }
+#duoc-news .pn-detail { padding: .55rem .7rem; margin: .45rem 0 0; background: #f6f8fc; }
+#duoc-news .pn-sources { padding-left: 1.15rem; margin: .45rem 0; overflow-wrap: anywhere; }
+#duoc-news .pn-dialog {
+  max-width: 720px; width: calc(100% - 2rem); max-height: 88vh; padding: 1.2rem;
+  border: 1px solid var(--pn-border); border-radius: 10px; color: #303540;
+}
+#duoc-news .pn-dialog > button { float: right; margin: 0 0 .5rem .5rem; }
+#duoc-news .pn-dialog::backdrop { background: rgb(29 38 120 / 35%); }
+#duoc-news .pn-timeline { padding-left: 1.2rem; }
+#duoc-news .pn-timeline > li { margin-bottom: .85rem; }
+@media (max-width: 760px) {
+  #duoc-news .pn-feature-grid, #duoc-news .pn-desk { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 440px) {
+  #duoc-news .pn-featured, #duoc-news .pn-feed, #duoc-news .pn-sidebar-section { padding: .72rem; }
+}
+#duoc-news .pn-impact { color: var(--pn-navy); font-size: .85rem; font-weight: 600; }
+#duoc-news .pn-widen { margin: .3rem 0 .6rem; border: 1px solid var(--pn-navy); background: #fff; color: var(--pn-navy); border-radius: 999px; padding: .35rem .9rem; font-weight: 700; }

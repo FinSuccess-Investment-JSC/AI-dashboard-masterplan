@@ -5,6 +5,23 @@ const VAMA = ['VAMA qua VietnamPlus', 'https://www.vietnamplus.vn/doanh-so-ban-o
 const VF = ['VinFast qua VOV', 'https://vov.vn/o-to-xe-may/doanh-so-vinfast-thang-92026-tang-truong-an-tuong-voi-hon-23000-xe-ban-giao-post1340347.vov'];
 const VAMM = ['VAMM qua VietnamPlus', 'https://www.vietnamplus.vn/doanh-so-xe-may-viet-nam-vuot-2-trieu-chiec-xe-xang-van-tang-truong-post1141075.vnp'];
 const LPTB = 'https://lsvn.vn/o-to-dien-duoc-ap-dung-le-phi-truoc-ba-lan-dau-0-den-het-nam-2030-a173952.html';
+// 28/11/2026 (khung chuẩn Điện): "Dữ liệu mới nhất" đầu sub-tab và ô số biên đại lý, đọc dữ liệu thật trên trang.
+const nf = (v, d = 0) => Number.isFinite(v) ? v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d}) : '—';
+const sg = (v, d = 1) => Number.isFinite(v) ? (v > 0 ? '+' : v < 0 ? '−' : '') + nf(Math.abs(v), d) : '—';
+const mlabel = m => 'T' + Number(m.slice(5, 7)) + '/' + m.slice(0, 4);
+const lastMonth = keys => { const M = window.RETAIL_PUBLIC?.blocks?.macro?.series || {}, m = keys.map(k => M[k]?.records?.at(-1)?.date).filter(Boolean).sort().at(-1); return m ? mlabel(m) : ''; };
+const lastQuarter = syms => { const D = window.COMPANY_QUARTERLY; if (!D?.quarters) return ''; const rows = (D.companies || []).filter(c => syms.includes(c.symbol)); for (let i = D.quarters.length - 1; i >= 0; i--) if (rows.some(c => Number.isFinite(c.gross_margin?.[i]))) return D.quarters[i]; return ''; };
+const lastMilestone = id => { const t = new Date().toISOString().slice(0, 10), d = ((window.PKG?.charts || []).find(x => x.id === id)?.items || []).map(x => x.d).filter(x => x <= t).sort().at(-1); return d ? d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4) : ''; };
+// Nhóm đại lý (HAX, SVC, CTF) theo window.AUTO_FIN: tổng 4 quý liền, chỉ tính khi đủ 4 quý của cả 3 mã.
+const dealerTTM = k => { const D = window.AUTO_FIN; if (!D) return []; const ts = D.companies.filter(c => c.group === 'dealer').map(c => c.ticker);
+  return D.periods.map((_, i) => { if (i < 3) return null; let a = 0; for (const t of ts) for (let j = i - 3; j <= i; j++) { const v = D.data[t]?.[k]?.[j]; if (!Number.isFinite(v)) return null; a += v; } return a; }); };
+const qName = p => p ? 'Q' + p.slice(-1) + '/' + p.slice(0, 4) : '';
+const dealerKpi = mode => { const D = window.AUTO_FIN; if (!D) return null; const rev = dealerTTM('revenue'), x = dealerTTM(mode === 'gm' ? 'gross' : 'npat');
+  const v = x.map((a, i) => a == null ? null : mode === 'gm' ? (rev[i] > 0 ? a / rev[i] * 100 : null) : a); let i = v.length - 1; while (i >= 0 && v[i] == null) i--; if (i < 0) return null;
+  const sub = qName(D.periods[i]) + ' · HAX, SVC, CTF · BCTC hợp nhất';
+  const spark = v.slice(-12).filter(Number.isFinite);
+  if (mode === 'gm') return {value: nf(v[i], 1), unit: '%', sub, delta: v[i - 4] != null ? sg(v[i] - v[i - 4], 1) + ' điểm % so cùng kỳ' : '', spark};
+  return {value: nf(v[i], 0), unit: 'tỷ đồng', sub, delta: v[i - 4] > 0 ? sg((v[i] / v[i - 4] - 1) * 100, 0) + '% so cùng kỳ' : '', spark}; };
 window.PKG = {
   key: 'auto', prefix: 'oto', label: 'Ô tô - Xe máy',
   wide: ['oto-01', 'oto-05', 'oto-11', 'oto-52', 'oto-60'],
@@ -13,6 +30,9 @@ window.PKG = {
     {spark: 'spk-carimp', series: 'car_import', unit: 'triệu USD', digits: 0},
     {spark: 'spk-moto', series: 'moto_output', unit: 'nghìn chiếc', digits: 0},
     {spark: 'spk-pe', pe: '224', label: 'Bán lẻ xe'},
+    {spark: 'spk-vamm', fixed: ['686.661', 'xe', 'Q3/2026 · thành viên VAMM', '+10,4% so cùng kỳ · 9T/2026: 2.054.213 xe']},
+    {spark: 'spk-dgm', calc: () => dealerKpi('gm')},
+    {spark: 'spk-dnp', calc: () => dealerKpi('npat')},
   ],
   charts: [
     // chAutoChain (oto-01) và chAutoModels (oto-05) dựng ở app/auto-chain.js: sơ đồ chuỗi giá trị tương tác, 4 mô hình kiếm tiền (28/11/2026).
@@ -52,34 +72,52 @@ window.PKG = {
   ],
   sourceManual: [],
   topics: {'oto-t1': ['Doanh thu, cơ cấu hãng và biên gộp HAX; doanh số đại lý xe xăng (SVC, CTF)', 'Doanh số VinFast và VAMA hằng tháng, biên gộp HAX quý III–IV', [['#rf-q-car', 'Doanh số xe'], ['#rf-q-gm', 'Biên đại lý'], ['#rf-q-policy', 'Lệ phí trước bạ']]]},
-  section: {supply: ['mt2', 'all'], demand: ['mt2', 'all']},
+  section: {supply: ['mt2', 'all'], demand: ['mt2', 'all'], moto: ['mt2', 'moto'], margin: ['mt2', 'margin'], policy: ['mt2', 'policy'], finance: ['mt14', 'sector'], listed: ['mt14', 'listed'], companies: ['mt14', 'listed'], valuation: ['mt14', 'valuation']},
+  alias: {mt4: ['mt2', 'policy'], mt6: ['mt14', 'listed'], mt9: ['mt14', 'sector']},
+  // 28/11/2026 (khung chuẩn Điện, DASHBOARD_WORKFLOW §42): Tổng quan .ov-nav 00 Bản đồ ngành · 01 Mô hình kiếm tiền (sơ đồ app/auto-chain.js giữ nguyên);
+  // Bức tranh 01 Ô tô · 02 Xe máy · 03 Biên đại lý · 04 Chính sách & thuế, mỗi sub-tab có ô số, thanh luồng, "Dữ liệu mới nhất";
+  // Tài chính 01 Tài chính ngành (số cộng gộp BCTC quý, app/auto-finance.js) · 02 Doanh nghiệp niêm yết (bảng so sánh, doanh thu, kế hoạch, P/E rổ cuối) · 03 Định giá.
   tree: {
     mt1: {title: 'Tổng quan ngành', subs: [
-      {k: 'map', t: 'Bản đồ ngành', d: 'Linh kiện → sản xuất, nhập khẩu → phân phối → đại lý → người mua; nhánh hậu mãi, nhánh sở hữu vốn VEA; doanh nghiệp niêm yết nằm ở khâu nào.', items: [
+      {k: 'map', t: 'Bản đồ ngành', sub: 'Chuỗi giá trị: hàng đi đâu, tiền về đâu', d: 'Linh kiện → sản xuất, nhập khẩu → phân phối → đại lý → người mua; nhánh hậu mãi, nhánh sở hữu vốn VEA; doanh nghiệp niêm yết nằm ở khâu nào.', items: [
         {q: 'Một chiếc xe đi qua những khâu nào, ai trả tiền cho ai?', id: 'rf-q-map', take: ['oto-01']}]},
-      {k: 'model', t: 'Mô hình kiếm tiền', d: 'Bốn mô hình: sản xuất & lắp ráp, đại lý, hậu mãi, sở hữu vốn (VEA).', items: [
+      {k: 'model', t: 'Mô hình kiếm tiền', sub: 'Lắp ráp · đại lý · hậu mãi · sở hữu vốn', d: 'Bốn mô hình: sản xuất & lắp ráp, đại lý, hậu mãi, sở hữu vốn (VEA).', items: [
         {q: 'Mỗi mô hình kiếm tiền từ đâu, biến nào quyết định lợi nhuận?', id: 'rf-q-model', take: ['oto-05']}]},
     ]},
     mt2: {title: 'Bức tranh ngành', subs: [
-      {k: 'all', t: 'Ô tô', d: 'Sản lượng và doanh số xe đang tăng ở nhóm nào? Nguồn cung, số bán, cơ cấu nhập khẩu/lắp ráp, tín dụng.', kpis: ['spk-car', 'spk-carimp'], items: [
-        {q: 'Nguồn cung xe: sản xuất trong nước và nhập khẩu', id: 'rf-q-output', meta: 'nghìn chiếc (NSO) · chục triệu USD (Hải quan) · không phải doanh số bán', take: ['oto-10']},
+      {k: 'all', t: 'Ô tô', d: 'Nguồn cung (sản xuất, nhập khẩu) → doanh số bán ra → người mua vay để mua xe.', kpis: ['spk-car', 'spk-carimp'], asof: () => lastMonth(['car_output', 'car_import', 'credit_total']),
+        flow: [['sup', 'Đầu vào', 'Nguồn cung: sản xuất, nhập khẩu'], ['sale', 'Phân phối', 'Doanh số bán ra'], ['buy', 'Đầu ra', 'Người mua, tín dụng']], items: [
+        {stage: 'sup'},
+        {q: 'Nguồn cung ô tô đang tăng hay giảm?', id: 'rf-q-output', meta: 'nghìn chiếc (NSO) · chục triệu USD (Hải quan) · không phải doanh số bán', take: ['oto-10']},
+        {stage: 'sale'},
         {q: 'Doanh số xe đang tăng ở nhóm nào?', id: 'rf-q-car', meta: 'VAMA và VinFast là hai phạm vi riêng · % so cùng kỳ 9T/2026 cùng phạm vi VAMA', take: ['oto-11', 'oto-12']},
-        {q: 'Tín dụng có đang hỗ trợ người mua xe?', id: 'rf-q-credit', meta: '<b>tổng</b> tín dụng nền kinh tế (chưa tách vay mua xe)', take: ['oto-13']}]},
-      {k: 'moto', t: 'Xe máy', d: 'Xe máy: sản lượng sản xuất và số bán ra của hiệp hội.', kpis: ['spk-moto'], items: [
-        {q: 'Thị trường xe máy đang tăng hay đi ngang?', id: 'rf-q-moto', meta: 'sản xuất (NSO) và bán ra (VAMM) là hai phạm vi khác nhau', take: ['oto-14', 'oto-15']}]},
-      {k: 'margin', t: 'Biên đại lý', d: 'Sản lượng xe truyền vào lợi nhuận đại lý qua đâu?', items: [
-        {q: 'Biên gộp đại lý và nhà lắp ráp đi thế nào?', id: 'rf-q-gm', meta: '% · BCTC hợp nhất quý từng mã', take: ['oto-20'],
+        {stage: 'buy'},
+        {q: 'Tín dụng có đang hỗ trợ người mua xe?', id: 'rf-q-credit', meta: '<b>tổng</b> tín dụng nền kinh tế (chưa tách vay mua xe)', take: ['oto-13']},
+        {q: 'Chỉ báo nào đang tăng, chỉ báo nào giảm so với cùng kỳ?', id: 'rf-q-heat', meta: 'mỗi ô = tháng so với cùng tháng năm trước · ô tô, xe máy, nhập khẩu', take: ['.fsv-heat']}]},
+      {k: 'moto', t: 'Xe máy', d: 'Sản xuất trong nước (NSO) → bán ra của thành viên hiệp hội (VAMM).', kpis: ['spk-moto', 'spk-vamm'], asof: () => lastMonth(['moto_output']),
+        flow: [['prod', 'Sản xuất', 'Sản lượng sản xuất (NSO)'], ['sale', 'Đầu ra', 'Bán ra của hiệp hội (VAMM)']], items: [
+        {stage: 'prod'},
+        {q: 'Sản xuất xe máy đang tăng hay đi ngang?', id: 'rf-q-moto', meta: 'nghìn chiếc · NSO, toàn ngành', take: ['oto-14']},
+        {stage: 'sale'},
+        {q: 'Xe máy bán ra tăng bao nhiêu so với cùng kỳ?', id: 'rf-q-vamm', meta: 'bán ra (VAMM) khác phạm vi với sản xuất (NSO)', take: ['oto-15']}]},
+      {k: 'margin', t: 'Biên đại lý', d: 'Sản lượng xe truyền vào lợi nhuận đại lý qua chiết khấu từ hãng, mức giảm giá và dịch vụ hậu mãi.', kpis: ['spk-dgm', 'spk-dnp', 'spk-pe'], asof: () => lastQuarter(['HAX', 'SVC', 'CTF', 'TMT']),
+        flow: [['sale', 'Đầu vào', 'Số xe bán ra'], ['gm', 'Đầu ra', 'Biên gộp, biên ròng đại lý']], items: [
+        {stage: 'sale'},
+        {link: ['#rf-q-car', 'Bức tranh ngành › 01 Ô tô', 'Doanh số xe đang tăng ở nhóm nào?', 'VAMA, VinFast · cơ cấu nhập khẩu, lắp ráp']},
+        {stage: 'gm'},
+        {q: 'Biên gộp đại lý đang mở rộng hay thu hẹp?', id: 'rf-q-gm', meta: '% · BCTC hợp nhất quý từng mã', take: ['oto-20'],
           after: 'Lợi nhuận đại lý = số xe bán × (giá bán − giá nhập từ hãng) + dịch vụ, phụ tùng. Chỉ báo cần kiểm tiếp: doanh số theo hãng mà HAX, SVC, CTF phân phối (chưa có nguồn công khai theo tháng), tỷ trọng dịch vụ trong lãi gộp, tồn kho xe, chi phí lãi vay.'}]},
-      {k: 'policy', t: 'Chính sách & thuế', d: 'Mốc nào có thể đổi giá xe, doanh số hoặc cơ cấu xe điện/xe xăng?', items: [
+      {k: 'policy', t: 'Chính sách & thuế', d: 'Mốc nào có thể đổi giá xe, doanh số hoặc cơ cấu xe điện/xe xăng?', asofLabel: 'Mốc hiệu lực gần nhất', asof: () => lastMilestone('autoTimeline'), items: [
         {q: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí?', id: 'rf-q-policy', meta: '● đã ban hành · ○ dự thảo · ngày hiệu lực', take: ['oto-52']}]},
     ]},
     mt14: {title: 'Tài chính ngành', subs: [
-      {k: 'sector', t: 'Tài chính ngành', d: 'Định giá rổ bán lẻ xe, doanh thu và lợi nhuận theo quý từng mã.', kpis: ['spk-pe'], items: [
-        {q: 'Thị trường định giá cổ phiếu đại lý ô tô ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ "Bán lẻ xe" VNDirect (HAX, SVC)', take: ['oto-03']},
-        {q: 'Doanh thu và lợi nhuận từng doanh nghiệp đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã', take: ['oto-06']}]},
-      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Bảng so sánh, bộ lọc mã và kỳ báo cáo; kế hoạch và kết quả 2026.', items: [
+      {k: 'sector', t: 'Tài chính ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của HAX, SVC, CTF, TMT (bật thêm VEA ở bộ lọc).', items: [
+        {html: () => { const h = document.createElement('div'); h.className = 'oto-fin-host rf-wide'; h.id = 'oto-fin-root'; return h; }}]},
+      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Bảng so sánh, doanh thu và lợi nhuận theo quý, kế hoạch 2026, P/E rổ bán lẻ xe.', items: [
         {q: 'Doanh nghiệp nào sinh lời tốt hơn, định giá ra sao?', id: 'rf-q-compare', meta: 'số quý, lũy kế hoặc cả năm theo bộ chọn kỳ', take: ['.financial-comparison']},
-        {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['oto-60']}]},
+        {q: 'Doanh thu và lợi nhuận từng doanh nghiệp đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · hợp nhất quý từng mã', take: ['oto-06']},
+        {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['oto-60']},
+        {q: 'Thị trường định giá cổ phiếu đại lý ô tô ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ "Bán lẻ xe" VNDirect (HAX, SVC)', take: ['oto-03']}]},
     ]},
   },
 };

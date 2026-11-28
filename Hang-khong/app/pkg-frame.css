@@ -276,3 +276,5 @@
  .hkm-op.hkm-arr{transform:rotate(90deg)}
  .hkm-n[data-tip]:hover::before,.hkm-n[data-tip]:focus::before{width:auto;right:0}
 }
+/* Đầu sub-tab: "Dữ liệu mới nhất" cạnh nút Link mục (28/11/2026, khung chuẩn Điện) */
+.rf-hside{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}

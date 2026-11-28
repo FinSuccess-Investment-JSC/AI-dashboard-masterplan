@@ -1,6 +1,6 @@
 /* Dầu khí · Pháp lý theo văn bản (27/11/2026, cùng khuôn BĐS: Bat-dong-san/app/re-legal.js):
    - Tổng quan ngành › 00 Bản đồ ngành: mục "Khung pháp lý chính" dưới chuỗi giá trị (luật gắn từng khâu + bảng văn bản, trạng thái).
-   - Tab Chính sách: mỗi sub-tab một văn bản, mở đầu tóm tắt 3–5 dòng; sub-tab cuối "Mới duyệt gần đây".
+   - Bức tranh ngành › 07 Chính sách (trước 28/11/2026 là tab lớn): mỗi mục thanh con một văn bản, mở đầu tóm tắt 3–5 dòng; mục cuối "Mới duyệt gần đây".
    Số và mốc: thẻ đã có nguồn trên trang (dau-khi-27, 28, dòng thời gian thuế) và trang gốc đã mở ngày 27/11/2026 —
    đoạn trích lưu ở data/oil/evidence.json (block dau-khi-legal). Chạy sau oil-frame.js (sự kiện 'oil:frame'). */
 (() => {
@@ -66,7 +66,8 @@ const LAWS = [
   ['Xăng sinh học E10', 'TT 50/2025/TT-BCT', '01/06/2026', 'E10 bắt buộc; E5 RON92 bán song song đến 31/12/2030', 'Lọc dầu · Phân phối', 'on', 'e10', 'PLX, OIL, BSR'],
   ['Quy hoạch điện VIII điều chỉnh', 'QĐ 768/QĐ-TTg', '15/4/2025', 'Nhiệt điện LNG 22.524 MW, khí trong nước 10.861–14.930 MW đến 2030', 'Khí & LNG', 'on', 'plan', 'GAS'],
 ];
-function go(k) { $('#research-tab-mt4')?.click(); setTimeout(() => { $(`#of-mt4-${k}-tab`)?.click(); $('#pane-mt4')?.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 60); }
+// 28/11/2026: Chính sách là sub-tab 07 của Bức tranh ngành (khung chuẩn Điện, oil-frame.js); mỗi văn bản là một mục của thanh con.
+function go(k) { window.OilFrame?.go('mt2', 'policy', k); setTimeout(() => { $(`#of-mt4-${k}-tab`)?.click(); $('#of-mt2-policy')?.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 60); }
 const link = (t, k) => `<a href="#mt4" class="re-lg-go" data-go="${k}">${t}</a>`;
 
 function summaries() {

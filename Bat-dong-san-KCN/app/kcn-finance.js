@@ -400,7 +400,8 @@ function redraw() { renders.forEach(f => { try { f(); } catch (e) { document.doc
 function build(pane) {
   if (!pane || root) return; root = pane;
   style();
-  pane.append(filterBar(), s71(), s72(), s73(), s74(), s75(), s76()); // hàng ô số đầu tab bỏ 27/11/2026 theo yêu cầu người dùng
+  // Hàng ô số đầu tab bỏ 27/11/2026; 28/11/2026 dựng lại theo khung chuẩn Điện (DASHBOARD_WORKFLOW §42: Tài chính ngành › 01 có ≥4 ô số như Điện).
+  pane.append(filterBar(), kpis(), s71(), s72(), s73(), s74(), s75(), s76());
   redraw();
 }
 function style() {

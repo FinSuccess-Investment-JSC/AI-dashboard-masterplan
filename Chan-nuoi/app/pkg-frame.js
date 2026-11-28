@@ -1,7 +1,10 @@
 /* Gói ngành tách từ Bán lẻ (26/11/2026): Sữa, Bia, Ô tô – Xe máy · khung 4 tab theo mẫu Điện, chép từ Ban-le/app/retail-frame.js.
    Cây tab, link cũ, chủ đề nóng đọc từ window.PKG (app/<ngành>-config.js). Thẻ được DỜI theo data-block-id;
    khối do pipeline chung dựng cho Bán lẻ (mô hình kinh doanh, heatmap…) không được lấy thì bỏ, không gom "Nội dung khác".
-   URL ?sub=<khóa>#mtN, pushState + popstate cho Back/Forward. SectorBoot mốc 1200. */
+   URL ?sub=<khóa>#mtN, pushState + popstate cho Back/Forward. SectorBoot mốc 1200.
+   28/11/2026 (khung chuẩn Điện, DASHBOARD_WORKFLOW §42): Tổng quan ngành dùng thanh .ov-nav (số 00 + tiêu đề + dòng phụ s.sub);
+   đầu mỗi sub-tab có "Dữ liệu mới nhất" (.pp-asof) lấy từ s.asof() của cấu hình (quan sát mới nhất của chính sub-tab, không phải ngày build);
+   thẻ dẫn là a.th-link; thẻ không dời vào cây nằm ẩn trong details.of-rest của đúng tab lớn chứa nó. Cùng một bản cho Chăn nuôi và Hàng không. */
 (() => {
 'use strict';
 const P = window.PKG; if (!P || document.body.dataset.pkg !== P.key) return;
@@ -11,6 +14,8 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '
 const block = id => $(`[data-block-id="${id}"]`);
 const kpi = spark => $('#' + spark)?.closest('.kpi');
 const NOTE = html => () => el('p', 'rf-note', html);
+// Ngày dữ liệu: 'yyyy-mm-dd' → dd/mm/yyyy, 'yyyy-mm' → Tm/yyyy, chuỗi khác (Q3/2026, 9T/2026…) giữ nguyên.
+const asofText = v => !v ? '' : /^\d{4}-\d\d-\d\d$/.test(v) ? v.slice(8, 10) + '/' + v.slice(5, 7) + '/' + v.slice(0, 4) : /^\d{4}-\d\d$/.test(v) ? 'T' + Number(v.slice(5, 7)) + '/' + v.slice(0, 4) : String(v);
 
 const TREE = P.tree;
 const ROUTES = P.routes || [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];  // Chăn nuôi: P.routes (5 tab)
@@ -52,12 +57,14 @@ function buildTab(key) {
   const legacy = [...pane.children];
   const sec = el('section', 'section rf-section');
   if (key === 'mt1') { const brief = $('#dataBrief'); if (brief) sec.append(brief); }
-  const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
+  const ov = key === 'mt1';  // Tổng quan ngành: thẻ .ov-nav như Điện
+  const nav = el('div', ov ? 'ov-nav' : 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
   const subs = def.subs.map((s, i) => {
     const lab = key === 'mt1' ? String(i).padStart(2, '0') : String(i + 1).padStart(2, '0');
-    const b = el('button', 'tabbtn pp-tab', `<span>${lab}</span>${esc(s.t)}`); b.type = 'button'; b.setAttribute('role', 'tab'); b.id = `rf-${key}-${s.k}-tab`; b.dataset.sub = s.k;
+    const b = el('button', ov ? 'tabbtn ov-tab' : 'tabbtn pp-tab', `<span>${lab}</span>${esc(s.t)}${ov ? `<small>${esc(s.sub || s.d)}</small>` : ''}`); b.type = 'button'; b.setAttribute('role', 'tab'); b.id = `rf-${key}-${s.k}-tab`; b.dataset.sub = s.k;
     const p = el('div', 'pp-pane rf-pane'); p.id = `rf-${key}-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
-    p.append(el('header', 'pp-head', `<div><span class="pp-k">${lab}</span><h2>${esc(s.t)}</h2><p>${esc(s.d)}</p></div><a class="rf-permalink" href="?sub=${s.k}#${key}" title="Link trực tiếp tới mục này">Link mục ↗</a>`));
+    let asof = ''; try { asof = asofText(typeof s.asof === 'function' ? s.asof() : s.asof); } catch (e) { console.warn('asof', s.k, e); }
+    p.append(el('header', 'pp-head', `<div><span class="pp-k">${lab}</span><h2>${esc(s.t)}</h2><p>${esc(s.d)}</p></div><div class="rf-hside">${asof ? `<span class="pp-asof">${esc(s.asofLabel || 'Dữ liệu mới nhất')}: ${esc(asof)}</span>` : ''}<a class="rf-permalink" href="?sub=${s.k}#${key}" title="Link trực tiếp tới mục này">Link mục ↗</a></div>`));
     if (s.kpis) { const g = el('section', 'grid kpis pp-kpis'); s.kpis.forEach(sp => { const c = kpi(sp); if (c) g.append(c); }); if (g.children.length) p.append(g); }
     if (s.flow) {
       const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + s.t.toLowerCase());
@@ -69,16 +76,25 @@ function buildTab(key) {
       if (it.grp) { p.append(el('h3', 'pp-grp', esc(it.grp))); return; }
       if (it.stage) { const f = s.flow.find(x => x[0] === it.stage); const h = el('div', 'pp-stage', `<span>${f[1]}</span><h3>${esc(f[2])}</h3>`); h.id = `rf-st-${s.k}-${f[0]}`; p.append(h); return; }
       // Thẻ dẫn (28/11/2026, chép cách Thép): khâu dùng chart nằm ở sub-tab khác thì dẫn sang, không nhân bản thẻ.
-      if (it.link) { const [href, where, t, sub] = it.link; const a = el('a', 'rf-xlink', `<small>Xem chart ở ${esc(where)}</small><b>${esc(t)} →</b>${sub ? `<span>${esc(sub)}</span>` : ''}`); a.href = href; p.append(a); return; }
+      // Chỗ chứa do module khác tự dựng câu hỏi bên trong (vd. Tài chính ngành › 01): gắn thẳng vào sub-tab, không bọc thêm câu hỏi để số câu không lặp.
+      if (it.html) { p.append(it.html()); return; }
+      if (it.link) { const [href, where, t, sub] = it.link; const a = el('a', 'th-link rf-xlink', `<small>Xem chart ở ${esc(where)}</small><b>${esc(t)} →</b>${sub ? `<span>${esc(sub)}</span>` : ''}`); a.href = href; p.append(a); return; }
       const panel = el('section', 'pp-panel pp-q'); panel.id = it.id;
       qn++; const pn = key === 'mt1' ? `${i}.${qn}` : `${i + 1}.${qn}`;
       panel.innerHTML = `<header class="pp-ph"><span class="pp-num">${pn}</span><div><h3>${esc(it.q)}</h3>${it.meta ? `<p class="rf-meta">${it.meta}</p>` : ''}</div></header>`;
-      const grid = el('div', 'pp-main rf-grid');
-      (it.take || []).forEach(sel => { const n = take(sel); if (n) grid.append(n); });
+      // 28/11/2026 (chuẩn Điện): mỗi câu đúng 1 chart trả lời chính (.pp-main) → chart phụ (.pp-sup1) → xem thêm (.pp-more; ≥2 thẻ thì lưới hai cột).
+      // Mặc định theo thứ tự take: thẻ 1 = chính, thẻ 2 = phụ, còn lại = xem thêm; cấu hình có thể ghi rõ main / sup / more (mảng selector).
+      const got = sels => (sels || []).map(take).filter(Boolean);
+      let main, sup, more;
+      if (it.main || it.sup || it.more) { main = got(it.main); sup = got(it.sup); more = got(it.more).concat(got(it.take)); }
+      else { const all = got(it.take); main = all.slice(0, 1); sup = all.slice(1, 2); more = all.slice(2); }
+      const grid = el('div', 'pp-main'); main.forEach(n => grid.append(n)); panel.append(grid);
       if (it.build) BUILDS.push(it.build); // chạy sau khi pane đã gắn vào trang (thẻ đang tách khỏi document)
       if (it.after) grid.append(typeof it.after === 'function' ? it.after() : el('p', 'rf-note', esc(it.after)));
-      (it.fold || []).forEach(([sel, label]) => { const n = take(sel); if (!n) return; const d = el('details', 'rf-fold rf-wide'); d.append(el('summary', '', esc(label)), n); grid.append(d); });
-      panel.append(grid); p.append(panel);
+      if (sup.length) { const w = el('div', 'pp-sup1'); sup.forEach(n => w.append(n)); panel.append(w); }
+      (it.fold || []).forEach(([sel, label]) => { const n = take(sel); if (!n) return; const d = el('details', 'rf-fold rf-wide'); d.append(el('summary', '', esc(label)), n); more.push(d); });
+      if (more.length) { const g = el('div', more.length > 1 ? 'grid two g2 pp-sup pp-more rf-grid' : 'pp-sup1 pp-more'); more.forEach(n => g.append(n)); panel.append(g); }
+      p.append(panel);
     });
     const nx = def.subs[i + 1];
     if (nx) { const go = el('button', 'rf-next', `Tiếp: ${esc(nx.t)} →`); go.type = 'button'; go.addEventListener('click', () => { open(key, nx.k, 'push'); nav.scrollIntoView({behavior: 'instant', block: 'start'}); }); p.append(go); }
@@ -94,7 +110,14 @@ function commit({pane, sec, legacy}) {
   const rest = [];
   legacy.forEach(n => { if (sec.contains(n)) return; if (n.querySelector?.('[data-block-id],canvas,table,svg') || n.matches?.('[data-block-id]')) rest.push(n); });
   pane.replaceChildren(sec);
-  return rest;
+  return {sec, rest};
+}
+// Thẻ không dời vào cây (vd. bản trùng của chart khác, heatmap chung .fsv-heat): giữ trong DOM, ẩn ngay trong tab lớn chứa nó — không xóa.
+// Heatmap .fsv-heat nằm lại pane-mt2 nên sector-visuals.js (dựng lại khi bấm tab) thấy đã có và không chèn thẻ trôi ra ngoài câu hỏi.
+function stash(sec, nodes) {
+  if (!nodes.length) return;
+  const d = el('details', 'research-fold rf-rest of-rest'); d.hidden = true;
+  d.append(el('summary', '', 'Nội dung khác của bố cục cũ'), ...nodes); sec.append(d);
 }
 function sources() {
   // Tab Nguồn dữ liệu cũ (#mt8, do research-layout dựng) → khối mở rộng cuối Bản đồ ngành; link cũ #mt8 mở thẳng khối này.
@@ -116,10 +139,14 @@ function setUrl(key, sub, mode) {
 }
 function open(key, sub, mode) {
   const subs = TABS[key]; if (!subs) return;
+  // Sub-tab do script khác thêm vào thanh (03 Định giá, app/peer-valuation.js; Nhựa, Ô tô 28/11/2026): bấm nút đó; chưa có thì mở 01, giữ ?sub= để script đó tự mở.
+  const unknown = sub && !subs.some(x => x.s.k === sub), ext = unknown ? subs[0].b.parentElement.querySelector(`[data-sub="${sub}"]`) : null;
+  if (ext) { ext.click(); return; }
+  const keep = unknown && mode === 'replace';
   const hit = subs.find(x => x.s.k === sub) || subs[0];
   subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.classList.toggle('active', on); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
   const bar_ = hit.b.parentElement; if (bar_ && bar_.scrollWidth > bar_.clientWidth) bar_.scrollLeft = Math.max(0, hit.b.offsetLeft - 12);
-  if (mode) setUrl(key, hit.s.k, mode);
+  if (mode && !keep) setUrl(key, hit.s.k, mode);
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
   window.dispatchEvent(new Event('pv:toc'));
 }
@@ -180,13 +207,11 @@ function nav() {
 function run() {
   if (document.body.dataset.rfFrame) return; document.body.dataset.rfFrame = '1';
   history.scrollRestoration = 'manual';
-  const rest = [];
   // Dựng hết các tab rồi mới thay nội dung pane (tab sau còn lấy thẻ nằm trong tab cũ, vd. bl-03 ở Tổng quan cũ).
-  Object.keys(TREE).map(buildTab).forEach(b => rest.push(...commit(b)));
-  ['mt4'].forEach(k => { const p = $(`.majorpane[data-tab="${k}"]`); if (!p) return; [...p.children].forEach(n => { if (n.querySelector?.('[data-block-id]') || n.matches?.('[data-block-id]')) rest.push(n); }); p.replaceChildren(); });
+  const built = Object.keys(TREE).map(buildTab).map(commit), old = [];
+  ['mt4'].forEach(k => { const p = $(`.majorpane[data-tab="${k}"]`); if (!p) return; [...p.children].forEach(n => { if (n.querySelector?.('[data-block-id]') || n.matches?.('[data-block-id]')) old.push(n); }); p.replaceChildren(); });
   sources();
-  // Thẻ không dời vào cây (vd. bản trùng của chart khác): giữ trong DOM, ẩn — không xóa.
-  if (rest.length) { const d = el('details', 'research-fold rf-rest'); d.hidden = true; d.append(el('summary', '', 'Nội dung khác của bố cục cũ'), ...rest); ($('.majorpane[data-tab="mt1"] .rf-section') || document.body).append(d); }
+  built.forEach(({sec, rest}, i) => stash(sec, i ? rest : rest.concat(old)));
   BUILDS.forEach(f => f());
   topicLinks();
   // Link "#<id>" tới thẻ/câu hỏi đã dời: mở đúng tab lớn + sub-tab rồi cuộn tới.
@@ -206,7 +231,7 @@ function run() {
     e.preventDefault(); const u = new URL(a.href, location.href); history.pushState({rf: 1}, '', u.pathname + u.search + u.hash); route(null);
   });
   nav();
-  const setTop = () => { const t = $('.majortabs'), cs = t && getComputedStyle(t), top = cs && cs.position === 'sticky' ? t.getBoundingClientRect().height + (parseFloat(cs.top) || 0) + 6 : 0; $$('.rf-section>.pp-nav').forEach(n => { n.style.top = top + 'px'; }); };
+  const setTop = () => { const t = $('.majortabs'), cs = t && getComputedStyle(t), top = cs && cs.position === 'sticky' ? t.getBoundingClientRect().height + (parseFloat(cs.top) || 0) + 6 : 0; $$('.rf-section>.pp-nav,.rf-section>.ov-nav').forEach(n => { n.style.top = top + 'px'; }); };
   setTop(); addEventListener('resize', setTop);
   document.documentElement.dataset.rfReady = '1';
   window.dispatchEvent(new Event('rf:frame'));

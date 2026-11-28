@@ -18,8 +18,8 @@
 <script src="../data/livestock-public-data.js?v=ac40b763b120" defer></script>
 <script src="app/sector-visuals.js?v=600d63e56c74" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
-<script src="app/livestock-config.js?v=f1d5fc9c2719" defer></script>
-<script src="app/pkg-dashboard.js?v=8854138f84ca" defer></script>
+<script src="app/livestock-config.js?v=f4c940934701" defer></script>
+<script src="app/pkg-dashboard.js?v=825665c9ec7d" defer></script>
 <script src="app/hog-dashboard.js?v=93a4b43175ea" defer></script>
 <link rel="stylesheet" href="app/hog-dashboard.css?v=ad11b5e74763">
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
@@ -27,7 +27,7 @@
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=ea2d589497cb" defer></script>
-<script src="../data/company-valuation.js?v=a38a9fa54044" defer></script>
+<script src="../data/company-valuation.js?v=964ee4672100" defer></script>
 <script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
 <script src="../data/livestock-financials.js?v=64d61a2d41ee" defer></script>
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
@@ -39,6 +39,8 @@
 <script src="app/research-layout.js?v=1fc6a24f5b9e" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="../data/livestock-news.js?v=cdda7eef0eb7" defer></script>
+<script src="app/livestock-news.js?v=a2d6b1d6da88" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
@@ -51,17 +53,19 @@
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
-<script src="app/pkg-frame.js?v=7f505b3dd321" defer></script>
-<link rel="stylesheet" href="app/pkg-frame.css?v=5139f6ab0906">
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
+<script src="app/pkg-frame.js?v=9b1839df1b43" defer></script>
+<link rel="stylesheet" href="app/pkg-frame.css?v=505861e964ab">
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-khung-dien-24-nganh"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
+<link rel="stylesheet" href="app/livestock-news.css?v=5780f46113ae">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/sector-frame.css?v=dceadb1d941c">
 </head>
 <body data-sector="retail" data-pkg="livestock">
 <nav data-site-navigation="livestock" aria-label="Điều hướng dashboard ngành"></nav>
@@ -90,6 +94,9 @@
       <div class="kpi"><div class="label">Thức ăn gia súc sản xuất</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-feed"></div></div>
       <div class="kpi"><div class="label">Giá khô đậu tương</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-soy"></div></div>
       <div class="kpi"><div class="label">P/E rổ chăn nuôi</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-pe"></div></div>
+      <!-- 28/11/2026 (khung chuẩn Điện): ô số sub-tab Chăn nuôi heo, tính trong livestock-config.js từ LIVESTOCK_DATA.evidence (NSO) -->
+      <div class="kpi"><div class="label">Tổng đàn heo so cùng kỳ</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-herd"></div></div>
+      <div class="kpi"><div class="label">Thịt heo hơi xuất chuồng (lũy kế)</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-pigout"></div></div>
     </section>
     <!-- research-layout.js dựng lưới giá vào #supply-world / #supply-vietnam (khung chung của gói); để rỗng -->
     <div class="supply-pane" id="supply-world"></div><div class="supply-pane" id="supply-vietnam"></div>
@@ -264,6 +271,8 @@
   <div class="majorpane" data-tab="mt4" id="pane-mt4"><section id="policy" class="section"></section></div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6"></div>
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
+    <!-- 28/11/2026: khối tin như Điện (app/livestock-news.js); thẻ chủ đề cũ bên dưới được dời vào details.of-rest ẩn khi dựng -->
+    <section class="section"><div id="cn-news" aria-label="Tin ngành Chăn nuôi"><p role="status">Đang tải tin ngành Chăn nuôi…</p></div></section>
     <div class="sectionhead"><div><h2>Chủ đề nóng</h2><p>Câu chuyện đang dẫn dắt ngành.</p></div></div>
     <div data-topic-key="hog_cycle" data-topic-segment="Chăn nuôi" data-topic-title="Giá heo giảm, thức ăn tăng">
       <div class="card" data-block-id="cn-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
