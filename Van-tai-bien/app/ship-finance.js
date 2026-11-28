@@ -1,6 +1,8 @@
 /* Vận tải biển · tab lớn Tài chính ngành (#mt14, 26/11/2026). Chép từ Dau-khi/app/oil-finance.js, số từ window.SHIP_FIN
    (BCTC hợp nhất quý, VNDirect finfo; scripts/build_ship_financials.py), tổng hợp bằng window.IndustryFin (app/industry-fin.js).
-   Nhóm theo phân khúc: Tàu dầu, hóa chất & khí (PVT, VTO, VIP, PVP, GSP) · Hàng rời (VOS, VNA) · Container (HAH). Tỷ số nhóm = tổng tử số ÷ tổng mẫu số. Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
+   Nhóm theo phân khúc: Tàu dầu, hóa chất & khí (PVT, VTO, VIP, PVP, GSP) · Hàng rời (VOS, VNA) · Container (HAH). Tỷ số nhóm = tổng tử số ÷ tổng mẫu số. Kỳ có dưới 80% số mã đủ số thì để trống.
+   29/11/2026 (DASHBOARD_WORKFLOW §51): thước đo theo chủ tàu: lãi bán tàu tách khỏi lợi nhuận hoạt động, biên đặt cạnh chỉ số cước Baltic, mục Đội tàu
+   (mua ròng, mức đã khấu hao, EBITDA trên nguyên giá), nợ vay ÷ TSCĐ ròng, ROCE thay ROIC, trung vị các mã. Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
 (() => {
 'use strict';
 const D = window.SHIP_FIN;
@@ -38,9 +40,9 @@ function card(id, title, sub) {
   return {el: c, host: c.querySelector('.pp-host'), ctl: c.querySelector('.pf-ctl'), extra: c.querySelector('.pf-extra')};
 }
 // Dòng nguồn (góc phải dưới chart) + ghi chú ngắn: công thức, độ phủ, ngày cập nhật.
-function foot(c, note) {
+function foot(c, note, src) {
   c.el.querySelectorAll(':scope > .pw-src, :scope > .pw-src-note').forEach(n => n.remove());
-  c.el.append(el('div', 'pw-src', `Nguồn: ${SRC}; tự tính`));
+  c.el.append(el('div', 'pw-src', `Nguồn: ${src || SRC + '; tự tính'}`));
   c.el.append(el('div', 'pw-src-note', `${note ? esc(note) + ' · ' : ''}cập nhật ${esc(D.captured.split('-').reverse().join('/'))}`));
 }
 function seg(c, name, opts, get, set) {
@@ -56,6 +58,8 @@ function trim(labels, series) {
   return {labels: labels.slice(a, b + 1).map(qLabel), series: series.map(s => ({...s, values: s.values.slice(a, b + 1).map(v => fin(v) ? Math.round(v * 100) / 100 : null)}))};
 }
 function chart(host, key, labels, series, o = {}) {
+  // runs: chỉ số dựa vào LCTT quý (EBITDA, CFO, CAPEX) có kỳ lẻ trước 2024; chart đường nối thẳng qua chỗ trống nên chỉ giữ đoạn liền gần nhất.
+  if (o.runs) series = series.map(s => { let a = s.values.length - 1; while (a >= 0 && !fin(s.values[a])) a--; while (a > 0 && fin(s.values[a - 1])) a--; return {...s, values: s.values.map((v, i) => i >= a ? v : null)}; });
   const t = trim(labels, series);
   const model = {key, categories: t.labels, series: t.series, unit: o.unit || '', digits: o.digits ?? 0, stackable: !!o.stackable, native: o.native || 'line', zeroBase: o.zeroBase !== false, aria: o.aria || key};
   if (!window.ChartTypes) { host.textContent = ''; return; }
@@ -66,6 +70,19 @@ const yoyPct = (vals, mode) => { const k = mode === 'y' ? 1 : 4; return vals.map
 const endIdx = mode => mode === 'y' ? E.years.indexOf(D.periods[S.end].slice(0, 4)) - (D.periods[S.end].endsWith('Q4') ? 0 : 1) : S.end;
 const covNote = (cov, n, i) => `phủ ${fin(cov?.[i]) ? cov[i] : 0}/${n} doanh nghiệp kỳ chốt`;
 const share = (groups, i) => { const tot = groups.reduce((a, g) => a + (fin(g.values[i]) ? g.values[i] : 0), 0); return groups.map(g => fin(g.values[i]) && tot ? g.values[i] / tot * 100 : null); };
+// Độ phủ (29/11/2026, như Dầu khí §48): kỳ có dưới 80% số mã đủ số thì để trống, để chuỗi không đổi thành phần giữa chừng. LCTT quý trên VNDirect trước 2024
+// chỉ có ở 2–6/8 mã (PVT gần như trống) nên EBITDA TTM cả rổ từng nhảy 790 → 6.461 tỷ giữa Q3 và Q4/2024 chỉ vì rổ từ 3 lên 8 mã.
+const MINCOV = .8, okCov = (c, n) => n > 0 && c >= n * MINCOV, COVTXT = 'kỳ phủ dưới 80% số mã để trống', RUNTXT = COVTXT + ', chỉ vẽ đoạn liền gần nhất';
+const total = (m, ts, mode, o) => { const t = E.total(m, ts, mode, o); return {...t, values: t.values.map((v, i) => okCov(t.cov[i], ts.length) ? v : null)}; };
+const byGroup = (m, ts, mode) => { const b = E.byGroup(m, ts, mode), all = b.labels.map((_, i) => okCov(b.groups.reduce((a, g) => a + g.cov[i], 0), ts.length));
+  return {...b, groups: b.groups.map(g => ({...g, values: g.values.map((v, i) => all[i] && okCov(g.cov[i], g.tickers.length) ? v : null)}))}; };
+const ratio = (a, b, ts, mode, sc) => { const r = E.ratio(a, b, ts, mode, sc); return {...r, values: r.values.map((v, i) => okCov(r.cov[i], ts.length) ? v : null)}; };
+const growth = (m, ts, mode) => { const pv = E.per(m, ts, mode), k = mode === 'y' ? 1 : 4, g = E.growth(m, ts, mode);
+  const mask = (vals, x) => vals.map((v, i) => i >= k && okCov(x.filter(t => fin(pv[t][i]) && fin(pv[t][i - k])).length, x.length) ? v : null);
+  return {...g, values: mask(g.values, ts), groups: g.groups.map(z => ({...z, values: mask(z.values, ts.filter(t => E.groupOf[t] === z.id))}))}; };
+const med = (a, b, ts, mode, sc) => { const r = E.ratio(a, b, ts, mode, sc); return r.dist.map((d, i) => okCov(r.cov[i], ts.length) ? d.med : null); };
+const minus = a => a.map(v => fin(v) ? -v : null);
+const liveGroups = () => D.groups.filter(g => S.groups.includes(g.id) && sel().some(t => E.groupOf[t] === g.id));
 
 /* ---------- Thanh bộ lọc, KPI, xuất dữ liệu ---------- */
 function filterBar() {
@@ -101,62 +118,71 @@ function kpis() {
   const g = el('section', 'grid kpis pp-kpis pf-kpis');
   renders.push(() => {
     const s = sel(), i = S.end, n = s.length;
-    const T = (m, mode = 'ttm', avg) => E.total(m, s, mode, {avg});
-    const npat = T('npat'), roe = E.ratio({m: 'npat'}, {m: 'equity', avg: true}, s, 'ttm', 100), rec = T('receivables', 'q'), capex = T('capex'), cip = T('cip', 'q'), nd = E.ratio({m: 'net_debt'}, {m: 'ebitda'}, s, 'ttm');
-    const tile = (label, val, unit, d, dTxt, cov, vals, sub) => `<div class="kpi pp-kpi"><div class="label l">${esc(label)}</div><div class="value v">${val}${unit ? `<small> ${esc(unit)}</small>` : ''}</div><div class="delta">${dTxt}</div>${spark(vals)}<div class="sub s">${esc(qLabel(D.periods[i]))} · phủ ${cov}/${n} DN${sub ? ' · ' + sub : ''}</div></div>`;
-    const ch = (_a, m, mode = 'ttm') => E.growth(m, s, mode).values[i];
+    const T = (m, mode = 'ttm', avg) => total(m, s, mode, {avg});
+    const npat = T('npat'), ebit = T('ebit'), roe = ratio(...ROE, s, 'ttm', 100), oth = ratio({m: 'other'}, {m: 'pbt'}, s, 'ttm', 100), ltv = ratio(...LTV, s, 'q', 100);
+    const cx = T('capex'), sale = T('asset_sale'), net = {values: cx.values.map((v, k) => fin(v) && fin(sale.values[k]) ? v - sale.values[k] : null), cov: cx.cov};
+    const tile = (label, val, unit, d, dTxt, cov, vals, sub) => `<div class="kpi pp-kpi"><div class="label l">${esc(label)}</div><div class="value v">${val}${unit ? `<small> ${esc(unit)}</small>` : ''}</div><div class="delta">${dTxt}</div>${spark(vals)}<div class="sub s">${esc(qLabel(D.periods[i]))} · phủ ${cov}/${n} DN${sub ? ' · ' + esc(sub) : ''}</div></div>`;
+    const ch = (m, mode = 'ttm') => growth(m, s, mode).values[i];
+    const dAbs = v => fin(v[i]) && fin(v[i - 4]) ? v[i] - v[i - 4] : null;
+    // 29/11/2026: bỏ ô Doanh thu (PVT, GSP, VOS có doanh thu thương mại biên mỏng), CAPEX, XDCB dở dang (0,1–0,3% tổng tài sản), Nợ vay ròng/EBITDA cả rổ
+    // (4 mã tiền ròng bù cho 4 mã vay). Thêm lợi nhuận hoạt động, phần lợi nhuận khác (lãi bán tàu), mua ròng tài sản, nợ vay ÷ TSCĐ ròng.
     g.innerHTML = [
-      tile('LNST TTM nhóm đã chọn', nf(npat.values[i]), 'tỷ đ', null, `${sg(ch(0, 'npat'))}% so cùng kỳ`, npat.cov[i], npat.values),
-      tile('ROE TTM', nf(roe.values[i], 1), '%', null, `${sg(fin(roe.values[i]) && fin(roe.values[i - 4]) ? roe.values[i] - roe.values[i - 4] : null)} đ.p. so cùng kỳ`, roe.cov[i], roe.values, 'LNST ÷ VCSH bình quân'),
-      tile('Doanh thu TTM', nf(T('revenue').values[i]), 'tỷ đ', null, `${sg(ch(0, 'revenue'))}% so cùng kỳ`, T('revenue').cov[i], T('revenue').values),
-      tile('CAPEX TTM', nf(capex.values[i]), 'tỷ đ', null, `${sg(ch(0, 'capex'))}% so cùng kỳ`, capex.cov[i], capex.values, 'tiền chi mua sắm, xây dựng TSCĐ'),
-      tile('XDCB dở dang', nf(cip.values[i]), 'tỷ đ', null, `${sg(ch(0, 'cip', 'q'))}% so cùng kỳ`, cip.cov[i], cip.values),
-      tile('Nợ vay ròng / EBITDA TTM', nf(nd.values[i], 2), 'lần', null, `${sg(fin(nd.values[i]) && fin(nd.values[i - 4]) ? nd.values[i] - nd.values[i - 4] : null, 2)} lần so cùng kỳ`, nd.cov[i], nd.values)
+      tile('LNST TTM nhóm đã chọn', nf(npat.values[i]), 'tỷ đ', null, `${sg(ch('npat'))}% so cùng kỳ`, npat.cov[i], npat.values, topShare(s, i)),
+      tile('Lợi nhuận hoạt động (EBIT) TTM', nf(ebit.values[i]), 'tỷ đ', null, `${sg(ch('ebit'))}% so cùng kỳ`, ebit.cov[i], ebit.values, 'chưa gồm lãi bán tàu, thu nhập tài chính'),
+      tile('Lợi nhuận khác ÷ LNTT', nf(oth.values[i], 1), '%', null, `${sg(dAbs(oth.values))} đ.p. so cùng kỳ`, oth.cov[i], oth.values, 'gồm lãi thanh lý tàu'),
+      tile('ROE TTM', nf(roe.values[i], 1), '%', null, `${sg(dAbs(roe.values))} đ.p. so cùng kỳ`, roe.cov[i], roe.values, `trung vị các mã ${nf(med(...ROE, s, 'ttm', 100)[i], 1)}%`),
+      tile('Mua ròng tài sản cố định TTM', nf(net.values[i]), 'tỷ đ', null, `${sg(dAbs(net.values), 0)} tỷ đ so cùng kỳ`, net.cov[i], net.values, 'CAPEX − tiền thu thanh lý'),
+      tile('Nợ vay ÷ TSCĐ ròng', nf(ltv.values[i], 1), '%', null, `${sg(dAbs(ltv.values))} đ.p. so cùng kỳ`, ltv.cov[i], ltv.values, `trung vị các mã ${nf(med(...LTV, s, 'q', 100)[i], 1)}%`)
     ].join('');
   });
   return g;
 }
-// Section: câu hỏi + hàng mini KPI + các card
-// Không có hàng ô số nhỏ dưới câu hỏi (quy tắc chung trang Điện, PR #35, 25/11/2026); chỉ giữ hàng KPI đầu sub-tab.
-// Mục lục: 6 nhóm Kết quả kinh doanh → Biên lợi nhuận → CAPEX & dở dang → Công nợ & chuyển đổi tiền → Nợ, thanh khoản & FCF → Hiệu quả vốn.
+// Hai mã có LNST TTM lớn nhất chiếm bao nhiêu % rổ; công ty con đang trong rổ gộp về công ty mẹ.
+function topShare(s, i) {
+  const pv = E.per('npat', s, 'ttm'), v = Object.fromEntries(s.map(t => [t, pv[t][i]])), name = Object.fromEntries(s.map(t => [t, t]));
+  E.consolidation.filter(c => s.includes(c.parent) && s.includes(c.child)).forEach(c => { if (fin(v[c.parent]) && fin(v[c.child])) { v[c.parent] += v[c.child]; name[c.parent] = `${c.parent} (gồm ${c.child})`; delete v[c.child]; } });
+  const a = Object.entries(v).filter(([, x]) => fin(x)).sort((p, q) => q[1] - p[1]), tot = a.reduce((z, [, x]) => z + x, 0);
+  return a.length > 2 && tot > 0 && a[1][1] > 0 ? `${a.slice(0, 2).map(([t]) => name[t]).join(' + ')} chiếm ${nf((a[0][1] + a[1][1]) / tot * 100)}%` : '';
+}
+// Section: câu hỏi + các card. Không có hàng ô số nhỏ dưới câu hỏi (quy tắc chung trang Điện, PR #35, 25/11/2026); chỉ giữ hàng KPI đầu sub-tab.
+// Mục lục (29/11/2026): Kết quả kinh doanh → Biên & cước → Đội tàu → Dòng tiền & cổ tức → Nợ vay & thanh khoản → Hiệu quả vốn.
 function section(num, title, q) {
   const s = el('section', 'pp-panel pp-q pf-sec'); s.innerHTML = `<header class="pp-ph"><span class="pp-num">${num}</span><div><h3>${esc(title)}</h3><p class="pf-q">${esc(q)}</p></div></header>`;
   return s;
 }
 const grid2 = (...cards) => { const g = el('div', 'grid two g2 pf-g2'); cards.forEach(c => g.append(c.el)); return g; };
+function groupPicker(c, get, set) { const g = el('select', 'pf-sel'); c.ctl.append(g); g.addEventListener('change', () => set(g.value)); return () => { g.innerHTML = `<option value="all">Tất cả nhóm đang chọn</option>` + D.groups.filter(x => S.groups.includes(x.id)).map(x => `<option value="${x.id}"${x.id === get() ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); if (get() !== 'all' && !S.groups.includes(get())) set('all', true); }; }
+const scopeOf = gid => gid === 'all' ? sel() : sel().filter(t => E.groupOf[t] === gid);
+// Mỗi đường một phân khúc hoặc một doanh nghiệp (số doanh nghiệp là số hợp nhất của chính mã đó, không loại trùng).
+const UNIT = [['group', 'Phân khúc'], ['firm', 'Doanh nghiệp']];
+const TKC = ['#1D2678', '#2a9fa3', '#c98a00', '#861C52', '#3d4653', '#8997D6', '#5a9e6f', '#c2603c'];
+const tkColor = t => TKC[D.companies.findIndex(c => c.ticker === t) % TKC.length];
+const unitLines = (unit, f) => unit === 'firm' ? sel().map(t => ({name: t, color: tkColor(t), values: f([t])})) : liveGroups().map(g => ({name: g.label, color: g.color, values: f(scopeOf(g.id))}));
+const MEDC = '#9AA3BD';
 
-/* ---------- 1.1 Chu kỳ doanh thu và lợi nhuận ---------- */
-const PNL = [['revenue', 'Doanh thu'], ['gross', 'Lợi nhuận gộp'], ['ebitda', 'EBITDA'], ['ebit', 'EBIT'], ['npat', 'LNST']];
+/* ---------- 1.1 Kết quả kinh doanh ---------- */
+const PNL = [['ebit', 'EBIT'], ['ebitda', 'EBITDA'], ['gross', 'Lợi nhuận gộp'], ['npat', 'LNST'], ['revenue', 'Doanh thu']];
 function s71() {
-  const s = section('1.1', 'Kết quả kinh doanh', 'Lợi nhuận ngành đang dồn về phân khúc nào: tàu dầu & khí, hàng rời hay container?');
-  // Chart 1: quy mô theo nhóm
-  const c1 = card('vt-fin-pnl', 'Doanh thu và lợi nhuận theo phân khúc (tỷ đồng)', 'Cột chồng theo phân khúc · đổi chỉ tiêu và cách xem'); let m1 = 'npat', v1 = 'abs';
+  const s = section('1.1', 'Kết quả kinh doanh', 'Lợi nhuận đến từ chạy tàu hay bán tàu, và dồn về phân khúc nào?');
+  const c1 = card('vt-fin-pnl', 'Lợi nhuận và doanh thu theo phân khúc (tỷ đồng)', 'Cột chồng theo phân khúc · đổi chỉ tiêu và cách xem'); let m1 = 'ebit', v1 = 'abs';
   seg(c1, 'Chỉ tiêu', PNL, () => m1, k => { m1 = k; draw1(); }); seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
-  function draw1() { const b = E.byGroup(m1, sel(), S.mode), name = PNL.find(p => p[0] === m1)[1];
+  function draw1() { const b = byGroup(m1, sel(), S.mode), name = PNL.find(p => p[0] === m1)[1];
     if (v1 === 'abs') chart(c1.host, 'vt-fin-pnl-abs', b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: g.values})), {unit: 'tỷ đ', native: 'stack', stackable: true});
-    else if (v1 === 'yoy') chart(c1.host, 'vt-fin-pnl-yoy', b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: E.growth(m1, sel(), S.mode).groups.find(z => z.id === g.id)?.values || []})), {unit: '%', digits: 1, zeroBase: false});
+    else if (v1 === 'yoy') { const gr = growth(m1, sel(), S.mode); chart(c1.host, 'vt-fin-pnl-yoy', b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: gr.groups.find(z => z.id === g.id)?.values || []})), {unit: '%', digits: 1, zeroBase: false}); }
     else { const tot = b.labels.map((_, i) => b.groups.reduce((a, g) => a + (fin(g.values[i]) ? g.values[i] : 0), 0)), neg = b.labels.map((_, i) => b.groups.some(g => fin(g.values[i]) && g.values[i] < 0));
       chart(c1.host, 'vt-fin-pnl-share', b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: g.values.map((v, i) => fin(v) && tot[i] > 0 && !neg[i] ? v / tot[i] * 100 : null)})), {unit: '%', digits: 1, native: 'stack', stackable: true}); }
-    foot(c1, `${name} ${modeName(S.mode)}; EBIT = LN gộp − CP bán hàng − CP QLDN; EBITDA = EBIT + khấu hao (LCTT)${v1 === 'share' ? '; tỷ trọng để trống ở kỳ có nhóm lỗ' : ''}; ${covNote(b.groups.reduce((a, g) => a.map((x, i) => x + g.cov[i]), b.labels.map(() => 0)), sel().length, b.labels.length - 1)}`); }
+    foot(c1, `${name} ${modeName(S.mode)}; EBIT = LN gộp − CP bán hàng − CP QLDN (chưa gồm lãi bán tàu); EBITDA = EBIT + khấu hao (LCTT)${m1 === 'revenue' ? '; doanh thu PVT, GSP, VOS gồm mảng thương mại biên mỏng' : ''}${v1 === 'share' ? '; tỷ trọng để trống ở kỳ có nhóm lỗ' : ''}; ${COVTXT}`); }
   renders.push(draw1);
-  // Chart "Chu kỳ lợi nhuận theo phân khúc" bỏ 25/11/2026 (trùng chart doanh thu và lợi nhuận ở trên).
-  // Chart thác nước "đóng góp vào thay đổi LNST" bỏ 25/11/2026 theo yêu cầu người dùng.
-  // Chart 4: mùa vụ
-  const c4 = card('vt-fin-season', 'Tính mùa vụ của lợi nhuận theo quý', 'Bảng nhiệt năm × quý · chọn phân khúc và chỉ tiêu'); let g4 = 'all', m4 = 'npat', v4 = 'abs';
-  const gsel = el('select', 'pf-sel'); c4.ctl.append(gsel); gsel.addEventListener('change', () => { g4 = gsel.value; draw4(); });
-  seg(c4, 'Chỉ tiêu', [['npat', 'LNST'], ['ebit', 'EBIT']], () => m4, k => { m4 = k; draw4(); }); seg(c4, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng trong năm (%)']], () => v4, k => { v4 = k; draw4(); });
-  function draw4() { const s = sel(); gsel.innerHTML = `<option value="all">Tất cả nhóm đang chọn</option>` + D.groups.filter(g => S.groups.includes(g.id)).map(g => `<option value="${g.id}"${g.id === g4 ? ' selected' : ''}>${esc(g.label)}</option>`).join('');
-    if (g4 !== 'all' && !S.groups.includes(g4)) g4 = 'all';
-    const ts = g4 === 'all' ? s : s.filter(t => E.groupOf[t] === g4), q = E.total(m4, ts, 'q').values, yrs = E.years;
-    const cell = (y, k) => q[D.periods.indexOf(`${y}Q${k}`)];
-    const yearTot = y => { const v = [1, 2, 3, 4].map(k => cell(y, k)); return v.every(fin) ? v.reduce((a, b) => a + b, 0) : null; };
-    const val = (y, k) => { const v = cell(y, k); if (!fin(v)) return null; if (v4 === 'yoy') { const p = cell(+y - 1, k); return fin(p) && p > 0 ? (v / p - 1) * 100 : null; } if (v4 === 'share') { const t = yearTot(y); return fin(t) && t > 0 ? v / t * 100 : null; } return v; };
-    const all = yrs.flatMap(y => [1, 2, 3, 4].map(k => val(y, k))).filter(fin), mx = Math.max(...all.map(Math.abs), 1);
-    const col = v => !fin(v) ? 'var(--line,#eef0f6)' : v >= 0 ? `rgba(41,56,168,${(.12 + .78 * Math.min(1, v / mx)).toFixed(2)})` : `rgba(201,138,0,${(.15 + .7 * Math.min(1, -v / mx)).toFixed(2)})`;
-    c4.host.innerHTML = `<div class="pf-hm"><div class="pf-hm-r pf-hm-h"><span></span>${[1, 2, 3, 4].map(k => `<span>Q${k}</span>`).join('')}<span>Năm</span></div>${yrs.map(y => `<div class="pf-hm-r"><span class="pf-hm-y">${y}</span>${[1, 2, 3, 4].map(k => { const v = val(y, k); return `<span style="background:${col(v)};color:${fin(v) && Math.abs(v) / mx > .5 ? '#fff' : 'inherit'}" title="Q${k}/${y}: ${fin(v) ? nf(v, v4 === 'abs' ? 0 : 1) + (v4 === 'abs' ? ' tỷ đ' : '%') : '—'}">${fin(v) ? nf(v, v4 === 'abs' ? 0 : 1) : ''}</span>`; }).join('')}<span class="pf-hm-t">${v4 === 'abs' ? nf(yearTot(y)) : ''}</span></div>`).join('')}</div>`;
-    foot(c4, `${m4 === 'npat' ? 'LNST' : 'EBIT'} quý${v4 === 'abs' ? ', tỷ đồng' : v4 === 'yoy' ? ', % so cùng quý năm trước (kỳ gốc dương)' : ', % LNST cả năm (chỉ năm có tổng dương, đủ 4 quý)'}; màu vàng là số âm`); }
-  renders.push(draw4);
-  // Chart 5: độ lan tỏa
+  // Chart 2 (29/11/2026): lãi thanh lý tàu nằm ở lợi nhuận khác, ngoài EBIT. Hàng rời (VOS, VNA) TTM Q3/2026: 401/607 tỷ LNTT là lợi nhuận khác.
+  const c2 = card('vt-fin-pbtmix', 'Lợi nhuận trước thuế đến từ chạy tàu hay bán tàu?', 'Lợi nhuận hoạt động, tài chính ròng & liên kết, lợi nhuận khác (gồm lãi thanh lý tàu) · chọn phân khúc'); let g2 = 'all', v2 = 'abs'; const p2 = groupPicker(c2, () => g2, (v, q) => { g2 = v; if (!q) draw2(); });
+  seg(c2, 'Cách xem', [['abs', 'Tỷ đồng'], ['share', 'Lợi nhuận khác ÷ LNTT (%)']], () => v2, k => { v2 = k; draw2(); });
+  function draw2() { p2(); const L = E.labels(S.mode);
+    if (v2 === 'abs') { const x = scopeOf(g2), T = m => total(m, x, S.mode).values;
+      chart(c2.host, 'vt-fin-pbtmix-abs', L, [{name: 'Lợi nhuận hoạt động (LN gộp − bán hàng − QLDN)', color: '#2938A8', values: T('ebit')}, {name: 'Tài chính ròng & liên kết', color: '#2a9fa3', values: T('fin_net')}, {name: 'Lợi nhuận khác (gồm lãi thanh lý tàu)', color: '#c98a00', values: T('other')}, {name: 'LNTT', color: '#3d4653', values: T('pbt'), kind: 'line'}], {unit: 'tỷ đ', native: 'stack', stackable: true}); }
+    else chart(c2.host, 'vt-fin-pbtmix-share', L, liveGroups().map(g => { const x = scopeOf(g.id), o = total('other', x, S.mode).values, p = total('pbt', x, S.mode).values; return {name: g.label, color: g.color, values: o.map((v, i) => fin(v) && fin(p[i]) && p[i] > 0 ? v / p[i] * 100 : null)}; }), {unit: '%', digits: 1});
+    foot(c2, `${modeName(S.mode)}; lợi nhuận khác gồm lãi thanh lý tàu và khoản bất thường, BCTC tóm tắt không tách${v2 === 'share' ? '; kỳ LNTT không dương để trống; trên 100% là phần còn lại lỗ' : ''}`); }
+  renders.push(draw2);
+  // Bảng nhiệt mùa vụ bỏ 29/11/2026: doanh thu mỗi quý 18–28% cả năm, không có quy luật ổn định (ngành chạy theo chu kỳ cước).
   const c5 = card('vt-fin-breadth', 'Tăng trưởng lợi nhuận lan rộng hay tập trung?', 'Số doanh nghiệp theo thay đổi LNST so cùng kỳ (quý riêng)');
   function draw5() { const s = sel(), pv = E.per('npat', s, 'q'), L = D.periods;
     const cnt = f => L.map((_, i) => i < 4 ? null : s.filter(t => fin(pv[t][i]) && fin(pv[t][i - 4]) && f(pv[t][i], pv[t][i - 4])).length);
@@ -166,206 +192,211 @@ function s71() {
       {name: 'Lỗ sang lãi', color: '#2a9fa3', values: cnt((a, b) => a > 0 && b <= 0)},
       {name: 'Lãi sang lỗ', color: '#c98a00', values: cnt((a, b) => a <= 0 && b > 0)},
       {name: 'Lỗ cả hai kỳ', color: '#3d4653', values: cnt((a, b) => a <= 0 && b <= 0)}], {unit: 'DN', native: 'stack', stackable: true});
-    foot(c5, 'LNST quý so cùng quý năm trước; chỉ doanh nghiệp có số cả hai kỳ'); }
+    foot(c5, 'LNST quý so cùng quý năm trước, gồm cả lãi bán tàu; chỉ doanh nghiệp có số cả hai kỳ'); }
   renders.push(draw5);
-  s.append(c1.el, grid2(c4, c5));
+  s.append(c1.el, grid2(c2, c5));
   return s;
 }
-// Thác nước HTML (chiều ngang): các bước có thể bấm (data-id).
-function wf(steps, unit) {
-  let run = 0; const rows = steps.map(s => { if (s.total) { run = s.v; return {...s, a: 0, b: s.v}; } const a = run; run += s.v; return {...s, a, b: run}; });
-  const lo = Math.min(0, ...rows.map(r => Math.min(r.a, r.b))), hi = Math.max(0, ...rows.map(r => Math.max(r.a, r.b))), span = (hi - lo) || 1, pos = v => (v - lo) / span * 100;
-  return `<div class="pf-wf">${rows.map(r => `<div class="pf-wf-r${r.id ? ' pf-click' : ''}"${r.id ? ` data-id="${r.id}" role="button" tabindex="0"` : ''}><span>${esc(r.l)}</span><div class="pf-wf-t"><i style="left:${Math.min(pos(r.a), pos(r.b))}%;width:${Math.max(.4, Math.abs(pos(r.b) - pos(r.a)))}%;background:${r.total ? '#1D2678' : r.v < 0 ? '#c98a00' : (r.c || '#2a9fa3')}"></i>${lo < 0 ? `<b style="left:${pos(0)}%"></b>` : ''}</div><em>${r.total ? nf(r.v) : sg(r.v, 0)}</em></div>`).join('')}</div><div class="pf-unit">${esc(unit)}</div>`;
-}
 
-/* ---------- 1.2 Cấu trúc chi phí và biên lợi nhuận ---------- */
-function groupPicker(c, get, set) { const g = el('select', 'pf-sel'); c.ctl.append(g); g.addEventListener('change', () => set(g.value)); return () => { g.innerHTML = `<option value="all">Tất cả nhóm đang chọn</option>` + D.groups.filter(x => S.groups.includes(x.id)).map(x => `<option value="${x.id}"${x.id === get() ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); if (get() !== 'all' && !S.groups.includes(get())) set('all', true); }; }
-const scopeOf = gid => gid === 'all' ? sel() : sel().filter(t => E.groupOf[t] === gid);
+/* ---------- 1.2 Biên lợi nhuận và cước ---------- */
+// Chỉ số cước Baltic (East Money, theo phiên từ 2019): bình quân theo đúng chu kỳ của chart biên (quý / 4 quý / năm); quý có dưới 30 phiên thì để trống.
+const SD = window.SHIPPING_DAILY || {}, EMS = SD.eastmoney?.series || {};
+const DRV = [['bdti', 'BDTI · tàu dầu thô', '#1D2678'], ['bcti', 'BCTI · tàu dầu sản phẩm', '#2a9fa3'], ['bdi', 'BDI · hàng rời', '#c98a00']];
+const drvRows = k => EMS[k]?.records || (k === 'bdi' ? SD.bdi?.records : null) || [];
+function driverAvg(key, mode) {
+  const acc = {}; drvRows(key).forEach(([d, v]) => { if (!fin(v) || !d) return; const a = (acc[`${d.slice(0, 4)}Q${Math.ceil(+d.slice(5, 7) / 3)}`] ||= [0, 0]); a[0] += v; a[1]++; });
+  const P = D.periods, span = ks => ks.every(k => acc[k] && acc[k][1] >= 30) ? ks.reduce((a, k) => a + acc[k][0], 0) / ks.reduce((a, k) => a + acc[k][1], 0) : null;
+  if (mode === 'y') return E.years.map(y => P.includes(`${y}Q4`) ? span([1, 2, 3, 4].map(q => `${y}Q${q}`)) : null);
+  return P.map((p, i) => mode === 'ttm' ? (i < 3 ? null : span(P.slice(i - 3, i + 1))) : span([p]));
+}
+const MARG = [['gross', 'Biên gộp'], ['ebitda', 'Biên EBITDA'], ['ebit', 'Biên EBIT'], ['npat', 'Biên LNST']];
 function s72() {
-  const s = section('1.2', 'Biên lợi nhuận', 'Vì sao biên mỗi phân khúc khác nhau, và cái gì đang làm biên thay đổi (cước, nhiên liệu, khấu hao tàu)?');
-  // Chart 1: biên theo thời gian
-  const c1 = card('vt-fin-margin', 'Biên lợi nhuận theo thời gian (%)', 'Biên gộp, EBITDA, EBIT, LNST trên doanh thu · chọn phân khúc'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
-  function draw1() { p1(); const x = scopeOf(g1), L = E.labels(S.mode), r = n => E.ratio({m: n}, {m: 'revenue'}, x, S.mode, 100).values;
-    chart(c1.host, 'vt-fin-margin', L, [['gross', 'Biên gộp'], ['ebitda', 'Biên EBITDA'], ['ebit', 'Biên EBIT'], ['npat', 'Biên LNST']].map(([m, n], k) => ({name: n, color: LINE[k], values: r(m)})), {unit: '%', digits: 1, zeroBase: false});
-    foot(c1, `tổng lợi nhuận ÷ tổng doanh thu, ${modeName(S.mode)}; cùng tập doanh nghiệp có đủ tử và mẫu`); }
+  const s = section('1.2', 'Biên lợi nhuận & cước', 'Biên mỗi phân khúc đi cùng cước giao ngay đến đâu, và khấu hao tàu chiếm bao nhiêu trong chi phí?');
+  // Chart 1 (29/11/2026): mỗi đường một phân khúc hoặc một mã thay cho bốn loại biên của cả rổ (PVT chiếm 67% doanh thu nhóm tàu dầu, Container chỉ có HAH).
+  const c1 = card('vt-fin-margin', 'Biên lợi nhuận theo phân khúc hoặc doanh nghiệp (%)', 'Mỗi đường một phân khúc hoặc một mã · đổi loại biên'); let m1 = 'gross', u1 = 'group';
+  seg(c1, 'Chỉ tiêu', MARG, () => m1, k => { m1 = k; draw1(); }); seg(c1, 'Đơn vị', UNIT, () => u1, k => { u1 = k; draw1(); });
+  function draw1() { const L = E.labels(S.mode), f = x => ratio({m: m1}, {m: 'revenue'}, x, S.mode, 100).values;
+    chart(c1.host, `vt-fin-margin-${m1}-${u1}`, L, [...unitLines(u1, f), ...(u1 === 'group' ? [{name: 'Trung vị các mã', color: MEDC, values: med({m: m1}, {m: 'revenue'}, sel(), S.mode, 100)}] : [])], {unit: '%', digits: 1, zeroBase: false, runs: m1 === 'ebitda'});
+    foot(c1, `${MARG.find(x => x[0] === m1)[1]} = tổng lợi nhuận ÷ tổng doanh thu, ${modeName(S.mode)}; doanh thu PVT, GSP, VOS gồm mảng thương mại biên mỏng; ${COVTXT}`); }
   renders.push(draw1);
-  // Chart cầu nối "Từ doanh thu đến lợi nhuận sau thuế" bỏ 25/11/2026 theo yêu cầu người dùng.
+  // Chart 2: chỉ số cước Baltic cùng trục thời gian với chart biên. Tương quan biên gộp quý nhóm tàu dầu với BCTI 2019–Q3/2026: cùng quý 0,24, trễ 2 quý 0,50
+  // (đội tàu cho thuê định hạn nhiều nên cước giao ngay thấm chậm).
+  const c2 = card('vt-fin-driver', 'Chỉ số cước Baltic (điểm)', 'Bình quân theo cùng chu kỳ với chart biên bên cạnh · cước giao ngay, không phải giá thuê định hạn');
+  function draw2() { const A = k => EMS[k]?.url ? `<a href="${esc(EMS[k].url)}" target="_blank" rel="noopener">${k.toUpperCase()}</a>` : k.toUpperCase();
+    chart(c2.host, 'vt-fin-driver', E.labels(S.mode), DRV.map(([k, name, color]) => ({name, color, values: driverAvg(k, S.mode)})), {unit: 'điểm', digits: 0, zeroBase: false});
+    foot(c2, `bình quân các phiên trong ${S.mode === 'q' ? 'quý' : S.mode === 'y' ? 'năm' : '4 quý gần nhất'}; chưa có chỉ số cước container theo phiên`, `Baltic Exchange qua East Money (${DRV.map(([k]) => A(k)).join(', ')}); tự tính bình quân`); }
+  renders.push(draw2);
   // Chart 3: cơ cấu chi phí trên 100 đồng doanh thu
   const c3 = card('vt-fin-cost', 'Cơ cấu chi phí trên 100 đồng doanh thu', 'Theo phân khúc, kỳ chốt · giá vốn trừ khấu hao, khấu hao, bán hàng & QLDN, lãi vay, thuế, lợi nhuận còn lại');
   function draw3() { const mode = S.mode === 'y' ? 'y' : 'ttm', i = endIdx(mode), x = sel();
     const ms = ['revenue', 'opex_other', 'da', 'sga', 'interest', 'tax', 'npat'], pv = Object.fromEntries(ms.map(m => [m, E.per(m, x, mode)]));
-    const gs = D.groups.filter(g => S.groups.includes(g.id)), row = g => { const ts = x.filter(t => E.groupOf[t] === g.id && ms.every(m => fin(pv[m][t][i]))), T = m => ts.reduce((a, t) => a + pv[m][t][i], 0), r = T('revenue'); return r ? ms.slice(1).map(m => T(m) / r * 100) : ms.slice(1).map(() => null); };
+    const gs = liveGroups(), row = g => { const all = x.filter(t => E.groupOf[t] === g.id), ts = all.filter(t => ms.every(m => fin(pv[m][t][i]))), T = m => ts.reduce((a, t) => a + pv[m][t][i], 0), r = T('revenue'); return r && okCov(ts.length, all.length) ? ms.slice(1).map(m => T(m) / r * 100) : ms.slice(1).map(() => null); };
     const R = gs.map(row), names = ['Giá vốn trừ khấu hao', 'Khấu hao', 'Bán hàng & QLDN', 'Lãi vay', 'Thuế TNDN', 'LNST'], cols = ['#9AA3BD', '#3d4653', '#8997D6', '#c98a00', '#861C52', '#2938A8'];
     const m = {key: 'vt-fin-cost', categories: gs.map(g => g.label), series: names.map((n, k) => ({name: n, color: cols[k], values: R.map(r => fin(r[k]) ? Math.round(r[k] * 10) / 10 : null)})), unit: 'đồng', digits: 1, stackable: true, native: 'stack', time: false, zeroBase: true};
     if (window.ChartTypes) ChartTypes.mount(c3.host, m, () => { c3.host.innerHTML = ChartTypes.render(m, 'stack'); });
-    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; khoản còn lại (thu nhập tài chính, liên kết, khác, chi phí tài chính ngoài lãi vay) không vẽ nên tổng có thể khác 100; chưa tách chi phí nhiên liệu`); }
+    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; khoản còn lại (thu nhập tài chính, liên kết, lợi nhuận khác, chi phí tài chính ngoài lãi vay) không vẽ nên tổng có thể khác 100; BCTC tóm tắt không tách chi phí nhiên liệu`); }
   renders.push(draw3);
-  // Chart "Khấu hao và chi phí tài trợ so với doanh thu, EBITDA" bỏ 25/11/2026 theo yêu cầu người dùng.
-  s.append(grid2(c1, c3));
-  return s;
-}
-
-/* ---------- 1.3 CAPEX và hình thành tài sản ---------- */
-function s73() {
-  const s = section('1.3', 'CAPEX & dở dang', 'Dòng vốn đóng/mua tàu đang chảy vào phân khúc nào, và chu kỳ đầu tư đội tàu đang ở giai đoạn nào?');
-  // Chart 1: CAPEX theo nhóm
-  const c1 = card('vt-fin-capex', 'CAPEX theo phân khúc (tỷ đồng)', 'Tiền chi mua sắm, xây dựng TSCĐ (LCTT) · quy mô, so cùng kỳ, tỷ trọng'); let v1 = 'abs';
-  seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
-  function draw1() { const b = E.byGroup('capex', sel(), S.mode), tot = b.labels.map((_, i) => b.groups.reduce((a, g) => a + (fin(g.values[i]) ? g.values[i] : 0), 0));
-    chart(c1.host, 'vt-fin-capex-' + v1, b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: v1 === 'abs' ? g.values : v1 === 'yoy' ? (E.growth('capex', sel(), S.mode).groups.find(z => z.id === g.id)?.values || []) : g.values.map((v, i) => fin(v) && tot[i] ? v / tot[i] * 100 : null)})), {unit: v1 === 'abs' ? 'tỷ đ' : '%', digits: v1 === 'abs' ? 0 : 1, native: v1 === 'yoy' ? 'line' : 'stack', stackable: v1 !== 'yoy', zeroBase: v1 !== 'yoy'});
-    foot(c1, `CAPEX tiền mặt ${modeName(S.mode)}; không gồm tăng tài sản do M&A, lãi vay vốn hóa chưa tách; LCTT quý dùng từ năm khớp số năm`); }
-  renders.push(draw1);
-  // Chart 2: cường độ đầu tư
-  const c2 = card('vt-fin-intensity', 'Cường độ đầu tư', 'CAPEX/khấu hao (đường 1 lần), CAPEX/doanh thu, CAPEX/tổng tài sản bình quân, CAPEX/CFO'); let g2 = 'all'; const p2 = groupPicker(c2, () => g2, (v, q) => { g2 = v; if (!q) draw2(); });
-  function draw2() { p2(); const x = scopeOf(g2), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), R = (a, b, avg, sc = 1) => E.ratio({m: a}, {m: b, avg}, x, mode, sc).values;
-    chart(c2.host, 'vt-fin-intensity', L, [{name: 'CAPEX/khấu hao (lần)', color: LINE[0], values: R('capex', 'da')}, {name: 'Mốc 1 lần', color: '#9AA3BD', values: L.map(() => 1)}, {name: 'CAPEX/doanh thu (lần)', color: LINE[2], values: R('capex', 'revenue')}, {name: 'CAPEX/tổng tài sản bình quân (lần)', color: LINE[1], values: R('capex', 'total_assets', true)}, {name: 'CAPEX/CFO (lần)', color: LINE[3], values: R('capex', 'cfo')}], {unit: 'lần', digits: 2});
-    foot(c2, `${mode === 'y' ? 'năm' : 'TTM'}; CAPEX vượt khấu hao không đồng nghĩa toàn bộ là đầu tư mở rộng`); }
-  renders.push(draw2);
-  // Chart 3: XDCB dở dang
-  const c3 = card('vt-fin-cip', 'XDCB dở dang theo phân khúc', 'Vốn đã đầu tư nhưng tài sản chưa hoàn thành · giá trị, so cùng kỳ, so tổng tài sản, so TSCĐ hữu hình ròng'); let v3 = 'abs';
-  seg(c3, 'Cách xem', [['abs', 'Tỷ đồng'], ['yoy', 'So cùng kỳ (%)'], ['ta', '% tổng tài sản'], ['ppe', '% TSCĐ ròng']], () => v3, k => { v3 = k; draw3(); });
-  function draw3() { const mode = S.mode === 'y' ? 'y' : 'q', b = E.byGroup('cip', sel(), mode);
-    if (v3 === 'abs' || v3 === 'yoy') chart(c3.host, 'vt-fin-cip-' + v3, b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: v3 === 'abs' ? g.values : (E.growth('cip', sel(), mode).groups.find(z => z.id === g.id)?.values || [])})), {unit: v3 === 'abs' ? 'tỷ đ' : '%', digits: v3 === 'abs' ? 0 : 1, native: v3 === 'abs' ? 'stack' : 'line', stackable: v3 === 'abs', zeroBase: v3 === 'abs'});
-    else chart(c3.host, 'vt-fin-cip-' + v3, b.labels, D.groups.filter(g => S.groups.includes(g.id)).map(g => ({name: g.label, color: g.color, values: E.ratio({m: 'cip'}, {m: v3 === 'ta' ? 'total_assets' : 'ppe_net'}, scopeOf(g.id), mode, 100).values})), {unit: '%', digits: 1});
-    foot(c3, `số dư cuối ${mode === 'y' ? 'năm' : 'quý'}`); }
-  renders.push(draw3);
-  // Chart "Hình thành tài sản: XDCB dở dang, TSCĐ và khấu hao" bỏ 25/11/2026 theo yêu cầu người dùng.
-  // Chart 5: tài trợ CAPEX
-  const c5 = card('vt-fin-funding', 'CAPEX được tài trợ bằng nguồn nào? (tỷ đồng)', 'CFO, CAPEX, FCF, vay nợ ròng, vốn góp bằng tiền, cổ tức đã trả · và CFO/CAPEX');
-  function draw5() { const x = sel(), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), T = m => E.total(m, x, mode).values, cr = E.ratio({m: 'cfo'}, {m: 'capex'}, x, mode).values;
-    chart(c5.host, 'vt-fin-funding', L, [{name: 'CFO', color: LINE[0], values: T('cfo')}, {name: 'CAPEX', color: LINE[2], values: T('capex').map(v => fin(v) ? -v : null)}, {name: 'FCF', color: LINE[1], values: T('fcf')}, {name: 'Vay nợ ròng', color: LINE[3], values: T('net_borrow')}, {name: 'Vốn góp bằng tiền', color: LINE[5], values: T('equity_raised')}, {name: 'Cổ tức đã trả', color: LINE[4], values: T('dividends').map(v => fin(v) ? -v : null)}], {unit: 'tỷ đ', native: 'bar'});
-    foot(c5, `${mode === 'y' ? 'năm' : 'TTM'}; FCF = CFO − CAPEX tiền mặt; CAPEX và cổ tức vẽ số âm (tiền ra); không phải toàn bộ biến động tiền (còn đầu tư tài chính, tỷ giá…)`); }
-  renders.push(draw5);
-  // Chart "Mức hao mòn kế toán của nền tài sản" bỏ 25/11/2026 theo yêu cầu người dùng.
-  // Chart "Vốn mới đang vào đâu so với nơi tạo lợi nhuận và dòng tiền?" bỏ 25/11/2026 theo yêu cầu người dùng.
-  s.append(grid2(c1, c2), grid2(c3, c5));
-  return s;
-}
-
-/* ---------- 1.4 Phải thu và chất lượng dòng tiền ---------- */
-function s74() {
-  const s = section('1.4', 'Công nợ & chuyển đổi tiền', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ?');
-  const c1 = card('vt-fin-recv', 'Phải thu khách hàng theo phân khúc (tỷ đồng)', 'Số dư cuối kỳ · giá trị hoặc so cùng kỳ'); let v1 = 'abs';
-  seg(c1, 'Cách xem', [['abs', 'Tỷ đồng'], ['yoy', 'So cùng kỳ (%)']], () => v1, k => { v1 = k; draw1(); });
-  function draw1() { const mode = S.mode === 'y' ? 'y' : 'q', b = E.byGroup('receivables', sel(), mode);
-    chart(c1.host, 'vt-fin-recv-' + v1, b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: v1 === 'abs' ? g.values : (E.growth('receivables', sel(), mode).groups.find(z => z.id === g.id)?.values || [])})), {unit: v1 === 'abs' ? 'tỷ đ' : '%', digits: v1 === 'abs' ? 0 : 1, native: v1 === 'abs' ? 'stack' : 'line', stackable: v1 === 'abs', zeroBase: v1 === 'abs'});
-    foot(c1, 'phải thu khách hàng ngắn hạn'); }
-  renders.push(draw1);
-  const c2 = card('vt-fin-dso', 'Số ngày thu tiền bình quân (DSO) theo phân khúc (ngày)', 'Phải thu khách hàng bình quân ÷ doanh thu TTM × 365');
-  function draw2() { const mode = S.mode === 'y' ? 'y' : 'ttm', L = E.labels(mode);
-    chart(c2.host, 'vt-fin-dso', L, D.groups.filter(g => S.groups.includes(g.id)).map(g => ({name: g.label, color: g.color, values: E.ratio({m: 'receivables', avg: true}, {m: 'revenue'}, scopeOf(g.id), mode, 365).values})), {unit: 'ngày'});
-    foot(c2, 'DSO của toàn doanh nghiệp'); }
-  renders.push(draw2);
-  const c3 = card('vt-fin-conversion', 'Lợi nhuận chuyển thành tiền đến đâu?', 'CFO/EBITDA, CFO/LNST (lần) và biên CFO (%) · chọn phân khúc'); let g3 = 'all'; const p3 = groupPicker(c3, () => g3, (v, q) => { g3 = v; if (!q) draw3(); });
-  function draw3() { p3(); const x = scopeOf(g3), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), R = (a, b, sc = 1) => E.ratio({m: a}, {m: b}, x, mode, sc).values;
-    chart(c3.host, 'vt-fin-conversion', L, [{name: 'CFO/EBITDA (lần)', color: LINE[0], values: R('cfo', 'ebitda')}, {name: 'CFO/LNST (lần)', color: LINE[2], values: R('cfo', 'npat')}, {name: 'Biên CFO (%) ÷ 100', color: LINE[1], values: R('cfo', 'revenue')}], {unit: 'lần', digits: 2});
-    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; biên CFO vẽ dạng tỷ lệ (0,2 = 20%)`); }
-  renders.push(draw3);
-  // Chart "Vốn lưu động và áp lực tài trợ" và bảng "Phải thu và chuyển hóa dòng tiền theo doanh nghiệp" bỏ 25/11/2026 theo yêu cầu người dùng.
   s.append(grid2(c1, c2), c3.el);
   return s;
 }
 
-/* ---------- 1.5 Đòn bẩy và phân bổ dòng tiền ---------- */
-function s75() {
-  const s = section('1.5', 'Nợ, thanh khoản & FCF', 'Chu kỳ đầu tư đang tạo áp lực tài chính hay doanh nghiệp đang thu hoạch dòng tiền?');
-  const c1 = card('vt-fin-debt', 'Cơ cấu nợ vay (tỷ đồng)', 'Nợ vay ngắn hạn, dài hạn (cột chồng); tiền & đầu tư ngắn hạn, nợ vay ròng (đường)');
-  function draw1() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'q', L = E.labels(mode), T = m => E.total(m, x, mode).values;
-    chart(c1.host, 'vt-fin-debt', L, [{name: 'Nợ vay ngắn hạn', color: '#8997D6', values: T('st_debt')}, {name: 'Nợ vay dài hạn', color: '#1D2678', values: T('lt_debt')}, {name: 'Tiền & đầu tư ngắn hạn', color: '#2a9fa3', values: T('cash_all'), kind: 'line'}, {name: 'Nợ vay ròng', color: '#c98a00', values: T('net_debt'), kind: 'line'}], {unit: 'tỷ đ', native: 'stack', stackable: true});
-    foot(c1, 'nợ vay chịu lãi (vay và nợ thuê tài chính), không phải tổng nợ phải trả; nợ vay ròng = nợ vay − tiền − đầu tư tài chính ngắn hạn'); }
+/* ---------- 1.3 Đội tàu ---------- */
+// 29/11/2026 thay mục "CAPEX & dở dang": tàu mua về ghi thẳng vào TSCĐ nên XDCB dở dang chỉ 0,1–0,3% tổng tài sản; thước đo của chủ tàu là mua ròng,
+// mức đã khấu hao (khấu hao lũy kế ÷ nguyên giá) và EBITDA trên nguyên giá. TSCĐ hữu hình gồm cả cảng, kho, FSO (HAH, PVT), BCTC tóm tắt không tách riêng tàu.
+const ACC = [{m: 'ppe_accdep'}, {m: 'ppe_gross'}], LTV = [{m: 'debt'}, {m: 'ppe_net'}], ROE = [{m: 'npat'}, {m: 'equity', avg: true}];
+const PPENOTE = 'TSCĐ hữu hình gồm cả cảng, kho, FSO (HAH, PVT), không riêng tàu';
+function s73() {
+  const s = section('1.3', 'Đội tàu', 'Ai đang mở rộng đội tàu, ai đang thu hẹp, và đội tàu đã khấu hao tới đâu?');
+  const c1 = card('vt-fin-netcapex', 'Mua ròng tài sản cố định theo phân khúc (tỷ đồng)', 'CAPEX trừ tiền thu thanh lý TSCĐ (LCTT) · dương là mở rộng, âm là thu hẹp'); let v1 = 'net';
+  seg(c1, 'Chỉ tiêu', [['net', 'Mua ròng'], ['capex', 'CAPEX'], ['sale', 'Thu thanh lý']], () => v1, k => { v1 = k; draw1(); });
+  function draw1() { const b = byGroup('capex', sel(), S.mode), a = byGroup('asset_sale', sel(), S.mode);
+    chart(c1.host, 'vt-fin-netcapex-' + v1, b.labels, b.groups.map((g, k) => { const sv = a.groups[k]?.values || []; return {name: g.label, color: g.color, values: v1 === 'capex' ? g.values : v1 === 'sale' ? sv : g.values.map((v, i) => fin(v) && fin(sv[i]) ? v - sv[i] : null)}; }), {unit: 'tỷ đ', native: 'stack', stackable: true});
+    foot(c1, `${modeName(S.mode)}; CAPEX = tiền chi mua sắm, xây dựng TSCĐ; không gồm tàu thuê tài chính và tài sản tăng do M&A; ${COVTXT}`); }
   renders.push(draw1);
-  const c2 = card('vt-fin-leverage', 'Đòn bẩy tài chính', 'Nợ vay/VCSH, nợ vay ròng/EBITDA TTM, nợ vay/tổng tài sản, nợ ngắn hạn/tổng nợ vay'); let g2 = 'all'; const p2 = groupPicker(c2, () => g2, (v, q) => { g2 = v; if (!q) draw2(); });
-  function draw2() { p2(); const x = scopeOf(g2), L = D.periods, R = (a, b, md = 'q') => E.ratio({m: a}, {m: b}, x, md).values;
-    chart(c2.host, 'vt-fin-leverage', L, [{name: 'Nợ vay/VCSH', color: LINE[0], values: R('debt', 'equity')}, {name: 'Nợ vay ròng/EBITDA TTM', color: LINE[2], values: E.ratio({m: 'net_debt'}, {m: 'ebitda'}, x, 'ttm').values}, {name: 'Nợ vay/tổng tài sản', color: LINE[1], values: R('debt', 'total_assets')}, {name: 'Nợ ngắn hạn/tổng nợ vay', color: LINE[3], values: R('st_debt', 'debt')}], {unit: 'lần', digits: 2});
-    foot(c2, 'hệ số tính từ tổng; doanh nghiệp EBITDA âm hoặc VCSH âm vẫn nằm trong tổng, xem phân bố ở biểu đồ dưới'); }
+  const c2 = card('vt-fin-fleetage', 'Đội tàu đã khấu hao tới đâu? (%)', 'Hao mòn lũy kế ÷ nguyên giá TSCĐ hữu hình · càng cao, tàu càng gần hết khấu hao'); let u2 = 'firm';
+  seg(c2, 'Đơn vị', [...UNIT].reverse(), () => u2, k => { u2 = k; draw2(); });
+  function draw2() { const mode = S.mode === 'y' ? 'y' : 'q', f = x => ratio(...ACC, x, mode, 100).values;
+    chart(c2.host, 'vt-fin-fleetage-' + u2, E.labels(mode), unitLines(u2, f), {unit: '%', digits: 1, zeroBase: false});
+    foot(c2, `số dư cuối ${mode === 'y' ? 'năm' : 'quý'}; mức khấu hao kế toán, không phải tuổi tàu (tàu mua cũ bắt đầu từ 0); ${PPENOTE}`); }
   renders.push(draw2);
-  const c3 = card('vt-fin-interest', 'Chi phí vay và khả năng trả lãi', 'Chi phí lãi vay TTM (tỷ đ), lãi vay/nợ vay bình quân (%), EBIT và EBITDA trên lãi vay (lần)'); let g3 = 'all'; const p3 = groupPicker(c3, () => g3, (v, q) => { g3 = v; if (!q) draw3(); });
-  function draw3() { p3(); const x = scopeOf(g3), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode);
-    chart(c3.host, 'vt-fin-interest', L, [{name: 'Lãi vay/nợ vay bình quân (%)', color: LINE[3], values: E.ratio({m: 'interest'}, {m: 'debt', avg: true}, x, mode, 100).values}, {name: 'EBIT/lãi vay (lần)', color: LINE[0], values: E.ratio({m: 'ebit'}, {m: 'interest'}, x, mode).values}, {name: 'EBITDA/lãi vay (lần)', color: LINE[1], values: E.ratio({m: 'ebitda'}, {m: 'interest'}, x, mode).values}], {unit: '', digits: 1});
-    foot(c3, 'lãi vay/nợ vay bình quân là chi phí vay ghi nhận ước tính, không phải lãi suất hợp đồng; chưa tách lãi vay vốn hóa'); }
+  const c3 = card('vt-fin-intensity', 'CAPEX so với khấu hao (lần)', 'Trên 1 lần: đầu tư nhiều hơn mức hao mòn ghi sổ · mỗi đường một phân khúc hoặc một mã'); let u3 = 'group';
+  seg(c3, 'Đơn vị', UNIT, () => u3, k => { u3 = k; draw3(); });
+  function draw3() { const mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), f = x => ratio({m: 'capex'}, {m: 'da'}, x, mode).values;
+    chart(c3.host, 'vt-fin-intensity-' + u3, L, [...unitLines(u3, f), {name: 'Mốc 1 lần', color: MEDC, values: L.map(() => 1)}], {unit: 'lần', digits: 2, runs: true});
+    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; CAPEX vượt khấu hao không đồng nghĩa toàn bộ là mở rộng (giá tàu thay thế cao hơn nguyên giá cũ); ${RUNTXT}`); }
   renders.push(draw3);
-  const c4 = card('vt-fin-fcf', 'Dòng tiền tự do và phân phối cho cổ đông', 'Theo phân khúc, kỳ chốt: CFO, CAPEX, FCF, cổ tức đã trả, vay nợ ròng (tỷ đ)');
-  function draw4() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'ttm', i = endIdx(mode), gs = D.groups.filter(g => S.groups.includes(g.id));
-    const v = (m, g) => { const b = E.byGroup(m, x, mode).groups.find(z => z.id === g.id); return b && fin(b.values[i]) ? Math.round(b.values[i]) : null; };
-    const ms = [['cfo', 'CFO', LINE[0], 1], ['capex', 'CAPEX', LINE[2], -1], ['fcf', 'FCF', LINE[1], 1], ['dividends', 'Cổ tức đã trả', LINE[4], -1], ['net_borrow', 'Vay nợ ròng', LINE[3], 1]];
+  const c4 = card('vt-fin-yield', 'EBITDA trên nguyên giá tài sản cố định (%)', 'EBITDA ÷ nguyên giá TSCĐ hữu hình bình quân · so được giữa đội tàu mới và đội tàu đã khấu hao'); let u4 = 'group';
+  seg(c4, 'Đơn vị', UNIT, () => u4, k => { u4 = k; draw4(); });
+  function draw4() { const mode = S.mode === 'q' ? 'ttm' : S.mode, f = x => ratio({m: 'ebitda'}, {m: 'ppe_gross', avg: true}, x, mode, 100).values;
+    chart(c4.host, 'vt-fin-yield-' + u4, E.labels(mode), unitLines(u4, f), {unit: '%', digits: 1, runs: true});
+    foot(c4, `${mode === 'y' ? 'năm' : 'TTM'}; nguyên giá theo sổ sách, không phải giá tàu thị trường; ${PPENOTE}; ${RUNTXT}`); }
+  renders.push(draw4);
+  s.append(grid2(c1, c2), grid2(c3, c4));
+  return s;
+}
+
+/* ---------- 1.4 Dòng tiền và cổ tức ---------- */
+// 29/11/2026: bỏ phải thu khách hàng và DSO (23–70 ngày, ổn định, không phải rủi ro của chủ tàu); thêm tiền thu thanh lý tàu vào nguồn tiền.
+function s74() {
+  const s = section('1.4', 'Dòng tiền & cổ tức', 'Tiền từ chạy tàu và bán tàu có đủ cho mua tàu mới và cổ tức không?');
+  const c1 = card('vt-fin-funding', 'Mua tàu được tài trợ bằng nguồn nào? (tỷ đồng)', 'CFO, thu thanh lý TSCĐ, CAPEX, vay nợ ròng, vốn góp bằng tiền, cổ tức đã trả · chọn phân khúc'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
+  function draw1() { p1(); const x = scopeOf(g1), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), T = m => total(m, x, mode).values;
+    chart(c1.host, 'vt-fin-funding', L, [{name: 'CFO', color: LINE[0], values: T('cfo')}, {name: 'Thu thanh lý TSCĐ', color: LINE[1], values: T('asset_sale')}, {name: 'CAPEX', color: LINE[2], values: minus(T('capex'))}, {name: 'Vay nợ ròng', color: LINE[3], values: T('net_borrow')}, {name: 'Vốn góp bằng tiền', color: LINE[5], values: T('equity_raised')}, {name: 'Cổ tức đã trả', color: LINE[4], values: minus(T('dividends'))}], {unit: 'tỷ đ', native: 'bar'});
+    foot(c1, `${mode === 'y' ? 'năm' : 'TTM'}; CAPEX và cổ tức vẽ số âm (tiền ra); không phải toàn bộ biến động tiền (còn tiền gửi, đầu tư tài chính, tỷ giá…); ${COVTXT}`); }
+  renders.push(draw1);
+  const c3 = card('vt-fin-conversion', 'Lợi nhuận chuyển thành tiền đến đâu?', 'CFO/EBITDA, CFO/LNST (lần) và biên CFO (%) · chọn phân khúc'); let g3 = 'all'; const p3 = groupPicker(c3, () => g3, (v, q) => { g3 = v; if (!q) draw3(); });
+  function draw3() { p3(); const x = scopeOf(g3), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), R = (a, b, sc = 1) => ratio({m: a}, {m: b}, x, mode, sc).values;
+    chart(c3.host, 'vt-fin-conversion', L, [{name: 'CFO/EBITDA (lần)', color: LINE[0], values: R('cfo', 'ebitda')}, {name: 'CFO/LNST (lần)', color: LINE[2], values: R('cfo', 'npat')}, {name: 'Biên CFO (%) ÷ 100', color: LINE[1], values: R('cfo', 'revenue')}], {unit: 'lần', digits: 2, runs: true});
+    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; biên CFO vẽ dạng tỷ lệ (0,2 = 20%); LNST gồm lãi bán tàu, tiền bán tàu nằm ngoài CFO; ${RUNTXT}`); }
+  renders.push(draw3);
+  const c4 = card('vt-fin-fcf', 'Dòng tiền tự do và phân phối cho cổ đông', 'Theo phân khúc, kỳ chốt: CFO, CAPEX, thu thanh lý, FCF, cổ tức đã trả, vay nợ ròng (tỷ đ)');
+  function draw4() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'ttm', i = endIdx(mode), gs = liveGroups();
+    const ms = [['cfo', 'CFO', LINE[0], 1], ['capex', 'CAPEX', LINE[2], -1], ['asset_sale', 'Thu thanh lý TSCĐ', '#5a9e6f', 1], ['fcf', 'FCF (CFO − CAPEX)', LINE[1], 1], ['dividends', 'Cổ tức đã trả', LINE[4], -1], ['net_borrow', 'Vay nợ ròng', LINE[3], 1]];
+    const B = Object.fromEntries(ms.map(([k]) => [k, byGroup(k, x, mode).groups]));
+    const v = (k, g) => { const b = B[k].find(z => z.id === g.id); return b && fin(b.values[i]) ? Math.round(b.values[i]) : null; };
     const m = {key: 'vt-fin-fcf', categories: gs.map(g => g.label), series: ms.map(([k, n, c, sgn]) => ({name: n, color: c, values: gs.map(g => { const a = v(k, g); return fin(a) ? a * sgn : null; })})), unit: 'tỷ đ', digits: 0, native: 'bar', time: false, zeroBase: true};
     if (window.ChartTypes) ChartTypes.mount(c4.host, m, () => { c4.host.innerHTML = ChartTypes.render(m, 'bar'); });
-    foot(c4, `${mode === 'y' ? 'năm' : 'TTM'} ${qLabel(E.labels(mode)[i] || '')}; CAPEX và cổ tức vẽ số âm (tiền ra)`); }
+    foot(c4, `${mode === 'y' ? 'năm' : 'TTM'} ${qLabel(E.labels(mode)[i] || '')}; CAPEX và cổ tức vẽ số âm (tiền ra); FCF chưa cộng tiền thu thanh lý`); }
   renders.push(draw4);
+  s.append(grid2(c1, c3), c4.el);
+  return s;
+}
+
+/* ---------- 1.5 Nợ vay và thanh khoản ---------- */
+const LEV = [['ltv', 'Nợ vay ÷ TSCĐ ròng (%)', '%', 1], ['nde', 'Nợ vay ròng/EBITDA (lần)', 'lần', 2], ['de', 'Nợ vay/VCSH (lần)', 'lần', 2]];
+function s75() {
+  const s = section('1.5', 'Nợ vay & thanh khoản', 'Đội tàu đang được tài trợ bằng nợ tới mức nào, ai giữ tiền ròng và ai đang vay?');
+  const c1 = card('vt-fin-debt', 'Cơ cấu nợ vay (tỷ đồng)', 'Nợ vay ngắn hạn, dài hạn (cột chồng); tiền & đầu tư ngắn hạn, nợ vay ròng (đường) · chọn phân khúc'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
+  function draw1() { p1(); const x = scopeOf(g1), mode = S.mode === 'y' ? 'y' : 'q', L = E.labels(mode), T = m => total(m, x, mode).values;
+    chart(c1.host, 'vt-fin-debt', L, [{name: 'Nợ vay ngắn hạn', color: '#8997D6', values: T('st_debt')}, {name: 'Nợ vay dài hạn', color: '#1D2678', values: T('lt_debt')}, {name: 'Tiền & đầu tư ngắn hạn', color: '#2a9fa3', values: T('cash_all'), kind: 'line'}, {name: 'Nợ vay ròng', color: '#c98a00', values: T('net_debt'), kind: 'line'}], {unit: 'tỷ đ', native: 'stack', stackable: true});
+    foot(c1, 'nợ vay chịu lãi (vay và nợ thuê tài chính), không phải tổng nợ phải trả; nợ vay ròng = nợ vay − tiền − đầu tư tài chính ngắn hạn; tiền của mã này không trả được nợ của mã khác'); }
+  renders.push(draw1);
+  // Chart 2 (29/11/2026): nợ vay ÷ giá trị còn lại của TSCĐ thay cho hệ số cộng gộp của cả rổ (nợ vay ròng/EBITDA rổ 0,06 lần vì VTO, VIP, PVP, VOS giữ tiền ròng).
+  const c2 = card('vt-fin-leverage', 'Đòn bẩy theo phân khúc hoặc doanh nghiệp', 'Nợ vay so với giá trị còn lại của tài sản cố định, EBITDA, vốn chủ sở hữu'); let m2 = 'ltv', u2 = 'group';
+  seg(c2, 'Chỉ tiêu', LEV.map(x => [x[0], x[1]]), () => m2, k => { m2 = k; draw2(); }); seg(c2, 'Đơn vị', UNIT, () => u2, k => { u2 = k; draw2(); });
+  function draw2() { const y = S.mode === 'y', bal = y ? 'y' : 'q', flow = y ? 'y' : 'ttm', L = E.labels(bal), d = LEV.find(x => x[0] === m2);
+    const args = m2 === 'ltv' ? [...LTV, bal, 100] : m2 === 'nde' ? [{m: 'net_debt'}, {m: 'ebitda'}, flow] : [{m: 'debt'}, {m: 'equity'}, bal];
+    const f = x => ratio(args[0], args[1], x, args[2], args[3]).values;
+    chart(c2.host, `vt-fin-leverage-${m2}-${u2}`, L, [...unitLines(u2, f), ...(u2 === 'group' ? [{name: 'Trung vị các mã', color: MEDC, values: med(args[0], args[1], sel(), args[2], args[3])}] : [])], {unit: d[2], digits: d[3], runs: m2 === 'nde'});
+    foot(c2, `${m2 === 'ltv' ? 'nợ vay ÷ giá trị còn lại TSCĐ hữu hình theo sổ sách (không phải giá tàu thị trường); ' + PPENOTE : m2 === 'nde' ? 'nợ vay ròng cuối kỳ ÷ EBITDA ' + (y ? 'năm' : 'TTM') + '; âm là tiền ròng; ' + RUNTXT : 'nợ vay ÷ VCSH (gồm lợi ích cổ đông không kiểm soát)'}`); }
+  renders.push(draw2);
+  const c3 = card('vt-fin-interest', 'Chi phí vay và khả năng trả lãi', 'Lãi vay/nợ vay bình quân (%), EBIT và EBITDA trên lãi vay (lần) · chọn phân khúc'); let g3 = 'all'; const p3 = groupPicker(c3, () => g3, (v, q) => { g3 = v; if (!q) draw3(); });
+  function draw3() { p3(); const x = scopeOf(g3), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode);
+    chart(c3.host, 'vt-fin-interest', L, [{name: 'Lãi vay/nợ vay bình quân (%)', color: LINE[3], values: ratio({m: 'interest'}, {m: 'debt', avg: true}, x, mode, 100).values}, {name: 'EBIT/lãi vay (lần)', color: LINE[0], values: ratio({m: 'ebit'}, {m: 'interest'}, x, mode).values}, {name: 'EBITDA/lãi vay (lần)', color: LINE[1], values: ratio({m: 'ebitda'}, {m: 'interest'}, x, mode).values}], {unit: '', digits: 1, runs: true});
+    foot(c3, `lãi vay/nợ vay bình quân là chi phí vay ghi nhận ước tính, không phải lãi suất hợp đồng; nợ vay mua tàu phần lớn bằng USD, lỗ tỷ giá nằm ngoài lãi vay; ${RUNTXT}`); }
+  renders.push(draw3);
   const c5 = card('vt-fin-levdist', 'Phân bố doanh nghiệp theo mức đòn bẩy', 'Số doanh nghiệp theo nợ vay ròng/EBITDA TTM');
   function draw5() { const x = sel(), L = D.periods, nd = E.per('net_debt', x, 'q'), eb = E.per('ebitda', x, 'ttm');
-    const cnt = f => L.map((_, i) => { const ts = x.filter(t => fin(nd[t][i]) && fin(eb[t][i])); return ts.length ? ts.filter(t => f(nd[t][i], eb[t][i])).length : null; });
+    const cnt = f => L.map((_, i) => { const ts = x.filter(t => fin(nd[t][i]) && fin(eb[t][i])); return okCov(ts.length, x.length) ? ts.filter(t => f(nd[t][i], eb[t][i])).length : null; });
     chart(c5.host, 'vt-fin-levdist', L, [{name: 'Tiền ròng', color: '#2a9fa3', values: cnt(n => n <= 0)}, {name: '0–2 lần', color: '#8997D6', values: cnt((n, e) => n > 0 && e > 0 && n / e <= 2)}, {name: '2–4 lần', color: '#2938A8', values: cnt((n, e) => n > 0 && e > 0 && n / e > 2 && n / e <= 4)}, {name: 'Trên 4 lần', color: '#1D2678', values: cnt((n, e) => n > 0 && e > 0 && n / e > 4)}, {name: 'EBITDA không dương', color: '#c98a00', values: cnt((n, e) => n > 0 && e <= 0)}], {unit: 'DN', native: 'stack', stackable: true});
-    foot(c5, 'công cụ xem mức độ tập trung, không phải xếp hạng tín dụng'); }
+    foot(c5, `công cụ xem mức độ tập trung, không phải xếp hạng tín dụng; ${COVTXT}`); }
   renders.push(draw5);
-  s.append(grid2(c1, c2), grid2(c3, c4), c5.el);
+  s.append(grid2(c1, c2), grid2(c3, c5));
   return s;
 }
 
 /* ---------- 1.6 Hiệu quả sử dụng vốn ---------- */
-// NOPAT = EBIT × (1 − thuế suất hiệu dụng); thuế suất hiệu dụng = thuế TNDN ÷ LNTT cùng kỳ, giới hạn 0–30%.
-function roic(x, mode) {
-  const L = E.labels(mode), e = E.per('ebit', x, mode), tx = E.per('tax', x, mode), pb = E.per('pbt', x, mode), ic = E.per('ic', x, mode, true);
-  const nop = t => L.map((_, i) => { if (!fin(e[t][i]) || !fin(tx[t][i]) || !fin(pb[t][i])) return null; const r = pb[t][i] > 0 ? Math.min(.3, Math.max(0, tx[t][i] / pb[t][i])) : 0; return e[t][i] * (1 - r); });
-  const N = Object.fromEntries(x.map(t => [t, nop(t)]));
-  const values = L.map((_, i) => { const ts = x.filter(t => fin(N[t][i]) && fin(ic[t][i])); const d = ts.reduce((a, t) => a + ic[t][i], 0); return ts.length && d > 0 ? ts.reduce((a, t) => a + N[t][i], 0) / d * 100 : null; });
-  const each = Object.fromEntries(x.map(t => [t, L.map((_, i) => fin(N[t][i]) && fin(ic[t][i]) && ic[t][i] > 0 ? N[t][i] / ic[t][i] * 100 : null)]));
-  return {labels: L, values, each, ic};
+// 29/11/2026: ROCE thay ROIC (như Dầu khí §48). ROIC cũ trừ hết tiền khỏi vốn đầu tư nên VTO ra 72%, PVP 39% (tiền chiếm 64% và 48% tổng tài sản).
+// ROCE = (LNTT + lãi vay) × (1 − thuế suất hiệu dụng, 0–30%) ÷ (VCSH + nợ vay) bình quân; tử số gồm lãi bán tàu và thu nhập tài chính, mẫu số giữ nguyên tiền.
+function roce(x, mode) {
+  const L = E.labels(mode), pb = E.per('pbt', x, mode), it = E.per('interest', x, mode), tx = E.per('tax', x, mode), eq = E.per('equity', x, mode, true), db = E.per('debt', x, mode, true);
+  const N = Object.fromEntries(x.map(t => [t, L.map((_, i) => { if (![pb, it, tx].every(z => fin(z[t][i]))) return null; const r = pb[t][i] > 0 ? Math.min(.3, Math.max(0, tx[t][i] / pb[t][i])) : 0; return (pb[t][i] + it[t][i]) * (1 - r); })]));
+  const C = Object.fromEntries(x.map(t => [t, L.map((_, i) => fin(eq[t][i]) && fin(db[t][i]) ? eq[t][i] + db[t][i] : null)]));
+  const values = L.map((_, i) => { const ts = x.filter(t => fin(N[t][i]) && fin(C[t][i])); const d = ts.reduce((a, t) => a + C[t][i], 0); return okCov(ts.length, x.length) && d > 0 ? ts.reduce((a, t) => a + N[t][i], 0) / d * 100 : null; });
+  return {labels: L, values};
 }
 function s76() {
-  const s = section('1.6', 'Hiệu quả vốn', 'Vốn bỏ vào từng phân khúc đang sinh lời thế nào?');
-  const c1 = card('vt-fin-returns', 'ROE, ROA, ROIC (%)', 'TTM hoặc năm · chọn phân khúc · đường mảnh là bình quân lịch sử của chính chỉ tiêu'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
-  function draw1() { p1(); const x = scopeOf(g1), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), roe = E.ratio({m: 'npat'}, {m: 'equity', avg: true}, x, mode, 100).values, roa = E.ratio({m: 'npat'}, {m: 'total_assets', avg: true}, x, mode, 100).values, ri = roic(x, mode).values;
-    const avg = v => { const a = v.filter(fin); return a.length ? a.reduce((s, z) => s + z, 0) / a.length : null; };
-    chart(c1.host, 'vt-fin-returns', L, [{name: 'ROE', color: LINE[0], values: roe}, {name: 'ROA', color: LINE[1], values: roa}, {name: 'ROIC', color: LINE[2], values: ri}, {name: 'ROE bình quân', color: '#9AA3BD', values: L.map(() => avg(roe))}, {name: 'ROIC bình quân', color: '#e3c98a', values: L.map(() => avg(ri))}], {unit: '%', digits: 1, zeroBase: false});
-    foot(c1, 'ROE = LNST hợp nhất ÷ VCSH (gồm lợi ích CĐKKS) bình quân; ROIC = EBIT × (1 − thuế suất hiệu dụng, tối đa 30%) ÷ (VCSH + nợ vay − tiền − đầu tư ngắn hạn) bình quân'); }
+  const s = section('1.6', 'Hiệu quả vốn', 'Vốn bỏ vào đội tàu đang sinh lời thế nào, và ROE cao nhờ cước hay nhờ tàu đã hết khấu hao?');
+  const c1 = card('vt-fin-returns', 'ROE, ROA, ROCE (%)', 'TTM hoặc năm · chọn phân khúc · đường xám là trung vị ROE các mã'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
+  function draw1() { p1(); const x = scopeOf(g1), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode);
+    chart(c1.host, 'vt-fin-returns', L, [{name: 'ROE', color: LINE[0], values: ratio(...ROE, x, mode, 100).values}, {name: 'ROA', color: LINE[1], values: ratio({m: 'npat'}, {m: 'total_assets', avg: true}, x, mode, 100).values}, {name: 'ROCE', color: LINE[2], values: roce(x, mode).values}, {name: 'ROE trung vị các mã', color: MEDC, values: med(...ROE, x, mode, 100)}], {unit: '%', digits: 1, zeroBase: false});
+    foot(c1, 'ROE = LNST hợp nhất ÷ VCSH (gồm lợi ích CĐKKS) bình quân; ROCE = (LNTT + lãi vay) × (1 − thuế suất hiệu dụng, tối đa 30%) ÷ (VCSH + nợ vay) bình quân, không trừ tiền; LNST gồm lãi bán tàu'); }
   renders.push(draw1);
-  const c2 = card('vt-fin-dupont', 'Phân rã ROE (DuPont)', 'Biên LNST × vòng quay tài sản × đòn bẩy (tổng tài sản/VCSH) · chọn phân khúc'); let g2 = 'all'; const p2 = groupPicker(c2, () => g2, (v, q) => { g2 = v; if (!q) draw2(); });
-  function draw2() { p2(); const x = scopeOf(g2), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode);
+  const c2 = card('vt-fin-dupont', 'Phân rã ROE (DuPont)', 'Biên LNST × vòng quay tài sản × đòn bẩy (tổng tài sản/VCSH) · chọn phân khúc hoặc doanh nghiệp'); let g2 = 'all';
+  const sel2 = el('select', 'pf-sel'); c2.ctl.append(sel2); sel2.addEventListener('change', () => { g2 = sel2.value; draw2(); });
+  function draw2() { const gs = liveGroups(), ts0 = sel(); if (g2 !== 'all' && !gs.some(g => g.id === g2) && !ts0.includes(g2)) g2 = 'all';
+    sel2.innerHTML = `<option value="all">Tất cả nhóm đang chọn</option>${gs.map(g => `<option value="${g.id}"${g.id === g2 ? ' selected' : ''}>${esc(g.label)}</option>`).join('')}${ts0.map(t => `<option value="${t}"${t === g2 ? ' selected' : ''}>${t}</option>`).join('')}`;
+    const x = ts0.includes(g2) ? [g2] : scopeOf(g2), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode);
     // Cùng tập doanh nghiệp có đủ LNST, doanh thu, tài sản bình quân, VCSH bình quân
     const n = E.per('npat', x, mode), r = E.per('revenue', x, mode), a = E.per('total_assets', x, mode, true), q = E.per('equity', x, mode, true);
-    const parts = L.map((_, i) => { const ts = x.filter(t => [n, r, a, q].every(z => fin(z[t][i]))); if (!ts.length) return null; const S2 = z => ts.reduce((s, t) => s + z[t][i], 0), N = S2(n), R = S2(r), A = S2(a), Qv = S2(q); return R && A && Qv ? {m: N / R * 100, t: R / A, l: A / Qv, roe: N / Qv * 100} : null; });
+    const parts = L.map((_, i) => { const ts = x.filter(t => [n, r, a, q].every(z => fin(z[t][i]))); if (!okCov(ts.length, x.length)) return null; const S2 = z => ts.reduce((s, t) => s + z[t][i], 0), N = S2(n), R = S2(r), A = S2(a), Qv = S2(q); return R && A && Qv ? {m: N / R * 100, t: R / A, l: A / Qv, roe: N / Qv * 100} : null; });
     chart(c2.host, 'vt-fin-dupont', L, [{name: 'ROE (%)', color: LINE[0], values: parts.map(p => p?.roe ?? null)}, {name: 'Biên LNST (%)', color: LINE[2], values: parts.map(p => p?.m ?? null)}, {name: 'Vòng quay tài sản (lần)', color: LINE[1], values: parts.map(p => p?.t ?? null)}, {name: 'Đòn bẩy (lần)', color: LINE[3], values: parts.map(p => p?.l ?? null)}], {unit: '', digits: 2, zeroBase: false});
     foot(c2, 'ROE = biên × vòng quay × đòn bẩy, cùng tập doanh nghiệp, tài sản và VCSH bình quân'); }
   renders.push(draw2);
-  const c3 = card('vt-fin-roic-cycle', 'ROIC và chu kỳ vốn', 'ROIC (%), CAPEX/khấu hao (lần), XDCB dở dang/tổng tài sản (%) · chọn phân khúc'); let g3 = 'all'; const p3 = groupPicker(c3, () => g3, (v, q) => { g3 = v; if (!q) draw3(); });
-  function draw3() { p3(); const x = scopeOf(g3), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode);
-    const cipTa = mode === 'y' ? E.ratio({m: 'cip'}, {m: 'total_assets'}, x, 'y', 100).values : E.ratio({m: 'cip'}, {m: 'total_assets'}, x, 'q', 100).values;
-    chart(c3.host, 'vt-fin-roic-cycle', L, [{name: 'ROIC (%)', color: LINE[0], values: roic(x, mode).values}, {name: 'CAPEX/khấu hao (lần)', color: LINE[2], values: E.ratio({m: 'capex'}, {m: 'da'}, x, mode).values}, {name: 'XDCB dở dang/tổng tài sản (%)', color: LINE[1], values: cipTa}], {unit: '', digits: 1});
-    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; đặt cạnh nhau để phân biệt ROIC thấp do vận hành với ROIC thấp khi dự án đang xây`); }
-  renders.push(draw3);
-  const c4 = card('vt-fin-map', 'Bản đồ hiệu quả vốn', 'Trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư'); let v4 = 'group';
-  seg(c4, 'Đơn vị', [['group', 'Phân khúc'], ['firm', 'Doanh nghiệp']], () => v4, k => { v4 = k; draw4(); });
-  function draw4() { const x = sel(), i = S.end, ri = roic(x, 'ttm'), ndp = E.per('net_debt', x, 'q'), ebp = E.per('ebitda', x, 'ttm'), icp = E.per('ic', x, 'q');
-    let pts;
-    if (v4 === 'firm') pts = x.map(t => ({l: t, c: GC[E.groupOf[t]], x: fin(ndp[t][i]) && fin(ebp[t][i]) && ebp[t][i] > 0 ? ndp[t][i] / ebp[t][i] : null, y: ri.each[t][i], s: icp[t][i]})).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
-    else pts = D.groups.filter(g => S.groups.includes(g.id)).map(g => { const ts = x.filter(t => E.groupOf[t] === g.id); const r = roic(ts, 'ttm').values[i], nd = E.ratio({m: 'net_debt'}, {m: 'ebitda'}, ts, 'ttm').values[i], ic = E.total('ic', ts, 'q').values[i]; return {l: g.label, c: g.color, x: nd, y: r, s: ic}; }).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
-    c4.host.innerHTML = bubble(pts);
-    foot(c4, `${qLabel(D.periods[i])}; doanh nghiệp EBITDA âm không vẽ`); }
+  // "ROIC và chu kỳ vốn" (kèm XDCB dở dang/tổng tài sản) bỏ 29/11/2026.
+  // Bản đồ: ROCE theo mức đã khấu hao của tài sản, để thấy mã nào sinh lời cao trên đội tàu đã gần hết khấu hao.
+  const c4 = card('vt-fin-map', 'Sinh lời cao trên tàu mới hay tàu đã khấu hao?', 'Trục ngang: hao mòn lũy kế ÷ nguyên giá TSCĐ (%) · trục dọc: ROCE TTM (%) · kích thước: VCSH + nợ vay'); let v4 = 'firm';
+  seg(c4, 'Đơn vị', [...UNIT].reverse(), () => v4, k => { v4 = k; draw4(); });
+  function draw4() { const i = S.end;
+    const pt = (l, c, ts) => ({l, c, x: ratio(...ACC, ts, 'q', 100).values[i], y: roce(ts, 'ttm').values[i], s: (() => { const a = total('equity', ts, 'q').values[i], b = total('debt', ts, 'q').values[i]; return fin(a) && fin(b) ? a + b : null; })()});
+    const pts = (v4 === 'firm' ? sel().map(t => pt(t, GC[E.groupOf[t]], [t])) : liveGroups().map(g => pt(g.label, g.color, scopeOf(g.id)))).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
+    c4.host.innerHTML = bubble(pts, {xs: '%', xd: 0, xname: 'hao mòn lũy kế ÷ nguyên giá', sname: 'VCSH + nợ vay'});
+    foot(c4, `${qLabel(D.periods[i])}; ${PPENOTE}`); }
   renders.push(draw4);
-  const c5 = card('vt-fin-pool', 'Vốn đầu tư so với lợi nhuận tạo ra', 'Tỷ trọng từng phân khúc trong vốn đầu tư và trong EBIT TTM · kỳ chốt');
-  function draw5() { const x = sel(), i = S.end, gs = D.groups.filter(g => S.groups.includes(g.id)), ic = E.byGroup('ic', x, 'q').groups, eb = E.byGroup('ebit', x, 'ttm').groups;
-    const sh = arr => { const v = gs.map(g => { const z = arr.find(a => a.id === g.id); return z && fin(z.values[i]) ? z.values[i] : null; }); const tot = v.reduce((a, b) => a + (fin(b) && b > 0 ? b : 0), 0); return v.map(z => fin(z) && tot ? z / tot * 100 : null); };
-    const a = sh(ic), b = sh(eb);
-    const m = {key: 'vt-fin-pool', categories: gs.map(g => g.label), series: [{name: 'Tỷ trọng vốn đầu tư', color: '#9AA3BD', values: a.map(v => fin(v) ? Math.round(v * 10) / 10 : null)}, {name: 'Tỷ trọng EBIT TTM', color: '#1D2678', values: b.map(v => fin(v) ? Math.round(v * 10) / 10 : null)}], unit: '%', digits: 1, native: 'bar', time: false, zeroBase: true};
+  const c5 = card('vt-fin-pool', 'Vốn sử dụng so với lợi nhuận tạo ra', 'Tỷ trọng từng phân khúc trong vốn (VCSH + nợ vay) và trong EBIT TTM · kỳ chốt');
+  function draw5() { const x = sel(), i = S.end, gs = liveGroups(), eq = byGroup('equity', x, 'q').groups, db = byGroup('debt', x, 'q').groups, eb = byGroup('ebit', x, 'ttm').groups;
+    const val = (arr, g) => { const z = arr.find(a => a.id === g.id); return z && fin(z.values[i]) ? z.values[i] : null; };
+    const sh = v => { const tot = v.reduce((a, b) => a + (fin(b) && b > 0 ? b : 0), 0); return v.map(z => fin(z) && tot ? Math.round(z / tot * 1000) / 10 : null); };
+    const a = sh(gs.map(g => { const e = val(eq, g), d = val(db, g); return fin(e) && fin(d) ? e + d : null; })), b = sh(gs.map(g => val(eb, g)));
+    const m = {key: 'vt-fin-pool', categories: gs.map(g => g.label), series: [{name: 'Tỷ trọng vốn sử dụng', color: '#9AA3BD', values: a}, {name: 'Tỷ trọng EBIT TTM', color: '#1D2678', values: b}], unit: '%', digits: 1, native: 'bar', time: false, zeroBase: true};
     if (window.ChartTypes) ChartTypes.mount(c5.host, m, () => { c5.host.innerHTML = ChartTypes.render(m, 'bar'); });
-    foot(c5, `${qLabel(D.periods[i])}; vốn đầu tư = VCSH + nợ vay − tiền − đầu tư ngắn hạn (số dư)`); }
+    foot(c5, `${qLabel(D.periods[i])}; vốn sử dụng = VCSH + nợ vay (số dư, không trừ tiền); EBIT chưa gồm lãi bán tàu`); }
   renders.push(draw5);
-  s.append(grid2(c1, c2), grid2(c3, c4), c5.el);
+  s.append(grid2(c1, c2), grid2(c4, c5));
   return s;
 }
-function bubble(pts) {
+function bubble(pts, o = {}) {
   if (!pts.length) return '';
   const W = 640, H = 340, m = {l: 46, r: 30, t: 24, b: 34}, xs = pts.map(p => p.x), ys = pts.map(p => p.y), sm = Math.max(...pts.map(p => p.s));
   let x0 = Math.min(0, ...xs), x1 = Math.max(...xs, 1), y0 = Math.min(0, ...ys), y1 = Math.max(...ys, 1);
-  const px = (x1 - x0) * .14, py = (y1 - y0) * .16; x0 -= px; x1 += px; y0 -= y0 < 0 ? py : 0; y1 += py;  // lề để bong bóng và nhãn không bị cắt
+  const px = (x1 - x0) * .14, py = (y1 - y0) * .16; x0 -= x0 < 0 ? px : 0; x1 += px; y0 -= y0 < 0 ? py : 0; y1 += py;  // lề để bong bóng và nhãn không bị cắt
   const X = v => m.l + (v - x0) / ((x1 - x0) || 1) * (W - m.l - m.r), Y = v => H - m.b - (v - y0) / ((y1 - y0) || 1) * (H - m.t - m.b), R = v => 6 + Math.sqrt(v / sm) * 26;
-  const tx = [x0, (x0 + x1) / 2, x1], ty = [y0, (y0 + y1) / 2, y1];
+  const tx = [x0, (x0 + x1) / 2, x1], ty = [y0, (y0 + y1) / 2, y1], xf = v => nf(v, o.xd ?? 1) + (o.xs ?? 'x');
   return `<svg class="pf-bubble" viewBox="0 0 ${W} ${H}" role="img" aria-label="Bản đồ hiệu quả vốn">
     ${ty.map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" class="g"/><text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end">${nf(v, 0)}%</text>`).join('')}
-    ${tx.map(v => `<text x="${X(v)}" y="${H - 12}" text-anchor="middle">${nf(v, 1)}x</text>`).join('')}
+    ${tx.map(v => `<text x="${X(v)}" y="${H - 12}" text-anchor="middle">${xf(v)}</text>`).join('')}
     ${x0 < 0 ? `<line x1="${X(0)}" x2="${X(0)}" y1="${m.t}" y2="${H - m.b}" class="z"/>` : ''}${y0 < 0 ? `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(0)}" y2="${Y(0)}" class="z"/>` : ''}
-    ${pts.sort((a, b) => b.s - a.s).map(p => `<g><circle cx="${X(p.x)}" cy="${Y(p.y)}" r="${R(p.s)}" fill="${p.c}" fill-opacity=".55" stroke="${p.c}"><title>${esc(p.l)}: ROIC ${nf(p.y, 1)}%, nợ vay ròng/EBITDA ${nf(p.x, 2)} lần, vốn đầu tư ${nf(p.s)} tỷ đ</title></circle><text x="${X(p.x)}" y="${Y(p.y) + 4}" text-anchor="middle" class="l">${esc(p.l)}</text></g>`).join('')}</svg>`;
+    ${pts.sort((a, b) => b.s - a.s).map(p => `<g><circle cx="${X(p.x)}" cy="${Y(p.y)}" r="${R(p.s)}" fill="${p.c}" fill-opacity=".55" stroke="${p.c}"><title>${esc(p.l)}: ROCE ${nf(p.y, 1)}%, ${esc(o.xname || '')} ${xf(p.x)}, ${esc(o.sname || 'vốn')} ${nf(p.s)} tỷ đ</title></circle><text x="${X(p.x)}" y="${Y(p.y) + 4}" text-anchor="middle" class="l">${esc(p.l)}</text></g>`).join('')}</svg>`;
 }
 
 /* ---------- Xuất CSV ---------- */
@@ -381,12 +412,12 @@ function exportCsv(kind) {
       Object.entries(D.cf_annual?.[c.ticker] || {}).forEach(([m, arr]) => arr.forEach((v, i) => { if (v != null) rows.push([c.ticker, g, E.years[i], 'năm (báo cáo năm)', m, ITEMN[m], v, 'tỷ đồng', 'hợp nhất', D.source, stamp]); })); });
     return download(`van-tai-bien-tai-chinh-doanh-nghiep-${stamp}.csv`, rows); }
   if (kind === 'group') { const rows = [['group', 'period', 'period_type', 'metric_id', 'metric_name', 'value', 'unit', 'companies_with_data', 'companies_in_group', 'source', 'method']];
-    ['revenue', 'gross', 'ebitda', 'ebit', 'npat', 'da', 'cfo', 'capex', 'fcf', 'cip', 'ppe_net', 'ppe_gross', 'receivables', 'debt', 'net_debt', 'equity', 'total_assets', 'interest', 'dividends'].forEach(m => {
+    ['revenue', 'gross', 'ebitda', 'ebit', 'npat', 'other', 'da', 'cfo', 'capex', 'asset_sale', 'fcf', 'cip', 'ppe_net', 'ppe_gross', 'receivables', 'debt', 'net_debt', 'equity', 'total_assets', 'interest', 'dividends'].forEach(m => {
       const mode = E.kind[m] === 'stock' ? (S.mode === 'y' ? 'y' : 'q') : S.mode, b = E.byGroup(m, x, mode);
       b.groups.forEach(g => b.labels.forEach((p, i) => { if (g.values[i] != null) rows.push([g.label, p, mode, m, ITEMN[m], Math.round(g.values[i] * 100) / 100, 'tỷ đồng', g.cov[i], g.tickers.length, D.source, 'tổng doanh nghiệp đủ số; loại trùng công ty mẹ − con khi cùng được chọn']); })); });
     return download(`van-tai-bien-tai-chinh-nhom-${S.mode}-${stamp}.csv`, rows); }
   if (kind === 'ratio') { const rows = [['scope', 'period', 'period_type', 'ratio', 'value', 'unit', 'companies_with_data', 'median', 'p25', 'p75', 'formula']];
-    const mode = S.mode === 'q' ? 'ttm' : S.mode, defs = [['ROE', {m: 'npat'}, {m: 'equity', avg: true}, 100, '%', 'LNST ÷ VCSH bình quân'], ['ROA', {m: 'npat'}, {m: 'total_assets', avg: true}, 100, '%', 'LNST ÷ tổng tài sản bình quân'], ['Biên gộp', {m: 'gross'}, {m: 'revenue'}, 100, '%', 'LN gộp ÷ doanh thu'], ['Biên EBITDA', {m: 'ebitda'}, {m: 'revenue'}, 100, '%', 'EBITDA ÷ doanh thu'], ['Biên EBIT', {m: 'ebit'}, {m: 'revenue'}, 100, '%', 'EBIT ÷ doanh thu'], ['Biên LNST', {m: 'npat'}, {m: 'revenue'}, 100, '%', 'LNST ÷ doanh thu'], ['Nợ vay ròng/EBITDA', {m: 'net_debt'}, {m: 'ebitda'}, 1, 'lần', 'nợ vay ròng cuối kỳ ÷ EBITDA'], ['CAPEX/khấu hao', {m: 'capex'}, {m: 'da'}, 1, 'lần', 'CAPEX ÷ khấu hao'], ['CFO/EBITDA', {m: 'cfo'}, {m: 'ebitda'}, 1, 'lần', 'CFO ÷ EBITDA'], ['DSO', {m: 'receivables', avg: true}, {m: 'revenue'}, 365, 'ngày', 'phải thu KH bình quân ÷ doanh thu × 365']];
+    const mode = S.mode === 'q' ? 'ttm' : S.mode, defs = [['ROE', {m: 'npat'}, {m: 'equity', avg: true}, 100, '%', 'LNST ÷ VCSH bình quân'], ['ROA', {m: 'npat'}, {m: 'total_assets', avg: true}, 100, '%', 'LNST ÷ tổng tài sản bình quân'], ['Biên gộp', {m: 'gross'}, {m: 'revenue'}, 100, '%', 'LN gộp ÷ doanh thu'], ['Biên EBITDA', {m: 'ebitda'}, {m: 'revenue'}, 100, '%', 'EBITDA ÷ doanh thu'], ['Biên EBIT', {m: 'ebit'}, {m: 'revenue'}, 100, '%', 'EBIT ÷ doanh thu'], ['Biên LNST', {m: 'npat'}, {m: 'revenue'}, 100, '%', 'LNST ÷ doanh thu'], ['Nợ vay ròng/EBITDA', {m: 'net_debt'}, {m: 'ebitda'}, 1, 'lần', 'nợ vay ròng cuối kỳ ÷ EBITDA'], ['CAPEX/khấu hao', {m: 'capex'}, {m: 'da'}, 1, 'lần', 'CAPEX ÷ khấu hao'], ['CFO/EBITDA', {m: 'cfo'}, {m: 'ebitda'}, 1, 'lần', 'CFO ÷ EBITDA'], ['Lợi nhuận khác/LNTT', {m: 'other'}, {m: 'pbt'}, 100, '%', 'lợi nhuận khác (gồm lãi thanh lý tàu) ÷ LNTT'], ['EBITDA/nguyên giá TSCĐ', {m: 'ebitda'}, {m: 'ppe_gross', avg: true}, 100, '%', 'EBITDA ÷ nguyên giá TSCĐ hữu hình bình quân']];
     [['all', 'Nhóm đang chọn', x], ...D.groups.filter(g => S.groups.includes(g.id)).map(g => [g.id, g.label, scopeOf(g.id)])].forEach(([, name, ts]) => defs.forEach(([n, a, b, sc, u, f]) => { const r = E.ratio(a, b, ts, mode, sc); r.labels.forEach((p, i) => { if (r.values[i] != null) rows.push([name, p, mode, n, Math.round(r.values[i] * 1000) / 1000, u, r.cov[i], r.dist[i].med, r.dist[i].p25, r.dist[i].p75, f]); }); }));
     return download(`van-tai-bien-tai-chinh-he-so-${mode}-${stamp}.csv`, rows); }
   const rows = [['ticker', 'subsector', 'in_default_universe', 'note', 'consolidated_into', 'since']];
@@ -402,8 +433,12 @@ function methods() {
     <ul class="pp-ul"><li>Tổng tuyệt đối = tổng các doanh nghiệp có số ở kỳ đó; doanh nghiệp thiếu số không được cộng, độ phủ ghi dưới mỗi chart.</li>
     <li>Hệ số = tổng tử số ÷ tổng mẫu số trên cùng tập doanh nghiệp có đủ cả hai; không lấy trung bình các hệ số.</li>
     <li>TTM = tổng 4 quý liền, đủ cả 4 quý. Năm: KQKD = tổng 4 quý, LCTT = số báo cáo năm (LCTT quý trên VNDirect trước 2024 không khớp số năm thì để trống). Số dư: cuối kỳ; bình quân = (cuối kỳ + cùng kỳ năm trước)/2.</li>
-    <li>EBITDA = LN gộp − chi phí bán hàng − chi phí QLDN + khấu hao; FCF = CFO − tiền chi mua sắm TSCĐ; vốn đầu tư = VCSH + nợ vay − tiền − đầu tư ngắn hạn.</li>
-    <li>Loại trùng công ty mẹ – con khi cả hai cùng trong rổ: PVT hợp nhất PVP (tỷ lệ sở hữu chưa đối chiếu báo cáo thường niên).</li><li>PVT và HAH có mảng ngoài vận tải biển (FSO/FPSO, cảng); số theo nhóm chỉ mang tính tham khảo. Lãi/lỗ bán tàu nằm trong lợi nhuận khác.</li></ul>
+    <li>Kỳ có dưới 80% số mã trong rổ đủ số thì để trống: LCTT quý trên VNDirect trước 2024 thiếu ở nhiều mã (PVT gần như không có), nên chuỗi TTM có EBITDA, CFO, CAPEX bắt đầu từ Q4/2024; chế độ Năm dùng báo cáo năm nên dài hơn.</li>
+    <li>EBIT = LN gộp − chi phí bán hàng − chi phí QLDN, chưa gồm lãi thanh lý tàu (nằm ở lợi nhuận khác) và thu nhập tài chính; EBITDA = EBIT + khấu hao; FCF = CFO − tiền chi mua sắm TSCĐ; mua ròng = CAPEX − tiền thu thanh lý TSCĐ.</li>
+    <li>ROCE = (LNTT + lãi vay) × (1 − thuế suất hiệu dụng, 0–30%) ÷ (VCSH + nợ vay) bình quân, không trừ tiền. Trung vị các mã vẽ cạnh số cộng gộp vì PVT và HAH chiếm phần lớn lợi nhuận rổ.</li>
+    <li>Mức đã khấu hao = hao mòn lũy kế ÷ nguyên giá TSCĐ hữu hình; nợ vay ÷ TSCĐ ròng dùng giá trị sổ sách, không phải giá tàu thị trường. TSCĐ hữu hình gồm cả cảng, kho, FSO, BCTC tóm tắt không tách riêng tàu.</li>
+    <li>Chỉ số cước Baltic (BDTI, BCTI, BDI) là cước giao ngay quốc tế; phần lớn đội tàu trong rổ cho thuê định hạn nên biên đi chậm hơn chỉ số.</li>
+    <li>Loại trùng công ty mẹ – con khi cả hai cùng trong rổ: PVT hợp nhất PVP (tỷ lệ sở hữu chưa đối chiếu báo cáo thường niên).</li><li>PVT và HAH có mảng ngoài vận tải biển (FSO/FPSO, cảng); số theo nhóm chỉ mang tính tham khảo. Doanh thu PVT, GSP, VOS gồm mảng thương mại biên mỏng (BCTC quý không tách) nên không dùng tổng doanh thu làm thước đo vận tải.</li></ul>
     <div class="pf-ctl"><span class="pf-lb">Tải CSV</span>${[['raw', 'Số liệu từng doanh nghiệp'], ['group', 'Tổng theo nhóm (chu kỳ đang chọn)'], ['ratio', 'Hệ số theo nhóm'], ['universe', 'Danh mục doanh nghiệp & phương pháp']].map(([k, t]) => `<button type="button" class="pf-dl" data-x="${k}">${t}</button>`).join('')}</div>`;
   d.querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => exportCsv(b.dataset.x)));
   const src = el('div', 'pw-src', `Nguồn: ${SRC}`); d.append(src);
