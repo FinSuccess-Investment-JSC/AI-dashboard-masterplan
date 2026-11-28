@@ -1,7 +1,7 @@
-/* Thép · khung 5 tab chuẩn (người dùng chốt 27/11/2026: "chuyển toàn bộ" + khôi phục tab Chính sách theo văn bản).
-   Tab lớn: Tổng quan ngành (00 Bản đồ ngành · 01 Chuỗi giá trị · 02 Doanh nghiệp niêm yết)
-          · Bức tranh ngành (01 Nguyên liệu · 02 Thép xây dựng · 03 HRC & tôn mạ · 04 Xuất nhập khẩu · 05 Biên & spread)
-          · Chính sách (mỗi sub-tab một biện pháp/văn bản; tóm tắt, tách dòng, nhãn luật do app/sector-legal.js + app/legal-config.js)
+/* Thép · khung 4 tab (28/11/2026, người dùng yêu cầu: bỏ tab Chính sách, bỏ Chuỗi giá trị và Doanh nghiệp niêm yết ở Tổng quan,
+   Bức tranh ngành chia sub-tab theo loại sản phẩm với luồng Đầu vào → Sản xuất → Đầu ra như trang Điện).
+   Tab lớn: Tổng quan ngành (Bản đồ ngành)
+          · Bức tranh ngành (01 Toàn ngành · 02 Thép xây dựng · 03 HRC · 04 Tôn mạ & ống — buildPicture(), cây PICT)
           · Tài chính ngành (#mt14: 01 Tổng quan ngành = app/steel-finance.js · 02 So sánh doanh nghiệp · 03 Định giá = app/peer-valuation.js) · Chủ đề nóng.
    Engine chép từ Cang-bien/app/port-frame.js ← Dau-khi/app/oil-frame.js. Thẻ cũ được DỜI theo data-block-id, không nhân bản, không xóa.
    Thay khung cũ (steel-frame 27/11 sáng: bỏ mt4, mt14 hai sub-tab qua pane-subtabs). Deep-link: Thep/?sub=<khóa>#mt2 ; link cũ #mt3 → #mt2, #mt6 → #mt14. */
@@ -17,31 +17,56 @@ const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
 const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành thép', intro: 'Chuỗi giá trị → mô hình kinh doanh từng mã.', subs: [
     {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Quặng, than, thép phế → luyện → thép xây dựng, HRC, tôn mạ → xây dựng, xuất khẩu; mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap'], ids: ['th-05', 'th-01']},
-    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Doanh nghiệp kiếm tiền ở khâu nào.', sel: ['.business-models'], ids: [], rest: true},
-    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh 8 mã theo ba nhóm.', ids: ['th-04']},
-  ]},
-  mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Nguyên liệu → thép xây dựng → HRC & tôn mạ → xuất nhập khẩu → biên.', subs: [
-    {k: 'input', n: '01', t: 'Nguyên liệu', d: 'Quặng, than cốc, thép phế; sản lượng thép thô Trung Quốc.', ids: ['th-10', 'th-11'], kpis: true},
-    {k: 'rebar', n: '02', t: 'Thép xây dựng', d: 'Giá CB300, sản lượng thép cán và thép xây dựng.', ids: ['th-20', 'th-13']},
-    {k: 'flat', n: '03', t: 'HRC & tôn mạ', d: 'Giá HRC, thép mạ, tôn; sản lượng bán hàng Hòa Phát.', ids: ['th-21', 'th-15']},
-    {k: 'trade', n: '04', t: 'Xuất nhập khẩu', d: 'Xuất nhập khẩu sắt thép; Mỹ nhập tôn mạ từ Việt Nam.', ids: ['th-30', 'th-32']},
-    {k: 'margin', n: '05', t: 'Biên & spread', d: 'Spread lò cao, biên gộp HPG, chênh tôn lạnh − HRC.', ids: ['th-40', 'th-41', 'th-42'], rest: true},
-  ]},
-  // 27/11/2026: Chính sách theo văn bản; nội dung = thẻ th-50, th-51, th-52 khôi phục từ bản trước commit f0569110, dòng được app/sector-legal.js tách sang đúng sub-tab.
-  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Mỗi sub-tab là một biện pháp hoặc văn bản: tóm tắt, mức thuế, mã chịu tác động.', subs: [
-    {k: 'hrc', n: '01', t: 'CBPG HRC Trung Quốc', d: 'QĐ 1959/QĐ-BCT, chống lẩn tránh 612/QĐ-BCT, rà soát lần 1.', ids: []},
-    {k: 'coat', n: '02', t: 'CBPG tôn mạ', d: 'QĐ 2310/QĐ-BCT với tôn mạ Trung Quốc, Hàn Quốc.', ids: []},
-    {k: 'newcase', n: '03', t: 'Điều tra CBPG mới', d: 'Thanh thép dự ứng lực (AD24), inox cán nguội (AD25).', ids: []},
-    {k: 'us232', n: '04', t: 'Mỹ Mục 232', d: 'Thuế thép nhập vào Mỹ.', ids: []},
-    {k: 'usad', n: '05', t: 'Mỹ AD/CVD thép Việt Nam', d: 'Tôn mạ, thép thanh, điều tra lẩn tránh.', ids: []},
-    {k: 'eu', n: '06', t: 'EU: hạn ngạch, CBPG, CBAM', d: 'Hạn ngạch thép, CBPG cán nguội, CBAM.', ids: []},
-    {k: 'other', n: '07', t: 'Canada, Australia, Mexico', d: 'Hạn ngạch thuế quan Canada, các vụ khác.', ids: []},
-    {k: 'strat', n: '08', t: 'Chiến lược ngành thép', d: 'QĐ 261/QĐ-TTg: mục tiêu 2030.', ids: ['th-50']},
-    {k: 'docs', n: '09', t: 'Mới duyệt gần đây', d: 'Mốc mới và lịch phòng vệ thương mại sắp tới.', ids: ['th-52', 'th-51'], rest: true},
+    // 28/11/2026 (người dùng yêu cầu): bỏ sub-tab Chuỗi giá trị (.business-models) và Doanh nghiệp niêm yết (th-04) khỏi Tổng quan.
+    // Hai khối nằm lại trong fold ẩn .of-rest (không xóa khỏi DOM); bảng so sánh doanh nghiệp vẫn ở Tài chính ngành › 02.
   ]},
 };
-const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
-const ALIAS = {mt3: 'mt2', mt6: 'mt14'};
+/* Bức tranh ngành theo khung trang Điện (28/11/2026, người dùng yêu cầu): sub-tab theo loại sản phẩm như Điện chia theo loại nguồn
+   (01 Toàn ngành · 02 Thép xây dựng · 03 HRC · 04 Tôn mạ & ống); mỗi sub-tab có ô số, thanh luồng Đầu vào → Sản xuất → Đầu ra,
+   tiêu đề khâu (.pp-stage) và câu hỏi đánh số (.pp-panel). Thẻ được DỜI, không nhân bản; thẻ nằm ở sub-tab khác thì đặt thẻ dẫn (link).
+   Bỏ sub-tab Nguyên liệu / Xuất nhập khẩu / Biên & spread cũ: nội dung chia vào các khâu. Deep-link ?sub=<all|rebar|hrc|coat>#mt2. */
+const LINK = (href, k, t, s) => ({link: [href, k, t, s]});
+const PICT = [
+  {k: 'all', t: 'Toàn ngành', kpis: ['spk-ore', 'spk-pe'], flow: [['in', 'Đầu vào', 'Quặng sắt, than cốc, thép phế'], ['prod', 'Sản xuất', 'Thép thô khu vực, sản lượng theo sản phẩm'], ['out', 'Đầu ra', 'Xuất nhập khẩu sắt thép']], items: [
+    {stage: 'in'},
+    {q: 'Giá quặng sắt, than cốc, thép phế đang đi hướng nào?', id: 'th-q-input', take: ['th-10']},
+    {stage: 'prod'},
+    {q: 'Trung Quốc đang sản xuất nhiều hơn hay ít hơn?', id: 'th-q-crude', take: ['th-11']},
+    {q: 'Hòa Phát bán bao nhiêu theo từng sản phẩm?', id: 'th-q-hpgvol', take: ['th-15']},
+    {stage: 'out'},
+    {q: 'Xuất khẩu và nhập khẩu sắt thép theo tháng', id: 'th-q-trade', take: ['th-30']},
+    {q: 'Chỉ báo nào đang tăng, chỉ báo nào giảm so với cùng kỳ?', id: 'th-q-heat', take: ['.fsv-heat']},
+  ]},
+  {k: 'rebar', t: 'Thép xây dựng', kpis: ['spk-rebar', 'spk-bar'], flow: [['in', 'Đầu vào', 'Quặng, than cốc (lò cao) · thép phế (lò điện)'], ['prod', 'Sản xuất', 'Sản lượng thép cán, thép thanh và thép góc'], ['out', 'Đầu ra', 'Giá bán thép CB300']], items: [
+    {stage: 'in'},
+    LINK('#th-q-input', 'Toàn ngành › 1.1', 'Giá quặng sắt, than cốc, thép phế', 'Chi phí nguyên liệu chung của lò cao và lò điện'),
+    {stage: 'prod'},
+    {q: 'Sản lượng thép cán và thép xây dựng theo tháng', id: 'th-q-rebar-out', take: ['th-13']},
+    {stage: 'out'},
+    {q: 'Giá thép xây dựng CB300 đang tăng hay giảm?', id: 'th-q-rebar-px', take: ['th-20']},
+  ]},
+  {k: 'hrc', t: 'HRC (thép cán nóng)', kpis: ['spk-hrc'], flow: [['in', 'Đầu vào', 'Chi phí quặng + than cốc'], ['prod', 'Sản xuất', 'Sản lượng HRC Hòa Phát'], ['out', 'Đầu ra', 'Spread lò cao và biên gộp HPG']], items: [
+    {stage: 'in'},
+    {q: 'Chi phí quặng + than cốc so với giá HRC: spread lò cao còn bao nhiêu?', id: 'th-q-bf', take: ['th-40']},
+    {stage: 'prod'},
+    LINK('#th-q-hpgvol', 'Toàn ngành › 1.3', 'Sản lượng bán HRC của Hòa Phát', 'Dòng HRC trong chart sản lượng theo sản phẩm'),
+    {stage: 'out'},
+    {q: 'Spread lò cao theo quý có đi cùng biên gộp HPG?', id: 'th-q-hrc-gm', take: ['th-41']},
+  ]},
+  {k: 'coat', t: 'Tôn mạ & ống', kpis: ['spk-ton'], flow: [['in', 'Đầu vào', 'Giá HRC (nguyên liệu cán nguội, mạ)'], ['prod', 'Sản xuất', 'Sản lượng tôn mạ, ống thép'], ['out', 'Đầu ra', 'Chênh tôn lạnh − HRC, xuất khẩu sang Mỹ']], items: [
+    {stage: 'in'},
+    {q: 'Giá HRC, thép mạ và tôn lạnh đang đi hướng nào?', id: 'th-q-flat', take: ['th-21']},
+    {stage: 'prod'},
+    LINK('#th-q-hpgvol', 'Toàn ngành › 1.3', 'Sản lượng tôn mạ, ống thép của Hòa Phát', 'Dòng Tôn mạ, Ống thép trong chart sản lượng theo sản phẩm'),
+    {stage: 'out'},
+    {q: 'Chênh lệch tôn lạnh − HRC đang nới hay hẹp lại?', id: 'th-q-coat-sp', take: ['th-42']},
+    {q: 'Mỹ nhập tôn mạ từ Việt Nam bao nhiêu?', id: 'th-q-us', take: ['th-32']},
+  ]},
+];
+const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
+// 28/11/2026: bỏ tab Chính sách (người dùng yêu cầu); link cũ #mt4 về Tổng quan. Thẻ th-50, th-51, th-52 nằm lại trong pane ẩn.
+const ALIAS = {mt3: 'mt2', mt6: 'mt14', mt4: 'mt1'};
+const SUBALIAS = {input: 'all', trade: 'all', flat: 'coat', margin: 'hrc'};
 
 function style() {
   const st = el('style'); st.id = 'port-frame-style';
@@ -198,6 +223,7 @@ function buildTab(key) {
     if (!box.querySelector('[data-block-id],canvas,svg,table,.card')) d.remove();
   }
   pane.replaceChildren(sec);
+  if (def.subs.length < 2) nav.classList.add('th-single');  // một sub-tab thì không cần thanh sub-tab
   // Thẻ lẻ đứng một mình trước khối rộng (hoặc cuối) thì trải hết hàng, tránh nửa trang trống.
   subs.forEach(({body}) => { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
     [...body.children].forEach(n => { const wide = n.matches('.of-wide,.of-gap,details,.kpis,.research-grid,table,.tablewrap') || getComputedStyle(n).gridColumnEnd === '-1'; if (wide) flush(); else run.push(n); }); flush(); });
@@ -205,10 +231,81 @@ function buildTab(key) {
   [100, 600, 1500].forEach(t => setTimeout(() => { window.dispatchEvent(new Event('resize')); $$('.of-body canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
 }
 const TABS = {};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const PP_CSS = `/* pp-* chép từ Ca-tra/app/seafood-frame.css ← Dien/app/power-picture.js */
+.pp-nav{position:sticky;top:var(--of-top,76px);z-index:6;display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;margin:6px 0 14px;padding:6px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);box-shadow:0 2px 10px rgba(29,38,120,.06)}
+.pp-nav .pp-tab{flex:0 0 auto;white-space:nowrap;border:0;border-radius:8px;padding:7px 12px;background:transparent;color:var(--ink2,#3b4256);font:600 13px/1.2 Inter,system-ui,sans-serif;cursor:pointer}
+.pp-nav .pp-tab span{font-variant-numeric:tabular-nums;color:var(--muted,#7a8399);margin-right:6px;font-weight:500}
+.pp-nav .pp-tab[aria-selected=true]{background:#2938A8;color:#fff}.pp-nav .pp-tab[aria-selected=true] span{color:#cfd5f5}
+.pp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:2px 0 12px;flex-wrap:wrap}
+.pp-head h2{margin:0;font-size:19px}.pp-k{font:600 12px Inter,sans-serif;color:var(--muted,#7a8399);letter-spacing:.04em;margin-right:6px}
+.pp-pane>.pp-kpis{margin-bottom:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.pp-panel{margin:0 0 22px;padding:14px 14px 10px;border:1px solid var(--line,#e3e7f0);border-radius:14px;background:color-mix(in srgb,var(--card,#fff) 92%,#2938A8 3%);scroll-margin-top:140px}
+.pp-ph{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}.pp-num{flex:0 0 auto;font:700 12px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:3px 7px;margin-top:2px}
+.pp-ph h3{margin:0 0 4px;font-size:15.5px;line-height:1.35}
+.pp-flow{display:flex;align-items:stretch;gap:6px;margin:0 0 16px;flex-wrap:wrap}.pp-flow-s{flex:1 1 170px;display:flex;flex-direction:column;gap:3px;padding:10px 14px;border:1px solid var(--line,#d6dbe8);border-radius:12px;background:var(--card,#fff);color:var(--ink,#1d2333);text-decoration:none}
+.pp-flow-s small{font:700 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}.pp-flow-s b{font-size:14px;line-height:1.3}.pp-flow-s:hover,.pp-flow-s:focus-visible{border-color:#2938A8}
+.pp-flow-ar{align-self:center;color:#2938A8;font-weight:700}
+.pp-stage{display:flex;align-items:center;gap:10px;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid #1D2678;scroll-margin-top:140px}.pp-stage span{font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D2678;border-radius:6px;padding:3px 9px}.pp-stage h3{margin:0;font-size:16px}
+:root[data-theme=dark] .pp-panel{background:color-mix(in srgb,var(--card,#141a33) 94%,#6171C5 6%)}
+:root[data-theme=dark] .pp-stage{border-color:#8997D6}:root[data-theme=dark] .pp-stage span{background:#2938A8}
+.th-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}.th-grid>*{min-width:0;margin:0!important}
+.th-grid>:only-child,.th-grid>.of-wide,.th-grid>.fsv-heat{grid-column:1/-1}
+.th-link{display:block;margin:0 0 22px;border:1px dashed var(--line,#c9d0e6);border-radius:12px;padding:10px 14px;background:var(--card,#fff);color:inherit;text-decoration:none}
+.th-link:hover,.th-link:focus-visible{border-color:#2938A8}.th-link small{display:block;font:600 11px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.05em}
+.th-link b{display:block;font-size:14px;margin:3px 0;color:#2938A8}.th-link span{font-size:12.5px;color:var(--ink2,#3b4256)}
+.of-nav.th-single{display:none}
+@media (max-width:900px){.th-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}.pp-panel{padding:12px 10px}.pp-pane>.pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}`;
+
+function buildPicture() {
+  const pane = $('.majorpane[data-tab="mt2"]'); if (!pane) return;
+  const st = el('style'); st.id = 'steel-picture-style'; st.textContent = PP_CSS; document.head.append(st);
+  const legacy = [...pane.children], used = new Set();
+  const kpiTile = sp => document.getElementById(sp)?.closest('.kpi');
+  const take = sel => { const n = /^th-/.test(sel) ? block(sel) : $(sel);
+    if (!n || used.has(n) || [...used].some(u => u.contains(n))) return null; used.add(n); n.hidden = false; wideIfTable(n); return n; };
+  const sec = el('section', 'section of-section');
+  sec.append(el('header', 'pp-head', '<div><h2>Bức tranh ngành</h2></div>'));
+  const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Bức tranh ngành'); sec.append(nav);
+  const subs = PICT.map((s, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    const b = el('button', 'tabbtn pp-tab', `<span>${num}</span>${esc(s.t)}`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt2-${s.k}-tab`;
+    const p = el('div', 'pp-pane of-pane'); p.id = `of-mt2-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
+    p.append(el('header', 'pp-head', `<div><span class="pp-k">${num}</span><h2 style="display:inline">${esc(s.t)}</h2></div>`));
+    const g = el('section', 'grid kpis pp-kpis'); (s.kpis || []).forEach(sp => { const t = kpiTile(sp); if (t) g.append(t); }); if (g.children.length) p.append(g);
+    const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + s.t.toLowerCase());
+    bar.innerHTML = s.flow.map(([id, k, t], j) => `${j ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#th-st-${s.k}-${id}" class="pp-flow-s"><small>${k}</small><b>${esc(t)}</b></a>`).join('');
+    p.append(bar);
+    let qn = 0;
+    s.items.forEach(it => {
+      if (it.stage) { const f = s.flow.find(x => x[0] === it.stage); const h = el('div', 'pp-stage', `<span>${f[1]}</span><h3>${esc(f[2])}</h3>`); h.id = `th-st-${s.k}-${f[0]}`; p.append(h); return; }
+      if (it.link) { const [href, k, t, sub] = it.link; const a = el('a', 'th-link', `<small>Xem chart ở ${esc(k)}</small><b>${esc(t)} →</b><span>${esc(sub)}</span>`); a.href = href; p.append(a); return; }
+      const grid = el('div', 'pp-main th-grid'); (it.take || []).forEach(sel => { const n = take(sel); if (n) grid.append(n); });
+      if (!grid.children.length) return;
+      const panel = el('section', 'pp-panel pp-q'); panel.id = it.id; qn++;
+      panel.innerHTML = `<header class="pp-ph"><span class="pp-num">${i + 1}.${qn}</span><div><h3>${esc(it.q)}</h3></div></header>`;
+      panel.append(grid); p.append(panel);
+    });
+    const nx = PICT[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${esc(nx.t)} →`); go.type = 'button'; go.addEventListener('click', () => { open('mt2', nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
+    nav.append(b); sec.append(p);
+    b.addEventListener('click', () => open('mt2', s.k, true));
+    b.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; e.preventDefault(); const j = (i + d + PICT.length) % PICT.length; nav.children[j].click(); nav.children[j].focus(); });
+    return {s, b, p};
+  });
+  // Khối còn lại của bố cục cũ (ô số không dùng, thẻ chưa dời): giữ trong DOM, ẩn (Tài chính ngành còn lấy thẻ từ đây).
+  const rest = legacy.filter(n => !sec.contains(n) && (n.matches?.('[data-block-id]') || n.querySelector?.('[data-block-id],canvas,table,svg')));
+  if (rest.length) { const d = el('details', 'research-fold of-rest'); const box = el('div', 'research-detail'); rest.forEach(n => box.append(n)); d.append(el('summary', '', 'Nội dung khác của tab cũ'), box); sec.append(d); }
+  pane.replaceChildren(sec);
+  TABS.mt2 = subs;
+  [100, 600, 1500].forEach(t => setTimeout(() => { $$('.pp-pane canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
+}
+
 function open(key, sub, push) {
   const subs = TABS[key]; if (!subs) return;
+  if (key === 'mt2') sub = SUBALIAS[sub] || sub;
   const hit = subs.find(x => x.s.k === sub) || subs[0];
-  subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
+  subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.classList.toggle('active', on); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
   if (push) { const u = new URL(location.href); u.searchParams.set('sub', hit.s.k); u.hash = key; history.replaceState(null, '', u.pathname + u.search + u.hash); }
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
@@ -295,7 +392,8 @@ function run() {
   stickySub();
   // KPI: khung lấy KPI của #mt2; trên trang này KPI có thể đang ở #mt1, đưa về đầu #mt2.
   const k = $('.majorpane .kpis'), m2 = $('.majorpane[data-tab="mt2"]'); if (k && m2) m2.prepend(k);
-  ['mt1', 'mt2', 'mt4'].forEach(buildTab);
+  buildTab('mt1');
+  buildPicture();
   const finHost = financePane();
   nav(finHost);
   window.dispatchEvent(new Event('steel:frame'));

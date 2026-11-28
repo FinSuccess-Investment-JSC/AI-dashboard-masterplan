@@ -31,7 +31,7 @@ def main():
     public_files=set(PAGES)
     for name in PAGES:
         page=ROOT/name
-        text=page.read_text()
+        text=page.read_text(encoding='utf-8')
         text=re.sub(r'data-release="[^"]*"',f'data-release="{args.version}"',text)
         def asset(match):
             attribute,url=match.groups()
@@ -44,14 +44,14 @@ def main():
             public_files.add(local.relative_to(ROOT).as_posix())  # dấu / cả trên Windows
             return f'{attribute}="{parsed.path}?v={digest(local)[:12]}"'
         text=re.sub(r'\b(src|href)="([^"]+)"',asset,text)
-        page.write_text(text)
+        page.write_text(text,encoding='utf-8',newline='\n')  # LF cả trên Windows
     manifest={
         'version':args.version,
         'routes':{'home':'./','oil':'Dau-khi/','sugar':'Sugar/','bank':'Bank/','securities':'Chung-khoan/','power':'Dien/','realestate':'Bat-dong-san/','industrial':'Bat-dong-san-KCN/','textile':'Det-may/','port':'Cang-bien/','agri':'Nong-nghiep/','seafood':'Thuy-san/','shipping':'Van-tai-bien/','aviation':'Hang-khong/','steel':'Thep/','construction':'Xay-dung/','materials':'Vat-lieu-xay-dung/','plastic':'Nhua/','insurance':'Bao-hiem/','retail':'Ban-le/','livestock':'Chan-nuoi/','dairy':'Sua/','beer':'Bia/','auto':'O-to-xe-may/','pharma':'Duoc/','fertilizer':'Phan-bon/','chloralkali':'Xut-clo/','telecom':'Vien-thong/','rubber':'Cao-su/','pangasius':'Ca-tra/','shrimp':'Tom/'},
         'files':{name:digest(ROOT/name) for name in sorted(public_files)},
         'note':'Release identifies site files; observation dates remain in each data source.'
     }
-    (ROOT/'data/site-release.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'data/site-release.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(f'Prepared {args.version}: {len(PAGES)} pages, {len(public_files)} files in release manifest')
 
 if __name__=='__main__':main()
