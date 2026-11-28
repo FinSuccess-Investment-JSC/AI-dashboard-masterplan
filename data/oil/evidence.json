@@ -423,5 +423,65 @@
   "quote": "Chúng tôi điều chỉnh tăng 13,1% giá mục tiêu cho PVT lên 28.500 đồng/cổ phiếu",
   "status": "match",
   "note": "PDF tải bằng curl + pdftotext"
+ },
+ {
+  "block": "oil-manual",
+  "claim": "PVP · Giá mục tiêu của CTCK · 29/10/2026 · ACBS",
+  "value": "giá mục tiêu 23.300 đồng/cp",
+  "url": "https://static.fireant.vn/reports/content/85318",
+  "opened_at": "2026-11-28",
+  "quote": "Giá mục tiêu (VND)            23.300",
+  "status": "match",
+  "note": "PDF text garbled (font); method not legible. Date from caller; PDF header shows Q3/2026 update."
+ },
+ {
+  "block": "oil-manual",
+  "claim": "OIL · Giá mục tiêu của CTCK · 06/08/2026 · ACBS",
+  "value": "giá mục tiêu 14.500 đồng/cp",
+  "url": "https://acbs.com.vn/acbsmedia/2026/08/OIL_Cap-nhat-nhanh-06.08.2026.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "duy trì khuyến nghị Khả Quan với giá mục tiêu đến cuối 2026 (sau khi chia cổ tức) là 14.500 đồng/cp (tiềm năng tăng giá 13%).",
+  "status": "match",
+  "note": "Method not stated in text."
+ },
+ {
+  "block": "oil-manual",
+  "claim": "OIL · Sản lượng · FY2025",
+  "value": "6,06 triệu m³ xăng dầu",
+  "url": "https://www.abs.vn/wp-content/uploads/2026/04/OIL_260428_DHCD.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Sản lượng kinh doanh xăng dầu (KDXD) đạt 6,06 triệu m3/tấn, hoàn thành 112% kế hoạch năm, tăng trưởng 8% svck",
+  "status": "match",
+  "note": "ABS AGM note 28/04/2026; unit as written 'triệu m3/tấn'."
+ },
+ {
+  "block": "oil-manual",
+  "claim": "OIL · Số cửa hàng xăng dầu · 31/12/2025",
+  "value": "950 cửa hàng",
+  "url": "https://www.abs.vn/wp-content/uploads/2026/04/OIL_260428_DHCD.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "nâng tổng số CHXD của PVOIL đến 31/12/2025 là 950 CHXD",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "oil-manual",
+  "claim": "PLX · Sản lượng · FY2025",
+  "value": "11,4 triệu m³ xăng dầu",
+  "url": "https://acbs.com.vn/acbsmedia/2026/04/PLX_Cap-nhat-Q4.2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "sản lượng tiêu thụ trong nước tăng trưởng 8% đạt gần 11,4 triệu m3.",
+  "status": "match",
+  "note": "Domestic only, 'gần'. 9T/2026 9,84 triệu m³ seen only in search snippet (Vietcap via press), not opened -> not used."
+ },
+ {
+  "block": "oil-manual",
+  "claim": "PLC · Sản lượng · FY2025 (ước)",
+  "value": "32.000 tấn",
+  "url": "https://tapchicongthuong.vn/plc-giu-da-tang-truong-san-luong--doanh-thu-vuot-ke-hoach-nam-2025-399312.htm",
+  "opened_at": "2026-11-28",
+  "quote": "dầu mỡ nhờn đạt gần 32.000 tấn",
+  "status": "match",
+  "note": "Estimate ('ước', 'gần'); unit tấn (not in allowed list). Total consolidated 436.501 tấn incl. asphalt 274.600 tấn, chemicals >130.000 tấn."
  }
 ]
