@@ -1,8 +1,9 @@
 """Universe doanh nghiệp dệt may cho tab Tài chính ngành (Det-may/). Khoản mục BCTC dùng chung với Điện
 (power_fin_items.ITEMS, mã VNDirect finfo, mẫu TT200). Dùng bởi fetch_textile_financials.py và build_textile_financials.py.
 
-7 mã đã chốt 08/10/2026, nhóm theo khâu (khung 5 tab theo Dầu khí, 26/11/2026): Sợi & xơ · May xuất khẩu · Holding.
-VGT nắm cổ phần thiểu số ở nhiều công ty dệt may nhưng không hợp nhất TCM, TNG, MSH, GIL, STK, ADS: không có cặp loại trùng."""
+9 mã (7 mã chốt 08/10/2026 + HTG, VGG thêm 27/11/2026). Nhóm (28/11/2026, người dùng duyệt sau bản rà soát): Sợi & xơ (STK, ADS) ·
+Dệt nhuộm – May (TCM, TNG, MSH, HTG, VGG) · Tập đoàn & đa ngành (VGT, GIL). GIL chuyển khỏi nhóm May vì tồn kho BĐS khu công nghiệp
+(1.138 ngày) kéo số ngày tồn kho cả nhóm từ 64 lên 89 ngày. Cặp loại trùng: VGT hợp nhất HTG."""
 from power_fin_items import ITEMS as _BASE
 
 # Khoản mục thêm cho bảng so sánh tỷ số từng mã (26/11/2026, theo bảng trong BCTN 2025 của TNG): mã VNDirect finfo TT200,
@@ -20,7 +21,7 @@ ITEMS = _BASE + [
 GROUPS = [
     {'id': 'yarn', 'label': 'Sợi & xơ', 'color': '#2a9fa3', 'default': True},
     {'id': 'garment', 'label': 'Dệt nhuộm – May', 'color': '#2938A8', 'default': True},
-    {'id': 'holding', 'label': 'Tập đoàn (Vinatex)', 'color': '#c98a00', 'default': True},
+    {'id': 'holding', 'label': 'Tập đoàn & đa ngành', 'color': '#c98a00', 'default': True},
 ]
 COMPANIES = [
     {'ticker': 'STK', 'group': 'yarn', 'note': 'Sợi Thế Kỷ: sợi filament polyester (DTY, FDY), sợi tái chế'},
@@ -28,9 +29,9 @@ COMPANIES = [
     {'ticker': 'TCM', 'group': 'garment', 'note': 'Dệt may Thành Công: sợi – dệt – nhuộm – may khép kín, khách hàng Hàn, Nhật, Mỹ'},
     {'ticker': 'TNG', 'group': 'garment', 'note': 'TNG: may gia công và FOB, khách Decathlon, Columbia, The Children\'s Place'},
     {'ticker': 'MSH', 'group': 'garment', 'note': 'May Sông Hồng: may FOB/ODM sang Mỹ'},
-    {'ticker': 'GIL', 'group': 'garment', 'mixed': True, 'note': 'Gilimex: may gia công, kinh doanh BĐS khu công nghiệp'},
-    {'ticker': 'HTG', 'group': 'garment', 'note': 'Dệt may Hòa Thọ: sợi và may FOB, khách Mỹ, EU, Nhật; công ty con của Vinatex (~62%)'},
+        {'ticker': 'HTG', 'group': 'garment', 'note': 'Dệt may Hòa Thọ: sợi và may FOB, khách Mỹ, EU, Nhật; công ty con của Vinatex (~62%)'},
     {'ticker': 'VGG', 'group': 'garment', 'note': 'May Việt Tiến: may FOB, thương hiệu nội địa (Việt Tiến, San Sciaro); công ty liên kết của Vinatex (~32%)'},
+    {'ticker': 'GIL', 'group': 'holding', 'mixed': True, 'note': 'Gilimex: hàng gia dụng dệt may (IKEA) và bất động sản khu công nghiệp; tồn kho phần lớn là dự án KCN'},
     {'ticker': 'VGT', 'group': 'holding', 'mixed': True, 'note': 'Tập đoàn Dệt may Việt Nam (Vinatex): công ty mẹ và các công ty con sợi, dệt, may'},
 ]
 TICKERS = [c['ticker'] for c in COMPANIES]

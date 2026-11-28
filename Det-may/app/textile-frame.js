@@ -345,7 +345,7 @@ function financePane() {
   let p = $('.majorpane[data-tab="mt14"]');
   if (!p) { p = el('section', 'majorpane'); p.dataset.tab = 'mt14'; p.id = 'pane-mt14'; p.hidden = true; ($('.majorpane[data-tab="mt7"]') || $('.majorpane:last-of-type')).before(p); }
   const sec = el('section', 'section of-section');
-  sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 7 doanh nghiệp dệt may niêm yết, tổng hợp theo khâu, từ BCTC hợp nhất quý.</p></div>'));
+  sec.append(el('div', 'sectionhead', `<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của ${(window.TEXTILE_FIN?.companies || []).length || 9} doanh nghiệp dệt may niêm yết, tổng hợp theo khâu, từ BCTC hợp nhất quý.</p></div>`));
   const nav = tablist(el('div', 'pp-nav'), 'Tài chính ngành'); sec.append(nav);
   const subs = FIN.map((s, i) => {
     const b = tabBtn('tabbtn pp-tab', `<span>${String(i + 1).padStart(2, '0')}</span>${esc(s.t)}`, `of-mt14-${s.k}-tab`, s.k);
