@@ -1,0 +1,110 @@
+/* Đánh giá ngành (scripts/sector_package/sector-assessment.js) · DASHBOARD_WORKFLOW §52. Nạp sau sector-frame.css. */
+html body #sectorAssessment.sa{--sa-pos:#1E8E4E;--sa-pos-bg:#E7F6EC;--sa-neu:#8A6400;--sa-neu-ic:#D9A400;--sa-neu-bg:#FFF6D9;--sa-neg:#C62828;--sa-neg-bg:#FDECEC;
+  display:grid;grid-template-columns:var(--sa-cols,1fr 2fr);gap:0;padding:0;margin:4px 0 16px;overflow:hidden}
+#sectorAssessment .sa-l{padding:20px 22px;border-right:1px solid var(--line,#dce1e9);display:flex;flex-direction:column;gap:12px;min-width:0}
+#sectorAssessment .sa-r{padding:20px 22px;min-width:0;display:flex;flex-direction:column;gap:10px}
+#sectorAssessment .sa-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:space-between}
+#sectorAssessment .sa-l .sa-h{justify-content:flex-start}
+#sectorAssessment h2,#sectorAssessment h3{margin:0;font:650 16px/1.3 Inter,system-ui,sans-serif;color:var(--navy,#1D2678);background:none;padding:0;border:0}
+#sectorAssessment h2::before,#sectorAssessment h3::before{display:none}
+#sectorAssessment .sa-tag{display:inline-block;font:700 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;padding:4px 7px;border-radius:6px;background:#EEF1FB;color:#4354B7}
+#sectorAssessment .sa-tag-ill{background:#FFF6D9;color:#8A6400}
+#sectorAssessment .sa-score{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;background:var(--sa-neu-bg)}
+#sectorAssessment .sa-score.sa-positive{background:var(--sa-pos-bg)}
+#sectorAssessment .sa-score.sa-negative{background:var(--sa-neg-bg)}
+#sectorAssessment .sa-num{display:flex;align-items:baseline;gap:2px;font-variant-numeric:tabular-nums;color:var(--navy,#1D2678)}
+#sectorAssessment .sa-num b{font:700 40px/1 Inter,system-ui,sans-serif}
+#sectorAssessment .sa-num span{font:600 18px/1 Inter,system-ui,sans-serif;color:var(--muted,#596272)}
+#sectorAssessment .sa-st{font:700 15px/1.3 Inter,system-ui,sans-serif;margin-top:4px}
+#sectorAssessment .sa-positive .sa-st{color:var(--sa-pos)}#sectorAssessment .sa-neutral .sa-st{color:var(--sa-neu)}#sectorAssessment .sa-negative .sa-st{color:var(--sa-neg)}
+#sectorAssessment .sa-meta{margin:0;font-size:13px;line-height:1.6;color:var(--muted,#596272)}
+#sectorAssessment .sa-meta b{color:var(--ink,#303540);font-weight:600}
+#sectorAssessment .sa-draft{margin:auto 0 0;font-size:12px;line-height:1.5;color:#8A6400;background:#FFF6D9;border-radius:8px;padding:6px 9px}
+/* Biểu tượng chung: bò xanh · gạch ngang vàng · gấu đỏ */
+#sectorAssessment .sa-ico{display:inline-grid;place-items:center;flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--sa-neu-bg);color:var(--sa-neu-ic)}
+#sectorAssessment .sa-ico svg{width:18px;height:18px}
+#sectorAssessment .sa-ico.sa-positive{background:var(--sa-pos-bg);color:var(--sa-pos)}
+#sectorAssessment .sa-ico.sa-negative{background:var(--sa-neg-bg);color:var(--sa-neg)}
+#sectorAssessment .sa-ico-lg{width:56px;height:56px;background:#fff}
+#sectorAssessment .sa-ico-lg svg{width:36px;height:36px}
+#sectorAssessment .sa-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#sectorAssessment .sa-seg{display:inline-flex;background:#F1F3F9;border-radius:8px;padding:2px}
+#sectorAssessment .sa-seg button,#sectorAssessment .sa-edit-btn{border:0;background:transparent;font:500 13px/1 Inter,system-ui,sans-serif;color:var(--muted,#596272);padding:7px 11px;border-radius:6px;cursor:pointer;min-height:30px}
+#sectorAssessment .sa-seg button[aria-pressed=true]{background:#fff;color:var(--navy,#1D2678);font-weight:650;box-shadow:0 1px 2px rgba(16,24,64,.08)}
+#sectorAssessment .sa-edit-btn{border:1px solid var(--line,#dce1e9);color:var(--navy,#1D2678);font-weight:600}
+#sectorAssessment .sa-edit-btn:hover{background:#F0F4FF}
+#sectorAssessment .sa-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+#sectorAssessment .sa-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid #EEF0F6}
+#sectorAssessment .sa-item:first-child{border-top:0;padding-top:4px}
+#sectorAssessment .sa-body{min-width:0;flex:1}
+#sectorAssessment .sa-ttl{font:650 14.5px/1.4 Inter,system-ui,sans-serif;color:var(--ink,#303540)}
+#sectorAssessment .sa-n{display:none}
+#sectorAssessment .sa-txt{margin:3px 0 0;font-size:13.5px;line-height:1.55;color:var(--ink,#303540)}
+#sectorAssessment .sa-ev{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:3px;font-size:12.5px;line-height:1.5;color:var(--muted,#596272)}
+#sectorAssessment .sa-k{display:inline-block;min-width:92px;font-weight:650;color:var(--ink,#303540);margin-right:6px}
+#sectorAssessment .sa-ev a{color:var(--blue,#2938A8)}
+#sectorAssessment .sa-act{display:inline-block;margin-top:6px;font:600 12.5px/1.2 Inter,system-ui,sans-serif;color:var(--blue,#2938A8);text-decoration:none;border:1px solid #D9DEF4;border-radius:999px;padding:5px 10px}
+#sectorAssessment .sa-act:hover,#sectorAssessment .sa-act:focus-visible{background:#F0F4FF}
+/* View Gọn: tiêu đề + một dòng tóm tắt, ẩn dẫn chứng */
+#sectorAssessment.sa-mode-compact .sa-item{padding:9px 0}
+#sectorAssessment.sa-mode-compact .sa-txt{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;color:var(--muted,#596272);font-size:13px}
+#sectorAssessment.sa-mode-compact .sa-ev{display:none}
+#sectorAssessment.sa-mode-compact .sa-act{margin-top:4px;padding:3px 9px;font-size:12px}
+#sectorAssessment .sa-empty{margin:0;padding:14px;border:1px dashed var(--line,#dce1e9);border-radius:10px;color:var(--muted,#596272);font-size:13px}
+#sectorAssessment .sa-legend{margin:auto 0 0;display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted,#596272)}
+#sectorAssessment .sa-legend span{display:inline-flex;align-items:center;gap:5px}
+#sectorAssessment .sa-legend .sa-ico{width:18px;height:18px}#sectorAssessment .sa-legend .sa-ico svg{width:13px;height:13px}
+@media (max-width:760px){
+  html body #sectorAssessment.sa{grid-template-columns:1fr}
+  #sectorAssessment .sa-l{border-right:0;border-bottom:1px solid var(--line,#dce1e9)}
+  #sectorAssessment .sa-l,#sectorAssessment .sa-r{padding:16px}
+  #sectorAssessment .sa-k{min-width:0;display:block}
+}
+:root[data-theme=dark] #sectorAssessment.sa{--sa-pos:#5BD08A;--sa-pos-bg:#12301F;--sa-neu:#FFD45D;--sa-neu-ic:#FFD45D;--sa-neu-bg:#33290A;--sa-neg:#FF8A80;--sa-neg-bg:#3A1616}
+:root[data-theme=dark] #sectorAssessment .sa-ico-lg{background:#0A0A0A}
+:root[data-theme=dark] #sectorAssessment .sa-seg{background:#222}
+:root[data-theme=dark] #sectorAssessment .sa-seg button[aria-pressed=true]{background:#2938A8;color:#fff}
+:root[data-theme=dark] #sectorAssessment .sa-item{border-color:#2A2A2A}
+:root[data-theme=dark] #sectorAssessment .sa-num,:root[data-theme=dark] #sectorAssessment h2,:root[data-theme=dark] #sectorAssessment h3{color:#FFD45D}
+/* Khung chỉnh (dialog) */
+.sa-dlg{width:min(880px,calc(100vw - 24px));max-height:calc(100vh - 32px);padding:0;border:0;border-radius:14px;box-shadow:0 20px 60px rgba(16,24,64,.25);color:var(--ink,#303540);background:var(--card,#fff)}
+.sa-dlg::backdrop{background:rgba(16,24,64,.35)}
+.sa-ed{display:flex;flex-direction:column;max-height:calc(100vh - 32px);overflow:auto;font:400 13px/1.45 Inter,system-ui,sans-serif}
+.sa-ed header{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--card,#fff);border-bottom:1px solid var(--line,#dce1e9)}
+.sa-ed header h2{margin:0;font:650 17px/1.3 Inter,system-ui,sans-serif;color:var(--navy,#1D2678);background:none;padding:0}
+.sa-ed header h2::before{display:none}
+.sa-ed .sa-x{border:0;background:transparent;font-size:18px;cursor:pointer;color:var(--muted,#596272)}
+.sa-ed-note{margin:12px 18px 0;padding:8px 10px;border-radius:8px;background:#FFF6D9;color:#5C4300;font-size:12.5px}
+.sa-ed fieldset{border:1px solid var(--line,#dce1e9);border-radius:10px;margin:12px 18px 0;padding:10px 12px 12px}
+.sa-ed legend{font-weight:650;color:var(--navy,#1D2678);padding:0 4px}
+.sa-ed-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 10px}
+.sa-f{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sa-f>span{font-size:11.5px;font-weight:600;color:var(--muted,#596272)}
+.sa-f input,.sa-f select,.sa-f textarea{font:400 13px/1.4 Inter,system-ui,sans-serif;padding:6px 8px;border:1px solid #CBD2E0;border-radius:7px;background:var(--card,#fff);color:var(--ink,#303540);min-width:0;width:100%;box-sizing:border-box}
+.sa-f textarea{resize:vertical}
+.sa-w2{grid-column:span 2}.sa-w3{grid-column:1/-1}
+.sa-chk{flex-direction:row;align-items:center;gap:6px;align-self:end;padding-bottom:6px}
+.sa-chk input{width:auto}
+.sa-ed-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.sa-ed-item{border:1px solid #E3E8F0;border-radius:10px;padding:8px 10px 10px;background:#FBFCFF}
+.sa-ed-item.is-hidden{opacity:.6}
+.sa-ed-item.is-drag{opacity:.4}.sa-ed-item.is-over{outline:2px dashed #59C5C8}
+.sa-ed-bar{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.sa-ed-bar .sa-tag{font-size:10.5px;background:#EEF1FB;color:#4354B7;padding:3px 6px;border-radius:5px}
+.sa-grip{cursor:grab;color:var(--muted,#596272);font-size:16px}
+.sa-ed-ctl{margin-left:auto;display:flex;gap:4px}
+.sa-ed button,.sa-import{font:500 12.5px/1 Inter,system-ui,sans-serif;border:1px solid #CBD2E0;background:var(--card,#fff);color:var(--ink,#303540);border-radius:7px;padding:7px 10px;cursor:pointer;min-height:30px}
+.sa-ed button:disabled{opacity:.4;cursor:default}
+.sa-ed .sa-danger{color:#C62828;border-color:#F3C4C4}
+.sa-ed .sa-add{margin-top:10px;color:var(--navy,#1D2678);border-style:dashed}
+.sa-ed .sa-primary{background:#1D2678;border-color:#1D2678;color:#fff;font-weight:650;padding:8px 18px}
+.sa-import{display:inline-flex;align-items:center;position:relative;overflow:hidden}
+.sa-import input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.sa-ed footer{position:sticky;bottom:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:flex-end;padding:12px 18px;margin-top:14px;background:var(--card,#fff);border-top:1px solid var(--line,#dce1e9)}
+.sa-ed-status{margin-right:auto;font-size:12.5px;color:#8A6400}
+.sa-ed code{font-size:12px}
+@media (max-width:640px){.sa-ed-grid{grid-template-columns:1fr 1fr}.sa-w2{grid-column:1/-1}.sa-ed-ctl{margin-left:0}}
+:root[data-theme=dark] .sa-ed-item{background:#111;border-color:#2A2A2A}
+:root[data-theme=dark] .sa-ed-note{background:#33290A;color:#FFD45D}
+@media print{.sa-tools,.sa-act{display:none!important}}
+@media (prefers-reduced-motion:no-preference){#sectorAssessment .sa-act,#sectorAssessment .sa-seg button{transition:background .15s}}
