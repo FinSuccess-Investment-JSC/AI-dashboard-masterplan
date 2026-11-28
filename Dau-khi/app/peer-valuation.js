@@ -40,6 +40,16 @@ const PROFILES = {
     note: 'VGT là công ty mẹ nắm nhiều công ty con, liên kết: P/E, EV/EBITDA không so trực tiếp với doanh nghiệp may.',
     manual: {key: 'TEXTILE_MANUAL', title: 'Mô hình đơn hàng và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
       cols: ['fob', 'ord', 'cus', 'wk', 'cap', 'util', 'rec', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
+  PORT_FIN: {charts: ['pe_ev', 'pb_roe', 'yield', 'pe_med'], cols: ['evebitda', 'pe', 'pegap', 'pb', 'ebitdam', 'ncash', 'dy', 'assoc', 'ndebitda', 'roe'],
+    note: 'Cảng là tài sản hạ tầng dài hạn, khấu hao lớn: so EV/EBITDA và dòng tiền trả cổ tức hơn là P/E. GMD có lãi lớn từ liên doanh (Gemalink); hàng không (SCS, SGN) và logistics là mô hình khác cảng.'},
+  STEEL_FIN: {charts: ['pb_roe', 'pb_med', 'pe_ev', 'inv_gm'], cols: ['pb', 'pbgap', 'evebitda', 'pe', 'gm', 'dio', 'ndebitda', 'stcash', 'roe'],
+    note: 'Thép là ngành chu kỳ: P/E thấp ở đỉnh lợi nhuận không có nghĩa là rẻ, nên so P/B với lịch sử và EV/EBITDA. Tồn kho lớn khiến biên gộp nhạy với giá quặng, thép cuộn.'},
+  SUGAR_FIN: {charts: ['pb_roe', 'pe_ev', 'yield', 'inv_gm'], cols: ['pe', 'pegap', 'pb', 'pbgap', 'evebitda', 'gm', 'dio', 'ndebitda', 'dy', 'roe'],
+    note: 'Đường theo niên vụ: tồn kho lên đỉnh cuối vụ ép, biên gộp theo giá đường. QNS là đa ngành (sữa đậu nành chiếm phần lớn lợi nhuận), không so trực tiếp với nhà máy đường.'},
+  DAIRY_FIN: {charts: ['pe_ev', 'yield', 'gm_roe', 'pe_med'], cols: ['pe', 'pegap', 'evebitda', 'dy', 'gm', 'ebitdam', 'roe', 'ncash'],
+    note: 'Sữa là hàng tiêu dùng thiết yếu, lợi nhuận ổn định: so P/E với lịch sử và lợi suất cổ tức. Biên gộp theo giá sữa bột nguyên liệu.'},
+  BEER_FIN: {charts: ['pe_ev', 'yield', 'gm_roe', 'pe_med'], cols: ['pe', 'pegap', 'evebitda', 'dy', 'gm', 'ebitdam', 'roe', 'ncash', 'assoc'],
+    note: 'Bia: hãng toàn quốc (SAB, BHN) có thương hiệu và tiền ròng lớn; nhà máy bia vùng phần lớn gia công cho Sabeco, Habeco nên biên và cổ tức phụ thuộc hợp đồng với công ty mẹ.'},
   SHIP_FIN: {charts: ['pb_roe', 'pb_med', 'pe_ev', 'ev_ppe'], cols: ['pb', 'pbgap', 'evebitda', 'pe', 'evppe', 'dep', 'ebitdam', 'ndebitda', 'otherpbt', 'dy'],
     note: 'Vận tải biển định giá theo tài sản: P/E thấp ở đỉnh cước hoặc khi có lãi bán tàu không có nghĩa là rẻ. Chưa có P/NAV theo giá tàu thị trường.',
     manual: {key: 'SHIP_MANUAL', title: 'Đội tàu và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
@@ -49,6 +59,7 @@ const x1f = v => nf(v, 1) + 'x', p0 = v => nf(v, 0) + '%', p1 = v => nf(v, 1) + 
 const COLS = {
   pe: ['P/E', x1f, 'P/E TTM theo phiên'], pb: ['P/B', v => nf(v, 2) + 'x', 'P/B theo phiên'],
   pbgap: ['P/B so trung vị 5N', v => (v > 0 ? '+' : v < 0 ? '−' : '') + nf(Math.abs(v), 0) + '%', 'P/B hiện tại ÷ trung vị P/B 5 năm − 1'],
+  pegap: ['P/E so trung vị 5N', v => (v > 0 ? '+' : v < 0 ? '−' : '') + nf(Math.abs(v), 0) + '%', 'P/E hiện tại ÷ trung vị P/E 5 năm − 1'],
   evebitda: ['EV/EBITDA', x1f, 'EV ÷ EBITDA TTM; trống khi EBITDA không dương hoặc tiền ròng lớn hơn vốn hóa'],
   ncash: ['Tiền ròng ÷ vốn hóa', p0, '(Tiền + đầu tư ngắn hạn − nợ vay) ÷ vốn hóa; âm là nợ ròng'],
   dy: ['Cổ tức tiền ÷ giá', p1, 'Cổ tức tiền đã trả 4 quý gần nhất ÷ vốn hóa'], roe: ['ROE', p1, 'LNST TTM ÷ VCSH bình quân'], gm: ['Biên gộp', p1, 'LN gộp TTM ÷ doanh thu TTM'],
@@ -82,7 +93,7 @@ function metrics(D, E) {
     const ncash = fin(nd) && fin(mcap) && mcap > 0 ? -nd / mcap * 100 : null, pbmed = v.median5?.pb, pb0 = fin(v.pb) && v.pb > 0 ? v.pb : null, pe0 = fin(v.pe) && v.pe > 0 ? v.pe : null;
     const [dio] = lastFin(E.ratio({m: 'inventory', avg: true}, {m: 'cogs'}, [t], 'ttm', 365).values);
     const ext = {group: c.group, mcap: fin(mcap) ? mcap : null, rev, close: fin(v.close) ? v.close : null, evn, ebitda, nd, ncash, evebitda: fin(evn) && evn > 0 ? dv(evn, ebitda) : null, evneg: fin(evn) && evn <= 0, ebneg: fin(ebitda) && ebitda <= 0,
-      pex: fin(pe0) && fin(ncash) && ncash > 0 && ncash < 100 ? pe0 * (1 - ncash / 100) : null, pbmed: fin(pbmed) && pbmed > 0 ? pbmed : null, pbgap: fin(pb0) && fin(pbmed) && pbmed > 0 ? (pb0 / pbmed - 1) * 100 : null,
+      pex: fin(pe0) && fin(ncash) && ncash > 0 && ncash < 100 ? pe0 * (1 - ncash / 100) : null, pbmed: fin(pbmed) && pbmed > 0 ? pbmed : null, pemed: fin(v.median5?.pe) && v.median5.pe > 0 ? v.median5.pe : null, pegap: pe0 && fin(v.median5?.pe) && v.median5.pe > 0 ? (pe0 / v.median5.pe - 1) * 100 : null, pbgap: fin(pb0) && fin(pbmed) && pbmed > 0 ? (pb0 / pbmed - 1) * 100 : null,
       ebitdam: dv(ebitda, rev, 100), assoc: dv(X('assoc'), pbt, 100), otherpbt: dv(X('other'), pbt, 100), finpbt: dv(X('fin_income'), pbt, 100), dio: fin(dio) && dio >= 0 ? dio : null,
       invta: dv(X('inventory'), X('total_assets'), 100), advmc: dv(X('adv_customers'), mcap, 100), advrev: dv(X('adv_customers'), rev), nde: fin(nd) ? dv(nd, X('equity'), 100) : null,
       stcash: hasCash ? dv(X('st_debt'), cash) : null, ndebitda: fin(nd) ? dv(nd, ebitda) : null, doubt: fin(X('doubtful')) ? dv(Math.abs(X('doubtful')), X('receivables'), 100) : null,
@@ -203,6 +214,13 @@ function mount(host, D, opt = {}) {
       const s = M.filter(m => fin(m.pb) && fin(m.pbmed)), below = s.filter(m => m.pbgap < 0).length;
       return [`P/B so với trung vị 5 năm: ${fin(H.pbgap) ? `${hi} ${Math.abs(H.pbgap) < 5 ? 'ngang trung vị' : H.pbgap < 0 ? `thấp hơn ${nf(-H.pbgap, 0)}%` : `cao hơn ${nf(H.pbgap, 0)}%`}; ` : ''}${below}/${s.length} mã dưới trung vị`,
         bars(c, s, [['Trung vị P/B 5 năm', 'pbmed', cSoft], ['P/B hiện tại', 'pb', cMain]], 'P/B (lần)', v => nf(v, 2) + 'x', {tick: v => nf(v, 1) + 'x'})]; }},
+    pe_med: {sub: 'lần · P/E theo phiên và trung vị P/E 5 năm của chính mã đó', draw(c, H) {
+      const s = M.filter(m => fin(m.pe) && fin(m.pemed)), below = s.filter(m => m.pegap < 0).length;
+      return [`P/E so với trung vị 5 năm: ${fin(H.pegap) ? `${hi} ${Math.abs(H.pegap) < 5 ? 'ngang trung vị' : H.pegap < 0 ? `thấp hơn ${nf(-H.pegap, 0)}%` : `cao hơn ${nf(H.pegap, 0)}%`}; ` : ''}${below}/${s.length} mã dưới trung vị`,
+        bars(c, s, [['Trung vị P/E 5 năm', 'pemed', cSoft], ['P/E hiện tại', 'pe', cMain]], 'P/E (lần)', v => nf(v, 1) + 'x', {tick: v => nf(v, 0) + 'x'})]; }},
+    inv_gm: {sub: 'Trục ngang: số ngày tồn kho (hàng tồn kho bình quân ÷ giá vốn TTM × 365) · trục dọc: biên gộp TTM (%)', note: 'tồn kho lớn khi giá nguyên liệu đổi chiều thì biên gộp dao động mạnh', draw(c, H) {
+      const r = scatter(c, M, 'dio', 'gm', 'Ngày tồn kho', 'Biên gộp', v => nf(v, 0), pct, false), top = best(M, 'dio');
+      return [`Tồn kho so với biên gộp: ${fin(H.dio) ? `${hi} ${nf(H.dio, 0)} ngày tồn kho, biên gộp ${nf(H.gm, 1)}%` : ''}${top && top.t !== hi ? `; ${top.t} tồn kho dài nhất (${nf(top.dio, 0)} ngày)` : ''}`, r.ch]; }},
     pb_lev: {sub: 'Trục ngang: nợ vay ròng ÷ vốn chủ sở hữu (%), âm là tiền ròng · trục dọc: P/B (lần)', draw(c, H) {
       const r = scatter(c, M, 'nde', 'pb', 'Nợ vay ròng/VCSH', 'P/B', pct, v => nf(v, 1) + 'x', false), top = best(M, 'nde');
       return [`P/B so với đòn bẩy: ${fin(H.nde) ? `${hi} ${H.nde < 0 ? 'có tiền ròng' : `nợ vay ròng ${nf(H.nde, 0)}% vốn chủ`}, P/B ${fin(H.pb) ? nf(H.pb, 2) + 'x' : '—'}` : ''}${top && top.t !== hi ? `; ${top.t} đòn bẩy cao nhất (${nf(top.nde, 0)}%)` : ''}`, r.ch]; }},
