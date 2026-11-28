@@ -298,6 +298,9 @@ function buildPicture() {
   if (rest.length) { const d = el('details', 'research-fold of-rest'); const box = el('div', 'research-detail'); rest.forEach(n => box.append(n)); d.append(el('summary', '', 'Nội dung khác của tab cũ'), box); sec.append(d); }
   pane.replaceChildren(sec);
   TABS.mt2 = subs;
+  // Luôn chọn sẵn một sub-tab (mặc định 01 Toàn ngành); không thì bấm tab lớn từ Tổng quan sẽ hiện cả 4 sub-tab cùng lúc.
+  const want = new URL(location.href).searchParams.get('sub');
+  open('mt2', subs.some(x => x.s.k === (SUBALIAS[want] || want)) ? want : 'all');
   [100, 600, 1500].forEach(t => setTimeout(() => { $$('.pp-pane canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
 }
 
