@@ -27,8 +27,11 @@ window.PKG = {
       method: '% trên mũi tên vào trại nuôi: tỷ trọng trong chi phí nuôi một con heo (VCBS T5/2023, trại chuyên nghiệp; số lịch sử, không phải hiện tại). Số trong ô: kỳ mới nhất của chart cùng khâu. Rê chuột xem luồng của khâu, bấm khâu xem mã niêm yết; nút dưới sơ đồ mở chart của khâu.',
       render: () => '<div class="cn-vc" id="cnVcHost"></div>'},
     {id: 'chLiveModels', type: 'models', items: [
-      ['Chuỗi khép kín thức ăn – giống – thịt', 'DBC', 'Thức ăn chăn nuôi, con giống, heo thịt, thịt chế biến; có thêm mảng bất động sản', 'Giá heo hơi; giá ngô, khô đậu nhập (biên thức ăn và giá thành heo); dịch bệnh', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-sim', 'Lãi một con heo']]],
-      ['Chăn nuôi heo quy mô lớn', 'BAF', 'Heo thịt từ trang trại công nghệ cao, thức ăn chăn nuôi tự sản xuất', 'Giá heo hơi; số đầu heo xuất bán; giá ngô, khô đậu', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-co-gm', 'Biên gộp']]],
+      ['Chuỗi khép kín thức ăn – giống – heo', 'DBC', 'Thức ăn chăn nuôi, con giống, heo thịt, thịt chế biến; có thêm mảng bất động sản', 'Giá heo hơi; giá ngô, khô đậu nhập (biên thức ăn và giá thành heo); dịch bệnh', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-sim', 'Lãi một con heo']]],
+      // 28/11/2026 (người dùng sửa): BAF cùng mô hình khép kín với DBC; thêm HPA, MML cho khớp rổ Tài chính ngành.
+      ['Chuỗi khép kín thức ăn – giống – heo', 'BAF', 'Thức ăn tự sản xuất, con giống, heo thịt từ trang trại công nghệ cao', 'Giá heo hơi; số đầu heo xuất bán; giá ngô, khô đậu', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-co-gm', 'Biên gộp']]],
+      ['Chuỗi khép kín thức ăn – giống – heo', 'HPA', 'Thức ăn chăn nuôi, heo giống và heo thịt, bò, trứng gà (công ty con của HPG)', 'Giá heo hơi; giá ngô, khô đậu nhập; giá trứng, giá bò', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-input', 'Giá ngô, khô đậu']]],
+      ['Chăn nuôi – chế biến thịt', 'MML', 'Trại heo, gà; thịt mát MEATDeli và thịt chế biến (công ty con của MSN; đã bán mảng thức ăn năm 2021)', 'Giá heo hơi (đầu vào khâu chế biến, đầu ra khâu trại); giá bán lẻ thịt mát; sức mua', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-import', 'Thịt nhập khẩu']]],
       ['Chăn nuôi heo và cây ăn trái', 'HAG', 'Heo thịt, chuối, sầu riêng và cây ăn trái khác', 'Giá heo hơi; giá và sản lượng trái cây xuất khẩu; chi phí lãi vay', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-rev', 'Doanh thu, lợi nhuận']]]],
       src: [['BCTC và báo cáo thường niên doanh nghiệp', '#rf-q-compare']]},
     {id: 'chHog', type: 'hog', table: 'tbl-hog', src: ['wi'], months: 120, regions: [],
@@ -103,7 +106,7 @@ window.PKG = {
     // 28/11/2026 (người dùng yêu cầu, theo chuẩn Điện/Thép/Dược): 01 Tổng quan ngành = chỉ số cộng gộp BCTC quý (app/livestock-finance.js,
     // window.LIVESTOCK_FIN từ scripts/build_livestock_financials.py) · 02 So sánh doanh nghiệp = từng mã · 03 Định giá = app/peer-valuation.js tự thêm.
     mt14: {title: 'Tài chính ngành', subs: [
-      {k: 'sector', t: 'Tổng quan ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của DBC, BAF, HAG.', items: [
+      {k: 'sector', t: 'Tổng quan ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của DBC, BAF, HPA, MML, HAG.', items: [
         {q: 'Tài chính cộng gộp của nhóm chăn nuôi niêm yết', id: 'rf-q-indfin', meta: 'tổng tử số ÷ tổng mẫu số · chọn nhóm, chu kỳ Quý / TTM / Năm', after: () => { const h = document.createElement('div'); h.className = 'cn-fin-host rf-wide'; h.id = 'cn-fin-root'; return h; }}]},
       {k: 'dn', t: 'So sánh doanh nghiệp', d: 'Thay đổi giá heo, chi phí đi vào doanh thu, biên của từng doanh nghiệp; bảng so sánh và kế hoạch 2026.', items: [
         {q: 'Doanh thu, biên theo quý từng mã?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · %, hợp nhất quý từng mã, không cộng', take: ['cn-06', 'cn-22']},
@@ -137,11 +140,11 @@ window.CN_DRAW_CHAIN = () => {
     ['soy', 24, 140, 236, IN, 'leaf', 'Đậu tương, khô đậu', 'NK ' + line('imp_soy', 'tr. USD'), chg('imp_soy', 'nguồn đạm chính của cám')],
     ['piglet', 24, 252, 236, IN, 'box', 'Con giống', 'trại tự sản xuất hoặc mua', 'DBC tự sản xuất giống'],
     ['vet', 24, 340, 236, IN, 'pill', 'Thú y, nhân công', 'vaccine, an toàn sinh học', 'rủi ro: dịch tả heo'],
-    ['mill', 292, 96, 200, FEED, 'factory', 'Nhà máy thức ăn', line('feed', 'nghìn tấn'), (sg(yoy('feed')) ? sg(yoy('feed')) + ' · ' : '') + 'DBC, BAF tự cung'],
-    ['farm', 520, 96, 196, FARM, 'home', 'Trại doanh nghiệp', 'quy mô lớn, khép kín', 'DBC · BAF · HAG'],
+    ['mill', 292, 96, 200, FEED, 'factory', 'Nhà máy thức ăn', line('feed', 'nghìn tấn'), (sg(yoy('feed')) ? sg(yoy('feed')) + ' · ' : '') + 'DBC, BAF, HPA tự cung'],
+    ['farm', 520, 96, 196, FARM, 'home', 'Trại doanh nghiệp', 'quy mô lớn, khép kín', 'DBC · BAF · HPA · MML · HAG'],
     ['house', 520, 296, 196, FARM, 'home', 'Gia trại, hộ nhỏ', 'mua cám, mua giống', 'giá thành cao hơn'],
     ['trader', 750, 52, 204, OUT, 'truck', 'Heo hơi', hog ? `${nf(hog.value, 1)} nghìn đ/kg · ${per(hog)}` : 'giá heo hơi', chg('hog', 'bán cho thương lái, lò mổ')],
-    ['slaughter', 750, 186, 204, OUT, 'factory', 'Giết mổ, chế biến', 'thịt mát, thịt chế biến', 'DBC · MSN (MEATLife)'],
+    ['slaughter', 750, 186, 204, OUT, 'factory', 'Giết mổ, chế biến', 'thịt mát, thịt chế biến', 'DBC · MML (MEATDeli)'],
     ['import', 750, 336, 204, IMP, 'ship', 'Thịt heo nhập khẩu', 'HS 0203 · cạnh tranh giá', 'xem nước xuất xứ ở chart'],
     ['market', 982, 120, 172, OUT, 'store', 'Chợ, siêu thị', 'cửa hàng thịt', 'kênh bán lẻ'],
     ['consumer', 982, 290, 172, OUT, 'home', 'Người tiêu dùng', 'thịt heo, gia cầm', 'gia cầm là hàng thay thế'],

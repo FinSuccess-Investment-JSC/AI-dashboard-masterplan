@@ -28,7 +28,7 @@ UNIVERSE={
  'construction':[('HT1','hose','Xi măng'),('BCC','hnx','Xi măng'),('VLB','upcom','Đá, VLXD'),('KSB','hose','Đá, VLXD'),('DHA','hose','Đá, VLXD'),('PLC','hnx','Đá, VLXD'),('VGC','hose','Đá, VLXD'),('CTD','hose','Xây dựng'),('HBC','upcom','Xây dựng'),('VCG','hose','Xây dựng'),('FCN','hose','Xây dựng'),('DPG','hose','Xây dựng'),('C4G','upcom','Hạ tầng'),('LCG','hose','Hạ tầng'),('HHV','hose','Hạ tầng'),('CII','hose','Hạ tầng'),('HUT','hnx','Hạ tầng')],
 
  'retail':[('MWG','hose','Bán lẻ hiện đại'),('FRT','hose','Bán lẻ hiện đại'),('DGW','hose','Bán lẻ hiện đại'),('PET','hose','Bán lẻ hiện đại'),('PNJ','hose','Trang sức'),('QNS','upcom','Tiêu dùng nhanh'),('MSN','hose','Tiêu dùng nhanh'),('KDC','hose','Tiêu dùng nhanh')],
- 'livestock':[('DBC','hose','Thức ăn & chăn nuôi'),('BAF','hose','Chăn nuôi heo'),('HAG','hose','Chăn nuôi & trái cây')],
+ 'livestock':[('DBC','hose','Chuỗi khép kín'),('BAF','hose','Chuỗi khép kín'),('HPA','hose','Chuỗi khép kín'),('MML','upcom','Chăn nuôi – chế biến thịt'),('HAG','hose','Chăn nuôi & trái cây')],
  'dairy':[('VNM','hose','Sữa'),('MCM','hose','Sữa')],
  'beer':[('SAB','hose','Bia'),('BHN','hose','Bia'),('SMB','hose','Bia'),('HAD','hnx','Bia')],
  'auto':[('HAX','hose','Đại lý ô tô'),('SVC','hose','Đại lý ô tô'),('CTF','hose','Đại lý ô tô'),('TMT','hose','Sản xuất, lắp ráp')],

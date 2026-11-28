@@ -1,6 +1,6 @@
 /* Chăn nuôi · tab Tài chính ngành (#mt14, sub-tab 01; 28/11/2026). Chép từ Duoc/app/pharma-finance.js ← Thep/app/steel-finance.js, số từ window.LIVESTOCK_FIN
    (BCTC hợp nhất quý, VNDirect finfo; scripts/build_livestock_financials.py), tổng hợp bằng window.IndustryFin (app/industry-fin.js).
-   Nhóm theo mô hình: Chuỗi thức ăn – giống – thịt (DBC) · Chăn nuôi heo (BAF) · Chăn nuôi & cây ăn trái (HAG). Tỷ số nhóm = tổng tử số ÷ tổng mẫu số. Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
+   Nhóm theo mô hình: Chuỗi khép kín thức ăn – giống – heo (DBC, BAF, HPA) · Chăn nuôi – chế biến thịt (MML) · Chăn nuôi & cây ăn trái (HAG). Tỷ số nhóm = tổng tử số ÷ tổng mẫu số. Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
 (() => {
 'use strict';
 const D = window.LIVESTOCK_FIN;
@@ -128,7 +128,7 @@ const grid2 = (...cards) => { const g = el('div', 'grid two g2 pf-g2'); cards.fo
 /* ---------- 1.1 Chu kỳ doanh thu và lợi nhuận ---------- */
 const PNL = [['revenue', 'Doanh thu'], ['gross', 'Lợi nhuận gộp'], ['ebitda', 'EBITDA'], ['ebit', 'EBIT'], ['npat', 'LNST']];
 function s71() {
-  const s = section('1.1', 'Kết quả kinh doanh', 'Lợi nhuận đang dồn về nhóm nào: chuỗi thức ăn – giống – thịt, chăn nuôi heo hay chăn nuôi kèm cây ăn trái?');
+  const s = section('1.1', 'Kết quả kinh doanh', 'Lợi nhuận đang dồn về nhóm nào: chuỗi khép kín thức ăn – giống – heo, chăn nuôi – chế biến thịt hay chăn nuôi kèm cây ăn trái?');
   // Chart 1: quy mô theo nhóm
   const c1 = card('cn-fin-pnl', 'Doanh thu và lợi nhuận theo nhóm (tỷ đồng)', 'Cột chồng theo nhóm · đổi chỉ tiêu và cách xem'); let m1 = 'npat', v1 = 'abs';
   seg(c1, 'Chỉ tiêu', PNL, () => m1, k => { m1 = k; draw1(); }); seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -403,7 +403,7 @@ function methods() {
     <li>Hệ số = tổng tử số ÷ tổng mẫu số trên cùng tập doanh nghiệp có đủ cả hai; không lấy trung bình các hệ số.</li>
     <li>TTM = tổng 4 quý liền, đủ cả 4 quý. Năm: KQKD = tổng 4 quý, LCTT = số báo cáo năm (LCTT quý trên VNDirect trước 2024 không khớp số năm thì để trống). Số dư: cuối kỳ; bình quân = (cuối kỳ + cùng kỳ năm trước)/2.</li>
     <li>EBITDA = LN gộp − chi phí bán hàng − chi phí QLDN + khấu hao; FCF = CFO − tiền chi mua sắm TSCĐ; vốn đầu tư = VCSH + nợ vay − tiền − đầu tư ngắn hạn.</li>
-    <li>Không có quan hệ mẹ – con giữa DBC, BAF, HAG nên không loại trùng.</li><li>DBC gồm cả mảng bất động sản; HAG gồm mảng chuối, sầu riêng và cây ăn trái khác (BCTC hợp nhất, không tách mảng): số theo nhóm chỉ mang tính tham khảo.</li></ul>
+    <li>Không có quan hệ mẹ – con giữa 5 mã trong rổ nên không loại trùng (HPA là công ty con của HPG, MML của MSN; hai công ty mẹ không nằm trong rổ).</li><li>DBC gồm cả mảng bất động sản; HPA gồm cả bò, trứng gà; HAG gồm mảng chuối, sầu riêng và cây ăn trái khác (BCTC hợp nhất, không tách mảng): số theo nhóm chỉ mang tính tham khảo. HPA chỉ có BCTC từ Q1/2025 nên các kỳ trước không có trong tổng; độ phủ ghi dưới mỗi chart.</li></ul>
     <div class="pf-ctl"><span class="pf-lb">Tải CSV</span>${[['raw', 'Số liệu từng doanh nghiệp'], ['group', 'Tổng theo nhóm (chu kỳ đang chọn)'], ['ratio', 'Hệ số theo nhóm'], ['universe', 'Danh mục doanh nghiệp & phương pháp']].map(([k, t]) => `<button type="button" class="pf-dl" data-x="${k}">${t}</button>`).join('')}</div>`;
   d.querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => exportCsv(b.dataset.x)));
   const src = el('div', 'pw-src', `Nguồn: ${SRC}`); d.append(src);

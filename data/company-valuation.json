@@ -15,7 +15,7 @@
   "MFS": "không có giá đóng cửa ngày 2026-06-29",
   "STK": "không có giá đóng cửa ngày 2026-04-28"
  },
- "data_hash": "75423dcb17fe5d8d49243bc51214837298a4524cca0470cf35cc25b49925d7a4",
+ "data_hash": "5526a6db77227fdd438198602aa5b9ee14faa3d44664847531663bf8de892fc8",
  "latest_observation": "2026-11-27",
  "companies": {
   "GAS": {
@@ -2923,6 +2923,40 @@
     "to": "2026-11-26",
     "n_pe": 1048,
     "n_pb": 1239
+   }
+  },
+  "MML": {
+   "date": "2026-11-27",
+   "close": 22.8,
+   "pe": 15.92,
+   "pb": 1.41,
+   "market_cap": 7732.5,
+   "basis_date": "2026-11-27",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/MML",
+   "median5": {
+    "pe": 18.95,
+    "pb": 2.11,
+    "from": "2021-11-29",
+    "to": "2026-11-27",
+    "n_pe": 766,
+    "n_pb": 1240
+   }
+  },
+  "HPA": {
+   "date": "2026-11-27",
+   "close": 23.75,
+   "pe": 5.43,
+   "pb": 1.44,
+   "market_cap": 6768.8,
+   "basis_date": "2026-11-27",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/HPA",
+   "median5": {
+    "pe": 6.17,
+    "pb": 2.33,
+    "from": "2026-02-06",
+    "to": "2026-11-27",
+    "n_pe": 173,
+    "n_pb": 199
    }
   }
  },
@@ -35594,7 +35628,25 @@
     1.07,
     378.9
    ]
+  ],
+  "MML": [
+   [
+    "2026-11-27",
+    22.8,
+    15.92,
+    1.41,
+    7732.5
+   ]
+  ],
+  "HPA": [
+   [
+    "2026-11-27",
+    23.75,
+    5.43,
+    1.44,
+    6768.8
+   ]
   ]
  },
- "changed_at": "2026-11-27T15:35:43+07:00"
+ "changed_at": "2026-11-28T11:08:37+07:00"
 }

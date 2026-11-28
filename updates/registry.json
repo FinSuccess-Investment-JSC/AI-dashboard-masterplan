@@ -5166,7 +5166,7 @@
   {
    "id": "livestock.industry-financials",
    "tier": "C",
-   "title": "Chăn nuôi · tab Tài chính ngành: BCTC 3 doanh nghiệp niêm yết theo nhóm (chuỗi thức ăn – giống – thịt, chăn nuôi heo, chăn nuôi & cây ăn trái)",
+   "title": "Chăn nuôi · tab Tài chính ngành: BCTC 5 doanh nghiệp niêm yết theo nhóm (chuỗi khép kín thức ăn – giống – heo, chăn nuôi – chế biến thịt, chăn nuôi & cây ăn trái)",
    "schedule": {
     "type": "window",
     "every": "weekly",
@@ -5232,7 +5232,7 @@
     "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
     "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
     "Mã lỗi tải giữ bản trước, ghi vào stale",
-    "Universe và nhóm ở scripts/livestock_fin_items.py; không có cặp mẹ − con; DBC gồm mảng bất động sản, HAG gồm mảng trái cây (số hợp nhất)"
+    "Universe và nhóm ở scripts/livestock_fin_items.py; không có cặp mẹ − con trong rổ (HPA thuộc HPG, MML thuộc MSN); DBC gồm mảng bất động sản, HPA gồm bò, trứng, HAG gồm mảng trái cây (số hợp nhất); HPA có số từ Q1/2025"
    ]
   },
   {
