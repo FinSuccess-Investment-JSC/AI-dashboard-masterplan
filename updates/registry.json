@@ -10095,6 +10095,33 @@
     "Ước tính của CTCK gắn cờ estimate, ghi tên CTCK và ngày báo cáo",
     "RNAV/giá mục tiêu cũ hơn 12 tháng hoặc tính trước thay đổi số cổ phiếu thì hide"
    ]
+  },
+  {
+   "id": "shipping.manual-fleet",
+   "tier": "C",
+   "status": "manual",
+   "title": "Vận tải biển · Định giá: đội tàu, trọng tải, tuổi tàu, kế hoạch đầu tư tàu, giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Báo cáo thường niên, ĐHĐCĐ, nghị quyết mua/bán tàu, báo cáo CTCK; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Van-tai-bien/index.html",
+    "file": "data/shipping/manual.json",
+    "blocks": [
+     "ship-manual"
+    ]
+   },
+   "how": "Khi người dùng nhắn: sửa data/shipping/manual.json, chạy python scripts/build_ship_manual.py → data/ship-manual.js + data/shipping/evidence.json (block ship-manual). Xem DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Không tự cộng số tàu, trọng tải",
+    "Giá mục tiêu cũ hơn 12 tháng thì hide"
+   ]
   }
  ]
 }

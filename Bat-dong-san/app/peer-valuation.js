@@ -37,7 +37,9 @@ const PROFILES = {
   TEXTILE_FIN: {charts: ['pb_roe', 'gm_roe', 'yield', 'pe_ev'], cols: ['pe', 'evebitda', 'pb', 'pbgap', 'dy', 'roe', 'gm', 'ndebitda', 'doubt', 'assoc'],
     note: 'VGT là công ty mẹ nắm nhiều công ty con, liên kết: P/E, EV/EBITDA không so trực tiếp với doanh nghiệp may.'},
   SHIP_FIN: {charts: ['pb_roe', 'pb_med', 'pe_ev', 'ev_ppe'], cols: ['pb', 'pbgap', 'evebitda', 'pe', 'evppe', 'dep', 'ebitdam', 'ndebitda', 'otherpbt', 'dy'],
-    note: 'Vận tải biển định giá theo tài sản: P/E thấp ở đỉnh cước hoặc khi có lãi bán tàu không có nghĩa là rẻ. Chưa có P/NAV theo giá tàu thị trường.'}
+    note: 'Vận tải biển định giá theo tài sản: P/E thấp ở đỉnh cước hoặc khi có lãi bán tàu không có nghĩa là rẻ. Chưa có P/NAV theo giá tàu thị trường.',
+    manual: {key: 'SHIP_MANUAL', title: 'Đội tàu và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['n', 'dwt', 'evdwt', 'age', 'tc', 'plan', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}}
 };
 const x1f = v => nf(v, 1) + 'x', p0 = v => nf(v, 0) + '%', p1 = v => nf(v, 1) + '%';
 const COLS = {
@@ -88,7 +90,7 @@ function metrics(D, E) {
 // Cột của bảng số nhập tay (data/<ngành>-manual.js, DASHBOARD_WORKFLOW §44). x = ô số của mã {v, period, url, by, est, min}; m = chỉ số tính từ BCTC.
 // Mỗi cột: [tiêu đề, hàm (x, m, land) → html hoặc null, chú thích]. Số có nguồn hiện thành link; "~" là ước tính của CTCK, ">" là mức tối thiểu.
 const n0 = v => nf(v, 0), sgp = v => (v > 0 ? '+' : v < 0 ? '−' : '') + nf(Math.abs(v), 0) + '%';
-const lk = (txt, c, small) => `<a href="${esc(c.url)}" target="_blank" rel="noopener" title="${esc([c.by, c.period, c.method].filter(Boolean).join(' · '))}">${c.min && !/%$/.test(txt) ? '&gt;' : c.est ? '~' : ''}${txt}</a>${small ? `<small>${esc(small)}</small>` : ''}`;
+const lk = (txt, c, small) => `<a href="${esc(c.url)}" target="_blank" rel="noopener" title="${esc([c.by, c.period, c.method].filter(Boolean).join(' · '))}">${(c.min || c.q === '>') && !/%$/.test(txt) ? '&gt;' : c.est || c.q ? '~' : ''}${txt}</a>${small ? `<small>${esc(small)}</small>` : ''}`;
 const MCOLS = {
   ps: ['Bán hàng 2026 (tỷ đ)', x => x.ps ? lk(n0(x.ps.v), x.ps, x.ps.period) : null, 'Doanh số bán hàng (hợp đồng ký mới) lũy kế kỳ gần nhất của 2026'],
   psplan: ['So với kế hoạch 2026', x => x.ps && x.pspl && x.pspl.v > 0 ? lk(nf(x.ps.v / x.pspl.v * 100, 0) + '%', x.pspl, 'kế hoạch ' + (x.pspl.min ? 'từ ' : '') + n0(x.pspl.v)) : null, 'Doanh số bán hàng lũy kế 2026 ÷ kế hoạch doanh số cả năm của doanh nghiệp'],
@@ -100,6 +102,12 @@ const MCOLS = {
   rnav: ['RNAV/cp (đồng)', x => x.rnav?.rnav ? lk(n0(x.rnav.rnav), x.rnav, [x.rnav.by, x.rnav.period].filter(Boolean).join(' ')) : null, 'Giá trị tài sản ròng định giá lại trên mỗi cổ phiếu theo báo cáo CTCK'],
   prnav: ['Giá so với RNAV', (x, m) => x.rnav?.rnav && fin(m.close) ? sgp((m.close * 1000 / x.rnav.rnav - 1) * 100) : null, 'Giá đóng cửa ÷ RNAV/cp − 1; âm là chiết khấu'],
   tp: ['Giá mục tiêu (đồng)', x => x.rnav?.tp ? lk(n0(x.rnav.tp), x.rnav, [x.rnav.by, x.rnav.period].filter(Boolean).join(' ')) : null, 'Giá mục tiêu của CTCK trong báo cáo gần nhất mở được'],
+  n: ['Số tàu', x => x.n ? lk(n0(x.n.v), x.n, x.n.period) : null, 'Số tàu sở hữu (phạm vi theo nguồn: xem chú thích khi rê chuột)'],
+  dwt: ['Trọng tải (nghìn DWT)', x => x.dwt ? lk(n0(x.dwt.v) + (x.dwt.cu === 'TEU' ? ' TEU' : ''), x.dwt, x.dwt.period) : null, 'Tổng trọng tải đội tàu, nghìn DWT; tàu container ghi nghìn TEU'],
+  evdwt: ['EV ÷ trọng tải (triệu đ/DWT)', (x, m) => x.dwt && x.dwt.cu !== 'TEU' && x.dwt.v > 0 && fin(m.evn) && m.evn > 0 ? nf(m.evn / x.dwt.v, 1) : null, 'EV ÷ trọng tải đội tàu; trống khi tiền ròng lớn hơn vốn hóa hoặc đội tàu tính theo TEU. Cần so với giá tàu cùng cỡ, cùng tuổi'],
+  age: ['Tuổi tàu bình quân (năm)', x => x.age ? lk(n0(x.age.v) + (x.age.vmax ? '–' + n0(x.age.vmax) : ''), x.age, x.age.by) : null, 'Tuổi bình quân đội tàu theo doanh nghiệp hoặc CTCK'],
+  tc: ['Định hạn / pool', x => x.tc ? lk(n0(x.tc.v) + '%', x.tc, x.tc.period) : null, 'Tỷ lệ đội tàu chạy hợp đồng thuê định hạn hoặc pool, phần còn lại chạy chuyến'],
+  plan: ['Đầu tư tàu 2026', x => x.plan ? `<a href="${esc(x.plan.url)}" target="_blank" rel="noopener" title="${esc(x.plan.period || '')}">${esc(x.plan.text || '')}</a>` : null, 'Kế hoạch mua, đóng tàu năm 2026 theo tài liệu doanh nghiệp'],
   upside: ['So với giá hiện tại', (x, m) => x.rnav?.tp && fin(m.close) && m.close > 0 ? sgp((x.rnav.tp / (m.close * 1000) - 1) * 100) : null, 'Giá mục tiêu ÷ giá đóng cửa − 1']
 };
 // Hồi quy y = a + b·x trên các điểm có đủ số.
@@ -211,7 +219,7 @@ function mount(host, D, opt = {}) {
     const none = M.filter(m => !row(m)).map(m => m.t);
     mtbl.querySelector('.pv-tw').innerHTML = `<table class="pv-table"><thead><tr><th>Mã</th>${mc.map(k => `<th title="${esc(MCOLS[k][2])}">${esc(MCOLS[k][0])}</th>`).join('')}</tr></thead><tbody>${D.groups.filter(g => on.has(g.id)).map(g => { const rs = M.filter(m => m.group === g.id).map(row).join('');
       return rs ? `<tr class="pv-g"><td colspan="${mc.length + 1}"><i style="background:${esc(g.color)}"></i>${esc(g.label)}</td></tr>` + rs : ''; }).join('')}</tbody></table>
-      <p class="pv-note">~ ước tính của CTCK · &gt; mức tối thiểu · RNAV và giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.${none.length ? ` Không tìm được số có nguồn mở được: ${none.join(', ')}.` : ''}${MD.note ? ' ' + esc(MD.note) : ''}</p>${Object.entries(MD.companies).filter(([t, c]) => (c.occ || c.gfa) && M.some(m => m.t === t)).map(([t, c]) => `<p class="pv-note"><b>${esc(t)}</b>: ${[c.occ ? `tỷ lệ lấp đầy ${lk(nf(c.occ.v, 1) + '%', c.occ)} (${esc(c.occ.period)})` : '', c.gfa ? `diện tích sàn bán lẻ ${lk(nf(c.gfa.v, 1) + ' nghìn m²', c.gfa)} (${esc(c.gfa.period)})` : ''].filter(Boolean).join(' · ')}.</p>`).join('')}`; };
+      <p class="pv-note">~ ước tính của CTCK · &gt; mức tối thiểu · ${esc(P.manual.foot || 'RNAV và giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.')}${none.length ? ` Không tìm được số có nguồn mở được: ${none.join(', ')}.` : ''}${MD.note ? ' ' + esc(MD.note) : ''}</p>${Object.entries(MD.companies).filter(([t, c]) => (c.occ || c.gfa) && M.some(m => m.t === t)).map(([t, c]) => `<p class="pv-note"><b>${esc(t)}</b>: ${[c.occ ? `tỷ lệ lấp đầy ${lk(nf(c.occ.v, 1) + '%', c.occ)} (${esc(c.occ.period)})` : '', c.gfa ? `diện tích sàn bán lẻ ${lk(nf(c.gfa.v, 1) + ' nghìn m²', c.gfa)} (${esc(c.gfa.period)})` : ''].filter(Boolean).join(' · ')}.</p>`).join('')}`; };
   const charts = [];
   function draw() {
     charts.forEach(ch => ch.destroy()); charts.length = 0;
@@ -232,7 +240,7 @@ function mount(host, D, opt = {}) {
   if (!document.getElementById('pv-style')) { const st = el('style'); st.id = 'pv-style'; st.textContent = `.pv-head{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin:4px 0 12px}.pv-head label{font:600 12.5px Inter,sans-serif;color:#3B4256}.pv-head select{margin-left:6px;font:600 12.5px Inter,sans-serif;padding:4px 8px;border:1px solid #D6DBE8;border-radius:7px}.pv-note{font-size:12px;color:#6B7392}
 .pv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.pv-cv{position:relative;height:330px;margin-top:8px}.pv-card .chart-title{min-height:2.7em}@media(max-width:900px){.pv-grid{grid-template-columns:1fr}}
 .pv-groups{display:flex;flex-wrap:wrap;gap:6px}.pv-groups button{display:inline-flex;align-items:center;gap:6px;font:600 12px Inter,sans-serif;color:#3B4256;background:#fff;border:1px solid #D6DBE8;border-radius:999px;padding:4px 10px;cursor:pointer}.pv-groups button[aria-pressed="false"]{opacity:.45}.pv-groups i,.pv-g i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.pv-groups i{margin-right:0}
-.pv-tcard{margin-top:14px}.pv-tw{overflow-x:auto;margin-top:8px}.pv-table{width:100%;border-collapse:collapse;font:13px Inter,sans-serif;color:#1B2340}.pv-table th,.pv-table td{padding:7px 10px;text-align:right;white-space:nowrap;border-bottom:1px solid #EEF0F6;font-variant-numeric:tabular-nums}.pv-table th{font-weight:600;font-size:12px;color:#6B7392;white-space:normal;vertical-align:bottom;min-width:68px}.pv-table th:first-child,.pv-table td:first-child{text-align:left;font-weight:600}.pv-table tr.pv-g td{text-align:left;font-size:12px;font-weight:600;color:#3B4256;background:#F6F7FB}.pv-table tr.pv-hi td{font-weight:700;background:#EEF1FA}.pv-tw .pv-note{margin:8px 0 0;line-height:1.5}.pv-tw a{color:#2938A8;text-decoration:underline;text-decoration-color:#C5CBE6;text-underline-offset:2px}.pv-table td small{display:block;font-size:11px;font-weight:400;color:#6B7392}`; document.head.append(st); }
+.pv-tcard{margin-top:14px}.pv-tw{overflow-x:auto;margin-top:8px}.pv-table{width:100%;border-collapse:collapse;font:13px Inter,sans-serif;color:#1B2340}.pv-table th,.pv-table td{padding:7px 10px;text-align:right;white-space:nowrap;border-bottom:1px solid #EEF0F6;font-variant-numeric:tabular-nums}.pv-table th{font-weight:600;font-size:12px;color:#6B7392;white-space:normal;vertical-align:bottom;min-width:68px}.pv-table th:first-child,.pv-table td:first-child{text-align:left;font-weight:600}.pv-table tr.pv-g td{text-align:left;font-size:12px;font-weight:600;color:#3B4256;background:#F6F7FB}.pv-table tr.pv-hi td{font-weight:700;background:#EEF1FA}.pv-tw .pv-note{margin:8px 0 0;line-height:1.5}.pv-tw a{color:#2938A8;text-decoration:underline;text-decoration-color:#C5CBE6;text-underline-offset:2px}.pv-manual td{white-space:normal}.pv-table td small{display:block;font-size:11px;font-weight:400;color:#6B7392}`; document.head.append(st); }
   draw();
   return {metrics: ALL, profile: pkey || null};
 }
