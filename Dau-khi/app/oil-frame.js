@@ -7,7 +7,7 @@
           · Chủ đề nóng.
    Hai bước: (1) buildTab() dựng khung tạm cho #mt2, #mt4 như cũ để các hàm thêm chart (lngPrices, vnMonthly, opsCards…) có chỗ gắn;
    (2) buildPicture() DỜI thẻ vào câu hỏi đánh số theo PICT. Thẻ không nhân bản, không xóa: thẻ không còn chỗ vào details.of-rest ẩn.
-   Deep-link: ?sub=<crude|upstream|gas|refining|retail|flows|policy>#mt2, ?sub=policy&pol=<law|price|tax|e10|plan|docs>#mt2,
+   Deep-link: ?sub=<crude|upstream|gas|refining|retail|flows>#mt2, ?sub=<law|price|tax|e10|plan|docs>#mt4 (tab Chính sách riêng, 28/11/2026; link cũ #mt2 tự chuyển),
    ?sub=<fin|listed|valuation>#mt14. Link cũ: #mt3 → #mt2; #mt4 (?sub=law…) → Bức tranh ngành › Chính sách; #mt5/#mt6/#mt8 → #mt1;
    ?sub=listed#mt1 → Tài chính ngành › 02; ?sub=total|compare#mt14 → 01|02. */
 (() => {
@@ -48,9 +48,9 @@ const TREE = {
     {k: 'docs', n: '06', t: 'Mới duyệt gần đây', d: 'Văn bản mới thông qua, mới hiệu lực, dự thảo đang trình.', ids: []},
   ]},
 };
-// 28/11/2026 (§42): đúng 4 tab lớn; Chính sách (#mt4) thành sub-tab cuối của Bức tranh ngành.
-const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
-const ALIAS = {mt3: 'mt2', mt4: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
+// 28/11/2026 (§42) Chính sách từng là sub-tab 07 của Bức tranh ngành; cùng ngày người dùng: "dầu khí để tab chính sách riêng mà" → 5 tab lớn như §35.
+const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
+const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 const POL = ['law', 'price', 'tax', 'e10', 'plan', 'docs'];
 const POL_ALIAS = {lng: 'plan'};  // khóa cũ §35 "Quy hoạch khí & LNG"
 // Khóa sub-tab cũ → [tab lớn, sub-tab mới] (link ?sub= của khung 5 tab).
@@ -59,7 +59,8 @@ const SUB_ROUTE = {mt1: {listed: ['mt14', 'listed'], outlook: ['mt1', 'map']}, m
 function route(raw, sub, pol) {
   let key = ALIAS[raw] || raw; if (!ROUTES.some(r => r[0] === key)) key = 'mt1';
   if (POL_ALIAS[sub]) sub = POL_ALIAS[sub];
-  if (raw === 'mt4' || (key === 'mt2' && POL.includes(sub))) return {key: 'mt2', sub: 'policy', pol: POL.includes(sub) ? sub : (POL.includes(pol) ? pol : POL[0])};
+  // Link cũ ?sub=policy&pol=…#mt2 và ?sub=<văn bản>#mt2 về tab Chính sách riêng.
+  if (key === 'mt4' || (key === 'mt2' && (POL.includes(sub) || sub === 'policy'))) return {key: 'mt4', sub: POL.includes(sub) ? sub : (POL.includes(pol) ? pol : POL[0])};
   const hit = SUB_ROUTE[key]?.[sub]; if (hit) return {key: hit[0], sub: hit[1]};
   return {key, sub, pol};
 }
@@ -232,15 +233,13 @@ function buildTab(key) {
 const TABS = {};
 // key 'mt4' = thanh con của Bức tranh ngành › 07 Chính sách (TABS.mt4 trỏ vào nút .pp-subnav); khóa văn bản ở mt2 cũng về đây.
 function open(key, sub, push) {
-  if (key === 'mt2' && (POL.includes(sub) || POL_ALIAS[sub])) { open('mt2', 'policy', push); open('mt4', POL_ALIAS[sub] || sub, push); return; }
-  if (key === 'mt4') open('mt2', 'policy');
+  if (key === 'mt2' && (POL.includes(sub) || POL_ALIAS[sub])) { open('mt4', POL_ALIAS[sub] || sub, push); return; }
   if (key === 'mt14' && sub === 'valuation') { const vb = $('#of-mt14-valuation-tab'); if (vb) vb.click(); return; }  // sub-tab do peer-valuation.js tự thêm
   const subs = TABS[key]; if (!subs) return;
   const hit = subs.find(x => x.s.k === sub) || subs[0];
   subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.classList.toggle('active', on); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
   if (push) { const u = new URL(location.href);
-    if (key === 'mt4') { u.searchParams.set('sub', 'policy'); u.searchParams.set('pol', hit.s.k); u.hash = 'mt2'; }
-    else { u.searchParams.set('sub', hit.s.k); if (hit.s.k !== 'policy') u.searchParams.delete('pol'); u.hash = key; }
+    u.searchParams.set('sub', hit.s.k); u.searchParams.delete('pol'); u.hash = key;
     history.replaceState(null, '', u.pathname + u.search + u.hash); }
   setTimeout(() => { window.dispatchEvent(new Event('resize')); hit.p.querySelectorAll('canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, 30);
 }
@@ -430,7 +429,8 @@ function buildPicture() {
   const qnum = {};  // id câu hỏi → [sub-tab, "4.2"] để ghi trên thẻ dẫn
   const sec = el('section', 'section of-section dk-picture');
   const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Bức tranh ngành'); sec.append(nav);
-  const subs = PICT.map((s, i) => {
+  const PIC = PICT.filter(s => !s.policy);
+  const subs = PIC.map((s, i) => {
     const num = String(i + 1).padStart(2, '0');
     const b = el('button', 'tabbtn pp-tab', `<span>${num}</span>${s.t}`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt2-${s.k}-tab`;
     const p = el('div', 'pp-pane of-pane' + (s.policy ? ' dk-pol' : '')); p.id = `of-mt2-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
@@ -438,8 +438,7 @@ function buildPicture() {
     p.append(el('header', 'pp-head', `<div><span class="pp-k">${num}</span><h2>${s.t}</h2><p>${s.goal}</p></div><span class="pp-asof">${d ? 'Dữ liệu mới nhất: ' + d : ''}</span>`));
     nav.append(b); sec.append(p);
     b.addEventListener('click', () => open('mt2', s.k, true));
-    b.addEventListener('keydown', e => { const dd = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!dd) return; e.preventDefault(); const j = (i + dd + PICT.length) % PICT.length; nav.children[j].click(); nav.children[j].focus(); });
-    if (s.policy) { buildPolicy(p, polPane); return {s, b, p}; }
+    b.addEventListener('keydown', e => { const dd = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!dd) return; e.preventDefault(); const j = (i + dd + PIC.length) % PIC.length; nav.children[j].click(); nav.children[j].focus(); });
     const g = el('section', 'grid kpis pp-kpis'); (s.kpis || []).forEach(sp => { const t = makeKpi(sp, oldTiles); if (t && !used.has(t)) { used.add(t); g.append(t); } }); if (g.children.length) p.append(g);
     const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + s.t.toLowerCase());
     bar.innerHTML = s.flow.map(([id, k, t], j) => `${j ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#dk-st-${s.k}-${id}" class="pp-flow-s"><small>${k}</small><b>${t}</b></a>`).join('');
@@ -449,7 +448,7 @@ function buildPicture() {
     s.items.forEach(it => {
       if (it.stage) { const f = s.flow.find(x => x[0] === it.stage); const h = el('div', 'pp-stage', `<span>${f[1]}</span><h3>${f[2]}</h3>`); h.id = `dk-st-${s.k}-${f[0]}`; p.append(h); return; }
       if (it.link) { const [href, t, sub] = it.link, tgt = href.slice(1);
-        const where = qnum[tgt] ? `${qnum[tgt][0]} › ${qnum[tgt][1]}` : 'Chính sách › ' + (TREE.mt4.subs.find(x => 'of-mt4-' + x.k === tgt)?.t || '');
+        const where = qnum[tgt] ? `${qnum[tgt][0]} › ${qnum[tgt][1]}` : 'tab Chính sách › ' + (TREE.mt4.subs.find(x => 'of-mt4-' + x.k === tgt)?.t || '');
         const a = el('a', 'th-link', `<small>Xem ở ${where}</small><b>${t} →</b><span>${sub}</span>`); a.href = href; p.append(a); return; }
       let main = (it.main || []).map(pick).filter(Boolean); const sup = (it.sup || []).map(pick).filter(Boolean), more = (it.more || []).map(pick).filter(Boolean);
       if (!main.length && sup.length) main = [sup.shift()];
@@ -464,7 +463,7 @@ function buildPicture() {
       if (it.gap && gap) { gap.hidden = false; panel.append(gap); }
       p.append(panel);
     });
-    const nx = PICT[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${nx.t} →`); go.type = 'button'; go.addEventListener('click', () => { open('mt2', nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
+    const nx = PIC[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${nx.t} →`); go.type = 'button'; go.addEventListener('click', () => { open('mt2', nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
     return {s, b, p};
   });
   // Phần còn lại của khung tạm: thẻ chưa dời (đã ẩn từ trước: trùng chart khác, người dùng bỏ 26/11/2026) và ô số không dùng. Không xóa: vào of-rest ẩn.
@@ -479,6 +478,12 @@ function buildPicture() {
   pane.replaceChildren(sec);
   TABS.mt2 = subs;
   open('mt2', 'crude');
+  // Tab lớn Chính sách (#mt4): đầu trang kiểu sub-tab + thanh con văn bản (.pp-subnav).
+  const ps = PICT.find(s => s.policy);
+  if (polPane && ps) { const sp = el('section', 'section of-section dk-picture'); const p = el('div', 'pp-pane of-pane dk-pol'); p.id = 'of-mt2-policy';
+    const d = asOf(ps.asof || {});
+    p.append(el('header', 'pp-head', `<div><h2>${ps.t}</h2><p>${ps.goal}</p></div><span class="pp-asof">${d ? 'Dữ liệu mới nhất: ' + d : ''}</span>`));
+    sp.append(p); buildPolicy(p, polPane); polPane.replaceChildren(sp); }
 }
 
 // 07 Chính sách: dời 6 sub-tab văn bản của tab Chính sách cũ (#mt4, khung tạm buildTab) vào thanh con .pp-subnav.
@@ -493,7 +498,6 @@ function buildPolicy(p, polPane) {
   }).filter(Boolean);
   // Phần còn lại của tab Chính sách cũ (nếu có) cũng dời theo; pane #mt4 để trống trong DOM (link #mt4 chuyển ở route()).
   polPane?.querySelectorAll('details.of-rest').forEach(d => p.append(d));
-  polPane?.replaceChildren();
   TABS.mt4 = items; open('mt4', POL[0]);
 }
 
@@ -545,7 +549,7 @@ function nav() {
   bar.replaceChildren();
   const syncUrl = key => { const u = new URL(location.href), cur = TABS[key]?.find(x => !x.p.hidden), pv = key === 'mt14' && $('#of-mt14-valuation:not([hidden])');
     if (cur) u.searchParams.set('sub', cur.s.k); else if (pv) u.searchParams.set('sub', 'valuation'); else u.searchParams.delete('sub');
-    if (!(key === 'mt2' && cur?.s.k === 'policy')) u.searchParams.delete('pol');
+    u.searchParams.delete('pol');
     u.hash = key; history.replaceState(null, '', u.pathname + u.search + u.hash); };
   const select = (key, hash) => {
     key = ALIAS[key] || key; if (!ROUTES.some(r => r[0] === key)) key = 'mt1';
@@ -557,7 +561,7 @@ function nav() {
     return key;
   };
   // Mở theo đường đi chuẩn (link cũ #mt4, ?sub=listed#mt1… được chuyển ở route()).
-  const go = (raw, sub, pol, push) => { const r = route(raw, sub, pol); select(r.key, false); if (TABS[r.key] && r.sub) open(r.key, r.sub); if (r.pol) open('mt4', r.pol); if (push) { syncUrl(r.key); if (r.pol) open('mt4', r.pol, true); } return r; };
+  const go = (raw, sub, pol, push) => { const r = route(raw, sub, pol); select(r.key, false); if (TABS[r.key] && r.sub) open(r.key, r.sub); if (push) syncUrl(r.key); return r; };
   ROUTES.forEach(([key, label], i) => {
     const b = el('button', 'majortabbtn', label); b.type = 'button'; b.dataset.tab = key; b.id = 'research-tab-' + key; b.setAttribute('role', 'tab');
     const p = $(`.majorpane[data-tab="${key}"]`); if (p) { p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id); }
@@ -571,7 +575,7 @@ function nav() {
   window.addEventListener('hashchange', () => { const u = new URL(location.href); go(location.hash.slice(1), u.searchParams.get('sub'), u.searchParams.get('pol'), true); });
   // Mở lần đầu theo URL; link cũ thì viết lại URL về dạng mới.
   const u0 = new URL(location.href), raw0 = location.hash.slice(1) || 'mt1', s0 = u0.searchParams.get('sub'), r0 = go(raw0, s0, u0.searchParams.get('pol'), false);
-  if (location.hash && (raw0 !== r0.key || (s0 && s0 !== r0.sub))) { syncUrl(r0.key); if (r0.pol) open('mt4', r0.pol, true); }
+  if (location.hash && (raw0 !== r0.key || (s0 && s0 !== r0.sub))) syncUrl(r0.key);
   // Link trỏ vào thẻ đã dời: mở đúng tab lớn + sub-tab (+ mục Chính sách) rồi cuộn tới. Link "#mtN" cũ trong nội dung đi qua route().
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href^="#"]'); if (!a || a.matches('.re-lg-go')) return;

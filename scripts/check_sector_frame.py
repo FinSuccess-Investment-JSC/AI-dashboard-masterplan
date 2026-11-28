@@ -26,6 +26,8 @@ SECTORS = ['Dien', 'Thep', 'Duoc', 'Chan-nuoi', 'Dau-khi', 'Ca-tra', 'Tom', 'Van
            'Bat-dong-san', 'Bat-dong-san-KCN', 'Xay-dung', 'Vat-lieu-xay-dung', 'Det-may', 'Ban-le', 'Bia', 'Sua', 'Nhua',
            'O-to-xe-may', 'Sugar', 'Cao-su', 'Phan-bon', 'Xut-clo', 'Vien-thong']
 TABS = ['Tổng quan ngành', 'Bức tranh ngành', 'Tài chính ngành', 'Chủ đề nóng']
+# Ngoại lệ người dùng chốt: Dầu khí giữ tab Chính sách riêng (28/11/2026, "dầu khí để tab chính sách riêng mà").
+TABS_BY = {'Dau-khi': ['Tổng quan ngành', 'Bức tranh ngành', 'Chính sách', 'Tài chính ngành', 'Chủ đề nóng']}
 FIN_SUBS = ['Tài chính ngành', 'Doanh nghiệp niêm yết', 'Định giá']
 CHROMES = [os.environ.get('CHROME', ''),
            r'C:\Program Files\Google\Chrome\Application\chrome.exe',
@@ -78,8 +80,9 @@ def check(r):
     if r.get('err'):
         return [r['err']], []
     names = [t['name'] for t in r['tabs']]
-    if names != TABS:
-        F(f'tab lớn {names} ≠ {TABS}')
+    want = TABS_BY.get(r.get('sector'), TABS)
+    if names != want:
+        F(f'tab lớn {names} ≠ {want}')
     tab = {t['name']: t for t in r['tabs']}
     # Tổng quan: thanh thẻ ov-nav, số 00, 01…, mỗi thẻ có tiêu đề + dòng phụ
     ov = tab.get('Tổng quan ngành')
