@@ -1,7 +1,7 @@
 """Universe doanh nghiệp sữa cho tab Tài chính ngành (Sua/). Khoản mục BCTC dùng chung với Dệt may / Thép / Dược / Chăn nuôi
 (textile_fin_items.ITEMS: mã VNDirect finfo, mẫu TT200). Dùng bởi fetch_dairy_financials.py và build_dairy_financials.py (28/11/2026).
 
-4 mã sữa có BCTC quý trên VNDirect finfo (kiểm 28/11/2026), nhóm theo mô hình kinh doanh:
+5 mã (28/11/2026 thêm QNS theo người dùng) có BCTC quý trên VNDirect finfo (kiểm 28/11/2026), nhóm theo mô hình kinh doanh:
   Sữa đa sản phẩm, nội địa + xuất khẩu (VNM) · Sữa tươi từ đàn bò (MCM) · Sữa nước, sữa chua thương hiệu nội địa (IDP, HNM).
 Không đưa vào: NTB (số quý chỉ có năm 2019, toàn bằng 0); VLC (Tổng công ty Chăn nuôi Việt Nam – Vilico, công ty mẹ trực tiếp của MCM,
 VNM nắm 68,9%) là công ty trung gian, số hợp nhất gồm MCM và mảng chăn nuôi khác nên không xếp vào rổ sữa.
@@ -16,11 +16,13 @@ GROUPS = [
     {'id': 'multi', 'label': 'Sữa đa sản phẩm, nội địa + xuất khẩu', 'color': '#2938A8', 'default': True},
     {'id': 'farm', 'label': 'Sữa tươi từ đàn bò', 'color': '#2a9fa3', 'default': True},
     {'id': 'brand', 'label': 'Sữa nước, sữa chua thương hiệu nội địa', 'color': '#c98a00', 'default': True},
+    {'id': 'plant', 'label': 'Sữa đậu nành, đa ngành', 'color': '#861C52', 'default': True},
 ]
 COMPANIES = [
     {'ticker': 'VNM', 'group': 'multi', 'mixed': True, 'note': 'Vinamilk: sữa nước, sữa bột, sữa chua, sữa đặc, nước giải khát; nội địa và xuất khẩu; hợp nhất cả MCM (qua VLC)'},
     {'ticker': 'MCM', 'group': 'farm', 'note': 'Giống bò sữa Mộc Châu: sữa tươi, sữa chua từ trang trại Mộc Châu; công ty con gián tiếp của VNM'},
     {'ticker': 'IDP', 'group': 'brand', 'note': 'Sữa Quốc tế (LOF): sữa nước Kun, Lof Malt, sữa chua uống; công ty mẹ Bluepoint (51,8%)'},
+    {'ticker': 'QNS', 'group': 'plant', 'mixed': True, 'note': 'Đường Quảng Ngãi: sữa đậu nành Vinasoy (mảng lợi nhuận lớn nhất), đường, bia, bánh kẹo; giữ ở cả trang Đường và Sữa'},
     {'ticker': 'HNM', 'group': 'brand', 'note': 'Sữa Hà Nội (Hanoimilk): sữa tiệt trùng, sữa chua; quy mô nhỏ'},
 ]
 TICKERS = [c['ticker'] for c in COMPANIES]
