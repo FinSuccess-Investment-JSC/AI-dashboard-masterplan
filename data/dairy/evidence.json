@@ -78,5 +78,45 @@
   "quote": "Đánh giá sức mua, bà Liên cho biết, bức tranh chung của ngành sữa vẫn chưa thực sự khả quan, vẫn âm 3,7% so với cùng kỳ.",
   "status": "match",
   "note": "VNM. thitruongtaichinhtiente.vn, bài 22/04/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "dairy-manual",
+  "claim": "VNM · Tổng đàn bò · 2025",
+  "value": "130.000 con",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/VNM_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Tổng đàn bò sữa do Công ty quản lý và liên kết đạt trên đạt trên 130.000 con",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dairy-manual",
+  "claim": "VNM · Tỷ trọng xuất khẩu · 2025 · FPTS",
+  "value": "11,2 %",
+  "url": "https://file.fpts.com.vn/FileStore2/File/2026/02/12/VNMQuickUpdateReportFeb_2026_3a486854.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Doanh thu xuất khẩu (11,2% tổng doanh thu)",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dairy-manual",
+  "claim": "VNM · Giá mục tiêu của CTCK · 12m · FPTS",
+  "value": "giá mục tiêu 72.400 đồng/cp",
+  "url": "https://file.fpts.com.vn/FileStore2/File/2026/02/12/VNMQuickUpdateReportFeb_2026_3a486854.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "giá mục tiêu là 72.400 VND/cp, cao hơn 5,0% so với giá đóng cửa ngày 12/02/2026 (bằng phương pháp chiết khấu dòng tiền",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dairy-manual",
+  "claim": "MCM · Tổng đàn bò · 2025",
+  "value": "27.000 con",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MCM_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Tổng số lượng đàn bò của MCM là gần 27.000 con bò",
+  "status": "match",
+  "note": ""
  }
 ]

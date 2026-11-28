@@ -1,0 +1,91 @@
+{
+ "updated": "2026-11-28",
+ "note": "",
+ "how": "Sửa file này rồi chạy python scripts/build_beer_manual.py (DASHBOARD_WORKFLOW §44).",
+ "rows": [
+  {
+   "ticker": "SAB",
+   "item": "volume",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "SAB AR 2025 not at vietstock static2 path; not found"
+  },
+  {
+   "ticker": "SAB",
+   "item": "share",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "as above"
+  },
+  {
+   "ticker": "SAB",
+   "item": "target",
+   "period": null,
+   "value": 51000,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "DSC",
+    "report_date": null,
+    "text": "Theo dõi"
+   },
+   "url": "https://www.dsc.com.vn/bao-cao-phan-tich/sab-capnhat25q4",
+   "opened_at": "2026-11-28",
+   "quote": "DSC đưa ra khuyến nghị Theo dõi đối với cổ phiếu SAB, với mức giá mục tiêu là 51.000 đồng.",
+   "status": "match",
+   "note": "report date not shown on page (Q4/2025 update, likely early 2026); verify date",
+   "hide": true,
+   "hide_reason": "Trang nguồn không ghi ngày báo cáo, không xác nhận được còn trong 12 tháng."
+  },
+  {
+   "ticker": "BHN",
+   "item": "volume",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/BHN_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "AR mentions capacity only; no sales volume figure found"
+  },
+  {
+   "ticker": "BHN",
+   "item": "share",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/BHN_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "only qualitative: dẫn đầu thị phần tại thị trường miền Bắc"
+  },
+  {
+   "ticker": "BHN",
+   "item": "target",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "not searched"
+  }
+ ]
+}
