@@ -2,7 +2,7 @@
 (textile_fin_items.ITEMS: mã VNDirect finfo, mẫu TT200, thêm khoản mục cho bảng tỷ số). Dùng bởi fetch_sugar_financials.py
 và build_sugar_financials.py (27/11/2026).
 
-5 mã theo danh sách doanh nghiệp của trang Đường, nhóm theo mô hình: Mía đường thuần · Mía đường & thương mại (SBT) · Đa ngành (QNS).
+5 mã. 28/11/2026 (người dùng: "đường còn nhiều mã khác") đã rà danh sách niêm yết VNDirect: chỉ còn CBS (Mía đường Cao Bằng, UPCOM) nhưng VNDirect không có BCTC quý, số năm dừng ở 2022 nên chưa đưa vào; BHS, NHS, SEC đã hủy niêm yết sau sáp nhập vào SBT, nhóm theo mô hình: Mía đường thuần · Mía đường & thương mại (SBT) · Đa ngành (QNS).
 Không có cặp hợp nhất mẹ – con trong rổ."""
 from textile_fin_items import ITEMS  # noqa: F401
 
