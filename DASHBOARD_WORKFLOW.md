@@ -616,3 +616,21 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Độ phủ 80%** như §48. VRE, DXS thiếu LCTT quý 2025–2026 nên trống ở chart dòng tiền.
 - Còn thiếu: phải thu khác, trả trước người bán (đặt cọc, hợp tác đầu tư) chưa có trong `kcn_fin_items.ITEMS`; lãi vay vốn hóa không có trong BCTC tóm tắt.
 
+
+## 50. Dệt may › Tài chính ngành: thước đo theo đơn hàng, biên và vốn lưu động (28/11/2026, người dùng duyệt "làm cả 2" sau bản rà soát)
+- **Nhóm** (`scripts/textile_fin_items.py`): Sợi & xơ (STK, ADS) · Dệt nhuộm – May (TCM, TNG, MSH, HTG, VGG) · **Tập đoàn & đa ngành (VGT, GIL)**. GIL rời nhóm May vì tồn kho dự án khu công nghiệp (1.138 ngày) kéo số ngày tồn kho cả nhóm từ 64 lên 89 ngày. Ô KPI Số ngày tồn kho không gồm mã `mixed` (VGT, GIL).
+- **Sửa dữ liệu** (`scripts/build_textile_financials.py`):
+  - TNG, VGG lập LCTT quý theo phương pháp trực tiếp nên VNDirect trả khấu hao quý = 0 (EBITDA = EBIT). Khấu hao quý ước tính = khấu hao báo cáo năm ÷ 4, năm chưa có báo cáo năm dùng năm gần nhất; ghi `estimates.da`, chú thích dưới mọi chart có EBITDA và ở bảng Định giá. Ngoại lệ duy nhất của quy tắc không điền số thiếu.
+  - LCTT quý có dòng tiền gộp sai dấu quá 5 tỷ (tiền chi mua TSCĐ, tiền vay nhận, tiền trả gốc; TNG mọi quý 3): để trống LCTT từ quý đó đến hết năm, ghi `checks.cf_sign_anomaly`. Số TTM dòng tiền của TNG vì vậy trống; chế độ Năm dùng báo cáo năm nên vẫn có.
+  - ADS thiếu LCTT quý 2025 (tổng 4 quý lệch số năm): chưa có nguồn thay, nhóm Sợi trống ở chart dòng tiền TTM đến khi đủ 4 quý 2026.
+- **Sub-tab 01** (`Det-may/app/textile-finance.js`), độ phủ 80% như §48:
+  - KPI: doanh thu, LNST, biên gộp, số ngày tồn kho, nợ vay ròng/EBITDA, ROE (bỏ CAPEX TTM, XDCB dở dang).
+  - 1.1 Doanh thu & mùa vụ: thêm doanh thu khâu May/Sợi so với kim ngạch xuất khẩu dệt may / xơ sợi cả nước (% so cùng kỳ, `TEXTILE_PUBLIC.macro.exp_textile`, `exp_yarn`); bảng nhiệt mùa vụ có thêm Doanh thu.
+  - 1.2 Biên & giá nguyên liệu: biên theo khâu hoặc theo doanh nghiệp; chart chênh lệch sợi cotton − bông và PSF − 0,855 PTA − 0,335 MEG (`TEXTILE_PUBLIC.commodity`, bình quân tháng theo cùng chu kỳ, kỳ thiếu tháng để trống); chart "Lợi nhuận trước thuế đến từ đâu" (thu nhập tài chính 13–29% LNTT ở mọi mã, lãi liên kết 34% LNTT của VGT).
+  - 1.3 Tồn kho & vốn lưu động (thay mục chỉ có phải thu): tồn kho/phải thu/phải trả theo khâu, chu kỳ tiền và ba cấu phần theo khâu hoặc doanh nghiệp, thay đổi vốn lưu động trên LCTT, CFO/EBITDA.
+  - 1.4 Nợ & lãi vay: đòn bẩy và gánh nặng lãi vay (lãi vay/lợi nhuận gộp, EBIT/lãi vay, lãi vay/nợ vay) theo khâu hoặc doanh nghiệp; doanh thu tài chính so với lãi vay và chi phí tài chính khác (gồm lỗ tỷ giá). Bỏ chart phân bố đòn bẩy, FCF theo khâu.
+  - 1.5 Hiệu quả vốn: ô chọn có từng mã (DuPont theo mã); bản đồ đổi thành ROE × nợ vay/VCSH. Bỏ "ROIC và chu kỳ vốn".
+  - 1.6 CAPEX còn 1 chart (tỷ đồng, CAPEX/khấu hao, CAPEX/doanh thu): XDCB dở dang chỉ 0–3% tổng tài sản.
+  - 1.7 bảng tỷ số: 15 dòng chính luôn hiện, đủ 42 dòng trong mục gấp; dòng thanh toán lãi vay ghi đúng công thức (LNTT + lãi vay)/lãi vay; trung vị theo số mã thực.
+- **Sub-tab 03 Định giá** (`PROFILES.TEXTILE_FIN`, mọi bản `peer-valuation.js`): cột Ngày tồn kho thay Dự phòng ÷ phải thu.
+- Chưa có: tỷ trọng FOB/CMT theo mã (bảng nhập tay còn trống nhiều), chi phí nhân công (BCTC quý không tách), giá bán sợi filament của STK.
